@@ -1,0 +1,127 @@
+% lhcb.sty
+%
+% Useful commands when writing documents relating to LHCb.
+%
+% (c) Alex Pearce <alex@alexpearce.me>
+% LPPL LaTeX Public Project License
+%
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{lhcb}[2015/09/24 v1.0 Personal LaTeX Package]
+
+\DeclareOption{italic}{\PassOptionsToPackage{\CurrentOption}{hepnames}}
+\ProcessOptions\relax
+
+\RequirePackage{hepnames}
+\RequirePackage{siunitx}
+
+% siunitx already defines MeV and GeV
+\DeclareSIUnit\TeV{\tera\eV}
+\DeclareSIUnit\perpb{\per\pico\barn}
+\DeclareSIUnit\perfb{\per\femto\barn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Decays
+% Useful for describing processes of the form A -> B C and there associated
+% quantities.
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Decay
+\newcommand{\decay}[2]{\ensuremath{#1 \to #2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Experiments and detectors
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\lhcb{LHCb}
+
+% LHCb subdetectors
+% PID
+\newcommand\richone{RICH1}
+\newcommand\richtwo{RICH2}
+
+% LHCb triggers
+\newcommand\hltone{HLT1}
+\newcommand\hlttwo{HLT2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% CP violation
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\CP{\ensuremath{C\!P}}
+\newcommand\ACP{\ensuremath{A_{\CP}}}
+\newcommand\Araw{\ensuremath{\ACP^{\text{Raw}}}}
+\newcommand\dACP{\ensuremath{\Delta\ACP}}
+
+% dACP Background asymmetries
+\newcommand\AP{\ensuremath{A_{P}}}
+\newcommand\AD{\ensuremath{A_{D}}}
+\newcommand\ADf{\ensuremath{A_{D}^{f}}}
+
+% CKM matrix elements
+\newcommand\Vud{\ensuremath{V_{\Pup\Pdown}}}
+\newcommand\Vcd{\ensuremath{V_{\Pcharm\Pdown}}}
+\newcommand\Vtd{\ensuremath{V_{\Ptop\Pdown}}}
+\newcommand\Vus{\ensuremath{V_{\Pup\Pstrange}}}
+\newcommand\Vcs{\ensuremath{V_{\Pcharm\Pstrange}}}
+\newcommand\Vts{\ensuremath{V_{\Ptop\Pstrange}}}
+\newcommand\Vub{\ensuremath{V_{\Pup\Pbottom}}}
+\newcommand\Vcb{\ensuremath{V_{\Pcharm\Pbottom}}}
+\newcommand\Vtb{\ensuremath{V_{\Ptop\Pbottom}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Variables
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Kinematics
+\newcommand\ptot{\ensuremath{p}}
+\newcommand\pt{\ensuremath{p_{\text{T}}}}
+\newcommand\ET{\ensuremath{E_{\text{T}}}}
+\newcommand\rapidity{\ensuremath{y}}
+\newcommand\Eta{\ensuremath{\eta}}
+\newcommand\deltam{\ensuremath{\delta{m}}}
+
+\newcommand\sqrts{\ensuremath{\sqrt{s}}}
+\newcommand\runtwocom{\SI{13}{\TeV}}
+
+% Track quality
+\newcommand\ip{IP}
+\newcommand\chisq{\ensuremath{\chi^2}}
+\newcommand\ipchisq{\ensuremath{\chisq_{\text{IP}}}}
+\newcommand\logipchisq{\ensuremath{\log\ipchisq}}
+\newcommand\ipchisqndof{\ensuremath{\ipchisq/\mathrm{ndof}}}
+
+% PID
+% Cherenkov angle
+\newcommand\thetac{\ensuremath{\theta_{\text{c}}}}
+\newcommand\dllkpi{\ensuremath{\text{DLL}_{\kaon-\pion}}}
+\newcommand\dllpk{\ensuremath{\text{DLL}_{\proton-\kaon}}}
+\newcommand\dllppi{\ensuremath{\text{DLL}_{\proton-\pion}}}
+\newcommand\dllepi{\ensuremath{\text{DLL}_{\electron-\pion}}}
+\newcommand\dllmupi{\ensuremath{\text{DLL}_{\muon-\pion}}}
+\newcommand\probnn{ProbNN}
+\newcommand\probnnp{\texttt{ProbNNp}}
+\newcommand\probnnk{\texttt{ProbNNk}}
+\newcommand\probnnpi{\texttt{ProbNNpi}}
+
+% Efficiencies
+\newcommand\eff{\ensuremath{\epsilon}}
+\newcommand\effacc{\ensuremath{\eff_{\text{Acceptance}}}}
+\newcommand\effreco{\ensuremath{\eff_{\text{Reconstruction}}}}
+\newcommand\efftracking{\ensuremath{\eff_{\text{Tracking}}}}
+\newcommand\efftrig{\ensuremath{\eff_{\text{Trigger}}}}
+\newcommand\effstrip{\ensuremath{\eff_{\text{Stripping}}}}
+\newcommand\effoffline{\ensuremath{\eff_{\text{Offline}}}}
+\newcommand\effselection{\ensuremath{\eff_{\text{Selection}}}}
+\newcommand\effpid{\ensuremath{\eff_{\text{\pid}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Maths
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\sPlot{\ensuremath{_{s}\mathcal{P}lot}}
+\newcommand\order{\ensuremath{\mathcal{O}}}
+% Absolutes as |x|
+\newcommand{\abs}[1]{\ensuremath{\left\|#1\right\|}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Software
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\davinci{\textsc{DaVinci}}
+\newcommand\loki{\textsc{LoKi}}
+
+\endinput
