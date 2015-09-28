@@ -1,2 +1,4 @@
 # latexrun output directory
 latex.out
+# Output PDF
+thesis.pdf
