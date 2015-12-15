@@ -76,9 +76,40 @@
 \mainmatter
 \iftoggle{draft}{\linenumbers}{}
 
-\include{chapters/introduction}
+\part{%
+  Charm production at
+  \texorpdfstring{%
+    $\sqrts = \SI{13}{\TeV}$
+  }{%
+    sqrt(s) = 13 TeV
+  }
+}
 
-\include{chapters/theory}
+\include{chapters/production/introduction}
+
+\include{chapters/production/theory}
+
+\cleardoublepage
+
+\part{%
+  \texorpdfstring{\CP\ }{CP} violation in
+  \texorpdfstring{%
+    \LcTophh
+  }{%
+    Lambdac+ to ph+h-
+  }
+  decays
+}
+
+\include{chapters/cpv/introduction}
+
+\include{chapters/cpv/theory}
+
+\cleardoublepage
+
+\part{Monitoring the \lhcb\ vertex locator detector}
+
+\include{chapters/monitoring/introduction}
 
 \cleardoublepage
 
