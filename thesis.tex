@@ -13,7 +13,9 @@
 \title{%
   Measurements of charm production and \texorpdfstring{\CP\ }{CP} violation at \lhcb
 }
-\date{July 2016}
+% Regulation 4.1.b.iii:
+%   the year of presentation (not including the month)
+\date{2016}
 
 % Fill in the PDF metadata
 % Don't need to specify the title as we passed the pdfusetitle option to 
@@ -30,21 +32,24 @@
   \begin{center}
     \textbf{\huge\thetitle}
 
-    \vspace{0.5cm}
+    \vfill
 
-    \textbf{\Large\theauthor}
+    A thesis submitted to the University of Manchester for the degree of\\
+    Doctor of Philosophy\\
+    in the Faculty of Engineering and Physical Sciences\\
+
+    \vspace{0.8cm}
+
+    \textbf{\thedate}
 
     \vfill
 
-    A thesis submitted to The University of Manchester\\
-    for the degree of Doctor of Philosophy\\
+    \textbf{\theauthor}
 
     \vspace{0.8cm}
 
     Particle Physics Group\\
     School of Physics and Astronomy\\
-    Faculty of Engineering and Physical Sciences\\
-    \textbf{\thedate}
 
     \vspace{0.8cm}
 
@@ -59,15 +64,37 @@
 
 \frontmatter
 
-\include{chapters/abstract}
+% The star omits the ToC entry from the ToC listing itself
+\tableofcontents*
+
+\vspace{1cm}
+\noindent
+% TODO
+Word count: 0
 
 \cleardoublepage
 
-\include{chapters/summary}
+\include{chapters/frontmatter/abstract}
 
 \cleardoublepage
 
-\tableofcontents
+\include{chapters/frontmatter/summary}
+
+\cleardoublepage
+
+\include{chapters/frontmatter/declaration}
+
+\cleardoublepage
+
+\include{chapters/frontmatter/copyright}
+
+\cleardoublepage
+
+\include{chapters/frontmatter/acknowledgements}
+
+\cleardoublepage
+
+\include{chapters/frontmatter/preface}
 
 \mainmatter
 \iftoggle{draft}{\linenumbers}{}
