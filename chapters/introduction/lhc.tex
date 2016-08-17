@@ -1,0 +1,177 @@
+\chapter{The \acl{LHC}}
+\label{chap:intro:lhc}
+
+As high-energy particle physics has progressed over the last century, the 
+meaning of `high energy' has changed from referring to accelerators with beam 
+energies around one \si{\MeV}, to today's machines whose energies reach the 
+\si{\TeV} scale.
+The operation of a particle collider involves accelerating at least one beam of 
+charged particles up to some energy, and then steering and focusing the beam 
+into a target, which can be fixed, such as a sheet of gold foil, or another 
+beam, which can be of a different particle type.
+The nature of the physics to be explored dictates the nature of the beams and 
+targets, which in turns guides the development of the accelerator.
+
+The \acl{LHC}~\cite{Bruning:2004ej} is a circular particle accelerator, 
+designed to accelerate each of two oppositely-circulating beams of protons up 
+to energies of \SI{7}{\TeV}, meaning a total centre-of-mass energy, denoted 
+\sqrts, of \SI{14}{\TeV}.
+Bunches of 120 billion protons are obtained through the ionisation of hydrogen 
+gas, and they are then accelerated through a chain of progressively more 
+powerful accelerators before being injected into the \ac{LHC}.
+During nominal operation, a single \ac{LHC} `fill' consists of injecting 2808 
+bunches in to the machine, each of which is about \SI{30}{\centi\metre} long, 
+is separated from the surrounding bunches by about \SI{7}{\metre}, and 
+completes a revolution of the ring at a rate of \SI{11.2}{\mega\hertz}.
+
+The beams are steered around the ring by superconducting dipole magnets, cooled 
+to a temperature of \SI{1.9}{\kelvin}, and are kept in focus by quadrupole and 
+other, higher-order, magnets.
+The beams are made to collide at four \acp{IP}, before which they are focused 
+from the usual bunch diameter of \SI{0.2}{\milli\metre} while circulating to a 
+width on the order of microns, such that they can interact and collide.
+
+For a collision experiment, the number of times $N$ a particular process occurs 
+is the product of two quantities
+\begin{equation}
+  N = \lumi\xsec,
+  \label{eqn:intro:lhc:lumi_xsec}
+\end{equation}
+where \lumi\ is the luminosity of the accelerator and \xsec\ is the 
+cross-section of the process in question.
+Cross-sections are measured in units of area, and are a measure of the 
+probability of a particular process occurring during a scattering event.
+Accelerators are usually designed to maximise the luminosity \lumi, which can 
+be expressed for circular colliders such as the \ac{LHC} as
+\begin{equation}
+  \lumi = \frac{N_{\text{p}}^{2}N_{\text{b}}f\gamma}{4\pi\epsilon\beta^{*}}F,
+\end{equation}
+where $N_{\text{p}}$ is the number of particles per bunch; $N_{\text{b}}$ is 
+the number of bunches per beam; $f$ is the bunch revolution frequency; $\gamma$ 
+is the Lorentz term $\gamma = {(1 - {(\frac{v}{c})}^{2})}^{-1/2}$, where $v/c 
+\approx 1$ at the \ac{LHC}; $\epsilon$ is the beam emittance during 
+circulation, a measure of the beam size transverse to the beam direction; 
+$\beta^{*}$ is a measure of the transverse beam size at a particular \ac{IP}; 
+and $F$ accounts for non-zero crossing angles between the two beams at an 
+\ac{IP}.
+Depending on the experiment centred around an \ac{IP}, the \betastar parameter 
+can be tuned to provide a specific average number of collisions per bunch 
+crossing.
+Maximising the luminosity is limited by the technological and monetary 
+constraints present at the time of construction: increasing the number of 
+bunches or particles per bunch increases the beam current, requiring stronger 
+magnetic fields to steer and focus the beams, and likewise for decreasing the 
+transverse bunch profile.
+% NOTE: left out as this depends on the IP
+% The design luminosity of the \ac{LHC} is 
+% \SI{1e34}{\per\square\centi\metre\per\second}
+
+During a fill, the number of bunches in the machine, and hence the luminosity, 
+decreases as protons are lost to collisions at the \acp{IP} and due to 
+imperfections in the focussing systems, the latter of which causes protons to 
+drift outside the nominal beam trajectory, to be be removed by the beam 
+cleaning devices installed around the ring.
+As the protons have a high energy, collisions with the magnets can generate 
+large amounts of heat.
+% TODO: this would be more meaningful if the current was expressed as energy, 
+% then we could equate the current and sudden onset of resistence in joules, 
+% equivalent to some explosion
+If the heat build-up is too high, the magnets can `quench', whereby their 
+temperature increases above the threshold below which they are superconducting.
+This can be dangerous, as the superconducting magnets carry tens of thousands 
+of amperes of current.
+The prevent this, the beam can be steered in to a beam dump within about 
+\SI{3}{\micro\second} of a fault being detected.
+
+As the most powerful particle accelerator in the world, the \ac{LHC} is itself 
+an experiment, pushing the boundaries of what's capable with a particle 
+collider.
+The real purpose of the \ac{LHC}, however, is to provide the experiments with 
+collisions, so that they can find the next big discovery.
+
+\section{The \aclp{IP}}
+\label{chap:intro:lhc:ips}
+
+A set of 8 access points provide entry to the underground tunnel in which the 
+\ac{LHC} resides.
+Four of these points lead to large underground caverns that house the particle 
+detectors, whilst the others are used for maintenance of the accelerator.
+
+The \atlas\ detector~\cite{Aad:2008zzm} is at point 1, and point 5 houses the 
+\cms\ detector~\cite{Chatrchyan:2008aa}.
+Each of these are cylindrical detectors centred around the beam-beam 
+interaction region, with \atlas\ being \SI{44}{\metre} long and \SI{25}{\metre} 
+in diameter, and \cms\ being \SI{22}{\metre} long and \SI{15}{\metre} in 
+diameter.
+% TODO: check this statement is true, does the Higgs really do that
+They are designed to discover and study the properties of the Higgs boson 
+\PHiggs, the particle the generates the mass of the fundamental particles, and 
+to study the physics of \ac{QCD} and \ac{EW} interactions, that is the physics 
+of the strong force and weak force.
+The signals they search for are generally high energy and high momentum 
+electrons, muons, photons, and jets, collimated clusters of charged and neutral 
+hadrons.
+The high momentum of these signals is due to the large masses of the particles 
+\atlas\ and \cms\ search for, which includes \PW, \PZ, and \PHiggs bosons, with 
+masses between 80 and \SI{125}{\GeV}, and particles predicted by \ac{BSM} 
+theories, which can be of the order of \SI{1}{\TeV}.
+
+The design luminosity at points 1 and 5 is 
+\SI{1e34}{\per\square\centi\metre\per\second}, and the rate of \PHiggs 
+production in proton-proton collisions is of the order of tens of 
+picobarn~\cite{Khachatryan:2016vau}, $\xsec_{\PHiggs} \sim \SI{10}{\pico\barn} 
+= \SI{1e-35}{\per\square\centi\metre}$, translating to around 0.1 Higgs bosons 
+being produced every second using \cref{eqn:intro:lhc:lumi_xsec}.
+The cross-sections for new particles predicted by \ac{BSM} theories are even 
+lower than that for the Higgs, and so \atlas\ and \cms\ must collect large 
+samples of data to make statistically significant discoveries, requiring high 
+beam luminosities to achieve it.
+As a consequence of the high luminosity, the detectors observe a large number 
+of proton-proton interactions per bunch-bunch crossing, around 30, and this 
+leads to a large amount of data being produced per crossing, approximately 
+\SI{1}{\mega\byte}.
+This would amount to \SI{40}{\tera\byte} of data per second of \ac{LHC} 
+running, but most of this cannot be saved due to monetary and technological 
+constraints.
+Instead, on order of 100 crossings per second are saved for subsequent 
+analysis.
+
+In addition to the nominal proton running, the \ac{LHC} also runs with 
+configurations of ion beams for about one-eighth of its operating time, 
+specifically with two beams of lead~(Pb) ions in the lead-lead configuration, 
+and with one beam of protons and another beam of lead ions in the proton-lead 
+configuration.
+The \alice\ detector~\cite{Aamodt:2008zz}, located at point 2, focusses on 
+studying these lead-lead and proton-lead collisions.
+Specifically, \alice\ measures the properties of the quark-gluon plasma that 
+forms in ion collisions, which is a hot, dense state of matter that was 
+dominant in the early stages of the universe.
+Such measurements provide important input to the theoretical understanding of 
+macroscopic behaviour driven by the strong force, such as in the quark-gluon 
+plasma, where predictions are complex to compute.
+
+Finally, the \lhcb\ detector~\cite{Alves:2008zz} is located at point 8, and 
+will be described in detail in \cref{chap:intro:lhcb}.
+
+\section{Running periods}
+
+The \ac{LHC} first began running in 2010 at a proton-proton centre-of-mass 
+energy of $\sqrts = \SI{7}{\TeV}$, and this continued until the end of 2011.
+In 2012, the centre-of-mass energy was increased to $\sqrts = \SI{8}{\TeV}$, 
+before the machine was shut down at the end of 2012, marking the end of 
+\runone\ and the beginning of \ac{LS1}, during which the accelerator was 
+upgraded.
+The purpose of the upgrades was to prepare the machine for running at $\sqrts = 
+\SI{13}{\TeV}$.
+This new phase of running, \runtwo, began in mid-2015, and is expected to 
+continue until the end of 2018.
+
+The trend of increasing beam energies is driving towards reaching the design 
+energy of \SI{7}{\TeV} per beam, giving $\sqrts = \SI{14}{\TeV}$.
+Higher beam energies are generally good for the experiments, as the 
+cross-sections of the physical processes of interest increases with \sqrts.
+It does come with a price, however, as the rate of other physical processes 
+also increases with \sqrts, including those one may not be interested in, which 
+are generally much larger than the rare processes of interest.
+This means that experiments must continually upgrade their own detectors and 
+software in order to suppress to the higher rate of uninteresting events.

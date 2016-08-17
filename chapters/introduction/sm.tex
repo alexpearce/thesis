@@ -1,0 +1,108 @@
+\chapter{Testing the \acl{SM}}
+\label{chap:intro:sm}
+
+The \acl{SM} is a quantum field theory that describes the interactions of three 
+of the four fundamental forces of nature: electromagnetism, the weak force, and 
+the strong force.
+It is able to accurately predict much of the observed phenomena in the 
+universe, from the simple to the complex, despite its compact formulation.
+Two notable phenomena the \ac{SM} does not describe are gravity, the fourth 
+fundamental force of nature, and the imbalance between matter and anti-matter 
+in the observable universe.
+To address these shortcomings, theories \acl{BSM} have been proposed.
+
+In addition to agreeing with existing experimental data, \ac{BSM} theories must 
+also make new predictions that can be tested experimentally, either using 
+existing data or with new experiments.
+Often, \ac{BSM} theories predict the existence of new particles.
+Their existence can be inferred experimentally in two ways: directly, where a 
+new particle is produced and then decays in to two or more particles, which may 
+themselves be new predictions of the theory; and indirectly, where the visible 
+constituents of a process remain the same, but the new particles interact 
+internally, changing some part of the interaction, such as the rate at which it 
+occurs.
+
+\cref{fig:intro:sm:particle_production:direct} illustrates one mechanism for 
+the production of a muon and an anti-muon from the annihilation of an electron 
+and a positron, denoted \decay{\Pelectron\APelectron}{\Pmuon\APmuon}.
+The rate at which this process occurs can be precisely computed within the 
+context of the \ac{SM}, and depends on the energies of the two electrons: when 
+their total energy is equal to the mass of the \PZ boson, around 
+\SI{91}{\GeV}~\cite{PDG2014}, the rate is high relative to the rate either side 
+of this value.
+This is a prediction of the theory: given two electrons interacting, such as in 
+a particle collider, an experimenter will see a large increase in the number of 
+muon pairs when the electrons have a combined energy around \SI{91}{\GeV}.
+Seeing this behaviour in an experiment would validate the prediction of theory, 
+and the \PZ boson would be then be said to have been `observed'.
+This is an example of a direct observation of a particle.
+
+\cref{fig:intro:sm:particle_production:indirect} shows one mechanism for the 
+decay of a \PBs meson, a composite particle made of a bottom anti-quark and an 
+strange quark, to a muon and an anti-muon, denoted \decay{\PBs}{\Pmuon\APmuon}.
+The intermediary particles are all the other particles in the diagram, namely 
+the up, charm, and top quarks, and the \PW bosons.
+The \ac{SM} can also be used to predict the rate for this 
+process~\cite{Bobeth:2013uxa}, which is equal to the probability that a given 
+\PBs meson will decay to the $\Pmuon\APmuon$ final state, having a value around 
+\num{3e-9}, or three \PBs mesons in every ten billion.
+If a \ac{BSM} theory introduces new particles, they may contribute to the 
+internal process in the diagram, either enhancing or reducing the rate.
+An experimentalist can then count the number of \PBs mesons they see in total, 
+and compare that with the number of \decay{\PBs}{\Pmuon\APmuon} decays they 
+see.
+If they see a statistically significant number of those decays larger than one 
+per billion \PBs mesons, it is a sign that something beyond the \ac{SM} is 
+contributing to the process.
+If the experimentally observed rate is consistent with that predicted by a 
+particular theory, there is evidence for the validity of that theory.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \input{figures/introduction/particle_production_direct}
+    \caption{Direct}
+    \label{fig:intro:sm:particle_production:direct}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.6\textwidth}
+    \centering
+    \input{figures/introduction/particle_production_indirect}
+    \caption{Indirect}
+    \label{fig:intro:sm:particle_production:indirect}
+  \end{subfigure}
+  \caption{%
+    Feynman diagrams illustrating two processes through which the existence of 
+    new particles may be inferred.
+    \cref{fig:intro:sm:particle_production:direct} shows direct (resonant) 
+    production of \PZ bosons, in the process 
+    \decay{\Pelectron\APelectron}{\Pmuon\APmuon}.
+    \cref{fig:intro:sm:particle_production:indirect} shows the process 
+    \decay{\PBs}{\Pmuon\APmuon}, where a new particle can enter in the `box' in 
+    the centre of the diagram.
+  }
+  \label{fig:intro:sm:particle_production}
+\end{figure}
+
+The \PZ boson was discovered in a similar process to that depicted in 
+\cref{fig:intro:sm:particle_production:direct} in 
+1983~\cite{1983398,BAGNAIA1983130}, and the decay \decay{\PBs}{\Pmuon\APmuon} 
+was first observed in 2014.
+The rate of both processes were consistent with \ac{SM} predictions.
+
+Often, new particles are first seen using indirect methods, as was the case for 
+the \PZ boson~\cite{HASERT1973138}, and their existence is then confirmed using 
+direct methods.
+The disadvantage of indirect methods is that it may not be conclusive what the 
+nature of the new particle is, as it is interacting in somewhat subtle ways.
+The advantage is that the energy of the incoming particles in the interaction 
+can be much less than the mass of the new particle, due to the quantum 
+mechanical nature of the internal interactions.
+This can be seen in \cref{fig:intro:sm:particle_production:indirect}, where a 
+\PW boson enters the diagram despite the mass of the \PBs meson being around 
+fifteen times lighter~\cite{PDG2014}.
+
+The \ac{SM} cannot describe every phenomenon, and yet everything that can be
+predicted with it has stood against decades of experimental testing.
+There is room for both direct and indirect searches for physics \acl{BSM}, and 
+yet with no obvious bumps from new particles being seen at the \ac{LHC}, 
+indirect searches seem like a particularly promising route to take.
