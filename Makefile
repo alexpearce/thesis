@@ -1,7 +1,7 @@
 # Stolen directly from the latexrun README
 .PHONY: FORCE
 paper.pdf: FORCE
-	@latexrun thesis.tex
+	@./latexrun thesis.tex
 
 .PHONY: check
 check:
@@ -9,7 +9,7 @@ check:
 
 .PHONY: clean
 clean:
-	@latexrun --clean-all
+	@./latexrun --clean-all
 
 # Run "make" whenever a LaTeX source file changes
 # http://stackoverflow.com/questions/25689589
