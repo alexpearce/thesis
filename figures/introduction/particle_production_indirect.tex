@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (a1) {\APbottom};
+    \vertex[right=1.5cm of a1] (a2);
+    \vertex[right=1.5cm of a2] (a3);
+    \vertex[right=1.5cm of a3] (a4) {\Pmuon};
+
+    \vertex[below=4em of a1] (b1) {\Pdown};
+    \vertex[right=1.5cm of b1] (b2);
+    \vertex[right=1.5cm of b2] (b3);
+    \vertex[right=1.5cm of b3] (b4) {\APmuon};
+
+    \diagram* [large] {%
+      {[edges=fermion]
+        % Fermion line on LHS of box
+        (b1) -- (b2) -- [edge label={\Pup,\Pcharm,\Ptop}] (a2) -- (a1),
+        % Fermion line on RHS of box
+        (b4) -- (b3) -- [edge label'={\Pup,\Pcharm,\Ptop}] (a3) -- (a4),
+      },
+      % Boson line at top of box
+      (a2) -- [boson, edge label={\PW}] (a3),
+      % Boson line at bottom of box
+      (b2) -- [boson, edge label'={\PW}] (b3),
+    };
+
+    \draw [decoration={brace}, decorate] (b1.south west) -- (a1.north west)
+    node [pos=0.5, left] {\PBs};
+  \end{feynman}
+\end{tikzpicture}
