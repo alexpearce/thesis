@@ -16,24 +16,26 @@ The \acl{LHC}~\cite{Bruning:2004ej} is a circular particle accelerator,
 designed to accelerate each of two oppositely-circulating beams of protons up 
 to energies of \SI{7}{\TeV}, meaning a total centre-of-mass energy, denoted 
 \sqrts, of \SI{14}{\TeV}.
+The use of protons allows for such high energies to be reached, which are 
+necessary for direct discoveries of new particles.
 Bunches of 120 billion protons are obtained through the ionisation of hydrogen 
-gas, and are then accelerated through a chain of progressively more powerful 
-accelerators before being injected into the \ac{LHC}.
+gas, and are then accelerated through a chain of progressively larger, more 
+powerful accelerators before being injected into the \ac{LHC}.
 During nominal operation, a single \ac{LHC} `fill' consists of injecting 2808 
-bunches into the machine, each of which is about \SI{30}{\centi\metre} long, is 
-separated from the surrounding bunches by about \SI{7}{\metre}, and completes a 
-revolution of the ring at a rate of \SI{11.2}{\mega\hertz}.
+bunches into the machine, each of which is about \SI{30}{\centi\metre} long, 
+separated from the surrounding bunches by about \SI{7}{\metre}, completing a 
+full revolution of the ring at a rate of \SI{11.2}{\mega\hertz}.
 
-The beams are steered around the ring by superconducting dipole magnets, cooled 
-to a temperature of \SI{1.9}{\kelvin}, and are kept in focus by quadrupole and 
-other, higher-order, magnets.
+The beams are steered around the \ac{LHC} by superconducting dipole magnets, 
+cooled to a temperature of \SI{1.9}{\kelvin}, and are kept in focus by 
+quadrupole and other, higher-order, magnets.
 The beams are made to collide at four \acp{LHCIP}, before which they are 
 focused from the usual bunch diameter of \SI{0.2}{\milli\metre} while 
 circulating to a width on the order of microns, such that they can interact and 
 collide.
 
 For a collision experiment, the number of times $N$ a particular process occurs 
-is the product of two quantities
+per second is the product of two quantities
 \begin{equation}
   N = \lumi\xsec,
   \label{eqn:intro:lhc:lumi_xsec}
@@ -42,14 +44,19 @@ where \lumi\ is the luminosity of the accelerator and \xsec\ is the
 cross-section of the process in question.
 Cross-sections are measured in units of area, and are a measure of the 
 probability of a particular process occurring during a scattering event.
-Accelerators are usually designed to maximise the luminosity \lumi, which can 
+At $\sqrts = \SI{13}{\TeV}$, the largest cross-section seen at the \ac{LHC} for 
+a visible proton-proton interaction, producing particles that can be measured 
+by a detector, is around $\xsecppvis = 
+\SI{70}{\milli\barn}$~\cite{Aaboud:2016mmw,CMS:2016ael}.
+Given that this number is fixed by the beam energy and colliding particle type, 
+accelerators are usually designed to maximise the luminosity \lumi, which can 
 be expressed for circular colliders such as the \ac{LHC} as
 \begin{equation}
   \lumi = \frac{N_{\text{p}}^{2}N_{\text{b}}f\gamma}{4\pi\epsilon\beta^{*}}F,
 \end{equation}
 where $N_{\text{p}}$ is the number of particles per bunch; $N_{\text{b}}$ is 
 the number of bunches per beam; $f$ is the bunch revolution frequency; $\gamma$ 
-is the Lorentz term $\gamma = {(1 - {(\frac{v}{c})}^{2})}^{-1/2}$, where $v/c 
+is the Lorentz term as in \cref{eqn:intro:sm:lorentz_factor}, where $\beta 
 \approx 1$ at the \ac{LHC}; $\epsilon$ is the beam emittance during 
 circulation, a measure of the beam size transverse to the beam direction; 
 $\beta^{*}$ is a measure of the transverse beam size at a particular 
@@ -63,9 +70,14 @@ constraints present at the time of construction: increasing the number of
 bunches or particles per bunch increases the beam current, requiring stronger 
 magnetic fields to steer and focus the beams, and likewise for decreasing the 
 transverse bunch profile.
-% NOTE: left out as this depends on the IP
-% The design luminosity of the \ac{LHC} is 
-% \SI{1e34}{\per\square\centi\metre\per\second}
+The design luminosity of the \ac{LHC} at the \atlas\ and \cms\ \acp{LHCIP} is
+\SI{1e34}{\per\square\centi\metre\per\second}, which results in a rate of 
+visible proton-proton interactions of
+\begin{equation}
+  N_{\text{vis.}} = \lumi\xsecppvis
+                  = \SI{700}{\mega\hertz}.
+  \label{eqn:intro:lhc:nppvis}
+\end{equation}
 
 During a fill, the number of bunches in the machine, and hence the luminosity, 
 decreases as protons are lost to collisions at the \acp{LHCIP} and due to 
@@ -84,6 +96,10 @@ This can be dangerous, as the superconducting magnets carry tens of thousands
 of amperes of current.
 The prevent this, the beam can be steered into a beam dump within about 
 \SI{3}{\micro\second} of a fault being detected.
+The large amount of energy stored in the beam, as electric current, requires 
+some sensitive detector components to be able to move away from the beam while 
+it is being stabilised at the beginning of the fill, as will be discussed in 
+\cref{chap:intro:lhcb:detector}.
 
 As the most powerful particle accelerator in the world, the \ac{LHC} is itself 
 an experiment, pushing the boundaries of what is capable with a particle 
@@ -91,12 +107,12 @@ collider.
 The real purpose of the \ac{LHC}, however, is to provide the experiments with 
 collisions, so that they can find the next big discovery.
 
-\section{The \aclp{LHCIP}}
+\section{Interaction points}
 \label{chap:intro:lhc:ips}
 
 A set of eight access points provide entry to the underground tunnel which 
 contains the \ac{LHC}.
-Four of these points lead to large underground caverns that house the particle 
+Four of these points lead to large underground caverns that house particle 
 detectors, whilst the others are used for accelerator maintenance.
 
 The \atlas\ detector~\cite{Aad:2008zzm} is at point 1, and point 5 houses the 
@@ -129,9 +145,9 @@ lower than that for the Higgs, and so \atlas\ and \cms\ must collect large
 samples of data to make statistically significant discoveries, requiring high 
 beam luminosities to achieve it.
 As a consequence of the high luminosity, the detectors observe a large number 
-of proton-proton interactions per bunch-bunch crossing, around 30, and this 
-leads to a large amount of data being produced per crossing, approximately 
-\SI{1}{\mega\byte}.
+of proton-proton interactions per bunch-bunch crossing, around 20 by 
+\cref{eqn:intro:lhc:nppvis}, and this leads to a large amount of data being 
+produced per crossing, approximately \SI{1}{\mega\byte}.
 This would amount to \SI{40}{\tera\byte} of data per second of \ac{LHC} 
 running, but most of this cannot be saved due to monetary and technological 
 constraints.
@@ -160,12 +176,11 @@ It will be described in detail in \cref{chap:intro:lhcb}.
 The \ac{LHC} first began running in 2010 at a proton-proton centre-of-mass 
 energy of $\sqrts = \SI{7}{\TeV}$, and this continued until the end of 2011.
 In 2012, the centre-of-mass energy was increased to $\sqrts = \SI{8}{\TeV}$, 
-before the machine was shut down at the end of 2012, marking the end of 
-\runone\ and the beginning of \ac{LS1}, during which the accelerator was 
-upgraded.
-The purpose of the upgrades was to prepare the machine for running at $\sqrts = 
-\SI{13}{\TeV}$.
-This new phase of running, \runtwo, began in mid-2015, and is expected to 
+before the machine was shut down at the end of 2012.
+This marked the end of \runone\ and the beginning of \ac{LS1}, during which the 
+accelerator was upgraded in order to prepare the machine for running at $\sqrts 
+= \SI{13}{\TeV}$.
+This new phase of operation, \runtwo, began in mid-2015, and is expected to 
 continue until the end of 2018.
 
 The trend of increasing beam energies is driving towards reaching the design 
@@ -177,3 +192,5 @@ also increases with \sqrts, including those one may not be interested in, which
 are generally much larger than the rare processes of interest.
 This means that experiments must continually upgrade their own detectors and 
 software in order to suppress to the higher rate of uninteresting events.
+The upgrade of the \lhcb\ detector during \ac{LS1} will be described in 
+\cref{chap:intro:lhcb:detector:upgrades}.
