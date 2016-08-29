@@ -27,7 +27,10 @@
 % Decay
 \newcommand{\decay}[2]{\ensuremath{#1 \to #2}}
 
+% Charm baryons
 \newcommand\LcTophh{\decay{\PLambdac}{\Pproton\Php\Phm}}
+% Beauty mesons
+\newcommand\BsTomumu{\decay{\PBs}{\Pmuon\APmuon}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % Experiments and detectors
@@ -45,6 +48,7 @@
 \newcommand\betastar {\ensuremath{\beta^{*}}}
 \newcommand\lumi {\ensuremath{\mathcal{L}}}
 \newcommand\xsec {\ensuremath{\sigma}}
+\newcommand\xsecppvis {\ensuremath{\xsec_{\text{vis.}}}}
 
 % LHCb subdetectors
 % PID
@@ -58,7 +62,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%
 % CP violation
 %%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\CP{\ensuremath{C\!P}}
+\newcommand\Ctransform{\ensuremath{C}}
+\newcommand\Ptransform{\ensuremath{P}}
+\newcommand\CP{\ensuremath{\Ctransform\!\Ptransform}}
 \newcommand\ACP{\ensuremath{A_{\CP}}}
 \newcommand\Araw{\ensuremath{\ACP^{\text{Raw}}}}
 \newcommand\dACP{\ensuremath{\Delta\ACP}}
@@ -99,6 +105,8 @@
 \newcommand\Eta{\ensuremath{\eta}}
 \newcommand\mass{\ensuremath{m}}
 \newcommand\deltam{\ensuremath{\delta{m}}}
+\newcommand\lifetime{\ensuremath{\tau}}
+\newcommand\lifetimelab{\ensuremath{\tau'}}
 
 % Electromagnetic interaction length
 \newcommand\radlen{\ensuremath{X_{0}}}

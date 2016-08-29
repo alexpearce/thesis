@@ -1,0 +1,30 @@
+% \begin{tikzpicture}
+%   \begin{feynman}
+%     \vertex (a);
+%     \vertex [left=0.1cm of a] (a1);
+%     \vertex [left=0.1cm of a1] (a11);
+%     \vertex [right of=a] (b);
+%     \vertex [above of=b] (c);
+%     \vertex [below left of=a] (i1);
+%     \vertex [left=0.1cm of i1] (i11);
+%     \vertex [left=0.1cm of i11] (i111);
+%     \vertex [above left of=a] (i2);
+%     \vertex [left=0.1cm of i2] (i21);
+%     \vertex [left=0.1cm of i21] (i211);
+%     \vertex [left=0.3cm of c] (f1) {\(\bar{\nu}_{e}\)};
+%     \vertex [right=0.3cm of c] (f2) {\(e^{-}\)};
+%     \diagram*[small] {%
+%       (i1) -- [fermion, edge label'=\(d\)] (a) -- [fermion, edge label'=\(u\)] (i2),
+%       (i11) -- (a1) -- (i21),
+%       (i111) -- (a11) -- (i211),
+%       (a) -- [boson, edge label=\(W^{-}\)] (b),
+%       (f1) -- [fermion] (b) -- [fermion] (f2),
+%     };
+%   \end{feynman}
+% \end{tikzpicture}
+\feynmandiagram [layered layout, horizontal=a to b] {%
+  a [particle=\(\Pdown\)] -- [fermion] b -- [fermion] f1 [particle=\(\Pup\)],
+  b -- [boson, edge label'=\(\PWm\)] c,
+  c -- [anti fermion] f2 [particle=\(\APnue\)],
+  c -- [fermion] f3 [particle=\(\Pelectron\)],
+};
