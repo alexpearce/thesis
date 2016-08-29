@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+  \coordinate (O) at (0, 0);
+  \pgfmathsetmacro{\ringbeginx}{5};
+  \pgfmathsetmacro{\ringradius}{2};
+
+  % Momentum vector
+  \draw[-latex] ($(O) - (0.5, 0)$) -- (O) -- (\ringbeginx, 0) -- +(1, 0) node [anchor=west] {\ptot};
+
+  % Cherenkov light
+  \draw[dashed] (O) -- +(\ringbeginx, \ringradius) node [pos=0.5, anchor=south east] {$\frac{c}{n}t$};
+  \draw[dashed] (O) -- +(\ringbeginx, -\ringradius);
+  \draw (1, 0) arc (0:22:1);
+  \node at (10:1.25)  {{\footnotesize $\theta_{c}$}};
+
+  % Projection of light on to detection surface, forming a ring
+  \draw[dotted] (\ringbeginx, 0) ellipse (0.1cm and \ringradius cm);
+  % Ring radius
+  \draw[<->] ($(\ringbeginx, 0) + (0.3, 0)$) -- ($(\ringbeginx, -\ringradius) + (0.3, 0)$) node [pos=0.5, anchor=west] {$R$};
+
+  % Measurement of particle flight distance
+  \draw[<->]  ($(O) + (0, -\ringradius) - (0, 0.2)$) -- ($(\ringbeginx, -\ringradius) - (0, 0.2)$) node [pos=0.5, anchor=south] {$\beta ct$};
+\end{tikzpicture}

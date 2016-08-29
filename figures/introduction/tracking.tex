@@ -1,0 +1,50 @@
+\begin{tikzpicture}[
+  x={(0.866cm, -0.5cm)}, y={(0.866cm, 0.5cm)}, z={(0cm, 1cm)},
+  scale=0.9,
+  inner sep=0pt, outer sep=2pt,
+  axis/.style={thick,->},
+  station/.style={fill=black!40!white, opacity=0.3},
+  particle/.style={->, dashed},
+  hit/.style={star,star points=7,draw=black!70,fill=red!70,inner sep=0pt,minimum size=0.2cm}
+  ]
+
+  % Coordinate axes
+  \coordinate (O) at (0, 0, 0);
+  \draw[axis] (O) -- +(14, 0, 0) node [right] {$z$};
+  \draw[axis] (O) -- +(0, 2.5, 0) node [right] {$x$};
+  \draw[axis] (O) -- +(0, 0, 2) node [left] {$y$};
+
+  % Upstream tracking stations
+  \filldraw[station] (1, -2, -1.5) -- (1, -2, 1.5) -- (1, 2, 1.5) -- (1, 2, -1.5) -- (1, -2, -1.5);
+  \filldraw[station] (2, -2, -1.5) -- (2, -2, 1.5) -- (2, 2, 1.5) -- (2, 2, -1.5) -- (2, -2, -1.5);
+  \filldraw[station] (3, -2, -1.5) -- (3, -2, 1.5) -- (3, 2, 1.5) -- (3, 2, -1.5) -- (3, -2, -1.5);
+  % Downstream tracking stations
+  \filldraw[station] (8, -2, -1.5) -- (8, -2, 1.5) -- (8, 2, 1.5) -- (8, 2, -1.5) -- (8, -2, -1.5);
+  \filldraw[station] (9, -2, -1.5) -- (9, -2, 1.5) -- (9, 2, 1.5) -- (9, 2, -1.5) -- (9, -2, -1.5);
+  \filldraw[station] (10, -2, -1.5) -- (10, -2, 1.5) -- (10, 2, 1.5) -- (10, 2, -1.5) -- (10, -2, -1.5) node [below, sloped, near end] {\tiny{Tracking station}};
+
+  % Muons
+  \draw[particle] plot [smooth] coordinates {(O) (5.5, 0, 1.5) (13, 0, 0.5)} node [right] {$\mu^{-}$};
+  \draw[particle] plot [smooth] coordinates {(O) (4.5, 0, -1.5) (13, 0, -1.0)} node [right] {$\mu^{+}$};
+
+  % Hits
+  % Negative muon at upstream stations
+  \node[hit] at (1, 0, 0.3) {};
+  \node[hit] at (1.1, 0, 0.4) {};
+  \node[hit] at (3, 0, 0.9) {};
+  \node[hit] at (3, 0, 1.0) {};
+  \node[hit] at (4.5, 0, 1.5) {};
+  \node[hit] at (4.3, 0, 1.3) {};
+  \node[hit] at (4.4, 0, 1.3) {};
+  % Negative muon at downstream stations
+  \node[hit] at (8, 0, 1.2) {};
+  \node[hit] at (8.1, 0, 1.4) {};
+  % \node[hit] at (9.2, 0, 1.1) {};
+  \node[hit] at (9.3, 0, 1.0) {};
+  \node[hit] at (11.5, 0, 0.8) {};
+  \node[hit] at (11.3, 0, 0.8) {};
+  \node[hit] at (11.4, 0, 0.9) {};
+
+  % Magnetic field vector
+  \draw[thick,->] (5, 2, 1.5) -- (5, 2, 1.0) node [anchor=west] {$\vec{B}$ field} -- (5, 2, 0.5);
+\end{tikzpicture}

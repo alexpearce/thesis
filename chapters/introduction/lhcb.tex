@@ -4,15 +4,234 @@
 The \lhcb\ experiment comprises a collaboration of around one thousand 
 scientists and engineers, and a particle detector situated at point 8 of the 
 \cern\ \ac{LHC}.
-The general goal of the experiment is to explore the area of heavy flavour 
-physics, the interactions of charm and beauty quarks and particles that contain 
-them.
-More specific aims will be given in \cref{chap:intro:lhcb:physics}.
-The construction of the detector, which has been optimised to study heavy 
-flavour physics produced from proton-proton collisions, will be described in 
+The general goal of the experiment is to explore the area of \emph{heavy 
+  flavour physics}, that is the interactions of charm and beauty quarks and 
+particles that contain them.
+Specific aims will be given in \cref{chap:intro:lhcb:physics}, and the design 
+and construction of the detector will be described in 
 \cref{chap:intro:lhcb:detector}.
 First, a brief introduction to the mechanisms of a high-energy particle physics 
-experiment will be given.
+experiment will be given, such that the particular requirements of a heavy 
+flavour experiment can be related to the design of a detector.
+
+Heavy flavour hadrons, such as the \PBs meson, have short lifetimes, and do not 
+fly far enough to interact with active elements of a detector before decaying.
+By the studying the properties of decay products with longer lifetimes, the 
+properties of the unseen heavy flavour hadrons can be inferred, to be compared 
+with those predicted by the \ac{SM}.
+% Such properties include production and decay rates, lifetimes, and masses.
+
+The momentum four-vector $\fvec{p}$ of a particle is defined by three spatial 
+components, equal to components of the momentum three-vector $\vec{p}$, and the 
+energy $E$
+\begin{equation}
+  \fvec{p} = \begin{pmatrix}E\\\vec{p}\end{pmatrix}
+           = \begin{pmatrix}E\\p_{x}\\p_{y}\\p_{z}\end{pmatrix}.
+  \label{intro:lhcb:four_momentum}
+\end{equation}
+Both the energy and the momentum can be measured, using techniques which will 
+be discussed later.
+The mass of every massive particle is unique, and so by knowing the 
+four-momentum of a particle, one implicitly knows its identity by knowing the 
+mass using the relation
+% The energy can either be measured directly, using methods discussed later, or 
+% computed using an assumed mass \mass\ and the magnitude of the measured 
+% momentum three-vector $\ptot = |\vec{p}|$
+\begin{equation}
+  E = \sqrt{p^{2} + m^{2}}.
+  \label{intro:lhcb:energy}
+\end{equation}
+To compute the four-momentum of a heavy flavour hadron, in order to know its 
+identity, one can sum the four-momenta of the decay products
+\begin{equation}
+  \fvec{p}_{\text{Parent}} = \sum_{\text{Children}} \fvec{p}_{i}.
+  \label{intro:lhcb:four_momentum_sum}
+\end{equation}
+It is then the task of the experiment to measure the three-momentum and energy 
+of all the decay products in order to study heavy flavour.
+
+\subsection{Momentum measurements}
+
+Particles with lifetimes much greater than those of heavy flavour hadrons, such 
+as muons, kaons, pions, and protons (denoted \Pmupm, \PKpm, \Ppipm, and 
+\Pproton/\APproton), can pass through several layers of active detector 
+elements.
+The elements can be ionised by the passage of the charged particles, and this 
+can be converted into electrical signals.
+By studying the geometric pattern of these `hits', one can reconstruct the 
+physical path, or `track', the particle made as it travelled through the 
+detector.
+The set of detector elements used to measure hits is called the tracking 
+system.
+To measure the three-momentum of the particles, a magnetic field can be applied 
+across their path, as shown in \cref{fig:intro:lhcb:tracking}, causing them to 
+bend in a circular arc due to the Lorentz force
+\begin{equation}
+  \vec{F} = q\vec{v}\times\vec{B}
+          = \frac{q}{m}\vec{p}\times\vec{B},
+  \label{eqn:intro:lhcb:lorentz_force}
+\end{equation}
+where $\vec{v}$ is the particle velocity three-vector, $q$ is the electric 
+charge of the particle, $m$ is its invariant mass, and $\vec{B}$ is the 
+magnetic field vector.
+As the direction of the particle is already known from the track 
+reconstruction, the coordinate system can be aligned such that the magnetic 
+field is perpendicular to the momentum direction.
+\Cref{eqn:intro:lhcb:lorentz_force} then reduces to a scalar equation for the 
+force magnitude $F$, and can be equated to the centripetal force
+\begin{equation}
+  F = \frac{q}{m}pB = \frac{mv^{2}}{r},
+  \label{eqn:intro:lhcb:lorentz_centripetal}
+\end{equation}
+where $r$ is the radius of the circular path the charged particle will follow 
+in the magnetic field.
+The momentum can then be computed as
+\begin{equation}
+  p = qrB.
+  \label{eqn:intro:lhcb:momentum_from_magnet}
+\end{equation}
+In this coordinate system, positively charged particles will bend in a plane in 
+the opposite direction to negatively charged particles, and so the `charge' of 
+a track can be deduced by observing in which direction it bends in the magnetic 
+field.
+Neutral particles do not leave hits in the tracking system, and so, as there 
+are no known long-lived particles with $q \geq 2$, the magnitude is assumed to 
+be 1.
+
+For a given magnetic field strength $B$, higher momentum particles will bend 
+less, to the point where the tracking system is not precise enough to be able 
+to measure the bending radius, and hence the momentum.
+Particles with a low enough momentum will be bent out of the detector entirely.
+For a given tracking system, larger bending radii will lead to more precise 
+momentum measurements, and so there is a balance between the momentum range a 
+detector is able to measure, and the precision to which those measurements can 
+be made.
+
+\subsection{Energy measurements}
+
+With the momentum three-vector measured with the tracking system, the energy 
+$E$ is left as an unknown.
+This can be measured using a calorimeter.
+The ionisation of the tracking system discussed previously requires a small 
+amount of energy, which is lost from the particle traversing the detector.
+A calorimeter takes this process to its limit, being designed to absorb 
+particles completely, converting their kinetic energy into a measurable form.
+The incident particles lose their energy via particle showers, where 
+interactions with the detector material creates additional, lower energy 
+particles, and those particles traverse the detector, interact, and create 
+further particles with lower energy still.
+
+Calorimeters are placed after the tracking system, as most particles are fully 
+absorbed into them, making further measurements of their properties impossible.
+Also in contrast to the tracking system, calorimeters can be used to measure 
+both neutral and charged particles, and usually a series of individual 
+calorimeters is placed one after the other in order to measure different 
+particle types in turn, which interact differently with the detector.
+Electrons and photons deposit their energy via electromagnetic showers, which 
+form due to two processes: high-energy electrons emit photons via 
+\emph{bremsstrahlung}; and high-energy photons convert into electron-positron 
+pairs.
+These two processes alternate back and forth, with $\Pelectron\APelectron$ 
+pairs emitting bremsstrahlung photons, which in turn convert into 
+$\Pelectron\APelectron$ pairs.
+Hadrons, such as protons and charged and neutral pions, produce hadronic 
+showers, where the energy loss is due to several processes.
+Nuclear interactions, where the hadrons collide with the nuclei in the 
+detector, produce additional particles which in turn undergo nuclear 
+interactions, creating a cascade.
+Hadrons created in this cascade can include \Ppizero and \Peta mesons, which 
+decay primarily to final states comprised of electron and photons, and hence 
+electromagnetic showers are also created.
+The final states of the decays of other particles can include muons and 
+neutrinos, which can traverse the calorimeter without interacting further, 
+resulting in missing energy.
+The length at which electromagnetic and hadronic interactions occur is 
+characterised by the interaction lengths \radlen\ and \hadlen\ respectively, 
+which depends on the density of the material.
+For a given density the hadronic interaction length is much larger than the 
+electromagnetic, $\radlen \gg \hadlen$, and so typically an electromagnetic 
+calorimeter is placed before a hadronic calorimeter in an experiment, such that 
+the electron and photon energies can be measured independently of the hadron 
+energies.
+
+The \emph{active} elements of a calorimeter are the materials which converts 
+the deposited energy of the particles showers into some measurable quantity, 
+either electric charge or light.
+The amount of charge or light produced relates to the energy deposited.
+The \emph{absorber} elements of a calorimeter are high-density materials that 
+reduce the kinematic energy of the incident particles and provide the bulk of 
+interaction length.
+Homogeneous calorimeters are made solely from active materials, whereas 
+sampling calorimeters are constructed from alternating layers of active and 
+absorber elements.
+Homogeneous calorimeters provide the most accurate measurements, as the entire 
+energy deposit can be measured, whereas in a sampling calorimeter some fraction 
+is lost to the absorber elements and must be estimated.
+The disadvantage of using active elements exclusively is that the suitable 
+materials are less dense that the those available solely for absorption, and so 
+a larger detector is required for a given energy range that is to be measured.
+In practice, hadronic calorimeters are almost exclusively of the sampling type.
+
+\subsection{Particle identification}
+
+If the momentum and energy can be measured precisely, the mass of the particle 
+can be deduced with \cref{intro:lhcb:energy}, and hence the particle's identity 
+can be known.
+As the momentum and energy measurements are subject to experimental resolution, 
+there is an uncertainty on the mass measurement.
+Alternative \ac{PID} methods are often employed improve this precision.
+
+For charged particles, a measurement of the momentum from the tracking system 
+can be combined with a measurement of the velocity to determine the mass from 
+the relation $\ptot = \mass\beta\gamma c$.
+As $\gamma$ is a function only of $\beta$, as in 
+\cref{eqn:intro:sm:lorentz_factor}, and $\beta = v/c$, only one of $\gamma$ and 
+$\beta$ needs to be measured.
+
+One method for measuring $\beta$ is to measure the time taken for the particle 
+to travel between two detectors.
+The measured time difference between detection times $t_{1}$ and $t_{2}$ is 
+equal to the distance between the two detectors $L$ divided by the particle 
+velocity
+\begin{equation}
+  \delta t = t_{1} - t_{2} = \frac{L}{v}
+           = \frac{L}{\beta c}.
+\end{equation}
+For a given momentum \ptot, particles with different masses will have different 
+velocities, and hence different $\beta$ factors.
+In the ultra-relativistic limit, where $pc \gg mc^{2}$, the difference between 
+times for two particles with masses $m_{a}$ and $m_{b}$ will be
+\begin{equation}
+  \Delta t = \delta t_{a} - \delta t_{b}
+           \approx \frac{Lc}{2p^{2}}(m_{a}^{2} - m_{b}^{2}),
+\end{equation}
+The utility of such a technique reduces as the particle momentum increases, as 
+a very high precision is required on the time difference measurement in order 
+to be able to distinguish between different particle species.
+
+Another \ac{PID} technique is to exploit the phenomenon of Cherenkov radiation, 
+where charged particles emit light when they traverse a medium at faster than 
+the phase velocity of light in that medium.
+The phase velocity of light, or just `the speed of light', in a medium with a 
+refractive index $n$ is
+\begin{equation}
+  v_{\text{Light}} = \frac{c}{n}.
+\end{equation}
+A front of Cherenkov light is emitted at an angle \cherenkovangle\ to the 
+trajectory of the particle, and this angle is related to the speed of light in 
+the medium and the velocity magnitude of the particle
+\begin{equation}
+  \cos{\cherenkovangle} = \frac{v_{\text{Light}}}{v_{\text{Particle}}}
+                        = \frac{c}{n\beta c}
+                        = \frac{1}{n\beta},
+\end{equation}
+as illustrated in \cref{fig:intro:lhcb:cherenkov}.
+Given that the medium is chosen by the experimenter, so that $n$ is known, 
+$\beta$ can be measured by measuring the angle of the Cherenkov light.
+As in the time-of-flight method, different particle species with the same 
+measured momentum will have different values of $\beta$, and in this case 
+different angles \cherenkovangle.
+TODO: talk about the precision, as in the time-of-flight example.
 
 % The main problem in a particle physics experiment is that one does not know 
 % every property about what is produced in a collision.
@@ -46,8 +265,65 @@ experiment will be given.
 % unstable, with a life time of \SI{2}{\pico\second}, whereas the muons are 
 % stable.
 
+The techniques which have been discussed for measuring particle momentum, 
+energy, and identity are general.
+The technologies used to construct an experiment depend on the physics that 
+experiment intends to measure.
+
+\begin{figure}
+  \centering
+  \input{figures/introduction/tracking}
+  \caption{%
+    Illustration of particle tracking, showing two muons traversing through a 
+    series of tracking stations, with a magnetic field in the negative $y$ 
+    direction, bending charged particles in the $xz$ plane.
+    Hits made by the negatively charged muon are shown as red points.
+    The scatter the hits around the true particle trajectory signifies the 
+    inherent uncertainty in the experimental measurement.
+  }
+  \label{fig:intro:lhcb:tracking}
+\end{figure}
+
+% \begin{figure}
+%   \centering
+%   \input{figures/introduction/vertexing}
+%   \caption{%
+%     Illustration of vertexing, showing a \PBs meson decaying in flight to two 
+%     muons.
+%     The minimum transverse distance the muon tracks make when extrapolated back 
+%     towards the primary proton-proton vertex, the \acf{IP}, is shown.
+%   }
+%   \label{fig:intro:lhcb:vertexing}
+% \end{figure}
+
+\begin{figure}
+  \centering
+  \input{figures/introduction/cherenkov}
+  \caption{%
+    Illustration of Cherenkov light being emitted from a particle travelling 
+    with momentum $p$ and velocity $\beta$ through a medium with refractive 
+    index $n$.
+    The radiation is emitted at a angle \cherenkovangle\ to the trajectory of 
+    the particle, and forms a ring of radius $R$ when projected onto a plane 
+    transverse to the particle momentum direction.
+  }
+  \label{fig:intro:lhcb:cherenkov}
+\end{figure}
+
 \section{Physics goals}
 \label{chap:intro:lhcb:physics}
 
 \section{Detector}
 \label{chap:intro:lhcb:detector}
+
+\subsection{Tracking}
+\label{chap:intro:lhcb:detector:tracking}
+
+\subsection{Particle identification}
+\label{chap:intro:lhcb:detector:pid}
+
+\subsection{Event selection}
+\label{chap:intro:lhcb:detector:trigger}
+
+\subsection{Upgrades in \acl{LS1}}
+\label{chap:intro:lhcb:detector:upgrades}

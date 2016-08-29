@@ -1,0 +1,61 @@
+% Draw perpendicular markers at line intersections
+% http://tex.stackexchange.com/a/21759/45857
+\tikzset{
+  right angle quadrant/.code={
+    \pgfmathsetmacro\quadranta{{1,1,-1,-1}[#1-1]}     % Arrays for selecting quadrant
+    \pgfmathsetmacro\quadrantb{{1,-1,-1,1}[#1-1]}},
+  right angle quadrant=1, % Make sure it is set, even if not called explicitly
+  right angle length/.code={\def\rightanglelength{#1}},   % Length of symbol
+  right angle length=2ex, % Make sure it is set...
+  right angle symbol/.style n args={3}{
+    insert path={
+      let \p0 = ($(#1)!(#3)!(#2)$) in     % Intersection
+      let \p1 = ($(\p0)!\quadranta*\rightanglelength!(#3)$), % Point on base line
+      \p2 = ($(\p0)!\quadrantb*\rightanglelength!(#2)$) in % Point on perpendicular line
+      let \p3 = ($(\p1)+(\p2)-(\p0)$) in  % Corner point of symbol
+      (\p1) -- (\p3) -- (\p2)
+    }
+  }
+}
+\begin{tikzpicture}[
+  x=2cm,
+  y=2cm,
+  axis/.style={thick,->,gray},
+  beam/.style={thick,->,gray},
+  scale=1.5
+  ]
+  % Origin
+  \coordinate (O) at (0, 0);
+  % B decay vertex
+  \coordinate (Bvtx) at (1, 0.5);
+  % Offset of muon arrows, with respect to Bvtx
+  \coordinate(mumoffset) at (0.3, 0.4);
+  \coordinate(mupoffset) at (0.6, -0.2);
+  % Compute the coordinates of the ends of the muon lines
+  \coordinate (mum) at ($(Bvtx) + (mumoffset)$);
+  \coordinate (mup) at ($(Bvtx) + (mupoffset)$);
+
+  % Coordinate axes
+  \draw[axis] (-0.6, -0.5) -- +(0.2, 0) node [below] {$z$};
+  \draw[axis] (-0.6, -0.5) -- +(0, 0.2) node [left] {$y$};
+
+  \draw[beam] (-1.0, 0) -- (-0.1, 0) node [below, at start] {$p$};
+  \draw[beam] (1.5, 0) -- (0.1, 0) node [below, at start] {$p$};
+
+  % B meson
+  \draw[dashed, color=gray, text=black] (O) -- (Bvtx) node [above, pos=0.5] {$B^{0}$};
+  % Negative muon
+  \draw[->] (Bvtx) -- (mum) node [above] {$\mu^{-}$};
+  \draw[dotted] (Bvtx) -- ($(Bvtx) - 3*(mumoffset)$) node [name=mumend] {};
+  % Positive muon
+  \draw[->] (Bvtx) -- (mup) node [below] {$\mu^{+}$};
+  \draw[dotted] (Bvtx) -- ($(Bvtx) - 2*(mupoffset)$) node [name=mupend] {};
+
+  % Primary vertex
+  \node[star,star points=10,draw=orange!50,fill=orange!20,inner sep=0pt,minimum size=0.4cm] at (O) {};
+
+  % Negative muon IP
+  \draw[right angle length=1mm, right angle symbol={Bvtx}{mumend}{O}] ($(Bvtx)!(O)!(mumend)$) -- (O) node [pos=0.2, left] {$\text{IP}_{\mu^{-}}$};
+  % Positive muon IP
+  \draw[right angle length=1mm, right angle symbol={Bvtx}{mupend}{O}] ($(Bvtx)!(O)!(mupend)$) -- (O) node [midway, left] {$\text{IP}_{\mu^{+}}$};
+\end{tikzpicture}
