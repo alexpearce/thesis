@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+  \node[anchor=south west, inner sep=0] (image) at (0, 0) {\includegraphics[width=\textwidth]{figures/introduction/bbbar_production_angles}};
+  \begin{scope}[x={(image.south east)}, y={(image.north west)}]
+    % Grid to help find coordinates on the image
+    % \draw[step=0.02, gray, very thin] (0, 0) grid (1, 1);
+    % Box to cover axis labels
+    \path[fill=white] (0.02, 0.16) rectangle (0.18, 0.22) node [pos=0.5] {\footnotesize$\theta_{1}$};
+    \path[fill=white] (0.64, 0.06) rectangle (0.78, 0.12) node [pos=0.5] {\footnotesize$\theta_{2}$};
+    % Box to cover angle definitions
+    \path[fill=white] (0.14, 0.66) rectangle (0.54, 0.88);
+    % Box to cover 'LHCb MC' label
+    \path[fill=white] (0.14, 0.48) rectangle (0.36, 0.58);
+  \end{scope}
+\end{tikzpicture}
