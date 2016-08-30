@@ -30,6 +30,8 @@
 % Light hadrons
 \newcommand\phiToKK{\decay{\Pphi}{\PKminus\PKplus}}
 % Charm mesons
+\newcommand\cToHc{\decay{\Pcharm}{\PHc}}
+\newcommand\HcTof{\decay{\PHc}{f}}
 \newcommand\DzToKpi{\decay{\PDzero}{\PKminus\Ppiplus}}
 \newcommand\DzToKpiDCS{\decay{\PDzero}{\PKplus\Ppiminus}}
 \newcommand\DpToKpipi{\decay{\PDplus}{\PKminus\Ppiplus\Ppiplus}}
@@ -56,6 +58,7 @@
 
 \newcommand\betastar {\ensuremath{\beta^{*}}}
 \newcommand\lumi {\ensuremath{\mathcal{L}}}
+\newcommand\intlumi{\ensuremath{\lumi_{\text{int.}}}}
 \newcommand\xsec {\ensuremath{\sigma}}
 \newcommand\xsecppvis {\ensuremath{\xsec_{\text{vis.}}}}
 
@@ -98,9 +101,14 @@
 % Particles
 %%%%%%%%%%%%%%%%%%%%%%%%
 
+% Generic 'charm hadron' symbol
+\newcommand\PHc{\ensuremath{H_{\Pcharm}}}
+\newcommand\APHc{\ensuremath{\bar{H}_{\Pcharm}}}
 % Generic 'hadron' symbol
 \newcommand\Php{\ensuremath{h^{+}}}
 \newcommand\Phm{\ensuremath{h^{-}}}
+% D*+
+\newcommand\PDstarp{\ensuremath{\PDstar^{+}}}
 
 \newcommand\bbbar {\ensuremath{\Pbottom\APbottom}}
 \newcommand\ccbar {\ensuremath{\Pcharm\APcharm}}
@@ -111,7 +119,7 @@
 % Kinematics
 \newcommand\fvec[1]{\ensuremath{\boldsymbol{#1}}}
 \newcommand\ptot{\ensuremath{p}}
-\newcommand\pt{\ensuremath{p_{\text{T}}}}
+\newcommand\pT{\ensuremath{p_{\text{T}}}}
 \newcommand\ET{\ensuremath{E_{\text{T}}}}
 \newcommand\rapidity{\ensuremath{y}}
 \newcommand\Eta{\ensuremath{\eta}}
@@ -119,6 +127,7 @@
 \newcommand\deltam{\ensuremath{\delta{m}}}
 \newcommand\lifetime{\ensuremath{\tau}}
 \newcommand\lifetimelab{\ensuremath{\tau'}}
+\newcommand\pTy{\ensuremath{(\pT,\ \rapidity)}}
 
 % Electromagnetic interaction length
 \newcommand\radlen{\ensuremath{X_{0}}}
@@ -136,6 +145,7 @@
 \newcommand\ip{IP}
 \newcommand\chisq{\ensuremath{\chi^2}}
 \newcommand\ipchisq{\ensuremath{\chisq_{\text{IP}}}}
+\newcommand\lnipchisq{\ensuremath{\ln\ipchisq}}
 \newcommand\logipchisq{\ensuremath{\log\ipchisq}}
 \newcommand\ipchisqndof{\ensuremath{\ipchisq/\mathrm{ndof}}}
 
@@ -162,6 +172,8 @@
 \newcommand\effoffline{\ensuremath{\eff_{\text{Offline}}}}
 \newcommand\effselection{\ensuremath{\eff_{\text{Selection}}}}
 \newcommand\effpid{\ensuremath{\eff_{\text{\pid}}}}
+
+\newcommand\bfrac{\ensuremath{\mathcal{B}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % Maths

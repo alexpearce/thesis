@@ -1,13 +1,274 @@
 \chapter{Introduction}
 \label{chap:prod:introduction}
 
-This is the beginning~\cite{PDG2014}, but we'll continue with 
-\cref{chap:prod:theory} which contains equations \'a la
-\begin{equation}
-  y = mx + c.
-  \label{eqn:foo}
-\end{equation}
-It also contains some information on \ac{QCD} in \cref{sec:prod:qcd} and some 
-information on the decay \decay{\PLambdac}{\Pproton\PKp\PKm}.
+The measurement of cross-sections is one of the more fundamental measurements a 
+particle physics experiment can make.
+This \namecref{chap:prod} describes a measurement of prompt open charm and 
+\ccbar\ production measured with the \lhcb\ detector using data taken at 
+$\sqrts = \SI{13}{\TeV}$.
+`Open charm' refers to particles whose charm quantum number is non-zero, as 
+opposed to charmonium states, such as \PJpsi, which contain charm quarks but 
+whose charm quantum number is zero.
+`Prompt' refers to charm hadrons that are produced directly in the 
+proton-proton interaction, rather than `secondary' hadrons which are produced 
+in the decays of \PB hadrons.
 
-\lipsum[1-2]
+Measurements of \ccbar\ and \bbbar\ cross-sections at the \ac{LHC} test the 
+predictions of \ac{QCD}.
+The production rate of \ccbar\ and \bbbar\ quark pairs is expected to vary as a 
+function of \pT\ and rapidity \rapidity, defined as
+\begin{equation}
+  y = \frac{1}{2}\ln{\frac{E + p_{z}}{E - p_{z}}},
+  \label{eqn:prod:introduction:rapidity}
+\end{equation}
+and so experimental measurements can be compared with both the shape of 
+theoretical predictions as a function of \pTy, as well as to the total 
+integrated rate.
+They can also be used as inputs to future predictions as constraints.
+Heavy flavour production rates are also used as inputs to experimental searches 
+for rare decays, where, when combined with the luminosity, they provide an 
+estimate for the total number of parent particles were produced in the detector 
+acceptance, and as inputs to atmospheric neutrino experiments, where charm 
+production enters as a background process.
+
+Measuring \ccbar\ and \bbbar\ cross-sections at \lhcb\ is complementary to such 
+measurements by the \ac{GPD}, due to the unique rapidity range it instruments, 
+as well as its ability to cleanly reconstruct low \pT\ hadrons.
+
+\section{Analysis overview}
+\label{chap:prod:introduction:analysis_overview}
+
+The cross-section for an open charm hadron \PHc\ is expressed as
+\begin{equation}
+  \xsec_{i}(\PHc) = \frac{%
+    N_{i}(\HcTof)
+  }{%
+    \eff_{i}(\HcTof)\cdot\bfrac(\HcTof)\cdot\intlumi
+  },
+  \label{eqn:prod:introduction:cross_section}
+\end{equation}
+where the numerator is the measured yield of promptly produced decays of \PHc\ 
+to some final state $f$, and the denominator consists of: the efficiency that 
+the decay \HcTof\ is fully reconstructed and selected, given that is was 
+produced; the branching fraction \bfrac\ of the decay; and integrated 
+% TODO integrated luminosity should be defined
+luminosity \intlumi\ corresponding to the dataset used for the measurement.
+To compare with the shapes of theoretical predictions, double differential 
+cross sections can then be determined in \pTy\ bins using the width $\Delta\pT$ 
+of the bin in \pT and the width $\Delta\rapidity$ of the bin in rapidity in 
+which the yield and efficiency measurements were made
+\begin{equation}
+  % There is a "\left." here, which is invisible, to balance the "\right\rvert"
+  \left.\frac{\text{d}^{2}\xsec(\PHc)}{\text{d}\pT\text{d}\rapidity}\right\rvert_{i}
+    = \frac{\xsec_{i}(\PHc)}{\Delta\pT\Delta\rapidity}.
+  \label{eqn:prod:introduction:differential_cross_section}
+\end{equation}
+
+This analysis measures the double differential cross-sections of \PDzero, \PDp, 
+\PDsplus, and \PDstarp.
+Charge conjugation is implied, in that the cross-sections measure the combined 
+rate of meson and anti-meson production.
+The measurements are made in the \pT\ range $0 < \pT < \SI{15}{\GeV}$ and the 
+rapidity range $2 < \rapidity < 4.5$.
+In \rapidity, the measurements are made in five bins of width 0.5, and in \pT\ 
+the bins are \SI{1}{\GeV} in width in the regions $0 < \pT < \SI{1}{\GeV}$ and 
+$4 < \pT < \SI{15}{\GeV}$, and are \SI{0.5}{\GeV} in width in the region $1 < 
+\pT < \SI{4}{\GeV}$.
+
+From the double differential measurements, several derived quantities are 
+computed, namely the ratio of charm production rates measured at $\sqrts = 
+\SI{13}{\TeV}$ and those measured by \lhcb\ at \SI{7}{\TeV}, open charm hadron 
+cross-sections integrated across the \pTy\ space, and integrated \ccbar\ 
+cross-sections.
+Each integrated per-meson cross-section is the sum over all \pTy\ bins of the 
+respective double differential measurements
+\begin{equation}
+  \xsec{(\PHc)} =
+    \sum_{i}^{N} \xsec_{i}(\PHc).
+  \label{eqn:prod:introduction:integrated_cross_section}
+\end{equation}
+The total \ccbar cross-sections can be computed using \emph{fragmentation 
+  fractions}; each a measurement of the transition probability that a charm 
+quark will hadronise to a particular open charm hadron $f(\cToHc)$.
+Given the fragmentation fraction, and the integrated cross-section defined in 
+\cref{eqn:prod:introduction:integrated_cross_section}, the integrated \ccbar\ 
+cross-section can be computed as
+\begin{equation}
+  \xsec{(\ccbar)} = \frac{\xsec(\PHc + \APHc)}{2f(\cToHc)}.
+  \label{eqn:prod:introduction:ccbar_cross_section}
+\end{equation}
+The factor \sfrac{1}{2} arises from the fragmentation fraction not accounting 
+for charge conjugate states, which have been noted explicitly here in the 
+expression for the measured cross-section to avoid ambiguity.
+For this analysis, the fragmentation fractions are taken from the 
+\ac{PDG}~\cite{PDG2008}, who compute them as averages of measurements made at 
+$\Pelectron\APelectron$ colliders operating at a \sqrts\ close to the 
+\PUpsilonFourS resonance.
+These values are given in \cref{tab:prod:introduction:fragmentation_fractions}, 
+where the transition probability for \PDzero, $f(\decay{\Pcharm}{\PDzero})$, 
+includes contributions from \DstToDzpi\ decays.
+
+\begin{table}
+  \caption[Charm hadron fragmentation fractions]{%
+    Charm hadron fragmentation fractions~\cite{PDG2008}.
+    Here, \PHc does not include the charge conjugate state.
+  }
+  \label{tab:prod:introduction:fragmentation_fractions}
+  \centering
+  \input{tables/production/introduction/fragmentation_fractions}
+\end{table}
+
+The data used for the measurements was collected in July 2016, under a set of 
+special conditions used for the restart of the \ac{LHC} after \ac{LS1}.
+The conditions of the \ac{LHC} and of the \lhcb\ detector will be described in 
+\cref{chap:prod:data}, along with a summary of the integrated luminosity 
+measurement.
+The data are then reconstructed and selected to build charm hadron candidates, 
+which will be presented in \cref{chap:prod:sel}.
+The evaluation of the associated efficiencies is performed using a mixture of 
+simulated \acl{MC} data and dedicated calibration samples, and is discussed in 
+\cref{chap:prod:effs}.
+The extraction of the prompt yields is made on the fully reconstructed and 
+selected data using the method of maximum likelihood fits, as described in 
+\cref{chap:prod:fitting}, after which the systematic uncertainties associated 
+with all procedures used in the measurement are evaluated, for which the 
+description and results are given in \cref{chap:prod:systs}.
+Finally, the measurements themselves are computed, and are presented in 
+\cref{chap:prod:results}.
+
+Before the discussion on the experimental methods and the results, further 
+motivation for performing measurements heavy flavour cross-sections, both 
+theoretical and experimental, will be presented in the following 
+\namecref{chap:prod:theory}.
+
+% Measurements of \ccbar and \bbbar cross sections test the predictions of 
+% \ac{QCD}, and as the rapidity range available to \lhcb is unique at the 
+% \ac{LHC}, such measurements are complementary to those made by other 
+% experiments.
+% In addition, charm cross section measurements are used as inputs to background 
+% estimations in atmospheric neutrino experiments~\cite{Bhattacharya:2015jpa}, 
+% and to determine the parton distribution functions~\cite{Zenaiev:2015rfa}.
+
+% This analysis note documents the efforts to measure the double differential 
+% cross sections of various promptly produced open charm hadrons at a 
+% centre-of-mass energy of \comenergy.
+% The cross section is measured in bins of charm hadron transverse momentum $\pT 
+% = \sqrt{p_{x}^{2} + p_{y}^{2}}$ and rapidity $\rapidity = 1/2\ln{(E + p_{z})/(E 
+% - p_{z})}$, as computed in the rest frame of the proton-proton collision.
+
+% A measurement of prompt open charm cross sections has been made using a dataset 
+% corresponding to an integrated luminosity of \SI{15.0(5)}{\per\nano\barn} 
+% collected in 2010 at a centre-of-mass energy of $\sqrts = 
+% \SI{7}{\TeV}$~\cite{LHCb-PAPER-2012-041}, and also at \SI{13}{\TeV} with 
+% \SI{4.98(19)}{\per\micro\barn} of integrated luminosity collected in 
+% 2015~\cite{LHCb-PAPER-2015-041}.
+% This analysis follows a near-identical methodology to the latter, which is 
+% thoroughly documented in the corresponding analysis 
+% note~\cite{LHCb-ANA-2015-023}.
+
+% The open charm hadrons used for this measurement are \Dz, \Dp, \Dsp, and \Dstp.
+% These are reconstructed in the following final states: \DzToKpi, \DpToKpipi, 
+% \DspTophipi, and \DstToDzpi with \DzToKpi.
+% Unless otherwise stated, the addition of the charge conjugate process is 
+% implied throughout this note.
+
+% As charm hadrons can be produced both promptly from the \pp collision and in 
+% the decays of \B hadrons, we statistically separate the two contributions 
+% through extended maximum likelihood fits to the charm hadron \ipchisq 
+% distribution in order to measure the prompt yields.
+% Aside from the explicit measurement of the \Dstp production cross-section,
+% no attempt is made to distinguish prompt hadrons produced from prompt excited 
+% charm resonances from those produced directly in the \pp collision.
+
+% \subsection{Analysis overview}
+% \label{sec:intro:overview}
+
+% The analysis will reconstruct and select the various charm decays, measure the 
+% size of the prompt signal component $N$, and then compute the efficiency \eff 
+% of each step, from the geometrical limitations imposed by the \lhcb detector 
+% acceptance, to the selection cuts.
+% Combined with a measurement of the collected integrated luminosity \intlumi and 
+% the branching fraction \bfrac of the decay mode $f$ in question, the cross 
+% section for a single charm hadron \Hc in a given \pTy bin $i$ can be computed 
+% as
+% \begin{equation}
+%   \sigma_{i}(\Hc) =
+%   \frac{N_{i}(\HcTof)}{\eff_{i}(\HcTof)\cdot\bfrac(\HcTof)\cdot\intlumi}.
+% 	\label{eqn:intro:binned_xsec}
+% \end{equation}
+% Double differential cross sections can then be determined using the width of 
+% the bin in \pT, $\Delta\pT$, and the width of the bin in rapidity, 
+% $\Delta\rapidity$, in which the yield and efficiency measurements were made
+% \begin{equation}
+%   % There is a "\left." here, which is invisible, to balance the "\right\rvert"
+%   \left.\frac{\text{d}^{2}\sigma(\Hc)}{\text{d}\pT\text{d}\rapidity}\right\rvert_{i}
+%     = \frac{\sigma_{i}(\Hc)}{\Delta\pT\Delta\rapidity}.
+% \end{equation}
+% Throughout this note, bin boundaries are given using the ISO 31-11 standard, 
+% where, for example, the half-open interval $a \leq x < b$ is denoted $[a, 
+%   b[$~\cite{ISO3111}.
+
+% We intend to measure the absolute cross sections of \Dz, \Dp, \Dsp, and \Dsp 
+% hadrons in bins of width \SI{1}{\GeV} in transverse momentum, for $\pT \in [0, 
+%   8[\si{\GeV}$, and in bins of width $0.5$ in rapidity, for $\rapidity \in
+%     [2.0, 4.5[$.
+
+% In addition, we intend to measure the \comenergy cross-sections relative 
+% between modes, such as $\sigma(\Dz)/\sigma(\Dp)$, and relative between bins, 
+% where every measurement is normalised to a single `central' bin.
+% The motivation for making these additional measurements also comes from the 
+% theory community.
+
+% \subsection{Propagation of uncertainties}
+% \label{sec:intro:uncertainties}
+
+% When computing the uncertainty on a function $f(a)$, the assumptions of linear 
+% error propagation may not hold.
+% In this analysis, the uncertainties on the quantities in the denominator of 
+% Equation~\ref{eqn:intro:binned_xsec} can be large in some \pTy bins, thereby 
+% making a linear approximation of $\sigma_{i}$ insufficient.
+
+% Instead of using this analytical approach, we instead use a Monte Carlo error 
+% propagation technique.
+% With this, a large set of numbers $S$ is sampled from a chosen model $M$, and 
+% operations are performed directly on the ensemble by mapping the operation on 
+% to the elements on $S$.
+% Statistics such as the mean and standard deviation can then be computed on the 
+% resulting set.
+
+% Unless stated otherwise, each quantity to which an uncertainty is assigned is 
+% modelled as a normal distribution, $N(\mu, \sigma)$, whose mean $\mu$ is the 
+% value found by the appropriate procedure, and whose standard deviation $\sigma$ 
+% is taken as the uncertainty on that value.
+% In the case of the prompt signal yield, for example, the mean of the normal 
+% distribution will be the fitted value, and the width will be the uncertainty 
+% returned by the fitter.
+% We generate ten thousand numbers from each model $M$ per ensemble. An illustration
+% for the obtained posterior distributions is given in Figure~\ref{fig:int:posterior}.
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.65\textwidth, page=1]{./figures/posterior/DsTophipi.pdf}
+%   \caption[Illustration posterior distribution]{%
+%     Distribution of the posterior probability for one \pTy bin in the differential
+%     \DsTophipi measurement, illustrating the asymmetric distribution due to large
+%     uncertainties in the denominator.
+%   }
+%   \label{fig:int:posterior}
+% \end{figure}
+
+% Having outlined the general analysis, Section~\ref{sec:theory} shall describe 
+% the theoretical models available for comparison with the data.
+% The data itself will then be discussed in Section~\ref{sec:data}, including 
+% details on the running conditions of the \lhc, the trigger strategy, and which 
+% simulated samples are used.
+% The selection applied to the candidates will follow in Section~\ref{sec:sel}, 
+% including a brief description of how the charm hadron candidates are 
+% reconstructed.
+% In Section~\ref{sec:effs} the efficiencies of each reconstruction and selection 
+% stage will be described and given, and the fitting framework that counts the 
+% yields of the various signal and background components after the full selection 
+% will be shown in Section~\ref{sec:fitting}.
+% The sources of systematic uncertainty in the analysis will be enumerated and 
+% evaluated in Section~\ref{sec:syst}.
+% Finally, the results of the measurement will be given in 
+% Section~\ref{sec:results}.
