@@ -20,9 +20,10 @@
 \begin{tikzpicture}[
   x=2cm,
   y=2cm,
-  axis/.style={thick,->,gray},
-  beam/.style={thick,->,gray},
-  scale=1.5
+  axis/.style={very thick,->,gray},
+  beam/.style={very thick,->,gray},
+  scale=1.5,
+  thick
   ]
   % Origin
   \coordinate (O) at (0, 0);
@@ -42,20 +43,20 @@
   \draw[beam] (-1.0, 0) -- (-0.1, 0) node [below, at start] {$p$};
   \draw[beam] (1.5, 0) -- (0.1, 0) node [below, at start] {$p$};
 
-  % B meson
-  \draw[dashed, color=gray, text=black] (O) -- (Bvtx) node [above, pos=0.5] {$B^{0}$};
-  % Negative muon
-  \draw[->] (Bvtx) -- (mum) node [above] {$\mu^{-}$};
+  % D meson
+  \draw[dashed, color=gray, text=black] (O) -- (Bvtx) node [above, pos=0.5] {\PDz};
+  % Negative child
+  \draw[->] (Bvtx) -- (mum) node [above] {\PKminus};
   \draw[dotted] (Bvtx) -- ($(Bvtx) - 3*(mumoffset)$) node [name=mumend] {};
-  % Positive muon
-  \draw[->] (Bvtx) -- (mup) node [below] {$\mu^{+}$};
+  % Positive child
+  \draw[->] (Bvtx) -- (mup) node [below] {\Ppiplus};
   \draw[dotted] (Bvtx) -- ($(Bvtx) - 2*(mupoffset)$) node [name=mupend] {};
 
   % Primary vertex
   \node[star,star points=10,draw=orange!50,fill=orange!20,inner sep=0pt,minimum size=0.4cm] at (O) {};
 
   % Negative muon IP
-  \draw[right angle length=1mm, right angle symbol={Bvtx}{mumend}{O}] ($(Bvtx)!(O)!(mumend)$) -- (O) node [pos=0.2, left] {$\text{IP}_{\mu^{-}}$};
+  \draw[right angle length=1mm, right angle symbol={Bvtx}{mumend}{O}] ($(Bvtx)!(O)!(mumend)$) -- (O) node [pos=0.2, left] {$\text{IP}_{\PKminus}$};
   % Positive muon IP
-  \draw[right angle length=1mm, right angle symbol={Bvtx}{mupend}{O}] ($(Bvtx)!(O)!(mupend)$) -- (O) node [midway, left] {$\text{IP}_{\mu^{+}}$};
+  \draw[right angle length=1mm, right angle symbol={Bvtx}{mupend}{O}] ($(Bvtx)!(O)!(mupend)$) -- (O) node [midway, left] {$\text{IP}_{\Ppiplus}$};
 \end{tikzpicture}

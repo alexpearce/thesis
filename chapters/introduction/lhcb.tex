@@ -107,6 +107,20 @@ momentum measurements, and so there is a balance between the momentum range a
 detector is able to measure, and the precision to which those measurements can 
 be made.
 
+\begin{figure}
+  \centering
+  \input{figures/introduction/tracking}
+  \caption{%
+    Illustration of particle tracking, showing two muons traversing through a 
+    series of tracking stations, with a magnetic field in the negative $y$ 
+    direction, bending charged particles in the $xz$ plane.
+    Hits made by the negatively charged muon are shown as red points.
+    The scatter the hits around the true particle trajectory signifies the 
+    inherent uncertainty in the experimental measurement.
+  }
+  \label{fig:intro:lhcb:tracking}
+\end{figure}
+
 \subsection{Energy measurements}
 
 With the momentum three-vector measured with the tracking system, the energy 
@@ -231,70 +245,19 @@ $\beta$ can be measured by measuring the angle of the Cherenkov light.
 As in the time-of-flight method, different particle species with the same 
 measured momentum will have different values of $\beta$, and in this case 
 different angles \cherenkovangle.
-TODO: talk about the precision, as in the time-of-flight example.
+Unlike the time-of-flight method, which requires high temporal resolution to 
+distinguish particle hypotheses, the Cherenkov methods requires high spatial 
+resolution, so that different ring sizes can be measured.
+TODO: talk quantitatively about the precision, as in the time-of-flight example.
 
-% The main problem in a particle physics experiment is that one does not know 
-% every property about what is produced in a collision.
-% The design of a particle detector tries to maximise the information one can 
-% obtain about the collision by exploiting the interactions of the outgoing 
-% particles with the material of the detector.
-% Given the information made by the detector, one can then try to infer 
-% additional information about the event, including information on particles that 
-% did not interact with the detector directly.
-
-% The decay of the \PBs meson to two muons, \decay{\PBs}{\Pmuon\APmuon}, is a 
-% good example of the types of processes that \lhcb was designed to detect.
-% Due to the nature of the proton-proton interactions, the particles produced 
-% within the detector are highly boosted with respect to the laboratory, having 
-% velocities close to the speed of light.
-% This means the lifetime of the particles in the lab frame are much higher than 
-% if they were produced as rest.
-% The \ABs meson has a lifetime at rest of \SI{2}{\pico\second}, and so can 
-% travel several millimetres in the lab.
-% Muons have a lifetime at rest of \SI{2}{\micr\second}, and so can travel much 
-% further, tens of metres.
-% This is one way to distinguish between particles.
-% Another way is through the particle's electric charge.
-% The \ABs meson is neutral, whereas the muon is charged, and so will ionise the 
-% material of the detector much more readily.
-% The ionisation produced in the material can be converted to a electric impulse 
-% in a circuit, and several such impulses
-
-% The particles can be categorised in several ways: firstly, the \PBs meson is 
-% neutral, whereas the muons are charged; and secondly the \PBs meson is very 
-% unstable, with a life time of \SI{2}{\pico\second}, whereas the muons are 
-% stable.
+% TODO: discuss muon ID
+% Muons are special because they punch through everything easily, so one method 
+% for ID'ing them is just to have an additional tracking system after the calo
 
 The techniques which have been discussed for measuring particle momentum, 
 energy, and identity are general.
 The technologies used to construct an experiment depend on the physics that 
 experiment intends to measure.
-
-\begin{figure}
-  \centering
-  \input{figures/introduction/tracking}
-  \caption{%
-    Illustration of particle tracking, showing two muons traversing through a 
-    series of tracking stations, with a magnetic field in the negative $y$ 
-    direction, bending charged particles in the $xz$ plane.
-    Hits made by the negatively charged muon are shown as red points.
-    The scatter the hits around the true particle trajectory signifies the 
-    inherent uncertainty in the experimental measurement.
-  }
-  \label{fig:intro:lhcb:tracking}
-\end{figure}
-
-% \begin{figure}
-%   \centering
-%   \input{figures/introduction/vertexing}
-%   \caption{%
-%     Illustration of vertexing, showing a \PBs meson decaying in flight to two 
-%     muons.
-%     The minimum transverse distance the muon tracks make when extrapolated back 
-%     towards the primary proton-proton vertex, the \acf{IP}, is shown.
-%   }
-%   \label{fig:intro:lhcb:vertexing}
-% \end{figure}
 
 \begin{figure}
   \centering
@@ -313,8 +276,165 @@ experiment intends to measure.
 \section{Physics goals}
 \label{chap:intro:lhcb:physics}
 
+% TODO in order of importance:
+% heavy flavour at LHC is forward -> detector is forward
+% heavy flavour travels measurable distance -> measure it
+% heavy flavour decays to hadrons -> PID
+
+% Measure properties of HF
+%   * Lifetimes
+%   * Masses
+%   * CP violation observables
+%   * Production rates
+
+The \lhcb\ experiment aims to make the most precise measurements of heavy 
+flavour properties to date, and to discover decays that were not observed by 
+previous experiments.
+This section will link the properties of heavy flavour decays with the 
+requirements imposed on the detector if one wants to study those properties.
+
+As discussed previously, the properties of short-lived heavy flavour hadrons 
+can be inferred by reconstructing the four-momenta of their decay products, and 
+so \lhcb\ aims to fully reconstruct the decays of beauty and charm hadrons, 
+such as $\decay{\PBz}{\PKplus\PKminus}$, $\decay{\PBs}{\PDspm\PKmp}$ with 
+$\decay{\PDsplus}{\PKminus\PKplus\Ppiplus}$, 
+$\decay{\PLambdab}{\PJpsi\Pproton\PKminus}$ with 
+$\decay{\PJpsi}{\Pmuon\APmuon}$, and $\decay{\PDz}{\PKplus\Ppiminus}$.
+It is important to note that specific final states offer higher sensitivities 
+to physics observables than others, and so it is crucial for \lhcb\ to be able 
+to distinguish between different particle species.
+For example, the decay $\decay{\PDz}{\PKplus\Ppiminus}$ is of the order of one 
+thousand times less likely than the decay $\decay{\PDz}{\PKminus\Ppiminus}$, 
+and so a poor \ac{PID} performance would result in a search for the 
+$\PKplus\Ppiminus$ final state being swamped by $\PKminus\Ppiplus$.
+
+The short lifetime of heavy flavour hadrons can be exploited to reduce 
+background.
+In general, tens to hundreds of particles are produced per proton-proton 
+interaction, only one or two of which may be the signal particle of interest.
+Most of the background particles will be pions, kaons, and protons, which are 
+long lived an will fly through the tracking system, with their reconstructed 
+tracks pointing back to the proton-proton interaction region, called the 
+\ac{PV}.
+As the heavy flavour hadrons are much lighter than the centre-of-mass energy of 
+the colliding beams, with the \PBz meson having a mass of \SI{5.28}{\GeV} and 
+the \PDz meson having a mass of \SI{1.86}{\GeV}, they have a large boost in the 
+laboratory frame, greatly increasing their lifetime, in accordance with 
+\cref{eqn:intro:sm:lifetime_lab}.
+Heavy flavour hadrons can then fly millimetres in the laboratory frame before 
+decaying, and a displaced decay vertex can then be reconstructed by combining 
+tracks that intersect.
+Particles produced in decays displaced from the \ac{PV} will have tracks which, 
+in general, does not point back to the \ac{PV}.
+This is illustrated in \cref{fig:intro:lhcb:vertexing}, showing the 
+\emph{impact parameter}, the smallest perpendicular distance from the track to 
+the \ac{PV}.
+Particles produced directly in the proton-proton interaction will have a small 
+\ac{IP}, whereas those produced in \emph{secondary decays}, from heavy flavour 
+hadrons, will in general have large \acp{IP}.
+Being able to measure both the degree to which a decay vertex is displaced from 
+the \ac{PV} and the \acl{IP} of tracks with a high precision would then allow 
+for discrimination between signal and background.
+
+Precision is driven by the amount of data that is collected, and so the 
+experiment aims to maximise this.
+At the \ac{LHC}, the primary interaction mechanism between proton-proton 
+bunches is gluon-gluon fusion, as in 
+\cref{fig:intro:lhcb:hf_production:gg_fusion}, and with this mechanism \bbbar\ 
+and \ccbar\ pairs are predominantly produced in the \emph{forward} region, as 
+shown in \cref{fig:intro:lhcb:hf_production:bbbar_angles}.
+Instrumenting this region is then beneficial to collect large samples of heavy 
+flavour, however it comes with a price.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \input{figures/introduction/gluon_gluon_fusion}
+    \caption{Quark pair production}
+    \label{fig:intro:lhcb:hf_production:gg_fusion}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.6\textwidth}
+    \input{figures/introduction/bbbar_production_angles}
+    \caption{$\Pbottom\APbottom$ production distribution}
+    \label{fig:intro:lhcb:hf_production:bbbar_angles}
+  \end{subfigure}
+  \caption{%
+    Feynman diagram of quark pair production via gluon-gluon fusion 
+    (\ref{fig:intro:lhcb:hf_production:gg_fusion}), and a simulation of the 
+    angular distribution of \bbbar\ production at the \ac{LHC} at $\sqrt{s} = 
+    \SI{13}{\TeV}$ (\ref{fig:intro:lhcb:hf_production:bbbar_angles}).
+  }
+  \label{fig:intro:lhcb:hf_production}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \input{figures/introduction/vertexing}
+  \caption{%
+    Illustration of vertexing, showing a \PDz meson decaying in flight to a 
+    kaon and a pion.
+    The kaon and pion are reconstructed as tracks, and then \PDz decay vertex 
+    is inferred from the point of closest approach of the two tracks.
+    The minimum transverse distance the tracks make when extrapolated back 
+    towards the primary proton-proton vertex, the \acf{IP}, is shown.
+  }
+  \label{fig:intro:lhcb:vertexing}
+\end{figure}
+
+% The \ac{LHC} provides higher production rates of charm and beauty hadrons that 
+% any previous collider, and \lhcb\ is the only dedicated heavy flavour 
+% experiment at the \ac{LHC}.
+% As such, its primary goal is to study the properties of charm and beauty 
+% hadrons, exploiting the large amount of data that has been and continues to 
+% made to make precise measurements.
+
+% Unlike \atlas\ and \cms\, the \lhcb\ detector is searching for \ac{BSM} physics 
+% primarily through indirect searches.
+% The two principle methods in which this is done is through measuring 
+% differences between matter and antimatter, and by measuring rare processes such 
+% as the \BsTomumu decay.
+
 \section{Detector}
 \label{chap:intro:lhcb:detector}
+
+When describing the detector, it is useful to define a common coordinate 
+system.
+Within the \lhcb\ experiment, it is customary to define a right-handed 
+coordinate system, where the $z$-axis is aligned along the beam direction, 
+increasing in the clockwise direction along the \ac{LHC} ring; the $y$-axis is 
+aligned with gravity, increasing away from the Earth's surface; and the 
+$x$-axis, defined as $x = y \times z$, is then increasing away from the centre 
+of the accelerator.
+In this section, and in all subsequent sections, this coordinate system will be 
+used.
+
+The detector is shown in \cref{fig:intro:lhcb:detector}.
+How forward a process or a detector is is defined by the polar angle $\theta$, 
+defined with respect to the beam, with $0 < \theta < \pi$.
+A polar angle close to the extremes is considered forward, whilst values around 
+\sfrac{\pi}{2} are \emph{central}.
+Another measure is the pseudorapidity
+\begin{equation}
+  \Eta = -\ln\left(\tan{\frac{\theta}{2}}\right).
+  \label{eqn:intro:lhcb:pseudorapidity}
+\end{equation}
+The pseudorapidity is zero at \sfrac{\pi}{2}, and becomes infinite as $\theta$ 
+tends to it extremes.
+The general purpose \atlas\ and \cms\ detector are instrumented for particle 
+tracking in the region $|\Eta| < 2.5$, whereas the \lhcb\ detector is 
+instrumented in the region $2 < \Eta < 5$.
+
+\begin{figure}
+  \centering
+  \input{figures/introduction/lhcb_detector}
+  \caption{%
+    A schematic of the \lhcb\ detector.
+    In this Figure, the $z$-axis, labelled, increases from left to right, the 
+    $y$-axis, also labelled, increases from bottom to top, and the $x$-axis 
+    increases into the page.
+  }
+  \label{fig:intro:lhcb:detector}
+\end{figure}
 
 \subsection{Tracking}
 \label{chap:intro:lhcb:detector:tracking}

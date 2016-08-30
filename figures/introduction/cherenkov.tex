@@ -1,4 +1,4 @@
-\begin{tikzpicture}
+\begin{tikzpicture}[thick]
   \coordinate (O) at (0, 0);
   \pgfmathsetmacro{\ringbeginx}{5};
   \pgfmathsetmacro{\ringradius}{2};
@@ -9,8 +9,8 @@
   % Cherenkov light
   \draw[dashed] (O) -- +(\ringbeginx, \ringradius) node [pos=0.5, anchor=south east] {$\frac{c}{n}t$};
   \draw[dashed] (O) -- +(\ringbeginx, -\ringradius);
-  \draw (1, 0) arc (0:22:1);
-  \node at (10:1.25)  {{\footnotesize $\theta_{c}$}};
+  \draw (1.6, 0) arc (0:34:1);
+  \node at (10:1.85)  {{\cherenkovangle}};
 
   % Projection of light on to detection surface, forming a ring
   \draw[dotted] (\ringbeginx, 0) ellipse (0.1cm and \ringradius cm);
