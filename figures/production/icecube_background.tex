@@ -1,0 +1,14 @@
+\begin{tikzpicture}[thick]
+  \coordinate (nuO) at (0.5, 1.5);
+  \coordinate (hc0) at (0.75, 1.0);
+  \coordinate (hc1) at (1.2, 0.5);
+  \coordinate (icO) at (1.5, -1.5);
+  \draw[->-=0.7] (nuO) node [anchor=west] {$\Pproton_{\text{cosmic}}$} -- (hc0);
+  \draw[dotted] (hc0) -- node [anchor=west, pos=0.25] {\PHc} (hc1);
+  \draw[->-=0.6, dashed] (hc1) -- node [anchor=west, pos=0.6] {\Pnu} (icO);
+  \node[star, star points=10, draw=orange!50, fill=orange!20, inner sep=0pt, minimum size=0.25cm ] at (hc0) {};
+  \node[cylinder, rotate=90, minimum height=3cm, minimum width=3cm, draw] at (icO) {};
+  \draw[fill=blue!20] (icO) -- +(0.445, -0.97) -- +(1, 0) -- (icO);
+  \draw[fill=white] (2.25, -2) circle [x radius=0.1,y radius=0.57735,rotate=-30];
+  \node[star, star points=10, draw=orange!50, fill=orange!20, inner sep=0pt, minimum size=0.35cm] at (icO) {};
+\end{tikzpicture}

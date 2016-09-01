@@ -34,6 +34,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[detect-weight=true, detect-family=true, binary-units=true]{siunitx}
+\sisetup{group-separator={,}, group-four-digits=true}
 \usepackage[italic]{lhcb}
 \usepackage[printonlyused]{acronym}
 
@@ -42,6 +43,9 @@
 \graphicspath{{figures/}}
 \usepackage{subcaption}
 \usepackage{tikz-feynman}
+
+% Draw arrows in the middle of lines
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}}, postaction={decorate}}}
 
 % Miscellaneous
 \usepackage{lipsum}

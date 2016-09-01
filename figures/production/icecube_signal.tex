@@ -1,0 +1,9 @@
+\begin{tikzpicture}[thick]
+  \coordinate (nuO) at (0.5, 1.5);
+  \coordinate (icO) at (1.5, -1.5);
+  \draw[->-=0.3, dashed] (nuO) node[anchor=west] {$\nu_{\text{cosmic}}$} -- (icO);
+  \node[cylinder, rotate=90, minimum height=3cm, minimum width=3cm, draw] at (icO) {};
+  \draw[fill=blue!20] (icO) -- +(0.445, -0.97) -- +(1, 0) -- (icO);
+  \draw[fill=white] (2.25, -2) circle [x radius=0.1,y radius=0.57735,rotate=-30];
+  \node[star, star points=10, draw=orange!50, fill=orange!20, inner sep=0pt, minimum size=0.35cm] at (icO) {};
+\end{tikzpicture}
