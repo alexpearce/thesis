@@ -1,4 +1,128 @@
-\chapter{Candidate selection}
+\chapter{Event and candidate selection}
 \label{chap:prod:sel}
 
-\lipsum[1-2]
+The decay modes chosen for this analysis,
+\DzToKpi, \DpToKpipi, \DspTophipi, \DstToDzpi with \DzToKpi, and their charge 
+conjugates, are the most probable fully charged, hadronic final states for each 
+meson.
+The advantage of choosing such final states is that it allows the invariant 
+mass of the charm hadrons to be computed unambiguously, so that a yield 
+determination can be performed via fits to the mass distribution.
+These fits shall be discussed in detail in \cref{chap:prod:fitting}, but it is 
+worth noting at this point that such fits are simpler if the data is `clean', 
+that is if the fraction of charm meson signal in the data is high.
+It is then advantageous to optimise the selection of the data to reduce 
+backgrounds, while retaining as much signal as possible to maximise the 
+statistical significance.
+
+The selection of fully charged, hadronic decay modes of charm mesons has 
+already been performed by many other analysis at \lhcb,\footnotemark and their 
+selections share several common features.
+The first of these is a requirement on the minimum charm candidate \pT, as 
+there are many soft particles produced directly in the proton-proton collision, 
+and such a requirement removes many of them.
+The second is to ask that the charm candidate vertex is significantly displaced 
+from the proton-proton collision vertex, or \ac{PV}, exploiting the long flight 
+distances of charm hadrons in the laboratory frame.
+Finally, it is required that the \ipchisq\ of the charm meson, a measure of the 
+\acf{IP} relative to the uncertainty on the \ac{IP}, does not exceed a certain 
+value.
+This suppresses the background of charm candidates whose three-momentum does 
+not point back to the \ac{PV}, which the momentum of random combinations of 
+tracks will not, on average.
+Each of these three features are powerful discriminators between signal and 
+background.
+
+For this measurement of prompt charm production, it is preferable not to make 
+\pT\ requirements on the charm candidate, as they would restrict the \pT range 
+available for differential measurements.
+Nor is it desirable to make \ipchisq\ cuts, as the \ipchisq\ distribution is 
+used for prompt-secondary discrimination, and having access to only part of the 
+distribution can hinder accurate modelling.
+The selection used is then informed by previous \lhcb\ studies of fully 
+charged, hadronic charm decays, but with modifications to improve the 
+usefulness for the measurement in hand.
+The selection variables that are useful for discriminating between signal and 
+background, in addition to those previously mention, are given below.
+The `parent' is the charm hadron \PHc, and the `children' are the charged 
+hadrons in the final state.
+
+\begin{description}
+  \item[Child track \chisq\ per degree of freedom] \hfill \\
+    The \chisq\ per degree of freedom of the child track returned by the track 
+    fit.
+    This variable discriminates between real and fake~(ghost) tracks.
+  \item[Child transverse momentum] \hfill \\
+    Momentum transverse to the $z$-axis.
+    Children of charm hadrons will have a higher \pT\ on average than prompt 
+    stable particles produced directly from the \pp\ collision.
+  \item[Child momentum] \hfill \\
+    Three-momentum magnitude \ptot.
+    Must be within the range of acceptable particle identification performance 
+    and fall within the kinematic spectrum of the \ac{PID} calibration samples, 
+    discussed in \cref{chap:prod:effs:pid}.
+  \item[Child pseudorapidity] \hfill \\
+    Pseudorapidity \Eta, defined in \cref{eqn:intro:lhcb:pseudorapidity}.
+    Must be within the range of acceptable particle identification performance 
+    and fall within the kinematic spectrum of the \ac{PID} calibration samples.
+  \item[Child \ipchisq] \hfill \\
+    Impact parameter with respect to the \ac{PV}, as shown 
+    in~\cref{fig:intro:lhcb:vertexing}.
+    Prompt stable particles produced directly in the \pp\ collision will have a 
+    low impact parameter, whereas particles produced in long-lived charm decays 
+    will not have trajectories pointing back to the \ac{PV} on average.\\
+    The `\chisq' is computed as $\Delta^{\text{T}}\Sigma^{-1}\Delta$, where 
+    $\Delta$ is the difference in the position vectors of the track and the 
+    vertex, and $\Sigma$ is the sum of the covariance matrices of the track and 
+    vertex fits.
+    This quantity is approximately equal to the ratio of the \ac{IP} and the 
+    uncertainty on that \ac{IP} measurement.
+  \item[Child \ac{PID}] \hfill \\
+    Particle identification information as the combined response of the 
+    calorimeters, muon stations, and \rich\ detectors.
+    % TODO this will probably be explained in the detector chapter
+    Predicted Cherenkov rings from tracks reconstructed by the tracking system 
+    are compared with the photons detected by the {\rich}s.
+    A global likelihood fit is then performed across all radiators and tracks, 
+    and a likelihood, relative to the pion hypothesis, is assigned to each 
+    track for each particle hypothesis.
+  \item[Pairwise child \ac{DOCA}] \hfill \\
+    For a set of tracks physically originating from a common vertex, the 
+    largest distance between any two tracks, the \ac{DOCA}, should be small.
+  \item[Pairwise child \ac{DOCA} \chisq] \hfill \\
+    This variable is used in one trigger line and relates to \ac{DOCA} as 
+    \ipchisq\ relates to \ac{IP}.
+  \item[Parent reconstructed mass] \hfill \\
+    Invariant mass, either computed before the vertex fit as the sum of the 
+    child four-momenta, or after as the mass of the fitted vertex.
+    In a signal sample, a peaking structure will be seen around the nominal 
+    charm hadron invariant mass.
+    To confidently describe the combinatorial background, the window around the 
+    nominal mass should be many times wider than the resolution on this peak.
+  \item[Parent vertex quality] \hfill \\
+    Quality of the vertex fit.
+    A larger \chisq\ value means a lower probability that the input tracks 
+    originated from the same spatial point, which would be true if the tracks 
+    were the product of a particle decay.
+  \item[Parent vertex displacement] \hfill \\
+    Displacement of the decay vertex from the production vertex, assumed to be 
+    the \ac{PV}, as either the reconstructed lifetime $c\lifetime$ or the 
+    vertex displacement \chisq.
+    The `\chisq' is computed as $\Delta^{\text{T}}\Sigma^{-1}\Delta$, where 
+    $\Delta$ is the difference in the spatial positions of the two vertices, and 
+    $\Sigma$ is the sum of the covariance matrices of the two vertex fits.
+  \item[Parent \ac{DIRA}] \hfill \\
+    If the child tracks are from a true decay, and the decay vertex position is 
+    correctly reconstructed, then the momentum vector of the parent should 
+    point in the same direction as the displacement vector between the 
+    production vertex and the decay vertex.
+    The angle between the momentum and displacement vectors, the \ac{DIRA}, 
+    should be small for a correctly reconstructed signal decay.
+\end{description}
+
+\footnotetext{%
+  Representative examples include selections of 
+  \decay{\PDzero}{\PKmp\Ppipm}~\cite{Aaij:2012nva}, 
+  \decay{\PDp}{\PKminus\PKplus\Ppiplus}~\cite{Aaij:2011cw}, and 
+  \DspTophipi~\cite{Aaij:2012cy} decays.
+}
