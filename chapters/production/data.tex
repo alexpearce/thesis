@@ -46,8 +46,8 @@ A description of the luminosity measurement will now be given.
 
 The luminosity was measured in a dedicated analysis as part of the general 
 \lhcb\ early measurements campaign.
-The luminosity was used as input not only for the open charm production 
-analysis discussed here, but also in the measurements of \PJpsi and \PB hadron 
+The luminosity is used as input not only for the open charm production analysis 
+discussed here, but also in the measurements of \PJpsi and \PB hadron 
 production~\cite{LHCb-PAPER-2015-037,LHCb-PAPER-2016-031}, which were also part 
 of that campaign.
 
@@ -65,7 +65,8 @@ t)$ and $\rho_{2}(x, y, z, t)$, the overlap can be expressed as
                       \dif{x}\dif{y}\dif{z}\dif{t}.
   \label{eqn:prod:data:lumi:profile}
 \end{equation}
-At \lhcb, two methods have been used to measure the bunch profiles.
+At \lhcb, two methods have been used to measure the bunch 
+profiles~\cite{LHCb-PAPER-2014-047}.
 % TODO ok, but what is done with the scan data?
 The first is the \ac{VDM} scan, where the beams are scanned across each other 
 in fine $x$ and $y$ steps to measure the transverse profile, which is also used 
@@ -73,23 +74,51 @@ in the \atlas, \cms, and \alice\ experiments.
 It assumes that the profiles in $x$ and $y$ are factorisable, such as being two 
 independent Gaussian distributions.
 The high precision of the \lhcb\ \velo\ sub-detector allows for the second 
-method: the \ac{BGI} scan.
-% TODO describe BGI principles
-This method
+method: the \ac{BGI}.
+This method uses gas injected into the \ac{LHC} vacuum inside the \velo\ 
+sub-detector to create `beam-gas' interactions.
+The vertices of these interactions can be reconstructed using track segments 
+formed in the \velo, shown in \cref{fig:prod:data:lumi:bgi_fits}, and the 
+distribution of vertices gives the three-dimensional beam profile.
 
-As the \ac{VDM} and \ac{BGI} methods are independent, there serve as 
+As the \ac{VDM} and \ac{BGI} methods are independent, they serve as 
 cross-checks of one another and can be combined in an average if they are 
 compatible.
 They were both used in an analysis to measure the \runone\ integrated 
-luminosity, where a relative uncertainty of \SI{1.16}{\percent} was achieved, 
-the highest precision at any \ac{LHC} experiment~\cite{LHCb-PAPER-2014-047}.
+luminosity, where a relative uncertainty on the combination of 
+\SI{1.16}{\percent} was achieved, the highest precision on a luminosity 
+measurement at an \ac{LHC} experiment~\cite{LHCb-PAPER-2014-047}.
 For the early measurements campaign, only the data for the \ac{BGI} measurement 
-was used
+was available, and a precision of \SI{3.8}{\percent} was reached.
 
-% Why does he BGI require special conditions?
 Both the \ac{VDM} and the \ac{BGI} methods require special \ac{LHC} running 
-conditions, the data collected during which is not used for physics analyses.
-The absolute luminosity is then determined for some specific fills, and it is 
-then necessary to somehow translate this to a luminosity measurement for the 
-fills used for physics data.
-% TODO describe how the relative measurements are performed
+conditions.
+The data for the luminosity analysis is collected during dedicated fills, the 
+data from which is not used for physics analyses.
+The absolute luminosity is then determined only for these fills, and so it is 
+necessary to translate this to a luminosity measurement for the fills used for 
+physics data.
+This is done by choosing a set of processes whose rates are proportional to the 
+visible \pp\ interaction rate, and using the constant of proportionality as 
+measured during the absolute luminosity measurement.
+These `luminosity counters', such as the number of tracks reconstructed in the 
+\velo, the energy deposited in the hadronic calorimeter, or even the fraction 
+of beam-beam crossings where no activity was seen in the detector, are stored 
+alongside the data during physics running.
+The total luminosity for a dataset used in an analysis is then determined by 
+integrating the values from a counter and dividing it by the corresponding 
+absolute luminosity calibration constant.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/production/bgi_fits}
+  \caption{%
+    Projections of fits to beam-gas interaction vertices used as part of a 
+    \acl{BGI} luminosity measurement~\cite{LHCb-PAPER-2014-047}.
+    The data shown were used for the \ac{BGI} measurement at \sqrtseq{8} in 
+    2012.
+    For illustrative purposes only the first \num{1000} interaction vertices 
+    are shown per beam.
+  }
+  \label{fig:prod:data:lumi:bgi_fits}
+\end{figure}
