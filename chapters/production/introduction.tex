@@ -1,20 +1,19 @@
 \chapter{Introduction}
 \label{chap:prod:introduction}
 
-The measurement of cross-sections is one of the more fundamental measurements a 
+The measurement of cross-sections is one of the most fundamental measurements a 
 particle physics experiment can make.
-This \namecref{chap:prod} describes a measurement of prompt open charm and 
-\ccbar\ production measured with the \lhcb\ detector using data taken at 
-$\sqrts = \SI{13}{\TeV}$.
-`Open charm' refers to particles whose charm quantum number is non-zero, as 
-opposed to charmonium states, such as \PJpsi, which contain charm quarks but 
-whose charm quantum number is zero.
-`Prompt' refers to charm hadrons that are produced directly in the 
-proton-proton interaction, rather than `secondary' hadrons which are produced 
-in the decays of \PB hadrons.
+This \namecref{chap:prod} describes a measurement of charm and \ccbar\ 
+production, performed using the \lhcb\ detector with data taken at $\sqrts = 
+\SI{13}{\TeV}$.
+At the \ac{LHC}, a given charm hadron \PHc\ can either be produced in the proton-proton interaction, directly or from the strong decay of some excited charm state, or in the decays of \PB hadrons.
+The latter mechanism is called \emph{secondary} production, whilst the former is called \emph{prompt} production.
+The type of charm hadron that can be produced can either be \emph{charmonium}, such as the \PJpsi meson, which contains charm quarks but whose net charm quantum number is zero, or \emph{open charm}, whose net charm quantum number is non-zero.
+This measurement is concerned with the prompt production of open charm hadrons.
+No attempt is made to distinguish between the two types of prompt production.
 
-Measurements of \ccbar\ and \bbbar\ cross-sections at the \ac{LHC} test the 
-predictions of \ac{QCD}.
+Measurements of \ccbar\ and \bbbar\ cross-sections at the \ac{LHC} are made to 
+test the predictions of \ac{QCD}.
 The production rate of \ccbar\ and \bbbar\ quark pairs is expected to vary as a 
 function of \pT\ and rapidity \rapidity, defined as
 \begin{equation}
@@ -24,48 +23,68 @@ function of \pT\ and rapidity \rapidity, defined as
 and so experimental measurements can be compared with both the shape of 
 theoretical predictions as a function of \pTy, as well as to the total 
 integrated rate.
-They can also be used as inputs to future predictions as constraints.
-Heavy flavour production rates are also used as inputs to experimental searches 
-for rare decays, where, when combined with the luminosity, they provide an 
-estimate for the total number of parent particles were produced in the detector 
-acceptance, and as inputs to atmospheric neutrino experiments, where charm 
-production enters as a background process.
+They can also be used as inputs to constrain future predictions.
+Heavy flavour production rates are also used to estimate sensitivities for experimental searches 
+for rare decays, and also as inputs to 
+atmospheric neutrino experiments, where charm production enters as a background 
+process.
 
 Measuring \ccbar\ and \bbbar\ cross-sections at \lhcb\ is complementary to such 
-measurements by the \ac{GPD}, due to the unique rapidity range it instruments, 
+measurements by the \acp{GPD}, due to the unique rapidity range it instruments, 
 as well as its ability to cleanly reconstruct low \pT\ hadrons.
 
 \section{Analysis overview}
 \label{chap:prod:introduction:analysis_overview}
 
-The cross-section for an open charm hadron \PHc\ is expressed as
+The cross-section for the production of an open charm hadron \PHc\ from 
+proton-proton collisions can be expressed by rearranging 
+\cref{eqn:intro:lhc:lumi_xsec}
+\begin{equation}
+  \xsec(\ppToHc) = \frac{N(\PHc)}{\intlumi},
+  \label{eqn:prod:introduction:simple_cross_section}
+\end{equation}
+where $N(\PHc)$ is the total number of \PHc\ hadrons that were produced, and 
+\intlumi\ is the instantaneous luminosity \emph{integrated} over the time 
+corresponding to the dataset used to measure $N(\PHc)$
+\begin{equation}
+  \intlumi = \int \lumi \dif{t}.
+  \label{eqn:prod:introduction:integrated_lumi}
+\end{equation}
+Experimentally, not all hadrons that are produced are observed, firstly due to 
+the inefficiency of the detector and the reconstruction and selection criteria, 
+and secondly due to the hadrons being reconstructed in a specific final state 
+$f$, to which the hadron will only decay with a particular probability.
+The \emph{measured} yield $N(\HcTof)$ is then corrected for these factors, and the 
+cross-section is defined as
 \begin{equation}
   \xsec_{i}(\PHc) = \frac{%
-    N_{i}(\HcTof)
+    N(\HcTof)
   }{%
-    \eff_{i}(\HcTof)\cdot\bfrac(\HcTof)\cdot\intlumi
+    \eff(\HcTof)\cdot\bfrac(\HcTof)\cdot\intlumi
   },
   \label{eqn:prod:introduction:cross_section}
 \end{equation}
-where the numerator is the measured yield of promptly produced decays of \PHc\ 
-to some final state $f$, and the denominator consists of: the efficiency that 
-the decay \HcTof\ is fully reconstructed and selected, given that is was 
-produced; the branching fraction \bfrac\ of the decay; and integrated 
-% TODO integrated luminosity should be defined
-luminosity \intlumi\ corresponding to the dataset used for the measurement.
+where \eff\ is the efficiency of fully reconstructing and selecting the decay \HcTof, given that it was produced, \bfrac\ is the branching fraction of the decay, and the production from proton-proton collisions is now implicit.
 To compare with the shapes of theoretical predictions, double differential 
-cross sections can then be determined in \pTy\ bins using the width $\Delta\pT$ 
-of the bin in \pT and the width $\Delta\rapidity$ of the bin in rapidity in 
+cross-sections can be determined in \pTy\ bins, using the width $\Delta\pT$ 
+of the bin in \pT\ and the width $\Delta\rapidity$ of the bin in rapidity in 
 which the yield and efficiency measurements were made
 \begin{equation}
   % There is a "\left." here, which is invisible, to balance the "\right\rvert"
-  \left.\frac{\text{d}^{2}\xsec(\PHc)}{\text{d}\pT\text{d}\rapidity}\right\rvert_{i}
-    = \frac{\xsec_{i}(\PHc)}{\Delta\pT\Delta\rapidity}.
+  \left.\frac{\dif^{2}{\xsec(\PHc)}}{\dif{\pT}\dif{\rapidity}}\right\rvert_{i}
+    = \frac{1}{\Delta\pT\Delta\rapidity}
+      \frac{%
+        N_{i}(\HcTof)
+      }{%
+        \eff_{i}(\HcTof)\cdot\bfrac(\HcTof)\cdot\intlumi
+      },
   \label{eqn:prod:introduction:differential_cross_section}
 \end{equation}
+where the $i$ is the index of the \pTy\ bin in which the measurement is made.
+The branching fraction and the integrated luminosity are the same across all bins.
 
 This analysis measures the double differential cross-sections of \PDzero, \PDp, 
-\PDsplus, and \PDstarp.
+\PDsplus, and \PDstarp open charm mesons.
 Charge conjugation is implied, in that the cross-sections measure the combined 
 rate of meson and anti-meson production.
 The measurements are made in the \pT\ range $0 < \pT < \SI{15}{\GeV}$ and the 
@@ -87,7 +106,7 @@ respective double differential measurements
     \sum_{i}^{N} \xsec_{i}(\PHc).
   \label{eqn:prod:introduction:integrated_cross_section}
 \end{equation}
-The total \ccbar cross-sections can be computed using \emph{fragmentation 
+The total \ccbar\ cross-sections can be computed using \emph{fragmentation 
   fractions}; each a measurement of the transition probability that a charm 
 quark will hadronise to a particular open charm hadron $f(\cToHc)$.
 Given the fragmentation fraction, and the integrated cross-section defined in 
@@ -118,7 +137,7 @@ includes contributions from \DstToDzpi\ decays.
   \input{tables/production/introduction/fragmentation_fractions}
 \end{table}
 
-The data used for the measurements was collected in July 2016, under a set of 
+The data used for the measurements were collected in July 2016, under a set of 
 special conditions used for the restart of the \ac{LHC} after \ac{LS1}.
 The conditions of the \ac{LHC} and of the \lhcb\ detector will be described in 
 \cref{chap:prod:data}, along with a summary of the integrated luminosity 
