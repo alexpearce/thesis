@@ -2,3 +2,5 @@
 latex.out
 # Output PDF
 thesis.pdf
+# Output of plotting scripts
+scripts/output/*.pdf
