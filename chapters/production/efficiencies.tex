@@ -1,7 +1,191 @@
 \chapter{Efficiency evaluation}
 \label{chap:prod:effs}
 
-\lipsum[1-2]
+The efficiency chain defines the fraction of produced prompt signal candidates 
+that survive the full reconstruction and selection procedure.
+The chain is defined in steps grouped by physical requirements and those 
+imposed by software, with each step being relative to the previous one.
+In the order of steps by which candidates are lost, this starts with the efficiency of a signal charm hadron to decay within the 
+\lhcb\ acceptance having been produced in a \pp\ collision, \effacc.
+The efficiency of such a decay to be fully reconstructed is the reconstruction 
+efficiency is \effreco, and then the efficiency of the reconstructed decay to 
+be triggered through \lzero, \hltone, and \hlttwo is the trigger efficiency 
+\efftrig.
+Finally, there is the efficiency of triggered candidates to pass through the 
+offline selection \effoffline.
+The total efficiency, \eff, is the product of these, and is what enters in 
+\cref{eqn:prod:introduction:differential_cross_section}.
+
+For most steps in the efficiency chain, the candidates not passing each step 
+are lost and cannot be processed further, and so methods are needed to assess the 
+efficiency without having access to the original candidates.
+There are two methods that shall be used in this \namecref{chap:prod:effs}: 
+efficiency estimation from simulated \acf{MC} data, described in 
+\cref{chap:prod:data:mc}, where true information is available before and after 
+all steps; and methods of calibration, where proxy data selected without the 
+use of particular information can be used to assess the effects of using that information in the 
+analysis data.
+Efficiency evaluation with \ac{MC} can be simple, but differences between the 
+data and the \ac{MC} must be accounted for, which may not be obvious.
+Calibration techniques use real data, and so can be more robust than \ac{MC}, 
+but obtaining clean calibration samples can be challenging.
+
+In \lhcb, it is known that the \ac{PID} selection efficiencies are not 
+well-modelled in the \ac{MC}, due to an under-estimation of the detector 
+occupancies.
+The same is true, albeit to a lesser extent, for the reconstruction 
+efficiencies.
+Kinematic variables, such as charm hadron and final state momenta, are 
+comparatively well-modelled.
+This motivates a two-step procedure for evaluating the \emph{selection} 
+efficiency, whereby the \ac{PID} efficiency is computed using calibration 
+techniques, described in \cref{chap:prod:effs:pid}, and the efficiency of the remaining 
+requirements is made using \ac{MC}, detailed in \cref{chap:prod:effs:sel}.
+The reconstruction efficiency will be computed using \ac{MC}, but corrected 
+with a factor obtained from calibration samples, described in \cref{chap:prod:effs:acc}.
+The extent to which these techniques do not accurately model the efficiencies 
+will be discussed in the context of systematic uncertainties in 
+\cref{chap:prod:systs}.
+
+To summarise: the total efficiency $\eff_{i}(\decay{\PHc}{f})$, for charm candidates in the $i$th \pTy\ bin, is 
+the product of the individual efficiencies and correction factors
+\begin{align}
+  \eff_{i}(\decay{\PHc}{f}) = \effacc &\times \effreco \times \efftracking \times \efftrig \nonumber\\
+                                      &\times \effoffline \times \effpid.
+  \label{eqn:prod:effs:total_eff}
+\end{align}
+where each efficiency \eff\ is dependent on the charm hadron \PHc\ and the 
+final state $f$, and is conditional on the previous step.
+
+In this \namecref{chap:prod:effs} the details of the efficiency computation for each step is 
+given, along with example efficiency tables in \pTy\ for the two-body \DzToKpi\ 
+and three-body \DpToKpipi\ decays.
+The notation for conditional yields will be used throughout, where $N_{A|B}$ 
+denotes the prompt signal yields after process $A$ given that process $B$ 
+preceded $A$.
+
+\section{Detector acceptance}
+\label{chap:prod:effs:acc}
+
+The acceptance efficiency is due to the finite spatial acceptance of the \lhcb\ 
+detector.
+By instrumenting the forward region, in the pseudorapidity range $2 < \Eta < 
+5$, any particles flying outside this region are not detected.
+As there is no way to access these particles in data, it is necessary to use 
+simulated data.
+The acceptance is modelled by a set of cuts requiring that all stable charged 
+particles in the final state are within $10 < \theta < 
+\SI{400}{\milli\radian}$, where $\theta$ is the polar angle of the particle 
+momentum vector, and that all the particles in the final state point in same 
+$z$ direction.
+These requirements are applied at the \emph{generator} level, before the 
+detector simulation, on the true kinematics of the particles.
+By counting the number of charm hadrons passing and failing the cut, the 
+acceptance efficiency is defined as
+\begin{equation}
+  \effacc = \frac{%
+    N_{\text{Accepted}|\text{Generated}}
+  }
+  {%
+    N_{\text{\text{Generated}}}
+  }.
+  \label{eqn:prod:effs:acc}
+\end{equation}
+
+To save computing resources, almost all \ac{MC} samples have this cut applied 
+during generation, such that the particles before the cuts are not available to 
+analysts.
+This reduces computing resources as fewer particles are propagated through the 
+detector simulation, and because fewer particles are stored to disk.
+Because of this, the acceptance efficiency is evaluated using a detected 
+\ac{MC} sample where only the generator is run, and not the detector 
+simulation.
+% TODO should mention that we're using AC intervals, stating why and what they
+% are
+The acceptance efficiencies for \DzToKpi\ and \DpToKpipi, in \pTy\ bins, are 
+given in \cref{tab:prod:effs:acc:dztokpi,tab:prod:effs:acc:dptokpipi}.
+
+\section{Reconstruction}
+\label{chap:prod:effs:acc}
+
+The reconstruction efficiency \effreco\ parameterises the fraction of charm meson decays passing the acceptance requirements that are also fully reconstructed as tracks, for the final state particles, and vertices, for the charm mesons.
+This folds in several effects: whether the final state particles have a large enough momentum not to be bent out of the detector acceptance by the magnetic field; whether the final state particles leave enough hits in the tracking system to be \emph{reconstructible} (that is, above the minimum threshold at which the tracking system \emph{could} reconstruct a track); whether, given that enough hits were deposited by a final state particle, a track was actually \emph{reconstructed}; and whether a vertex can be formed, given that all final state particles have associated tracks.
+The reconstruction efficiency can be defined as the ratio of fully reconstructed decays to those passing the acceptance requirements
+\begin{equation}
+  \effreco = \frac{%
+    N_{\text{Reconstructed}|\text{Accepted}}
+  }
+  {%
+    N_{\text{\text{Accepted}}}
+  }.
+  \label{eqn:prod:effs:reco}
+\end{equation}
+The reconstruction efficiencies for \DzToKpi\ and \DpToKpipi, in \pTy\ bins, are 
+given in \cref{tab:prod:effs:reco:dztokpi,tab:prod:effs:reco:dptokpipi}.
+
+\subsection{Truth matching failure}
+\label{chap:prod:effs:truth}
+
+The evaluation of \cref{eqn:prod:effs:reco} requires that the reconstructed objects, tracks and vertices, be correctly associated back to the `truth-level' information, that is the \ac{MC} objects which were generated and then propagated through the detector simulation.
+The association of tracks is performed first.
+A track is marked as \emph{matched} to an \ac{MC} particle if at least \SI{70}{\percent} of the hits that formed the track were created by the \ac{MC} particle.
+Tracks are classified as \emph{ghost} tracks if there are no \ac{MC} particles that can be associated to it.
+Vertices can then be assigned categories based on the associations of their input tracks.
+A signal vertex is one in which all inputs are associated to \ac{MC} particles, all inputs have been assigned a particle identity equal to that of its associated \ac{MC} particle, all inputs have been associated with \ac{MC} particles which come from the same true \ac{MC} parent, and the identity of the \ac{MC} parent matches that assigned to the vertex.
+Any deviation from these requirements results in the vertex being assigned a particular \emph{background category}, dependent on the nature of the deviations~\cite{Gligorov:1035682}.
+For example, if at least one track is a ghost, the vertex is classified as a ghost, and if at least one track is associated to an \ac{MC} particle with a different \ac{PID}, the vertex is classified as a misidentification.
+
+Ideally, the background category information could be used to filter the \ac{MC} so that it contained a pure sample of signal that could simply be counted to obtain the input to some efficiency computation, such as \cref{eqn:prod:effs:reco}.
+However, the requirement that a track is matched to \SI{70}{\percent} of the hits created by an \ac{MC} particle is neither \SI{100}{\percent} efficient at accepting signal, nor \SI{100}{\percent} efficient at rejecting background.
+There will then be a fraction of signal decays which were reconstructed but failed the signal vertex requirement, and there will be ghost tracks that are marked as signal.
+This creates two options for computation the number of true signal decays passing some requirement: perform a \emph{fit} to some discriminatory distribution in the whole \ac{MC} dataset to get the number of signal candidates; or count the number passing the signal vertex requirement, and somehow compute a correction factor to account for the inefficiency of that requirement.
+This analysis takes the latter approach.
+
+% TODO explain how the truth matching correction can be applied, then say how
+% it is computed.
+
+\subsection{Tracking efficiency correction}
+\label{chap:prod:effs:tracking}
+
+\section{Selection}
+\label{chap:prod:effs:sel}
 
 \section{Particle identification}
 \label{chap:prod:effs:pid}
+
+% These tables are big and ugly, so stick them all at the end of the Chapter
+\begin{table}
+  \caption{%
+    Acceptance efficiencies \effacc\ for \DzToKpi\ measured in \PDzero in \pTy\ bins.
+  }
+  \label{tab:prod:effs:acc:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_acceptance.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Acceptance efficiencies \effacc\ for \DpToKpipi\ measured in \PDplus in \pTy\ bins.
+  }
+  \label{tab:prod:effs:acc:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_acceptance.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Reconstruction efficiencies \effreco\ for \DzToKpi\ measured in \PDzero in \pTy\ bins.
+  }
+  \label{tab:prod:effs:reco:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_reconstruction.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Reconstruction efficiencies \effreco\ for \DpToKpipi\ measured in \PDplus in \pTy\ bins.
+  }
+  \label{tab:prod:effs:reco:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_reconstruction.tex}
+\end{table}
