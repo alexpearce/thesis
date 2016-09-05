@@ -36,9 +36,10 @@
 \newcommand\DzToKpi{\decay{\PDzero}{\PKminus\Ppiplus}}
 \newcommand\DzToKpiDCS{\decay{\PDzero}{\PKplus\Ppiminus}}
 \newcommand\DpToKpipi{\decay{\PDplus}{\PKminus\Ppiplus\Ppiplus}}
-\newcommand\DspToKKpi{\decay{\PDplus}{\PKminus\PKplus\Ppiplus}}
-\newcommand\DspTophipi{\decay{\PDplus}{\Pphi\Ppiplus}}
-\newcommand\DstToDzpi{\decay{\PDst}{\PDzero\Ppiplus}}
+\newcommand\DspToKKpi{\decay{\PDsplus}{\PKminus\PKplus\Ppiplus}}
+\newcommand\DspTophipi{\decay{\PDsplus}{\Pphi\Ppiplus}}
+\newcommand\DTohhh{\decay{\PD^{+}_{(\Pstrange)}}{\Phm\Php\Php}}
+\newcommand\DstToDzpi{\decay{\PDstarp}{\PDzero\Ppiplus}}
 % Charm baryons
 \newcommand\LcTophh{\decay{\PLambdac}{\Pproton\Php\Phm}}
 % Beauty mesons
@@ -78,13 +79,19 @@
 % LHCb subdetectors
 % PID
 \newcommand\velo{VELO}
+\newcommand\ttracker{TT}
+\newcommand\itracker{IT}
+\newcommand\otracker{OT}
 \newcommand\rich{RICH}
 \newcommand\richone{\rich1}
 \newcommand\richtwo{\rich2}
 
 % LHCb triggers
-\newcommand\hltone{HLT1}
-\newcommand\hlttwo{HLT2}
+\newcommand\lzero{L0}
+\newcommand\hlt{HLT}
+\newcommand\hltone{\hlt1}
+\newcommand\hlttwo{\hlt2}
+\newcommand\nobias{\texttt{NOBIAS}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % CP violation
@@ -122,6 +129,8 @@
 % Generic 'hadron' symbol
 \newcommand\Php{\ensuremath{h^{+}}}
 \newcommand\Phm{\ensuremath{h^{-}}}
+% Soft pion
+\newcommand\Ppiplussoft{\ensuremath{\Ppi^{+}_{\text{Soft}}}}
 % D*+
 \newcommand\PDstarp{\ensuremath{\PDstar^{+}}}
 
@@ -172,11 +181,12 @@
 % PID
 % Cherenkov angle
 \newcommand\thetac{\ensuremath{\theta_{\text{c}}}}
-\newcommand\dllkpi{\ensuremath{\text{DLL}_{\kaon-\pion}}}
-\newcommand\dllpk{\ensuremath{\text{DLL}_{\proton-\kaon}}}
-\newcommand\dllppi{\ensuremath{\text{DLL}_{\proton-\pion}}}
-\newcommand\dllepi{\ensuremath{\text{DLL}_{\electron-\pion}}}
-\newcommand\dllmupi{\ensuremath{\text{DLL}_{\muon-\pion}}}
+\newcommand\dll{\ensuremath{\text{DLL}}}
+\newcommand\dllkpi{\ensuremath{\dll_{\PK-\Ppi}}}
+\newcommand\dllpk{\ensuremath{\dll_{\Pproton-\PK}}}
+\newcommand\dllppi{\ensuremath{\dll_{\Pproton-\Ppi}}}
+\newcommand\dllepi{\ensuremath{\dll_{\Pelectron-\Ppi}}}
+\newcommand\dllmupi{\ensuremath{\dll_{\Pmuon-\Ppi}}}
 \newcommand\probnn{ProbNN}
 \newcommand\probnnp{\texttt{ProbNNp}}
 \newcommand\probnnk{\texttt{ProbNNk}}

@@ -33,8 +33,15 @@ tracks will not, on average.
 Each of these three features are powerful discriminators between signal and 
 background.
 
+\footnotetext{%
+  Representative examples include selections of 
+  \decay{\PDzero}{\PKmp\Ppipm}~\cite{Aaij:2012nva}, 
+  \decay{\PDp}{\PKminus\PKplus\Ppiplus}~\cite{Aaij:2011cw}, and 
+  \DspTophipi~\cite{Aaij:2012cy} decays.
+}
+
 For this measurement of prompt charm production, it is preferable not to make 
-\pT\ requirements on the charm candidate, as they would restrict the \pT range 
+\pT\ requirements on the charm candidate, as they would restrict the \pT\ range 
 available for differential measurements.
 Nor is it desirable to make \ipchisq\ cuts, as the \ipchisq\ distribution is 
 used for prompt-secondary discrimination, and having access to only part of the 
@@ -120,9 +127,293 @@ hadrons in the final state.
     should be small for a correctly reconstructed signal decay.
 \end{description}
 
+The exact numerical requirements made on these quantities were not tuned to 
+optimise any specific figure of merit.
+Instead, the values were chosen based on those used in previous charm analysis, 
+generally being loosened to account for the higher rate available to charm 
+triggers during the early measurements period, and the desire to have as high 
+an efficiency as possible in the low \pT\ regions of the measurement.
+
+As this analysis uses the Turbo stream, the only selection in `online', in that 
+is performed on quantities computed in the trigger.
+Still, the values computed are available `offline', once the data has been made 
+available to analysts.
+The selection is then split in two: the `online' part, which is the selection 
+defined in the trigger and cannot be tuned once the data has been taken, and 
+the `offline' selection, which is any selection made after this.
+The use of the Turbo stream permits only one pass of the full event 
+reconstruction, that done `online' in the trigger.
+The following selection shall detail the online selection, and will be followed 
+by a description of the offline selection shall follow.
+
+\section{Online selection and reconstruction}
+\label{chap:prod:sel:online}
+
+The different stages of the trigger are described in 
+\cref{chap:intro:lhcb:detector:trigger}.
+At \lzero, bunch-bunch crossings are accepted randomly by the \nobias\ trigger, 
+so called because it should not bias any distributions of interest.
+The rate at which the \nobias\ trigger sets events is programmed into the 
+hardware controller manually, with the exact rate depending on the number of 
+colliding bunches at \lhcb.
+The rates were tuned throughout the early measurements period so as to keep the 
+detector `dead time' to a minimum.\footnotemark\
+The \lzero\ rate is given for each fill in 
+\cref{tab:prod:sel:online:l0_nobias_rateeff}.
+
 \footnotetext{%
-  Representative examples include selections of 
-  \decay{\PDzero}{\PKmp\Ppipm}~\cite{Aaij:2012nva}, 
-  \decay{\PDp}{\PKminus\PKplus\Ppiplus}~\cite{Aaij:2011cw}, and 
-  \DspTophipi~\cite{Aaij:2012cy} decays.
+  The detector dead time is the period during which triggers by the \lzero\ are 
+  `lost' due to the read-out buffer being full.
+  The buffer is able to hold 16 events, each of which takes 40 \ac{LHC} clock 
+  cycles, of \SI{25}{\nano\second} each, to be sent to the \hlt.
+  Dead time can then occur if several triggers occur too close to one 
+  another~\cite{Schmelling:1998qta}.
 }
+ve
+In \hltone, the following sequence is performed for events passing \lzero:
+\begin{enumerate}
+  \item The full offline charged particle (track) reconstruction is run for 
+    hits inside the \velo\ sub-detector;
+  \item The full offline \ac{PV} reconstruction is run, using as input only the 
+    \velo\ tracks reconstructed in the previous step; and
+  \item The reconstruction of `long' tracks, by first extrapolating \velo\ 
+    tracks into the \ttracker\ and then, if at least two matching hits are 
+    found in the \ttracker, extrapolating through the magnetic field.
+    To decrease the time taken to assess all combinatorial combinations of 
+    \velo+\ttracker\ tracks with hits in the \itracker\ and \otracker, only 
+    hits within a search window assuming a \pT\ of at least \SI{800}{\MeV} are 
+    considered.
+\end{enumerate}
+Requiring all child tracks from a charm hadron to have $\pT > \SI{800}{\MeV}$ 
+would be inefficient for low \pT\ charm, and so the full decay is not 
+reconstructed in \hltone.
+Instead, the presence of a single, good quality track is required, which is 
+consistent with having originated from a heavy flavour decay by having a large 
+\ipchisq.
+The full set of selection requirements is given in 
+\cref{tab:prod:sel:online:hlt1_selection}.
+
+\hlttwo\ performs the full, offline event reconstruction on events passing 
+\hltone.
+One \hlttwo\ selection, or `\hlttwo\ line', is defined per charm decay 
+topology, corresponding to: one line for \DzToKpi; one line for the charged 
+three-body decays, namely \DpToKpipi\ and \DspToKKpi; and one line for 
+\DstToDzpi.
+In the \PDzero, \PDplus, and \PDsplus lines, candidates are made by combining 
+long tracks whose particle hypotheses are consistent with the final state under 
+consideration.
+In the \PDstarp\ line, \PDzero\ candidates passing the \PDzero\ \hlttwo\ line 
+are combined with pion candidates, referred to here as `soft pions', 
+\Ppiplussoft, due to their soft momentum distribution.
+There are three stages to the particle combination: when cuts are applied to 
+the input tracks; when cuts applied to the four-vector sum of these tracks; and 
+when cuts are applied to the fitted vertex formed by tracks.
+For computing efficiency, the combination does not proceed past a failing step, 
+and combinations where the vertex fit fails to converge are discarded, although 
+the likelihood of a failing vertex fit is suppressed by making \ac{DOCA} 
+requirements beforehand.
+The \DzToKpi, \DTohhh, and \DstToDzpi\ requirements are given in 
+\cref{tab:prod:sel:online:hlt2_dztokpi_selection,tab:prod:sel:online:hlt2_dtohhh_selection,tab:prod:sel:online:hlt2_dsttodzpi_selection}.
+Distributions of the charm candidate invariant mass after the full trigger 
+selection are given in 
+\cref{fig:prod:sel:D0ToKpi:online,fig:prod:sel:DpToKpipi:online,fig:prod:sel:DsToKKpi:online,fig:prod:sel:DstToD0pi_D0ToKpi:online}.
+
+\begin{table}
+  \caption{%
+    List of fills used in analysis, along with the integrated luminosity 
+    \intlumi, the \lzero\ \nobias\ rate, and the corresponding effective 
+    \lzero\ efficiency (``eff.'') for each fill.
+  }
+  \label{tab:prod:sel:online:l0_nobias_rateeff}
+  \centering
+  \input{tables/production/selection/l0_nobias_eff}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Requirements made on the track that fires the \hltone\ trigger line.
+  }
+  \label{tab:prod:sel:online:hlt1_selection}
+  \centering
+  \input{tables/production/selection/hlt1_1track_selection}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Requirements made in the \hlttwo\ \DzToKpi\ selection.
+    The track \chisq\ criterion is applied in the reconstruction and listed 
+    here for completeness.
+  }
+  \label{tab:prod:sel:online:hlt2_dztokpi_selection}
+  \centering
+  \input{tables/production/selection/hlt2_dztokpi_selection}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Requirements made in the \hlttwo\ \DTohhh\ selection.
+    The \PDp and \PDsplus candidates are defined according to the three-body 
+    mass window after the vertex fit.
+    Cuts of the form $x > x_{1},\, x_{2},\, x_{3}$ require that all particles 
+    satisfy $x > x_{1}$, at least two satisfy $x > x_{2}$, and at least one 
+    satisfies $x > x_{3}$.
+    The track \chisq\ criterion is applied in the reconstruction and listed 
+    here for completeness.
+  }
+  \label{tab:prod:sel:online:hlt2_dtohhh_selection}
+  \centering
+  \input{tables/production/selection/hlt2_dtohhh_selection}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Requirements made in the \hlttwo\ \DstToDzpi\ selection.
+    The input \PDzero\ candidates are those passing the \PDzero selection 
+    defined in \cref{tab:prod:sel:online:hlt2_dztokpi_selection}.
+    The track \chisq\ criterion is applied in the reconstruction and listed 
+    here for completeness.
+  }
+  \label{tab:prod:sel:online:hlt2_dsttodzpi_selection}
+  \centering
+  \input{tables/production/selection/hlt2_dsttodzpi_selection}
+\end{table}
+
+\section{Offline selection}
+\label{chap:prod:sel:offline}
+
+To improve the purity of the samples, the pion \ac{PID} requirement is 
+tightened to $\dllkpi < 3$.
+Furthermore, kinematic requirements are made on all \PDzero, \PDplus, and 
+\PDsplus children such that they are within the fiducial region of phase space 
+available for \ac{PID} efficiency calibration, which will be described in 
+\cref{chap:prod:effs:pid}, specifically $3 < \ptot < \SI{100}{\GeV}$ and $2 < 
+\Eta < 5$.
+As the three-body distributions still contain a large fraction of combinatorial 
+background even after these additional cuts, the vertex fit \chisq\ and the 
+direction angle cuts are tightened to $\chisq < 6$ and $\ac{DIRA} < 
+\SI{14}{\milli\radian}$.
+
+To reduce the combinatorial further for the \DspToKKpi\ mode, a requirement is 
+made on the kaon pair as
+\begin{equation}
+  999.46 < m(\PKminus\PKplus) < \SI{1039.46}{\MeV}.
+  \label{eqn:prod:sel:phi_cut}
+\end{equation}
+This corresponds to a $\pm\SI{20}{\MeV}$ window around the nominal mass of the 
+$\phi(1020)$ meson~\cite{PDG2014}, which is referred to here as just `\Pphi'.
+Around half of all \DspToKKpi\ decays proceed via the 
+$\decay{\Pphi}{\PKminus\PKplus}$ channel~\cite{PDG2014}, and the narrow width 
+of the \Pphi resonance makes this cut good at reducing the fraction of 
+combinatorial background in the data, as well as reducing the fraction of $\Ppi 
+\to \PK$ mis-identifications.
+As the \DspToKKpi sample is then dominated by resonant \DspTophipi, the 
+\PDsplus sample will be referred as `\DspTophipi' from now on.
+The effective reduction of the total number of \PDsplus mesons produced due to 
+the \Pphi requirement is treated as part of the branching fraction contribution 
+in \cref{eqn:prod:introduction:differential_cross_section}, rather than as part 
+of the selection efficiency.
+This treatment will be discussed in more detail in \cref{chap:prod:results}.
+
+The charm candidate invariant mass distributions after the full offline 
+selection after given in 
+\cref{fig:prod:sel:D0ToKpi:offline,fig:prod:sel:DpToKpipi:offline,fig:prod:sel:DsToKKpi:offline,fig:prod:sel:DstToD0pi_D0ToKpi:offline}.
+The number of charm candidates before and after the offline requirements are 
+given in \cref{tab:prod:sel:candidates}.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/selection/D0ToKpi_mass}
+    \caption{Online selected}
+    \label{fig:prod:sel:D0ToKpi:online}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/selection/D0ToKpi_mass_offline_selection}
+    \caption{Offline selected}
+    \label{fig:prod:sel:D0ToKpi:offline}
+  \end{subfigure}
+  \caption{%
+    Mass distributions of \DzToKpi\ candidates after the online (trigger) 
+    selection (\cref{fig:prod:sel:D0ToKpi:online}) and after the offline 
+    selection (\cref{fig:prod:sel:D0ToKpi:offline}).
+  }
+  \label{fig:prod:sel:D0ToKpi}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/selection/DpToKpipi_mass}
+    \caption{Online selected}
+    \label{fig:prod:sel:DpToKpipi:online}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/selection/DpToKpipi_mass_offline_selection}
+    \caption{Offline selected}
+    \label{fig:prod:sel:DpToKpipi:offline}
+  \end{subfigure}
+  \caption{%
+    Mass distributions of \DpToKpipi\ candidates after the online (trigger) 
+    selection (\cref{fig:prod:sel:DpToKpipi:online}) and after the offline 
+    selection (\cref{fig:prod:sel:DpToKpipi:offline}).
+  }
+  \label{fig:prod:sel:DpToKpipi}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/selection/DsToKKpi_mass}
+    \caption{Online selected}
+    \label{fig:prod:sel:DsToKKpi:online}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/selection/DsToKKpi_mass_offline_selection}
+    \caption{Offline selected}
+    \label{fig:prod:sel:DsToKKpi:offline}
+  \end{subfigure}
+  \caption{%
+    Mass distributions of \DspToKKpi\ candidates after the online (trigger) 
+    selection (\cref{fig:prod:sel:DsToKKpi:online}) and after the offline 
+    selection (\cref{fig:prod:sel:DsToKKpi:offline}).
+    The offline selection includes the requirement that the kaon pair are 
+    within a $\pm\SI{20}{\MeV}$ window around the nominal $\phi(1020)$ mass.
+  }
+  \label{fig:prod:sel:DsToKKpi}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/selection/DstToD0pi_D0ToKpi_mass}
+    \caption{Online selected}
+    \label{fig:prod:sel:DstToD0pi_D0ToKpi:online}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/selection/DstToD0pi_D0ToKpi_mass_offline_selection}
+    \caption{Offline selected}
+    \label{fig:prod:sel:DstToD0pi_D0ToKpi:offline}
+  \end{subfigure}
+  \caption{%
+    Mass distributions of \DstToDzpi\ candidates after the online (trigger) 
+    selection (\cref{fig:prod:sel:DstToD0pi_D0ToKpi:online}) and after the 
+    offline selection (\cref{fig:prod:sel:DstToD0pi_D0ToKpi:offline}).
+  }
+  \label{fig:prod:sel:DstToD0pi_D0ToKpi}
+\end{figure}
+
+\begin{table}
+  \caption{%
+    Number of candidates before and after the offline selection for each charm 
+    candidate under study.
+    The uncertainties given on the counts assuming Poisson statistics, and the 
+    uncertainties given on the ratios assume binomial statistics.
+  }
+  \label{tab:prod:sel:candidates}
+  \centering
+  \input{tables/production/selection/candidates}
+\end{table}
