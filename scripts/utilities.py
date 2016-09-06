@@ -1,6 +1,8 @@
 from __future__ import absolute_import, print_function
 import math
 
+import numpy as np
+
 def round_to_significant(num, sig_figs):
     """Return (rounded_num, format_precision).
 
