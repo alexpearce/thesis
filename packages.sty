@@ -45,6 +45,11 @@
 \usepackage{subcaption}
 \usepackage{tikz-feynman}
 
+% Italicise text main body of figure and subfigure text,
+% and bolden the (sub)figure label, keeping it roman
+\captionsetup{textfont={normalsize,it},labelfont={bf,rm}}
+\captionsetup[sub]{textfont={small,it},labelfont={bf,rm}}
+
 % Draw arrows in the middle of lines
 \tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}}, postaction={decorate}}}
 
