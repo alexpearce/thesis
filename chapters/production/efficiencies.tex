@@ -49,6 +49,8 @@ will be discussed in the context of systematic uncertainties in
 
 To summarise: the total efficiency $\eff_{i}(\decay{\PHc}{f})$, for charm candidates in the $i$th \pTy\ bin, is 
 the product of the individual efficiencies and correction factors
+% TODO should revisit this to include how the sections actually flow; could 
+% have the L0 efficiency explicitly, for example
 \begin{align}
   \eff_{i}(\decay{\PHc}{f}) = \effacc &\times \effreco \times \efftracking \times \efftrig \nonumber\\
                                       &\times \effoffline \times \effpid.
@@ -360,8 +362,8 @@ where $R_{\nobias}$ is the rate at which the \lzero\ trigger was programmed to
 accept crossings; \ncollbunches\ is the number of bunches in the \ac{LHC} which 
 collided at the \lhcb\ \acl{LHCIP}; and \revfreq\ is the bunch revolution 
 frequency of \SI{11.246}{\kilo\hertz}.
-Both $R_{\nobias}$ and \ncollbunches\ varied as a function of the \ac{LHC} 
-fill, and hence so does $\eff_{\nobias}$.
+Both $R_{\nobias}$ and \ncollbunches\ can vary as a function of the \ac{LHC} 
+fill, and hence so can $\eff_{\nobias}$.
 The corresponding values are tabulated in 
 \cref{tab:prod:sel:online:l0_nobias_rateeff}.
 
@@ -379,17 +381,21 @@ decays, giving
 \end{equation}
 Selection efficiencies for \DzToKpi\ and \DpToKpipi\ are given in \cref{}.
 
-% TODO I don't think we have 'selection efficiency tables' :(
-% what the ANA has is a combined selection efficiency, made in order to make
-% computing the correlations simpler
-
 \section{Particle identification}
 \label{chap:prod:effs:pid}
+
+\section{Combination of efficiencies}
+\label{chap:prod:effs:tot}
+
+% TODO describe how we actually compute the reco+sel eff as one step, and how
+% uncertainties are treated (i.e. not using the standard binomial approach)
+% TODO normalise tables. D+ tables use [0, 1000[, D0 use [0, 1000]
 
 % These tables are big and ugly, so stick them all at the end of the Chapter
 \begin{table}
   \caption{%
-    Acceptance efficiencies \effacc\ for \DzToKpi\ measured in \PDzero in \pTy\ bins.
+    Acceptance efficiencies \effacc\ for \DzToKpi\ measured in \PDzero \pTy\ 
+    bins.
   }
   \label{tab:prod:effs:acc:dztokpi}
   \centering
@@ -398,7 +404,8 @@ Selection efficiencies for \DzToKpi\ and \DpToKpipi\ are given in \cref{}.
 
 \begin{table}
   \caption{%
-    Acceptance efficiencies \effacc\ for \DpToKpipi\ measured in \PDplus in \pTy\ bins.
+    Acceptance efficiencies \effacc\ for \DpToKpipi\ measured in \PDplus \pTy\ 
+    bins.
   }
   \label{tab:prod:effs:acc:dptokpipi}
   \centering
@@ -407,7 +414,8 @@ Selection efficiencies for \DzToKpi\ and \DpToKpipi\ are given in \cref{}.
 
 \begin{table}
   \caption{%
-    Reconstruction efficiencies \effreco\ for \DzToKpi\ measured in \PDzero in \pTy\ bins.
+    Reconstruction efficiencies \effreco\ for \DzToKpi\ measured in \PDzero 
+    \pTy\ bins.
   }
   \label{tab:prod:effs:reco:dztokpi}
   \centering
@@ -416,7 +424,8 @@ Selection efficiencies for \DzToKpi\ and \DpToKpipi\ are given in \cref{}.
 
 \begin{table}
   \caption{%
-    Reconstruction efficiencies \effreco\ for \DpToKpipi\ measured in \PDplus in \pTy\ bins.
+    Reconstruction efficiencies \effreco\ for \DpToKpipi\ measured in \PDplus 
+    \pTy\ bins.
   }
   \label{tab:prod:effs:reco:dptokpipi}
   \centering
@@ -451,4 +460,24 @@ Selection efficiencies for \DzToKpi\ and \DpToKpipi\ are given in \cref{}.
   \label{tab:prod:effs:tracking:dptokpipi}
   \centering
   \input{tables/production/efficiencies/DpToKpipi_tracking.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Selection efficiencies \effselection\ for \DzToKpi, excluding \ac{PID} 
+    requirements, measured in \PDzero \pTy\ bins.
+  }
+  \label{tab:prod:effs:sel:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_selection.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Selection efficiencies \effselection\ for \DpToKpipi, excluding \ac{PID} 
+    requirements, measured in \PDplus \pTy\ bins.
+  }
+  \label{tab:prod:effs:sel:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_selection.tex}
 \end{table}
