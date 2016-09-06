@@ -123,7 +123,7 @@ The reconstruction efficiency can be defined as the ratio of fully reconstructed
 The reconstruction efficiencies for \DzToKpi\ and \DpToKpipi, in \pTy\ bins, are 
 given in \cref{tab:prod:effs:reco:dztokpi,tab:prod:effs:reco:dptokpipi}.
 
-\subsection{Truth matching failure}
+\subsection{Truth matching inefficiency}
 \label{chap:prod:effs:truth}
 
 The evaluation of \cref{eqn:prod:effs:reco} requires that the reconstructed objects, tracks and vertices, be correctly associated back to the `truth-level' information, that is the \ac{MC} objects which were generated and then propagated through the detector simulation.
@@ -135,20 +135,253 @@ A signal vertex is one in which all inputs are associated to \ac{MC} particles, 
 Any deviation from these requirements results in the vertex being assigned a particular \emph{background category}, dependent on the nature of the deviations~\cite{Gligorov:1035682}.
 For example, if at least one track is a ghost, the vertex is classified as a ghost, and if at least one track is associated to an \ac{MC} particle with a different \ac{PID}, the vertex is classified as a misidentification.
 
-Ideally, the background category information could be used to filter the \ac{MC} so that it contained a pure sample of signal that could simply be counted to obtain the input to some efficiency computation, such as \cref{eqn:prod:effs:reco}.
-However, the requirement that a track is matched to \SI{70}{\percent} of the hits created by an \ac{MC} particle is neither \SI{100}{\percent} efficient at accepting signal, nor \SI{100}{\percent} efficient at rejecting background.
-There will then be a fraction of signal decays which were reconstructed but failed the signal vertex requirement, and there will be ghost tracks that are marked as signal.
-This creates two options for computation the number of true signal decays passing some requirement: perform a \emph{fit} to some discriminatory distribution in the whole \ac{MC} dataset to get the number of signal candidates; or count the number passing the signal vertex requirement, and somehow compute a correction factor to account for the inefficiency of that requirement.
-This analysis takes the latter approach.
+Ideally, the background category information could be used to filter the \ac{MC} such that the number of remaining candidates could be counted to obtain the input to some efficiency computation, such as \cref{eqn:prod:effs:reco}.
+However, the requirement that a track is matched to \SI{70}{\percent} of the hits created by an \ac{MC} particle is not \SI{100}{\percent} efficient at accepting signal.
+This results in an underestimation of the number of signal particles, and hence an overestimation of the cross-section.
+The magnitude of the size of the inefficiency can be determined by counting the 
+number of signal yields that fail the truth matching requirement.
+\cref{fig:prod:effs:truth:categories} shows the \PDzero and \PDplus mass 
+distributions for the various background categories.
+The only signal-like background category is the `ghost' category,
+where the vertex was made from at least one track that was determined to be a ghost track.
 
-% TODO explain how the truth matching correction can be applied, then say how
-% it is computed.
+Given that the number of correctly matched signal decays is $N$, and the number 
+of incorrectly labelled signal decays is $U$, the selection efficiency defined 
+in \cref{eqn:prod:effs:reco} is incorrect by a factor
+\begin{equation}
+  \efftruth = \frac{U+N}{N}.
+  \label{eqn:prod:effs:truth}
+\end{equation}
+The number of decays passing the signal requirement is used for $N$, and $U$ 
+can be measured with a maximum likelihood fit to mass distribution of the 
+decays not passing that requirement.
+As shown in \cref{fig:prod:effs:truth:categories}, the fraction of incorrectly 
+identified signal decays is small, and so a single fit is performed with the 
+data integrated across all \pTy\ bins.
+The details of the fit are identical to those for the mass fits used in the 
+prompt charm yield extraction with real data, described in 
+\cref{chap:prod:fitting}.
+The result of the fits to the \DzToKpi\ and the \DpToKpipi\ simulated datasets 
+are shown in \cref{fig:prod:effs:truth:fit}.
+Table~\ref{tab:prod:effs:truth_matching} lists the obtained efficiencies.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/efficiencies/D0ToKpi_BKGCAT}
+    \caption{\DzToKpi}
+    \label{fig:prod:effs:truth:categories:D0ToKpi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/efficiencies/DpToKpipi_BKGCAT}
+    \caption{\DpToKpipi}
+    \label{fig:prod:effs:truth:categories:DpToKpipi}
+  \end{subfigure}
+  \caption{%
+    Mass distributions of \ac{MC} 
+    \PDzero~(\subref*{fig:prod:effs:truth:categories:D0ToKpi}) and 
+    \PDplus~(\subref*{fig:prod:effs:truth:categories:DpToKpipi}) candidates for 
+    various background categories, as indicated in the legends.
+    The most prominent features are the signal-like peak in the `ghost' 
+    distribution, indicative of a truth-matching inefficiency, and the long 
+    tail extending below the mass peak in the `other' distribution, which 
+    mostly consists of partially reconstructed physics backgrounds such as 
+    \decay{\PDzero}{\PKminus\Ppiplus\Ppizero} and 
+    \decay{\PDplus}{\PKminus\Ppiplus\Ppiplus\Ppizero}.
+  }
+  \label{fig:prod:effs:truth:categories}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/efficiencies/D0ToKpi_BKGCAT_fit}
+    \caption{\DzToKpi}
+    \label{fig:prod:effs:truth:fit:D0ToKpi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/efficiencies/DpToKpipi_BKGCAT_fit}
+    \caption{\DpToKpipi}
+    \label{fig:prod:effs:truth:fit:DpToKpipi}
+  \end{subfigure}
+  \caption{%
+    Mass distributions of \ac{MC} 
+    \PDzero~(\subref*{fig:prod:effs:truth:fit:D0ToKpi}) and 
+    \PDplus~(\subref*{fig:prod:effs:truth:fit:DpToKpipi}) candidates not 
+    passing the `signal' truth-matching requirement, that is the sum of the 
+    ``Ghost'' and ``Other'' categories shown in 
+    \cref{fig:prod:effs:truth:categories}.
+    Overlaid on each distribution is the result of a maximum likelihood fit, 
+    with the total \acl{PDF} shown as a blue curve, and the background 
+    \acl{PDF} as a red curve.
+  }
+  \label{fig:prod:effs:truth:fit}
+\end{figure}
 
 \subsection{Tracking efficiency correction}
 \label{chap:prod:effs:tracking}
 
+The track reconstruction efficiency, or \emph{tracking efficiency}, 
+measurements the efficiency for a charged particle to be reconstructed as a 
+track, and is part of the definition of the reconstruction efficiency in 
+\cref{eqn:prod:effs:reco}.
+The \ac{MC} may not accurately model the tracking efficiency, and so a 
+data-driven technique is used to create correction factors based on the 
+observed differences between the data and the \ac{MC}.
+
+Only \emph{long} tracks are used in this analysis, which requires the particles 
+to creates hits in the \velo\ and in the T stations.
+Hits in the \ttracker\ are not required to form long tracks, though the 
+information can be used to improve the momentum resolution.
+To probe the efficiency of long track creation, \JpsiTomumu\ decays are 
+reconstructed using a `tag-and-probe' technique, where one particle is fully 
+reconstructed as a long track, as usual, and the other track is created using 
+track segments made only using information from the muon stations.
+The momentum of the latter track, the `probe', can be inferred by treating the 
+magnetic field as an optical system that imparts a momentum `kick' in the $x$ 
+direction.
+By assuming the muon track segment was made by a particle originating from the 
+\ac{PV}, the probe segment can be extrapolated back from the muon stations to 
+the $yz$ plane where the kick is modelled, and then the difference in slopes 
+between the \ac{PV}-plane line and the probe track gives the probe momentum.
+The invariant mass of the dimuon system can then be computed, the distribution 
+of which for many tag-and-probe candidates can be used to distinguish between 
+backgrounds and true \PJpsi decays.
+The momentum resolution of \JpsiTomumu\ decays reconstructed using long+muon 
+tracks is about \SI{200}{\MeV}, to be compared with a resolution of about 
+\SI{16}{\MeV} using long+long tracks.
+To improve the mass resolution, the muon tracks are combined with hits in the 
+\ttracker, improving the resolution to around 
+\SI{57}{\MeV}~\cite{Aaij:2014pwa,DeCian:2013zua}.
+
+The tracking efficiency is evaluated as the ratio of \PJpsi mesons 
+reconstructed using the long+muon+\ttracker\ method, with those that can also 
+be reconstructed using the long+long method
+\begin{equation}
+  \eff_{\text{Tracking}} = 
+  \frac{%
+    N_{\text{long+long|long+muon+TT}}
+  }{%
+    N_{\text{long+muon+TT}}
+  }.
+  \label{eqn:prod:effs:tracking_eff}
+\end{equation}
+A long track an event is considered as `matched' to the probe track if there is 
+a \SI{70}{\percent} overlap of their hits in the muon stations.
+This tag-and-probe method is performed using real data and \ac{MC}, and a ratio 
+is formed
+\begin{equation}
+  \efftracking = \frac{%
+    \eff_{\text{Tracking}}^{\text{Data}}
+  }{%
+    \eff_{\text{Tracking}}^{\text{MC}}
+  }.
+  \label{eqn:prod:effs:tracking_ratio}
+\end{equation}
+This ratio is evaluated in bins of probe track momentum \ptot\ and 
+pseudorapidity \Eta, as the tracking efficiency is found to vary strongly as a 
+function of these variables, and is shown in 
+\cref{fig:prod:effs:tracking_table}.
+As it is also found to vary as a function of the total number of reconstructed 
+long tracks in the event, the input tracks in the \ac{MC} are weighted such 
+that event multiplicity distribution matches that in the data.
+
+The correction factor in \cref{eqn:prod:effs:tracking_ratio} can be applied to 
+the tracking efficiency found using any decay, as it is only a function of 
+\ptot\ and \Eta.
+It is then applied to the reconstruction efficiency in 
+\cref{eqn:prod:effs:reco}, where for a single decay the total correction factor 
+is the product of the correction factors for all the tracks comprising the 
+final states.
+Tracking efficiency correction factors for \DzToKpi\ and \DpToKpipi\ are given 
+in \cref{tab:prod:effs:tracking:dztokpi,tab:prod:effs:tracking:dptokpipi}.
+
+The correction factors given do not account for the differences between muon 
+and hadron interactions with the detector.
+These differences will result in different tracking efficiencies, which may not 
+be the same between data and \ac{MC}.
+The effect of these differences will be discussed in the context of systematic 
+uncertainties in \cref{chap:prod:systs}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/production/efficiencies/tracking_correction_table}
+  \caption{%
+    Tracking efficiency correction factors \efftracking\ in bins of track 
+    momentum and pseudorapidity.
+    The value is labelled in each bin, along with the statistical uncertainty 
+    on those values due to the finite size of the calibration datasets.
+    Bins in which a measurement could not be made are empty.
+  }
+  \label{fig:prod:effs:tracking_table}
+\end{figure}
+
+Combining the truth-matching efficiency and tracking efficiency correction 
+factors, the reconstruction efficiency is redefined from 
+\cref{eqn:prod:effs:reco} to be
+\begin{equation}
+  \effreco = \efftruth\times\efftracking\times\frac{%
+    N_{\text{Reconstructed}|\text{Accepted}}
+  }
+  {%
+    N_{\text{\text{Accepted}}}
+  }.
+  \label{eqn:prod:effs:reco_corrected}
+\end{equation}
+
 \section{Selection}
 \label{chap:prod:effs:sel}
+
+At this stage, the efficiency chain includes the effects of the detector 
+acceptance, of the reconstruction, of the truth-matching used to evaluate the 
+reconstruction efficiency, and of the data-\ac{MC} differences in the tracking 
+efficiency.
+What it left is the selection efficiencies due to the online and offline 
+selections, as described in \cref{chap:prod:sel}.
+For simplicity, the `online' and `offline' selection are treated as a single 
+requirement, with the caveat any \ac{PID} requirements are not included.
+The \ac{PID} efficiency can be computed using data-driven methods, and will be 
+described in \cref{chap:prod:effs:pid}.
+
+The \lzero\ trigger selects bunch-bunch crossings randomly at a predetermined 
+rate, and so the \lzero\ efficiency is just the ratio of accepted crossings to 
+the total number, or equivalently
+\begin{equation}
+  \eff_{\lzero} = \frac{%
+    R_{\nobias}
+  }{%
+    \ncollbunches\revfreq
+  },
+  \label{eqn:prod:effs:sel:l0}
+\end{equation}
+where $R_{\nobias}$ is the rate at which the \lzero\ trigger was programmed to 
+accept crossings; \ncollbunches\ is the number of bunches in the \ac{LHC} which 
+collided at the \lhcb\ \acl{LHCIP}; and \revfreq\ is the bunch revolution 
+frequency of \SI{11.246}{\kilo\hertz}.
+Both $R_{\nobias}$ and \ncollbunches\ varied as a function of the \ac{LHC} 
+fill, and hence so does $\eff_{\nobias}$.
+The corresponding values are tabulated in 
+\cref{tab:prod:sel:online:l0_nobias_rateeff}.
+
+The remaining \hltone, \hlttwo, and offline selection efficiency is computed as 
+the ratio of the number of truth-matched decays passing the full selection (but 
+without \ac{PID} requirements) to the number of truth-matched, reconstructed 
+decays, giving
+\begin{equation}
+  \effselection = \eff_{\lzero}\frac{%
+    N_{\text{Selected}|\text{Reconstructed}}
+  }{%
+    N_{\text{Reconstructed}}
+  }.
+  \label{eqn:prod:effs:sel:l0}
+\end{equation}
+Selection efficiencies for \DzToKpi\ and \DpToKpipi\ are given in \cref{}.
+
+% TODO I don't think we have 'selection efficiency tables' :(
+% what the ANA has is a combined selection efficiency, made in order to make
+% computing the correlations simpler
 
 \section{Particle identification}
 \label{chap:prod:effs:pid}
@@ -188,4 +421,34 @@ This analysis takes the latter approach.
   \label{tab:prod:effs:reco:dptokpipi}
   \centering
   \input{tables/production/efficiencies/DpToKpipi_reconstruction.tex}
+\end{table}
+
+\begin{table}
+  \centering
+  \caption{%
+    Efficiency $1/\efftruth$ of
+    the truth matching requirement applied to the simulated data.
+  }
+  \label{tab:prod:effs:truth_matching}
+  \input{tables/production/efficiencies/truth_matching.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Tracking efficiency correction factors \efftracking\ for \DzToKpi\ measured 
+    in \PDzero in \pTy\ bins.
+  }
+  \label{tab:prod:effs:tracking:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_tracking.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Tracking efficiency correction factors \efftracking\ for \DpToKpipi\ 
+    measured in \PDplus in \pTy\ bins.
+  }
+  \label{tab:prod:effs:tracking:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_tracking.tex}
 \end{table}
