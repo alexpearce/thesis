@@ -372,17 +372,172 @@ the ratio of the number of truth-matched decays passing the full selection (but
 without \ac{PID} requirements) to the number of truth-matched, reconstructed 
 decays, giving
 \begin{equation}
-  \effselection = \eff_{\lzero}\frac{%
+  \effselection = \frac{%
     N_{\text{Selected}|\text{Reconstructed}}
   }{%
     N_{\text{Reconstructed}}
   }.
   \label{eqn:prod:effs:sel:l0}
 \end{equation}
-Selection efficiencies for \DzToKpi\ and \DpToKpipi\ are given in \cref{}.
+Selection efficiencies for \DzToKpi\ and \DpToKpipi\ are given in 
+\cref{tab:prod:effs:sel:dztokpi,tab:prod:effs:sel:dptokpipi}.
 
 \section{Particle identification}
 \label{chap:prod:effs:pid}
+
+The efficiency of a requirement on one of the variables that is discriminatory 
+between charged particle species is the \ac{PID} efficiency \effpid.
+The variables are those in the \acf{DLL} family, of which this analysis uses 
+the \dllkpi\ variable to define all kaon and pion tracks, with the exception of 
+the soft pion in the \DstToDzpi decay.
+This \namecref{chap:prod:effs:pid} shall describe how the \effpid\ is computed.
+
+It is assumed that the efficiency of a \ac{PID} cut for a given particle type 
+can be parameterised as a function of three variables: the track momentum 
+\ptot, the track pseudorapidity \Eta, and a measure of the detector occupancy.
+These particular variables are chosen as the performance of the \rich\ 
+detectors is known to depend them~\cite{Adinolfi:2012qfa}.
+As a measure of the detector occupancy, the number \nspd\ of hits in the \spd\ 
+detector is used.
+If a model can be constructed of the efficiency for a particular \ac{PID} 
+requirement as a function of \ptot, \Eta, and \nspd, this model can then be 
+used to determine the \ac{PID} efficiency of that requirement for any sample.
+
+A clean sample of \DzToKpi\ decays can be obtained without the use of \ac{PID} 
+information.
+This sample will be referred to here as the \emph{calibration} sample, and a 
+has a small overlap, around \SI{20}{\percent}, with the sample used for the 
+cross-section measurement, due to the different selection strategy that is 
+required when \ac{PID} information is ignored.
+To compute the efficiency of a given \ac{PID} requirement on either a kaon or a 
+pion track, kaons or pions from the calibration sample are partitioned in 
+\ptot, \Eta, and \nspd as a three-dimensional histogram.
+The number of signal tracks $C_{i}$ in the $i$th bin is computed, and then the 
+number of signal decays after the \ac{PID} requirement $C_{i}'$ is computed, 
+such that the efficiency in the $i$th bin is
+\begin{equation}
+  \eff_{i} = \frac{C_{i}'}{C_{i}}.
+\end{equation}
+It is assumed that the $(\ptot,\,\Eta,\,\nspd)$ partitions are sufficiently 
+small that the \ac{PID} efficiency within a bin is single-valued.
+
+One method to obtain the track counts $C_{i}$ and $C_{i}'$ is to perform a 
+likelihood fits to the $\PKminus\Ppiplus$ invariant mass distribution, before 
+and after the \ac{PID} requirement, where the signal \PDzero decays can be 
+modelled as a peaking structure and the combinatorial background can be 
+modelled as linear or exponential.
+This can take a substantial amount of time, however, as many fits must be 
+performed and checked.
+Instead, a single fit is run on the entire calibration sample, and weights are 
+computed that can be used to statistically remove the background contribution 
+in variable distributions that are uncorrelated with the invariant 
+mass.\footnotemark
+As \ptot, \Eta, and \nspd\ are found to be uncorrelated with 
+$m(\PKminus\Ppiplus)$, these weights can be used to compute $C_{i}$ by summing 
+the weights of the tracks that fall in the $i$th bin.
+They can also be used to compute $C_{i}'$ in the same way, as the \dll\ 
+variables are also found to be uncorrelated with $m(\PKminus\Ppiplus)$, and a 
+cut on a variable is the same as partitioning data into bins.
+Once the efficiency in each $(\ptot,\,\Eta,\,\nspd)$ bin is computed, the 
+\ac{PID}\ efficiency for the same cut can be computed for a track from 
+\emph{any} source by looking up which bin it falls into, and assigning the 
+corresponding efficiency to it.
+
+\footnotetext{%
+  These weights are called \emph{sWeights}~\cite{Pivk:2004ty}.
+  % TODO should reference a specific chapter where sWeights are described
+  A more complete description of their computation, properties, and use cases 
+  will be given in \cref{chap:cpv}.
+}
+
+For the calibration sample, the average efficiency across the parameterisation 
+space can be expressed as
+\begin{equation}
+  \effpid = \frac{%
+    \displaystyle\sum_{i \in \textnormal{bins}} C_{i}\eff_{i}
+    }{%
+    \displaystyle\sum_{i \in \textnormal{bins}} C_{i}
+    }
+\end{equation}
+For some other sample of tracks, referred to here as the \emph{reference} 
+sample,\footnotemark\ each bin can be assigned a weight $\omega_{i}$ based on 
+the fraction of the total sample size in the $i$th bin relative to that for the 
+calibration sample
+\begin{equation}
+  \omega_{i} = \frac{%
+    R_{i}
+  }{%
+    C_{i}
+  }\frac{%
+    C
+  }{%
+    R
+  },
+  \label{eqn:prod:effs:pid:ref_weight}
+\end{equation}
+where $C_{i}$ ($R_{i}$) is the number of signal calibration (reference) tracks 
+in the $i$th bins, as before, and $C$ ($R$) is the total number of signal 
+calibration (reference) tracks in the sample.
+The average \ac{PID} efficiency for the weighted reference sample is then
+\begin{equation}
+  \effpid = \frac{%
+    \displaystyle\sum_{i \in \textnormal{bins}} \omega_{i}C_{i}\eff_{i}
+  }{%
+    \displaystyle\sum_{i \in \textnormal{bins}} \omega_{i}C_{i}
+  }.
+  \label{eqn:prod:effs:pid:single_track_ref_eff}
+\end{equation}
+
+\footnotetext{%
+  It is the ``reference'' sample because it does not have to be equal to the 
+  sample of tracks in data one wishes to know the efficiencies for.
+  It can be a sample of simulated data that describes the kinematics of the 
+  decay well, or even a different decay mode with similar properties (often 
+  called a control channel or a reference channel).
+}
+
+For this cross-section analysis, all the final states have multiple charged 
+tracks, of different species, upon which \ac{PID} requirements are made.
+\Cref{eqn:prod:effs:pid:single_track_ref_eff} gives the average \ac{PID} 
+efficiency for a final state where a \ac{PID} requirement is made only on one 
+track, and so the formalism must be extended to the multi-track case.
+The average efficiency is first modified by substituting 
+\cref{eqn:prod:effs:pid:ref_weight} into 
+\cref{eqn:prod:effs:pid:single_track_ref_eff}
+\begin{equation}
+  \effpid = \frac{%
+    \displaystyle\sum_{i \in \textnormal{bins}} R_{i}\eff_{i}
+  }{%
+    \displaystyle\sum_{i \in \textnormal{bins}} R_{i}
+  }
+  = \frac{1}{R}\sum_{i \in \textnormal{bins}} R_{i}\eff_{i},
+\end{equation}
+and then expanded in terms of $a_{ij}$, the \emph{weight} of the $j$th 
+reference \emph{event} (one set of final state tracks) in the $i$th 
+$(\ptot,\,\Eta,\,\nspd)$ bin
+\begin{equation}
+  \effpid = \frac{1}{R}
+            \sum_{i \in \textnormal{bins}}\sum_{j} a_{ij}\eff_{i}.
+  \label{eqn:prod:effs:pid:expanded_ref_eff}
+\end{equation}
+The weight term accounts for the possibility of an impure reference sample, 
+where, for example, it can be the same type of weight as used for the creating 
+the efficiency histogram from the calibration sample.
+The \ac{PID} efficiency calculation can then be thought of as either of two 
+equivalent methods: weighting the calibration to look like the reference 
+sample, as in \cref{eqn:prod:effs:pid:single_track_ref_eff}, or assigning 
+per-event efficiencies to the reference sample based on 
+$(\ptot,\,\Eta,\,\nspd)$ bins they fall into, as in 
+\cref{eqn:prod:effs:pid:expanded_ref_eff}.
+\Cref{eqn:prod:effs:pid:expanded_ref_eff} can be generalised to multi-track 
+efficiencies by having the $i$th bin index run over the bins for all particle 
+types in the event.
+The per-event efficiency $\eff_{e}$ for a multi-track event is the product of 
+the individual track efficiencies $\eff_{t}$
+\begin{equation}
+  \eff_{e} = \prod_{t \in \textnormal{tracks}} \eff_{t}.
+\end{equation}
+
 
 \section{Combination of efficiencies}
 \label{chap:prod:effs:tot}
