@@ -1,21 +1,581 @@
-\chapter{Fitting}
+\chapter{Yield extraction}
 \label{chap:prod:fitting}
 
-Charm mesons produced directly from the proton-proton interaction are referred 
-to here as \emph{prompt}, whereas those produced in the decays of \PB hadrons 
-are referred to as \emph{secondary}.
-Secondary charm is treated as a background, and its contribution to the dataset 
-used for the measurement must be accounted for.
-Prompt charm hadrons can be produced either directly in the state that is 
-reconstructed, such as \PDzero, or from feed-down of excited charm states.
-No attempt is made to distinguish between these two categories of prompt charm.
-For each mode, the sum of the prompt and secondary charm meson yield in each 
-\pTy\ bin is measured using an extended maximum likelihood fit to the charm 
-hadron mass spectrum.
-These fits are performed simultaneously in all \pTy\ bins to allow model 
-parameters to be shared across the bins, where appropriate.
-The contribution of prompt and secondary charm is then disentangled in a 
-separate fit to the distribution of the natural logarithm of the impact 
-% TODO: maybe we'll have an 'analysis commonalities' section where this will
-% live
-parameter \chisq, \lnipchisq, as described in \cref{chap:intro:lhcb}.
+Signal charm mesons can be distinguished from combinatorial background in the 
+invariant mass distribution of the vertex, as shown in 
+\cref{fig:prod:sel:D0ToKpi:offline}, for example.
+However, the generating \acf{PDF} in this distribution is the same for both 
+prompt and secondary charm, and so another distribution must be used to 
+distinguish between these two sources of charm signal decays.
+
+This analysis uses the natural logarithm of the \chisq\ of the \acf{IP}, 
+\lnipchisq, to obtain the prompt charm yields.
+The momentum vector of prompt charm should point back to the \acf{PV}, and so 
+the \lnipchisq\ distribution is expected be centred around zero.
+For secondary charm, the momentum vector will in general not point back to the 
+\ac{PV}, and so the \lnipchisq\ distribution is expected to peak at higher 
+values.
+This separation is exploited to distinguish between prompt and secondary charm.
+
+Unlike in the mass spectra, where combinatorial background usually appears as a 
+linear or exponential component, the combinatorial background shape in the 
+\lnipchisq\ distribution is not expected to be simple to model.
+However, it can be assumed that the combinatorial background model does not 
+depend on the invariant mass, so that non-parametric template shapes in 
+\lnipchisq\ can be taken from regions in the invariant mass spectrum that are 
+devoid of contributions from the signal.
+For the \PDstarp\ meson, the difference \deltam\ in the reconstructed \PDstarp\ 
+and \PDzero invariant masses is used in place of the reconstructed \PDstarp\ 
+invariant mass
+\begin{equation}
+  \deltam = m(\PKminus\Ppiplus\Ppiplussoft) - m(\PKminus\Ppiplus).
+\end{equation}
+This has a nominal value of \SI{145.4}{\MeV}~\cite{PDG2014}, where the narrower 
+signal peak allows for a better signal-to-background ratio.
+The signal and background regions in the mass and \deltam\ distributions are 
+referred to here as the \emph{mass sidebands}, and are shown in 
+\cref{fig:prod:fitting:regions:D0ToKpi,fig:prod:fitting:regions:DpToKpipi,fig:prod:fitting:regions:DsToKKpi,fig:prod:fitting:regions:DstToD0pi_D0ToKpi}.
+Because these regions do not contribute any prompt signal to the \lnipchisq\ 
+distribution, the \lnipchisq\ distribution is only taken from the \emph{mass 
+  signal region}, also shown in 
+\cref{fig:prod:fitting:regions:D0ToKpi,fig:prod:fitting:regions:DpToKpipi,fig:prod:fitting:regions:DsToKKpi,fig:prod:fitting:regions:DstToD0pi_D0ToKpi}.
+For the same reason, the \deltam\ distribution is only taken from signal region 
+of the \PDzero mass spectrum.
+
+\subsection{Maximum likelihood estimation}
+\label{chap:prod:fitting:mle}
+
+The technique used for the yield extraction is the method of maximum 
+likelihood, where an objective function is defined that assumes some particular 
+model truly generated the data, and the set of parameters $\vec{\theta}$ of 
+that model are varied given a set $\vec{x}$ of $N$ independent, randomly 
+distributed measurements $x_{i}$ until the objective is maximised.
+This objective is the likelihood \likelihood, and is defined as
+\begin{equation}
+  \likelihood(\vec{\theta}|\vec{x}) = \prod_{i}^{N} f(x_{i}|\vec{\theta}),
+\end{equation}
+where $f$ is the \ac{PDF} that the data are assumed to have been sampled from.
+Practically, it is useful to work with the logarithm of the likelihood, as sums 
+are more convenient to work with numerically than products, and to use the 
+negative of this, in order to be able to exploit the available numerical 
+algorithms for minimisation problems such as \minuit~\cite{James:1975dr}
+\begin{equation}
+  -\ln{\likelihood(\vec{\theta}|\vec{x})} =
+  -\sum_{i}^{N} \ln{f(x_{i}|\vec{\theta})}.
+\end{equation}
+This is the \acf{NLL}.
+
+For the purposes of this analysis, the total \ac{PDF} $f$ is the sum of several 
+models $f_{s}$, one for each physical source $s$ under consideration, such as 
+signal and combinatorial background or different \pTy\ bins
+\begin{equation}
+  -\ln{\likelihood(\vec{\theta}|\vec{x})} =
+  -\sum_{i}^{N} \sum_{s} f_{s}(x_{i}|\vec{\theta}).
+\end{equation}
+The notation here that each model $f_{s}$ receives the full parameter set 
+$\vec{\theta}$ implies that each $f_{s}$ may share parameters with other 
+components.
+After defining the full model, the likelihood is minimised numerically using 
+\minuit.
+Minimising the likelihood is equivalent to finding the parameter set 
+$\hat{\theta}$ where the first derivatives of the likelihood with respect to 
+each parameter is zero
+\begin{equation}
+  \vec{u}(\vec{\theta}) = \frac{%
+    \partial\ln{\likelihood}
+  }{%
+    \partial\vec{\theta}
+  },\quad
+  \vec{u}(\hat{\theta}) = 0.
+\end{equation}
+The uncertainties on the parameters can be found by inspecting the diagonal 
+terms of the covariance matrix, which can be computed numerically by inverting 
+the \emph{observed} Fisher information matrix $\vec{I}(\hat{\theta})$, defined 
+via
+\begin{equation}
+  \vec{I}(\vec{\theta}) = \frac{%
+    \partial^{2}\ln{\likelihood}
+  }{%
+    \partial\vec{\theta}\partial\vec{\theta}'
+  }.
+\end{equation}
+The second derivative around the likelihood can be thought of as describing the 
+`peakiness' of the minimum, where a shallower peak corresponds to less 
+certainty in the measurement of the parameter, and conversely a sharper peak 
+corresponds to a greater certainty in the value at the minimum.
+The computation of the set of second derivatives, and the proceeding matrix 
+inversion to obtain the covariance matrix, is performed numerically from the 
+minimised \ac{NLL} by the \hesse\ algorithm, part of \minuit.
+
+To estimate the yields in the data, suitable models must be constructed where 
+the yields are parameters.
+The following sections shall describe the construction of these models for the 
+various fits.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_mass_offline_selection_regions}
+  \caption{%
+    Definition of signal window, in blue, and sidebands, in red, for \DzToKpi\ 
+    candidates.
+    The signal window is $\pm\SI{20}{\MeV}$ either side of the nominal \PDzero 
+    mass of \SI{1864.84}{\MeV}~\cite{PDG2014}.
+    The upper and lower sidebands are each \SI{20}{\MeV} wide, with the lower 
+    sideband ending \SI{40}{\MeV} below the nominal \PDzero mass and the upper 
+    sideband beginning \SI{40}{\MeV} above the nominal \PDzero mass.
+    The full dataset is shown.
+  }
+  \label{fig:prod:fitting:regions:D0ToKpi}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_mass_offline_selection_regions}
+  \caption{%
+    Definition of signal window, in blue, and sidebands, in red, for 
+    \DpToKpipi\ candidates.
+    The signal window is $\pm\SI{20}{\MeV}$ either side of the nominal \PDplus 
+    mass of \SI{1869.61}{\MeV}~\cite{PDG2014}.
+    The upper and lower sidebands are each \SI{20}{\MeV} wide, with the lower 
+    sideband ending \SI{40}{\MeV} below the nominal \PDplus mass and the upper 
+    sideband beginning \SI{40}{\MeV} above the nominal \PDplus mass.
+    The full dataset is shown.
+  }
+  \label{fig:prod:fitting:regions:DpToKpipi}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_mass_offline_selection_regions}
+  \caption{%
+    Definition of signal window, in blue, and sidebands, in red, for 
+    \DspTophipi\ candidates.
+    The signal window is $\pm\SI{20}{\MeV}$ either side of the nominal \PDsplus 
+    mass of \SI{1968.30}{\MeV}~\cite{PDG2014}.
+    The upper and lower sidebands are each \SI{20}{\MeV} wide, with the lower 
+    sideband ending \SI{40}{\MeV} below the nominal \PDsplus mass and the upper 
+    sideband beginning \SI{40}{\MeV} above the nominal \PDsplus mass.
+    The full dataset is shown.
+  }
+  \label{fig:prod:fitting:regions:DsToKKpi}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_delta_mass_offline_selection_regions}
+  \caption{%
+    Definition of signal window, in blue, and sidebands, in red, for 
+    \DstToDzpi, with \DzToKpi, candidates.
+    The signal window is $\pm\SI{3}{\MeV}$ either side of the nominal $\deltam 
+    = m(\PDstarp) - m(\PDzero)$ mass of \SI{145.43}{\MeV}~\cite{PDG2014}.
+    The upper sideband is \SI{4.5}{\MeV} wide, beginning \SI{4.5}{\MeV} above 
+    the nominal \deltam\ value.
+    The full dataset within the \PDzero signal region, given in 
+    \cref{fig:prod:fitting:regions:D0ToKpi},is shown.
+  }
+  \label{fig:prod:fitting:regions:DstToD0pi_D0ToKpi}
+\end{figure}
+
+\section{Mass fits}
+\label{chap:prod:fitting:mass}
+
+For each one-dimensional mass and \deltam\ fit, one PDF is defined per 
+discriminatory species: signal and combinatorial background.
+In both the mass and \deltam\ distributions, the prompt and secondary signal 
+shapes are assumed to be identical, and for the \deltam\ fits the combinatorial 
+background is assumed to be indistinguishable from \emph{random soft pion} 
+backgrounds, where a true \PDzero is combined with a random track in the event.
+The total \ac{PDF} is constructed as the sum of the per-species \acp{PDF}, 
+weighted by the respective species' yields
+\begin{align}
+  f(m) &= \sum_{\textnormal{Species}} N_{\textnormal{Species}} \cdot
+          f_{\textnormal{Species}}(m),\\
+  f(\deltam) &= \sum_{\textnormal{Species}} N_{\textnormal{Species}} \cdot
+                f_{\textnormal{Species}}(\deltam).
+\end{align}
+
+For every mass fit, the background PDF $f_{\textnormal{Bkg.}}(m)$ is taken to 
+be a first-order polynomial, and the signal PDF $f_{\textnormal{Sig.}}(m)$ is 
+dependent on the charm hadron candidate, given in 
+Section~\ref{chap:prod:fitting:details}.
+
+The combinatorial and random soft pion background in the \deltam\ fits is 
+modelled as an empirical function of the form
+\begin{equation}
+  % (dm - dm0)^A * exp(B*dm)
+  R(x; \deltam_{0}, A, B) = e^{B\cdot \deltam} \cdot
+    {(x - \deltam_{0})}^A,
+\end{equation}
+where $\deltam_{0}$ is a threshold value fixed to the charged pion rest mass 
+$m_{\Ppipm} = \SI{139.57}{\MeV}$~\cite{PDG2014} and the parameter $B$ is fixed 
+to zero.
+The signal PDF is the sum of three normal distributions, sharing a common mean 
+but allowed to have varying widths.
+
+One mass or \deltam\ PDF, $f(m)$ or $f(\deltam)$, is constructed per \pTy\ bin, 
+and the likelihood is formed as the product of these such that each PDF is 
+fitted simultaneously when the \ac{NLL} is minimised.
+
+\section{\lnipchisq\ fit}
+\label{chap:prod:fitting:ipchisq}
+
+The prompt and secondary signal distributions are modelled by continuous, 
+parametric \acp{PDF}.
+Rather than attempting to parameterise the combinatorial background 
+distribution, a \acf{KDE} \ac{PDF}, or `template', is created from the 
+\lnipchisq\ distribution in the lower and upper sidebands of the reconstructed 
+charm hadron mass.
+In the case of the \PDstarp measurements, the upper sideband of the \deltam\ 
+distribution is used instead.
+This approach assumes that the \lnipchisq\ shape in the signal region is the 
+same as that in the sidebands, that is that the mass and \lnipchisq\ are 
+uncorrelated in the background sample.
+
+The signal region in each long-lived charm hadron mass distribution is defined 
+as a \SI{40}{\MeV}-wide window centred on the nominal rest mass of the given 
+charm hadron, taken to be $m_{\PDzero} = \SI{1864.84}{\MeV}$, $m_{\PDplus} = 
+\SI{1869.61}{MeV}$, and $m_{\PDsplus} = \SI{1968.30}{\MeV}$~\cite{PDG2014}.
+The lower sideband is a \SI{20}{\MeV}-wide window centred \SI{50}{\MeV} below 
+the centre of the signal window, and the upper sideband is a \SI{20}{\MeV}-wide 
+window centred \SI{50}{\MeV} above the centre of the signal window.
+For the \PDstarp\ measurements, the signal region is defined as a window 
+\SI{6}{\MeV} wide, centred on the nominal \deltam\ value of 
+\SI{145.43}{\MeV}~\cite{PDG2014}.
+The `upper sideband', or just `sideband' as a `lower sideband' region is not 
+defined, is defined as the region from \SI{4.5}{\MeV} to \SI{9}{\MeV} above the 
+centre of the signal region.
+\Cref{fig:prod:fitting:regions:D0ToKpi,fig:prod:fitting:regions:DpToKpipi,fig:prod:fitting:regions:DsToKKpi,fig:prod:fitting:regions:DstToD0pi_D0ToKpi}
+show the signal and sideband regions for each mode. A comparison between
+the \lnipchisq\ distributions in the two sidebands is shown in 
+Appendix~\ref{app:sidebands}.
+
+The integral of the \lnipchisq\ background template \ac{PDF} is constrained to 
+be near the number of background candidates in the signal region.
+This number is measured with the binned maximum likelihood fit to the charm 
+hadron mass distribution, or to the \deltam\ distribution in the \PDzero mass 
+signal region for the \PDstarp\ measurements, as described in 
+Section~\ref{chap:prod:fitting:mass}.
+To avoid any complications due to correlations between the background template 
+\ac{PDF} and the fitted data, only the data in signal region is used in the 
+\lnipchisq\ fit.
+For the \PDstarp\ measurements, this signal region requirement is made in both 
+the \PDzero mass and the \deltam\ distributions.
+
+For each one-dimensional \lnipchisq\ fit, we assign one \ac{PDF} per 
+discriminatory species: prompt signal, secondary signal, and combinatorial 
+background.
+The total \acp{PDF} are constructed as the sum of per-species \acp{PDF}, 
+weighted by the respective species' yields
+\begin{equation}
+  f(\lnipchisq) = \sum_{\text{Species}} N_{\text{Species}} \cdot
+                  f_{\text{Species}}(\lnipchisq).
+\end{equation}
+The constraint on the background yield is applied by multiplying 
+$f(\lnipchisq)$ by a normal distribution whose mean is the number of background 
+candidates $N$ measured by the mass fit and whose width is the uncertainty on 
+$N$ returned by the fitter.
+
+One \lnipchisq\ \ac{PDF}, $f(\lnipchisq)$, and background constraint is 
+constructed per \pTy\ bin, and the likelihood is formed as the product of these 
+such that each \ac{PDF} is fitted simultaneously when the negative 
+log-likelihood is minimised.
+The benefit of this construction is that some shape parameters can be shared 
+across bins, reducing the uncertainty on the fit parameters.
+Which parameters are shared across bins and which are fitted independently is 
+dependent on the final state, and are enumerated in 
+\cref{chap:prod:fitting:details}.
+
+The prompt signal model in the \lnipchisq\ distribution is a modified normal 
+distribution $H$, where the width is allowed to be asymmetric with respect to 
+the mean and the tails are described by exponential functions
+\begin{equation}
+  H(x; \mu, \sigma, \epsilon, \rho_{L}, \rho_{R}) =
+  \begin{cases}
+    \exp\left(\frac{\rho_{L}^{2}}{2} + \rho_{L}\frac{x - \mu}{(1 - 
+    \epsilon)\sigma}\right) & x < \mu - (\rho_{L}\sigma(1 - 
+        \epsilon)), \\
+    \exp\left(-\left(\frac{x - \mu}{\sqrt{2}\sigma(1 - 
+    \epsilon)}\right)^{2}\right) & \mu - (\rho_{L}\sigma(1 - \epsilon)) 
+          \leq x < \mu, \\
+    \exp\left(-\left(\frac{x - \mu}{\sqrt{2}\sigma(1 + 
+    \epsilon)}\right)^{2}\right) & \mu \leq x < \mu + (\rho_{R}\sigma(1 + 
+          \epsilon)), \\
+    \exp\left(\frac{\rho_{R}^{2}}{2} - \rho_{R}\frac{x - \mu}{(1 + 
+    \epsilon)\sigma}\right) & x \geq \mu + (\rho_{R}\sigma(1 + 
+        \epsilon)),
+  \end{cases}
+\end{equation}
+where the parameter $\mu$ is the mode of the distribution, $\sigma$ is the 
+average of the left and right widths, $\epsilon$ is the asymmetry between the 
+left and right widths, and $\rho_{L(R)}$ is the exponent for the left (right) 
+tail.
+The secondary signal distribution is modelled by a normal distribution $G$ with 
+mean $\mu$ and width $\sigma$
+\begin{equation}
+  G(x; \mu, \sigma) = e^{-\frac{{(x - \mu)}^{2}}{2\sigma^{2}}}.
+\end{equation}
+These shapes are motivated by the \lnipchisq\ distributions for prompt and 
+secondary signal decays observed in the \ac{MC} samples.
+
+Given the large number of parameters to be fitted, some shape parameters are 
+fixed to values obtained from `prefits' to samples of prompt and secondary 
+signal \ac{MC}.
+The set of parameters that are fixed is dependent on the charm meson, given in 
+\cref{chap:prod:fitting:details}.
+
+\section{Mode-specific details}
+\label{chap:prod:fitting:details}
+
+As different final states exhibit different features in the mass, \deltam, and 
+\lnipchisq\ distributions, several aspects of the fits are different between 
+modes.
+This sections gives the list of parameters that are split between \pTy\ bins, 
+and the list of parameters that are allowed to float after the fit to \ac{MC} 
+data, for each mode.
+
+Initially, no knowledge is assumed on which parameters should be independent 
+(to be `split') across the \pTy\ bins, nor of whether the \lnipchisq\ 
+distribution is well-modelled by the \ac{MC}, and so the chosen 
+parameterisation is that which best describes the data.
+For the mass fits, all parameters are initially fixed such that they are same 
+across all \pTy\ bins, and are then split one by one when it is observed that a 
+feature varies across the bins, such as the width of the signal peak.
+All parameters of the \lnipchisq\ fits are first kept fixed to values found 
+from the fits to the simulated data, and then individual parameters are floated 
+if the total PDF does not model the data well.
+Parameters are then split across \pTy\ bins in the same manner as in the mass 
+fits.
+
+\subsection{Fit details for \PDzero}
+\label{chap:prod:fitting:details:D0ToKpi}
+
+% TODO: define Crystal ball
+For the \DzToKpi\ mode, the signal shape in the mass fit is the sum of a normal 
+and a Crystal Ball distribution, sharing a common mean but allowed to have 
+different widths.
+The mean and width of the signal mass \ac{PDF} are split across \pTy\ bins, as 
+is the slope of the background mass \ac{PDF}.
+The mean of the \lnipchisq\ prompt signal \ac{PDF} and the width of the 
+secondary signal \ac{PDF} are also split across \pTy\ bins.
+The mean and width of the prompt signal \lnipchisq\ \ac{PDF} and all parameters 
+of the secondary signal \lnipchisq\ \ac{PDF} are floated in the fit, and all 
+other \lnipchisq\ shape parameters fixed to the values from \ac{MC}.
+
+Prefits to the prompt signal and secondary signal data samples in \lnipchisq\ 
+are given in \cref{fig:fitting:details:D0ToKpi-prefits}.
+
+\subsubsection*{Fit details for \PDplus}
+\label{chap:prod:fitting:details:D0ToKpi}
+
+For the \DpToKpipi\ mode, the signal shape in the mass fit is the sum of a 
+normal and a Crystal Ball distribution, sharing a common mean but allowed to 
+have different widths.
+The mean of the signal mass \ac{PDF} as well as the width of the Crystal Ball 
+component in the mass \ac{PDF} are split across \pTy\ bins, as is the slope of 
+the background mass \ac{PDF}.
+The mean of the \lnipchisq\ prompt signal and secondary signal distributions 
+are split across \pTy\ bins.
+The mean and tail parameters of the signal \lnipchisq\ \ac{PDF}, are floated 
+during the final fit, with all other shape parameters fixed to the values from 
+\ac{MC}.
+
+Prefits to the prompt signal and secondary signal data samples in \lnipchisq\ 
+are given in \cref{fig:fitting:details:DpToKpipi-prefits}.
+
+\subsubsection*{Fit details for \PDsplus}
+\label{chap:prod:fitting:details:DsToKKpi}
+
+For the \DspTophipi\ mode, the signal shape in the mass fit is the sum of a two 
+normal distributions, sharing a common mean but allowed to have different 
+widths.
+The mean and width of the signal mass \ac{PDF} and the slope of the background 
+mass \ac{PDF}, along with the mean of the \lnipchisq\ prompt signal \ac{PDF}, 
+are split across \pTy\ bins.
+The mean of the prompt signal \lnipchisq\ \ac{PDF} and all parameters of the 
+secondary \ac{PDF} are floated during the final fit, with all other shape 
+parameters fixed to the values from \ac{MC}.
+
+Prefits to the prompt signal and secondary signal data samples in \lnipchisq\ 
+are given in \cref{fig:fitting:details:DsTophipi-prefits}.
+
+\subsubsection*{Fit details for \PDstarp}
+\label{chap:prod:fitting:details:DstToD0pi}
+
+For the \PDstarp-tagged \DzToKpi\ mode, the width of the widest component of 
+the signal model, described in \cref{chap:prod:fitting:mass}, is split across 
+\pTy\ bins, along with the mean of the prompt signal \lnipchisq\ \ac{PDF}.
+The mean of the prompt signal \lnipchisq\ \ac{PDF} and all parameters of the 
+secondary \ac{PDF} are floated during the final fit, with all other shape 
+parameters fixed to the values from \ac{MC}.
+
+Prefits to the prompt signal and secondary signal data samples in \PDzero 
+\lnipchisq\ are given in \cref{fig:fitting:details:DstToD0pi_D0ToKpi-prefits}.
+
+\subsection{Fit results}
+\label{chap:prod:fitting:results}
+
+For each fit, the covariance matrix is checked to be positive definite, and the 
+goodness-of-fit within each \pTy\ bin is checked visually to ensure that the 
+\ac{NLL} minimisation converged to a parameter set.
+Integrated mass, \deltam, and \lnipchisq\ fits are given in 
+\cref{fig:prod:fitting:D0ToKpi,fig:prod:fitting:DpToKpipi,fig:prod:fitting:DsToKKpi,fig:prod:fitting:DstToD0pi_D0ToKpi}.
+Prompt signal yields per \pTy\ bin are given in 
+\cref{tab:prod:fitting:D0ToKpi,tab:prod:fitting:DpToKpipi,tab:prod:fitting:DsToKKpi,tab:prod:fitting:DstToD0pi_D0ToKpi}.
+% TODO include summary table of integrated yields from paper?
+
+% TODO include representative pT-y fits
+% TODO discuss fit quality
+% TODO say how a statistically significant signal yield was defined
+The \lnipchisq\ fits in each \pTy\ have been omitted from this section for 
+brevity.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_mass_fit}
+    \caption{Mass}
+    \label{fig:prod:fitting:D0ToKpi:mass}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_ipchisq_fit}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:D0ToKpi:ipchisq}
+  \end{subfigure}
+  \caption{%
+    Distributions for fully selected \DzToKpi\ candidates: \PDzero\ invariant 
+    mass (\subref*{fig:prod:fitting:D0ToKpi:mass}); and \PDzero\ \lnipchisq\ 
+    (\subref*{fig:prod:fitting:D0ToKpi:ipchisq}) for a mass window of 
+    $\pm\SI{20}{\MeV}$ around the nominal \PDzero mass.
+    The sum of the simultaneous likelihood fits in each \pTy\ bin is shown, 
+    with components as indicated in the legends.
+  }
+  \label{fig:prod:fitting:D0ToKpi}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_mass_fit}
+    \caption{Mass}
+    \label{fig:prod:fitting:DpToKpipi:mass}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_ipchisq_fit}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:DpToKpipi:ipchisq}
+  \end{subfigure}
+  \caption{%
+    Distributions for fully selected \DpToKpipi\ candidates: \PDplus\ invariant 
+    mass (\subref*{fig:prod:fitting:DpToKpipi:mass}); and \PDplus\ \lnipchisq\ 
+    (\subref*{fig:prod:fitting:DpToKpipi:ipchisq}) for a mass window of 
+    $\pm\SI{20}{\MeV}$ around the nominal \PDplus mass.
+    The sum of the simultaneous likelihood fits in each \pTy\ bin is shown, 
+    with components as indicated in the legends.
+  }
+  \label{fig:prod:fitting:DpToKpipi}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_mass_fit}
+    \caption{Mass}
+    \label{fig:prod:fitting:DsToKKpi:mass}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_ipchisq_fit}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:DsToKKpi:ipchisq}
+  \end{subfigure}
+  \caption{%
+    Distributions for fully selected \DspTophipi\ candidates: \PDsplus\ 
+    invariant mass (\subref*{fig:prod:fitting:DpToKpipi:mass}); and \PDsplus\ 
+    \lnipchisq\ (\subref*{fig:prod:fitting:DpToKpipi:ipchisq}) for a mass 
+    window of $\pm\SI{20}{\MeV}$ around the nominal \PDsplus mass.
+    The sum of the simultaneous likelihood fits in each \pTy\ bin is shown, 
+    with components as indicated in the legends.
+  }
+  \label{fig:prod:fitting:DsToKKpi}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_mass_fit}
+    \caption{\PDzero mass}
+    \label{fig:prod:fitting:DstToD0pi_D0ToKpi:mass}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_delta_mass_fit}
+    \caption{Delta mass}
+    \label{fig:prod:fitting:DstToD0pi_D0ToKpi:delta_mass}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_ipchisq_fit}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq}
+  \end{subfigure}
+  \caption{%
+    Distributions for fully selected \PDstarp\ candidates, with \DzToKpi: 
+    \PDzero\ invariant mass 
+    (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:mass}); $\deltam = m(\PDstarp) 
+    - m(\PDzero)$ for a mass window of $\pm\SI{20}{\MeV}$ around the nominal 
+    \PDzero mass; and \PDzero\ \lnipchisq\ 
+    (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq}) with an additional 
+    mass window of $\pm\SI{3}{\MeV}$ around the nominal \PDstarp-\PDzero\ mass 
+    difference.
+    The sum of the simultaneous likelihood fits in each \pTy\ bin is shown, 
+    with components as indicated in the legends.
+  }
+  \label{fig:prod:fitting:DstToD0pi_D0ToKpi}
+\end{figure}
+
+\begin{table}
+  \caption{%
+    Prompt signal yields for \DzToKpi\ measured in \PDzero \pTy\ bins.
+    Cells marked with a dash `-' indicate bins where insufficient data were 
+    available for a statistically significant prompt signal yield measurement.
+  }
+  \label{tab:prod:fitting:D0ToKpi}
+  \centering
+  \input{tables/production/fitting/D0ToKpi_signal_yields}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Prompt signal yields for \DpToKpipi\ measured in \PDplus \pTy\ bins.
+    Cells marked with a dash `-' indicate bins where insufficient data were 
+    available for a statistically significant prompt signal yield measurement.
+  }
+  \label{tab:prod:fitting:DpToKpipi}
+  \centering
+  \input{tables/production/fitting/DpToKpipi_signal_yields}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Prompt signal yields for \DspTophipi\ measured in \PDsplus \pTy\ bins.
+    Cells marked with a dash `-' indicate bins where insufficient data were 
+    available for a statistically significant prompt signal yield measurement.
+  }
+  \label{tab:prod:fitting:DsToKKpi}
+  \centering
+  \input{tables/production/fitting/DsTophipi_signal_yields}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Prompt signal yields for \DstToDzpi, with \DzToKpi, measured in \PDstarp\ 
+    \pTy\ bins.
+    Cells marked with a dash `-' indicate bins where insufficient data were 
+    available for a statistically significant prompt signal yield measurement.
+  }
+  \label{tab:prod:fitting:DstToD0pi_D0ToKpi}
+  \centering
+  \input{tables/production/fitting/DstToD0pi_D0ToKpi_signal_yields}
+\end{table}
