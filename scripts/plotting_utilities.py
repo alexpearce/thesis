@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 Palette = namedtuple('Palette', ('black', 'red', 'blue', 'green'))
-COLOURS = Palette('#333333', '#c64d50', '#4a71b2', '#52a966')
+COLOURS = Palette('#333333', '#c64d50', '#15438a', '#52a966')
 
 
 class SIOrderFormatter(matplotlib.ticker.ScalarFormatter):
@@ -47,11 +47,13 @@ class Feature(object):
         else:
             return df[self.name]
 
-def add_si_formatter(ax):
+def add_si_formatter(ax, xaxis=True, yaxis=True):
     fmt = SIOrderFormatter(useOffset=False)
     fmt.set_powerlimits((-3, 3))
-    ax.get_xaxis().set_major_formatter(fmt)
-    ax.get_yaxis().set_major_formatter(fmt)
+    if xaxis:
+        ax.get_xaxis().set_major_formatter(fmt)
+    if yaxis:
+        ax.get_yaxis().set_major_formatter(fmt)
 
 
 def default_figsize():
@@ -89,3 +91,13 @@ def pi_axis(ax, fractions):
         # AxesSubplot objects have different method names
         ax.set_xticks(values)
         ax.set_xticklabels(labels)
+
+
+def set_axis_labels(ax, mode):
+    ax.set_ylabel(r'Candidates / ($1\,\mathrm{MeV}/c^{2}$)')
+    if mode == 'D0ToKpi':
+        ax.set_xlabel(r'$m(K^{-}\pi^{+})$ [$\mathrm{MeV}/c^{2}$]')
+    elif mode == 'DpToKpipi':
+        ax.set_xlabel(r'$m(K^{-}\pi^{+}\pi^{+})$ [$\mathrm{MeV}/c^{2}$]')
+    elif mode == 'DsToKKpi':
+        ax.set_xlabel(r'$m(K^{-}K^{+}\pi^{+})$ [$\mathrm{MeV}/c^{2}$]')

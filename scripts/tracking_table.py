@@ -73,11 +73,11 @@ def tracking_table():
         else:
             color = '#ffffff'
 
-        plt.text(x, y,
-                 r'${0:.2f} \pm {1:.2f}$'.format(float(val), float(err)),
-                 color=color,
-                 horizontalalignment='center',
-                 verticalalignment='center')
+        ax.text(x, y,
+                r'${0:.2f} \pm {1:.2f}$'.format(float(val), float(err)),
+                color=color,
+                horizontalalignment='center',
+                verticalalignment='center')
 
     ax.set_xscale('log')
     ax.set_xlabel(r'$p$ [MeV/$c$]')

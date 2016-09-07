@@ -7,7 +7,10 @@ import root_pandas
 
 from histograms import histogram
 from root_converters import roocurve, tgraphasymerrors
-from plotting_utilities import COLOURS as colours
+from plotting_utilities import (
+    COLOURS as colours,
+    set_axis_labels
+)
 
 PREFIX = 'root://eoslhcb.cern.ch//eos/lhcb/user/a/apearce/CharmProduction/2015_MagDown_MC/{0}'  # noqa
 FNAME = 'DVntuple.root'
@@ -19,14 +22,6 @@ EVT_TYPES = {
     'D0ToKpi': 27163003,
     'DpToKpipi': 21263010
 }
-
-
-def set_axis_labels(ax, mode):
-    ax.set_ylabel(r'Candidates / ($1\,\mathrm{MeV}/c^{2}$)')
-    if mode == 'D0ToKpi':
-        ax.set_xlabel(r'$m(K^{-}\pi^{+})$ [$\mathrm{MeV}/c^{2}$]')
-    elif mode == 'DpToKpipi':
-        ax.set_xlabel(r'$m(K^{-}\pi^{+}\pi^{+})$ [$\mathrm{MeV}/c^{2}$]')
 
 
 def background_categories(mode):

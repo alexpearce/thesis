@@ -4,10 +4,17 @@ from plotting_utilities import COLOURS as colours
 
 def curve(ax, x, y, **kwargs):
     """Plot curve of (x, y) points, passing kwargs to ax.errorbar."""
-    opts = dict(fmt='-', linestyle='-', linewidth=4, color=colours.blue)
-    opts.update(kwargs)
+    fill = kwargs.pop('fill', False)
+    if fill:
+        opts = kwargs
+    else:
+        opts = dict(fmt='-', linestyle='-', linewidth=4, color=colours.blue)
+        opts.update(kwargs)
 
-    return ax.errorbar(x, y, **opts)
+    if fill:
+        return ax.fill_between(x, 0, y, **opts)
+    else:
+        return ax.errorbar(x, y, **opts)
 
 
 def points(ax, x, y, xerr, yerr, **kwargs):
