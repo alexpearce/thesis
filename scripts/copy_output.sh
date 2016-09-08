@@ -22,7 +22,7 @@ cp $INPUT/DpToKpipi_BKGCAT{,_fit}.pdf $OUTPUT/production/efficiencies/
 
 cp $INPUT/tracking_correction_table.pdf $OUTPUT/production/efficiencies/
 
-cp $INPUT/D0ToKpi_{mass,ipchisq}_fit.pdf $OUTPUT/production/fitting/
-cp $INPUT/DpToKpipi_{mass,ipchisq}_fit.pdf $OUTPUT/production/fitting/
-cp $INPUT/DsToKKpi_{mass,ipchisq}_fit.pdf $OUTPUT/production/fitting/
-cp $INPUT/DstToD0pi_D0ToKpi_{mass,delta_mass,ipchisq}_fit.pdf $OUTPUT/production/fitting/
+cp $INPUT/D0ToKpi_{mass,ipchisq}_fit_*.pdf $OUTPUT/production/fitting/
+cp $INPUT/DpToKpipi_{mass,ipchisq}_fit_*.pdf $OUTPUT/production/fitting/
+cp $INPUT/DsToKKpi_{mass,ipchisq}_fit_*.pdf $OUTPUT/production/fitting/
+cp $INPUT/DstToD0pi_D0ToKpi_{mass,delta_mass,ipchisq}_fit_*.pdf $OUTPUT/production/fitting/

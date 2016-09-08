@@ -37,7 +37,40 @@ CHILDREN = {
 }
 
 
-def mass_fit(mode):
+def highest_yield_bin(mode, species):
+    """Return (pT, y) index of bin with highest (delta) mass yield."""
+    if mode == DsToKKpi:
+        mmode = 'DsTophipi'
+    else:
+        mmode = mode
+    path = os.path.join(PREFIX.format(mmode), FNAME)
+    f = ROOT.TFile(path)
+    if mode == DstToD0pi:
+        w = f.Get('workspace_{0}_delta_mass'.format(mmode))
+    else:
+        w = f.Get('workspace_{0}_mass'.format(mmode))
+
+    parent = mode.split('To')[0]
+    pT_idx = '{0}_PT_COM_pT_binning_bin'.format(parent) + '{0}'
+    y_idx = '{0}_Y_COM_y_binning_bin'.format(parent) + '{1}'
+    vname = 'yield_{0}'.format(species)
+    vname += '_{{' + pT_idx + ';' + y_idx + '}}'
+    max_val, max_pT, max_y = 0, -1, -1
+    for y_bin in range(5):
+        for pT_bin in range(15):
+            v = w.var(vname.format(pT_bin, y_bin))
+            if v.getVal() > max_val:
+                max_val = v.getVal()
+                max_pT = pT_bin
+                max_y = y_bin
+
+    print '{0} max {1} yield: {2:.0f}, bin ({3}, {4})'.format(
+        mode, species, max_val, max_pT, max_y
+    )
+    return max_pT, max_y
+
+
+def mass_fit(mode, bin=('integrated', 'integrated')):
     if mode == DsToKKpi:
         mmode = 'DsTophipi'
     else:
@@ -49,7 +82,11 @@ def mass_fit(mode):
         parent = mode.split('To')[0]
     else:
         parent = 'D0'
-    c = f.Get('Mass/canvas_{0}_{1}_M_pT_bin_integrated_y_bin_integrated_no_pulls'.format(mmode, parent))  # noqa
+    pT_bin, y_bin = bin
+    c = f.Get('Mass/canvas_{0}_{1}_M_pT_bin_{2}_y_bin_{3}'.format(
+        mmode, parent, pT_bin, y_bin
+    ))
+    c = c.GetListOfPrimitives().At(0)
 
     it = c.GetListOfPrimitives().MakeIterator()
     primitive = it.Next()
@@ -99,16 +136,23 @@ def mass_fit(mode):
     #         horizontalalignment='center',
     #         verticalalignment='center')
 
-    fig.savefig('output/{0}_mass_fit.pdf'.format(mode))
+    fig.savefig('output/{0}_mass_fit_pT_{1}_y_{2}.pdf'.format(
+        mode, pT_bin, y_bin
+    ))
+    plt.close(fig)
 
 
-def delta_mass_fit(mode):
+def delta_mass_fit(mode, bin=('integrated', 'integrated')):
     assert(mode == DstToD0pi)
     path = os.path.join(PREFIX.format(mode), FNAME)
     f = ROOT.TFile(path)
 
     parent = mode.split('To')[0]
-    c = f.Get('Delta mass/canvas_{0}_{1}_delta_M_pT_bin_integrated_y_bin_integrated_no_pulls'.format(mode, parent))  # noqa
+    pT_bin, y_bin = bin
+    c = f.Get('Delta mass/canvas_{0}_{1}_delta_M_pT_bin_{2}_y_bin_{3}'.format(
+        mode, parent, pT_bin, y_bin
+    ))
+    c = c.GetListOfPrimitives().At(0)
 
     it = c.GetListOfPrimitives().MakeIterator()
     primitive = it.Next()
@@ -159,10 +203,13 @@ def delta_mass_fit(mode):
             horizontalalignment='center',
             verticalalignment='center')
 
-    fig.savefig('output/{0}_delta_mass_fit.pdf'.format(mode))
+    fig.savefig('output/{0}_delta_mass_fit_pT_{1}_y_{2}.pdf'.format(
+        mode, pT_bin, y_bin
+    ))
+    plt.close(fig)
 
 
-def ipchisq_fit(mode):
+def ipchisq_fit(mode, bin=('integrated', 'integrated')):
     if mode == DsToKKpi:
         mmode = 'DsTophipi'
     else:
@@ -174,7 +221,11 @@ def ipchisq_fit(mode):
         parent = mode.split('To')[0]
     else:
         parent = 'D0'
-    c = f.Get('IP chi^2/canvas_{0}_{1}_log_IPCHI2_OWNPV_pT_bin_integrated_y_bin_integrated_no_pulls'.format(mmode, parent))  # noqa
+    pT_bin, y_bin = bin
+    c = f.Get('IP chi^2/canvas_{0}_{1}_log_IPCHI2_OWNPV_pT_bin_{2}_y_bin_{3}'.format(  # noqa
+        mmode, parent, pT_bin, y_bin
+    ))
+    c = c.GetListOfPrimitives().At(0)
 
     it = c.GetListOfPrimitives().MakeIterator()
     primitive = it.Next()
@@ -228,18 +279,26 @@ def ipchisq_fit(mode):
     #         horizontalalignment='center',
     #         verticalalignment='center')
 
-    fig.savefig('output/{0}_ipchisq_fit.pdf'.format(mode))
+    fig.savefig('output/{0}_ipchisq_fit_pT_{1}_y_{2}.pdf'.format(
+        mode, pT_bin, y_bin
+    ))
+    plt.close(fig)
 
 
 if __name__ == '__main__':
-    mass_fit(D0ToKpi)
-    mass_fit(DpToKpipi)
-    mass_fit(DsToKKpi)
-    mass_fit(DstToD0pi)
+    for mode in MODES:
+        pT_max_sig, y_max_sig = highest_yield_bin(mode, species='sig')
+        pT_max_bkg, y_max_bkg = highest_yield_bin(mode, species='bkg')
 
-    delta_mass_fit(DstToD0pi)
+        mass_fit(mode)
+        mass_fit(mode, bin=(pT_max_sig, y_max_sig))
+        mass_fit(mode, bin=(pT_max_bkg, y_max_bkg))
 
-    ipchisq_fit(D0ToKpi)
-    ipchisq_fit(DpToKpipi)
-    ipchisq_fit(DsToKKpi)
-    ipchisq_fit(DstToD0pi)
+        if mode == DstToD0pi:
+            delta_mass_fit(mode)
+            delta_mass_fit(mode, bin=(pT_max_sig, y_max_sig))
+            delta_mass_fit(mode, bin=(pT_max_bkg, y_max_bkg))
+
+        ipchisq_fit(mode)
+        ipchisq_fit(mode, bin=(pT_max_sig, y_max_sig))
+        ipchisq_fit(mode, bin=(pT_max_bkg, y_max_bkg))
