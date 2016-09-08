@@ -14,8 +14,21 @@
 \RequirePackage{hepnames}
 \RequirePackage{siunitx}
 
-% siunitx already defines MeV and GeV
-\DeclareSIUnit\TeV{\tera\eV}
+% More common speed of light symbol (siunit 2.0 uses c_{0}, gross)
+\DeclareSIUnit\clight{\ensuremath{\mathit{c}}}
+% Tighter kerning (tuned for Computer Modern, should check whether it's needed 
+% for other families)
+\DeclareSIUnit\electronvolt{e\kern-0.05em V}
+% siunitx does define MeV and friends, but this will use our eV definition
+\DeclareSIUnit\MeV{\mega\electronvolt}
+% Tighter kerning (again, tuned for Computer Modern)
+\DeclareSIUnit\MeVc{\MeV\kern-0.2em\per\kern-0.15em\clight}
+\DeclareSIUnit\MeVcc{\MeV\kern-0.2em\per\kern-0.15em\clight\squared}
+\DeclareSIUnit\GeV{\giga\electronvolt}
+\DeclareSIUnit\GeVc{\GeV\kern-0.2em\per\kern-0.15em\clight}
+\DeclareSIUnit\GeVcc{\GeV\kern-0.2em\per\kern-0.15em\clight\squared}
+\DeclareSIUnit\TeV{\tera\electronvolt}
+\DeclareSIUnit\nb{\nano\barn}
 \DeclareSIUnit\pb{\pico\barn}
 \DeclareSIUnit\fb{\femto\barn}
 
