@@ -181,10 +181,10 @@ In \hltone, the following sequence is performed for events passing \lzero:
     found in the \ttracker, extrapolating through the magnetic field.
     To decrease the time taken to assess all combinatorial combinations of 
     \velo+\ttracker\ tracks with hits in the \itracker\ and \otracker, only 
-    hits within a search window assuming a \pT\ of at least \SI{800}{\MeV} are 
+    hits within a search window assuming a \pT\ of at least \SI{800}{\MeVc} are 
     considered.
 \end{enumerate}
-Requiring all child tracks from a charm hadron to have $\pT > \SI{800}{\MeV}$ 
+Requiring all child tracks from a charm hadron to have $\pT > \SI{800}{\MeVc}$ 
 would be inefficient for low \pT\ charm, and so the full decay is not 
 reconstructed in \hltone.
 Instead, the presence of a single, good quality track is required, which is 
@@ -286,7 +286,7 @@ tightened to $\dllkpi < 3$.
 Furthermore, kinematic requirements are made on all \PDzero, \PDplus, and 
 \PDsplus children such that they are within the fiducial region of phase space 
 available for \ac{PID} efficiency calibration, which will be described in 
-\cref{chap:prod:effs:pid}, specifically $3 < \ptot < \SI{100}{\GeV}$ and $2 < 
+\cref{chap:prod:effs:pid}, specifically $3 < \ptot < \SI{100}{\GeVc}$ and $2 < 
 \Eta < 5$.
 As the three-body distributions still contain a large fraction of combinatorial 
 background even after these additional cuts, the vertex fit \chisq\ and the 
@@ -296,11 +296,12 @@ direction angle cuts are tightened to $\chisq < 6$ and $\ac{DIRA} <
 To reduce the combinatorial further for the \DspToKKpi\ mode, a requirement is 
 made on the kaon pair as
 \begin{equation}
-  999.46 < m(\PKminus\PKplus) < \SI{1039.46}{\MeV}.
+  999.46 < m(\PKminus\PKplus) < \SI{1039.46}{\MeVcc}.
   \label{eqn:prod:sel:phi_cut}
 \end{equation}
-This corresponds to a $\pm\SI{20}{\MeV}$ window around the nominal mass of the 
-$\phi(1020)$ meson~\cite{PDG2014}, which is referred to here as just `\Pphi'.
+This corresponds to a $\pm\SI{20}{\MeVcc}$ window around the nominal mass of 
+the $\phi(1020)$ meson~\cite{PDG2014}, which is referred to here as just 
+`\Pphi'.
 Around half of all \DspToKKpi\ decays proceed via the 
 $\decay{\Pphi}{\PKminus\PKplus}$ channel~\cite{PDG2014}, and the narrow width 
 of the \Pphi resonance makes this cut good at reducing the fraction of 
@@ -380,7 +381,7 @@ given in \cref{tab:prod:sel:candidates}.
     selection (\subref*{fig:prod:sel:DsToKKpi:online}) and after the offline 
     selection (\subref*{fig:prod:sel:DsToKKpi:offline}).
     The offline selection includes the requirement that the kaon pair are 
-    within a $\pm\SI{20}{\MeV}$ window around the nominal $\phi(1020)$ mass.
+    within a $\pm\SI{20}{\MeVcc}$ window around the nominal $\phi(1020)$ mass.
   }
   \label{fig:prod:sel:DsToKKpi}
 \end{figure}
