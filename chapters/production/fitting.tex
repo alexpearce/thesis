@@ -6,7 +6,7 @@ invariant mass distribution of the vertex, as shown in
 \cref{fig:prod:sel:D0ToKpi:offline}, for example.
 However, the generating \acf{PDF} in this distribution is the same for both 
 prompt and secondary charm, and so another distribution must be used to 
-distinguish between these two sources of charm signal decays.
+distinguish between these two sources of charm decays.
 
 This analysis uses the natural logarithm of the \chisq\ of the \acf{IP}, 
 \lnipchisq, to obtain the prompt charm yields.
@@ -15,46 +15,54 @@ the \lnipchisq\ distribution is expected be centred around zero.
 For secondary charm, the momentum vector will in general not point back to the 
 \ac{PV}, and so the \lnipchisq\ distribution is expected to peak at higher 
 values.
-This separation is exploited to distinguish between prompt and secondary charm.
+This separation is exploited to distinguish between prompt and secondary charm, 
+where the prompt signal yield in each \pTy\ bin is measured by a binned 
+\emph{maximum likelihood fit} to the \lnipchisq\ distribution, the general 
+formalism of which will be presented in the following section.
+The prompt and secondary models in this fit are described analytically as 
+peaking functions.
+The combinatorial background is described by a non-parametric model taken from 
+outside the signal peak in the \emph{mass} distribution.
+This background model is normalised in the \lnipchisq\ fit to the number of 
+combinatorial background candidates measured in a fit to the charm hadron mass 
+distribution.
 
-Unlike in the mass spectra, where combinatorial background usually appears as a 
-linear or exponential component, the combinatorial background shape in the 
-\lnipchisq\ distribution is not expected to be simple to model.
-However, it can be assumed that the combinatorial background model does not 
-depend on the invariant mass, so that non-parametric template shapes in 
-\lnipchisq\ can be taken from regions in the invariant mass spectrum that are 
-devoid of contributions from the signal.
-For the \PDstarp\ meson, the difference \deltam\ in the reconstructed \PDstarp\ 
-and \PDzero invariant masses is used in place of the reconstructed \PDstarp\ 
-invariant mass
+For all cases but the \PDstarp\ measurement, it is the mass of the charm hadron 
+that is used to discriminate all signal from combinatorial background.
+For the \PDstarp\ measurement, the delta mass distribution, the difference 
+\deltam\ between the reconstructed \PDstarp mass and the reconstructed \PDzero 
+mass
 \begin{equation}
-  \deltam = m(\PKminus\Ppiplus\Ppiplussoft) - m(\PKminus\Ppiplus).
+  \deltam = m(\PKminus\Ppiplus\Ppiplussoft) - m(\PKminus\Ppiplus),
 \end{equation}
+is used instead.
 This has a nominal value of \SI{145.4}{\MeV}~\cite{PDG2014}, where the narrower 
 signal peak allows for a better signal-to-background ratio.
-The signal and background regions in the mass and \deltam\ distributions are 
-referred to here as the \emph{mass sidebands}, and are shown in 
-\cref{fig:prod:fitting:regions:D0ToKpi,fig:prod:fitting:regions:DpToKpipi,fig:prod:fitting:regions:DsToKKpi,fig:prod:fitting:regions:DstToD0pi_D0ToKpi}.
-Because these regions do not contribute any prompt signal to the \lnipchisq\ 
-distribution, the \lnipchisq\ distribution is only taken from the \emph{mass 
-  signal region}, also shown in 
-\cref{fig:prod:fitting:regions:D0ToKpi,fig:prod:fitting:regions:DpToKpipi,fig:prod:fitting:regions:DsToKKpi,fig:prod:fitting:regions:DstToD0pi_D0ToKpi}.
-For the same reason, the \deltam\ distribution is only taken from signal region 
-of the \PDzero mass spectrum.
+
+After an overview of the technique of maximum likelihood estimation is given, 
+the two-step fit is described.
+Firstly, a description of the parameterisation of the signal and combination 
+components in the mass and \deltam\ fits is given.
+Secondly, the parameterisation of the prompt signal, secondary signal, and 
+combinatorial background in the \lnipchisq\ fit is given.
+Following this, specific details on the models used for each charm meson are 
+given, after which the fit results are presented.
 
 \subsection{Maximum likelihood estimation}
 \label{chap:prod:fitting:mle}
 
 The technique used for the yield extraction is the method of maximum 
 likelihood, where an objective function is defined that assumes some particular 
-model truly generated the data, and the set of parameters $\vec{\theta}$ of 
-that model are varied given a set $\vec{x}$ of $N$ independent, randomly 
-distributed measurements $x_{i}$ until the objective is maximised.
+model truly generated the data.
+The vector of parameters $\vec{\theta}$ of that model are varied given a vector 
+$\vec{x}$ of $N$ independent, randomly distributed measurements $x_{i}$ until 
+the objective is maximised.
 This objective is the likelihood \likelihood, and is defined as
 \begin{equation}
   \likelihood(\vec{\theta}|\vec{x}) = \prod_{i}^{N} f(x_{i}|\vec{\theta}),
 \end{equation}
-where $f$ is the \ac{PDF} that the data are assumed to have been sampled from.
+where $f$ is the \ac{PDF} that the data are assumed to have been sampled 
+from.\footnotemark
 Practically, it is useful to work with the logarithm of the likelihood, as sums 
 are more convenient to work with numerically than products, and to use the 
 negative of this, in order to be able to exploit the available numerical 
@@ -64,6 +72,12 @@ algorithms for minimisation problems such as \minuit~\cite{James:1975dr}
   -\sum_{i}^{N} \ln{f(x_{i}|\vec{\theta})}.
 \end{equation}
 This is the \acf{NLL}.
+The practice of minimising the \ac{NLL} is also called \emph{fitting}.
+
+\footnotetext{%
+  The properties of any given \ac{PDF} $f(x)$ that are important here are: 
+  $f(x) \geq 0$ for all $x$; and $\int_{-\infty}^{\infty} f(x)\dif{x} = 1$.
+}
 
 For the purposes of this analysis, the total \ac{PDF} $f$ is the sum of several 
 models $f_{s}$, one for each physical source $s$ under consideration, such as 
@@ -72,21 +86,21 @@ signal and combinatorial background or different \pTy\ bins
   -\ln{\likelihood(\vec{\theta}|\vec{x})} =
   -\sum_{i}^{N} \sum_{s} f_{s}(x_{i}|\vec{\theta}).
 \end{equation}
-The notation here that each model $f_{s}$ receives the full parameter set 
+The notation here that each model $f_{s}$ receives the full parameter vector 
 $\vec{\theta}$ implies that each $f_{s}$ may share parameters with other 
 components.
 After defining the full model, the likelihood is minimised numerically using 
 \minuit.
-Minimising the likelihood is equivalent to finding the parameter set 
+Minimising the likelihood is equivalent to finding the parameter vector 
 $\hat{\theta}$ where the first derivatives of the likelihood with respect to 
-each parameter is zero
+each parameter are all zero
 \begin{equation}
   \vec{u}(\vec{\theta}) = \frac{%
     \partial\ln{\likelihood}
   }{%
     \partial\vec{\theta}
   },\quad
-  \vec{u}(\hat{\theta}) = 0.
+  \vec{u}(\hat{\theta}) = \vec{0}.
 \end{equation}
 The uncertainties on the parameters can be found by inspecting the diagonal 
 terms of the covariance matrix, which can be computed numerically by inverting 
@@ -188,9 +202,11 @@ backgrounds, where a true \PDzero is combined with a random track in the event.
 The total \ac{PDF} is constructed as the sum of the per-species \acp{PDF}, 
 weighted by the respective species' yields
 \begin{align}
-  f(m) &= \sum_{\textnormal{Species}} N_{\textnormal{Species}} \cdot
+  f(m) &= \frac{1}{\sum_{\textnormal{Species}} N_{\textnormal{Species}}}
+          \sum_{\textnormal{Species}} N_{\textnormal{Species}}
           f_{\textnormal{Species}}(m),\\
-  f(\deltam) &= \sum_{\textnormal{Species}} N_{\textnormal{Species}} \cdot
+  f(\deltam) &= \frac{1}{\sum_{\textnormal{Species}} N_{\textnormal{Species}}}
+                \sum_{\textnormal{Species}} N_{\textnormal{Species}}
                 f_{\textnormal{Species}}(\deltam).
 \end{align}
 
@@ -200,14 +216,14 @@ dependent on the charm hadron candidate, given in
 Section~\ref{chap:prod:fitting:details}.
 
 The combinatorial and random soft pion background in the \deltam\ fits is 
-modelled as an empirical function of the form
+modelled as an empirical threshold function of the (un-normalised) form
 \begin{equation}
   % (dm - dm0)^A * exp(B*dm)
-  R(x; \deltam_{0}, A, B) = e^{B\cdot \deltam} \cdot
+  R(x; \deltam_{0}, A, B) = e^{B\deltam}
     {(x - \deltam_{0})}^A,
 \end{equation}
-where $\deltam_{0}$ is a threshold value fixed to the charged pion rest mass 
-$m_{\Ppipm} = \SI{139.57}{\MeV}$~\cite{PDG2014} and the parameter $B$ is fixed 
+where $\deltam_{0}$ is the threshold value, fixed to the charged pion rest mass 
+$m_{\Ppipm} = \SI{139.57}{\MeV}$~\cite{PDG2014}, and the parameter $B$ is fixed 
 to zero.
 The signal PDF is the sum of three normal distributions, sharing a common mean 
 but allowed to have varying widths.
@@ -267,7 +283,8 @@ background.
 The total \acp{PDF} are constructed as the sum of per-species \acp{PDF}, 
 weighted by the respective species' yields
 \begin{equation}
-  f(\lnipchisq) = \sum_{\text{Species}} N_{\text{Species}} \cdot
+  f(\lnipchisq) = \frac{1}{\sum_{\textnormal{Species}} N_{\textnormal{Species}}}
+                  \sum_{\text{Species}} N_{\text{Species}}
                   f_{\text{Species}}(\lnipchisq).
 \end{equation}
 The constraint on the background yield is applied by multiplying 
@@ -312,7 +329,8 @@ tail.
 The secondary signal distribution is modelled by a normal distribution $G$ with 
 mean $\mu$ and width $\sigma$
 \begin{equation}
-  G(x; \mu, \sigma) = e^{-\frac{{(x - \mu)}^{2}}{2\sigma^{2}}}.
+  G(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi}\sigma}
+                      e^{-\frac{{(x - \mu)}^{2}}{2\sigma^{2}}}.
 \end{equation}
 These shapes are motivated by the \lnipchisq\ distributions for prompt and 
 secondary signal decays observed in the \ac{MC} samples.
@@ -349,12 +367,25 @@ fits.
 \subsection{Fit details for \PDzero}
 \label{chap:prod:fitting:details:D0ToKpi}
 
-% TODO: define Crystal ball
 For the \DzToKpi\ mode, the signal shape in the mass fit is the sum of a normal 
-and a Crystal Ball distribution, sharing a common mean but allowed to have 
+and a Crystal Ball distribution~\cite{Skwarnicki:1986xj}, sharing a common mean but allowed to have 
 different widths.
-The mean and width of the signal mass \ac{PDF} are split across \pTy\ bins, as 
-is the slope of the background mass \ac{PDF}.
+The Crystal Ball function $C$ is a normal distribution but with a power-law 
+tail on one side, defined (un-normalised) as
+\begin{equation}
+  C(x; \mu, \sigma, \alpha, n) = \begin{cases}
+    e^{-\frac{{(x - \mu)}^{2}}{2\sigma^{2}}}                          & \frac{x - \mu}{\sigma} > -\alpha, \\
+    e^{-\frac{|\alpha|^{2}}{2}}
+      {(\frac{n}{|\alpha|})}^{n}
+      {(\frac{n}{|\alpha|} - |\alpha| - \frac{x - \mu}{\sigma})}^{-n} & \frac{x - \mu}{\sigma} \leq -\alpha,
+  \end{cases}
+  \label{eqn:prod:fitting:crystal_ball}
+\end{equation}
+where $\alpha$ defines how far away from the mean $\mu$ the power-law tail 
+begins, in units of the width of the core Gaussian $\sigma$, and $n$ is the 
+power law exponent.
+The mean and width of the total signal mass \ac{PDF} are split across \pTy\ 
+bins, as is the slope of the background mass \ac{PDF}.
 The mean of the \lnipchisq\ prompt signal \ac{PDF} and the width of the 
 secondary signal \ac{PDF} are also split across \pTy\ bins.
 The mean and width of the prompt signal \lnipchisq\ \ac{PDF} and all parameters 
@@ -535,6 +566,7 @@ brevity.
   \label{fig:prod:fitting:DstToD0pi_D0ToKpi}
 \end{figure}
 
+% TODO proper rounding in these tables
 \begin{table}
   \caption{%
     Prompt signal yields for \DzToKpi\ measured in \PDzero \pTy\ bins.
