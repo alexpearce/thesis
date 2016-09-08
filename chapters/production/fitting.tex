@@ -199,15 +199,15 @@ In both the mass and \deltam\ distributions, the prompt and secondary signal
 shapes are assumed to be identical, and for the \deltam\ fits the combinatorial 
 background is assumed to be indistinguishable from \emph{random soft pion} 
 backgrounds, where a true \PDzero is combined with a random track in the event.
-The total \ac{PDF} is constructed as the sum of the per-species \acp{PDF}, 
-weighted by the respective species' yields
+The total \ac{PDF} is constructed as the sum of the per-species \acp{PDF}, each $f_{s}$, 
+each weighted by the respective yield $N_{s}$
 \begin{align}
-  f(m) &= \frac{1}{\sum_{\textnormal{Species}} N_{\textnormal{Species}}}
-          \sum_{\textnormal{Species}} N_{\textnormal{Species}}
-          f_{\textnormal{Species}}(m),\\
-  f(\deltam) &= \frac{1}{\sum_{\textnormal{Species}} N_{\textnormal{Species}}}
-                \sum_{\textnormal{Species}} N_{\textnormal{Species}}
-                f_{\textnormal{Species}}(\deltam).
+  f(m) &= \frac{1}{\sum_{\textnormal{s}} N_{\textnormal{s}}}
+          \sum_{\textnormal{s}} N_{\textnormal{s}}
+          f_{\textnormal{s}}(m),\\
+  f(\deltam) &= \frac{1}{\sum_{\textnormal{s}} N_{\textnormal{s}}}
+                \sum_{\textnormal{s}} N_{\textnormal{s}}
+                f_{\textnormal{s}}(\deltam).
 \end{align}
 
 For every mass fit, the background PDF $f_{\textnormal{Bkg.}}(m)$ is taken to 
@@ -257,7 +257,7 @@ window centred \SI{50}{\MeV} above the centre of the signal window.
 For the \PDstarp\ measurements, the signal region is defined as a window 
 \SI{6}{\MeV} wide, centred on the nominal \deltam\ value of 
 \SI{145.43}{\MeV}~\cite{PDG2014}.
-The `upper sideband', or just `sideband' as a `lower sideband' region is not 
+The upper sideband, or just `sideband' as a lower sideband region is not 
 defined, is defined as the region from \SI{4.5}{\MeV} to \SI{9}{\MeV} above the 
 centre of the signal region.
 \Cref{fig:prod:fitting:regions:D0ToKpi,fig:prod:fitting:regions:DpToKpipi,fig:prod:fitting:regions:DsToKKpi,fig:prod:fitting:regions:DstToD0pi_D0ToKpi}
@@ -277,15 +277,15 @@ To avoid any complications due to correlations between the background template
 For the \PDstarp\ measurements, this signal region requirement is made in both 
 the \PDzero mass and the \deltam\ distributions.
 
-For each one-dimensional \lnipchisq\ fit, we assign one \ac{PDF} per 
+For each one-dimensional \lnipchisq\ fit, we assign one \ac{PDF} $f_{s}$ per 
 discriminatory species: prompt signal, secondary signal, and combinatorial 
 background.
 The total \acp{PDF} are constructed as the sum of per-species \acp{PDF}, 
-weighted by the respective species' yields
+each weighted by the respective yield $N_{s}$
 \begin{equation}
-  f(\lnipchisq) = \frac{1}{\sum_{\textnormal{Species}} N_{\textnormal{Species}}}
-                  \sum_{\text{Species}} N_{\text{Species}}
-                  f_{\text{Species}}(\lnipchisq).
+  f(\lnipchisq) = \frac{1}{\sum_{\textnormal{s}} N_{\textnormal{s}}}
+                  \sum_{\text{s}} N_{\text{s}}
+                  f_{\text{s}}(\lnipchisq).
 \end{equation}
 The constraint on the background yield is applied by multiplying 
 $f(\lnipchisq)$ by a normal distribution whose mean is the number of background 
@@ -353,8 +353,8 @@ data, for each mode.
 
 Initially, no knowledge is assumed on which parameters should be independent 
 (to be `split') across the \pTy\ bins, nor of whether the \lnipchisq\ 
-distribution is well-modelled by the \ac{MC}, and so the chosen 
-parameterisation is that which best describes the data.
+distribution is well-modelled by the \ac{MC}.
+The chosen parameterisation is that which best describes the data.
 For the mass fits, all parameters are initially fixed such that they are same 
 across all \pTy\ bins, and are then split one by one when it is observed that a 
 feature varies across the bins, such as the width of the signal peak.
@@ -389,8 +389,8 @@ bins, as is the slope of the background mass \ac{PDF}.
 The mean of the \lnipchisq\ prompt signal \ac{PDF} and the width of the 
 secondary signal \ac{PDF} are also split across \pTy\ bins.
 The mean and width of the prompt signal \lnipchisq\ \ac{PDF} and all parameters 
-of the secondary signal \lnipchisq\ \ac{PDF} are floated in the fit, and all 
-other \lnipchisq\ shape parameters fixed to the values from \ac{MC}.
+of the secondary signal \lnipchisq\ \ac{PDF} are floated in the fit to data, 
+and all other \lnipchisq\ shape parameters fixed to the values from \ac{MC}.
 
 Prefits to the prompt signal and secondary signal data samples in \lnipchisq\ 
 are given in \cref{fig:fitting:details:D0ToKpi-prefits}.
@@ -407,8 +407,8 @@ the background mass \ac{PDF}.
 The mean of the \lnipchisq\ prompt signal and secondary signal distributions 
 are split across \pTy\ bins.
 The mean and tail parameters of the signal \lnipchisq\ \ac{PDF}, are floated 
-during the final fit, with all other shape parameters fixed to the values from 
-\ac{MC}.
+during the fit to data, with all other shape parameters fixed to the values 
+from \ac{MC}.
 
 Prefits to the prompt signal and secondary signal data samples in \lnipchisq\ 
 are given in \cref{fig:fitting:details:DpToKpipi-prefits}.
@@ -423,7 +423,7 @@ The mean and width of the signal mass \ac{PDF} and the slope of the background
 mass \ac{PDF}, along with the mean of the \lnipchisq\ prompt signal \ac{PDF}, 
 are split across \pTy\ bins.
 The mean of the prompt signal \lnipchisq\ \ac{PDF} and all parameters of the 
-secondary \ac{PDF} are floated during the final fit, with all other shape 
+secondary \ac{PDF} are floated during the fit to data, with all other shape 
 parameters fixed to the values from \ac{MC}.
 
 Prefits to the prompt signal and secondary signal data samples in \lnipchisq\ 
@@ -436,7 +436,7 @@ For the \PDstarp-tagged \DzToKpi\ mode, the width of the widest component of
 the signal model, described in \cref{chap:prod:fitting:mass}, is split across 
 \pTy\ bins, along with the mean of the prompt signal \lnipchisq\ \ac{PDF}.
 The mean of the prompt signal \lnipchisq\ \ac{PDF} and all parameters of the 
-secondary \ac{PDF} are floated during the final fit, with all other shape 
+secondary \ac{PDF} are floated during the fit to data, with all other shape 
 parameters fixed to the values from \ac{MC}.
 
 Prefits to the prompt signal and secondary signal data samples in \PDzero 
@@ -445,31 +445,53 @@ Prefits to the prompt signal and secondary signal data samples in \PDzero
 \subsection{Fit results}
 \label{chap:prod:fitting:results}
 
-For each fit, the covariance matrix is checked to be positive definite, and the 
+For all fits, the covariance matrix is checked to be positive definite, and the 
 goodness-of-fit within each \pTy\ bin is checked visually to ensure that the 
 \ac{NLL} minimisation converged to a parameter set.
-Integrated mass, \deltam, and \lnipchisq\ fits are given in 
-\cref{fig:prod:fitting:D0ToKpi,fig:prod:fitting:DpToKpipi,fig:prod:fitting:DsToKKpi,fig:prod:fitting:DstToD0pi_D0ToKpi}.
+Mass, \deltam, and \lnipchisq\ fits are given in 
+\cref{fig:prod:fitting:D0ToKpi,fig:prod:fitting:DpToKpipi,fig:prod:fitting:DsToKKpi,fig:prod:fitting:DstToD0pi_D0ToKpi}, 
+where the data and models shown are the sums of the data and models from the 
+\pTy\ bins.
 Prompt signal yields per \pTy\ bin are given in 
-\cref{tab:prod:fitting:D0ToKpi,tab:prod:fitting:DpToKpipi,tab:prod:fitting:DsToKKpi,tab:prod:fitting:DstToD0pi_D0ToKpi}.
-% TODO include summary table of integrated yields from paper?
+\cref{tab:prod:fitting:D0ToKpi,tab:prod:fitting:DpToKpipi,tab:prod:fitting:DsToKKpi,tab:prod:fitting:DstToD0pi_D0ToKpi}, 
+and those integrated across all bins in \cref{tab:prod:fitting:integrated}.
 
-% TODO include representative pT-y fits
-% TODO discuss fit quality
-% TODO say how a statistically significant signal yield was defined
-The \lnipchisq\ fits in each \pTy\ have been omitted from this section for 
-brevity.
+The plots show that the models match the data well, but there are some 
+significant discrepancies such as in 
+\cref{fig:prod:fitting:DsToKKpi:ipchisq,fig:prod:fitting:DstToD0pi_D0ToKpi:delta_mass}.
+However, the discrepancies in these integrated plots are exaggerations of those 
+in the individual \pTy\ bin fits: they indicate that there is a consistent bias 
+in the individual bins, but do not necessarily indicate that these are 
+statistically significant.
+For comparison, 
+\cref{fig:prod:fitting:D0ToKpi:sig_bkg,fig:prod:fitting:DpToKpipi:sig_bkg,fig:prod:fitting:DsToKKpi:sig_bkg,fig:prod:fitting:DstToD0pi_D0ToKpi:sig_bkg} 
+show the mass (or \deltam) and \lnipchisq\ fits in the \pTy\ bin with the 
+highest prompt signal yield and in the \pTy\ bin with the highest combinatorial 
+background yield.
+These show that, in the individual \pTy\ bins, the fits model the data 
+significantly better than the integrated plots would suggest, and also that the 
+fit is flexible enough to model both high prompt signal and high combinatorial 
+background datasets.
+The effect of the cross-section measurements of mis-modelling will be discussed 
+further in \cref{chap:prod:systs}.
+
+In some \pTy\ bins, it is not possible to make a prompt signal yield 
+measurement due to insufficient data in those bins.
+At this stage in the analysis, a cross-section measurement in a bin is 
+considered infeasible if there is either no data (zero candidates), or if the 
+prompt signal yield $N_{i} \pm \sigma_{N_{i}}$ in that bin as determined in the 
+fit does not satisfy $N_{i} > 3\sigma_{N_{i}}$.
 
 \begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_mass_fit}
+    \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_mass_fit_pT_integrated_y_integrated}
     \caption{Mass}
     \label{fig:prod:fitting:D0ToKpi:mass}
   \end{subfigure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_ipchisq_fit}
+    \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_ipchisq_fit_pT_integrated_y_integrated}
     \caption{\lnipchisq}
     \label{fig:prod:fitting:D0ToKpi:ipchisq}
   \end{subfigure}
@@ -487,13 +509,13 @@ brevity.
 \begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_mass_fit}
+    \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_mass_fit_pT_integrated_y_integrated}
     \caption{Mass}
     \label{fig:prod:fitting:DpToKpipi:mass}
   \end{subfigure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_ipchisq_fit}
+    \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_ipchisq_fit_pT_integrated_y_integrated}
     \caption{\lnipchisq}
     \label{fig:prod:fitting:DpToKpipi:ipchisq}
   \end{subfigure}
@@ -511,13 +533,13 @@ brevity.
 \begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_mass_fit}
+    \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_mass_fit_pT_integrated_y_integrated}
     \caption{Mass}
     \label{fig:prod:fitting:DsToKKpi:mass}
   \end{subfigure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_ipchisq_fit}
+    \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_ipchisq_fit_pT_integrated_y_integrated}
     \caption{\lnipchisq}
     \label{fig:prod:fitting:DsToKKpi:ipchisq}
   \end{subfigure}
@@ -535,19 +557,19 @@ brevity.
 \begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_mass_fit}
+    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_mass_fit_pT_integrated_y_integrated}
     \caption{\PDzero mass}
     \label{fig:prod:fitting:DstToD0pi_D0ToKpi:mass}
   \end{subfigure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_delta_mass_fit}
+    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_delta_mass_fit_pT_integrated_y_integrated}
     \caption{Delta mass}
     \label{fig:prod:fitting:DstToD0pi_D0ToKpi:delta_mass}
   \end{subfigure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_ipchisq_fit}
+    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_ipchisq_fit_pT_integrated_y_integrated}
     \caption{\lnipchisq}
     \label{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq}
   \end{subfigure}
@@ -555,11 +577,11 @@ brevity.
     Distributions for fully selected \PDstarp\ candidates, with \DzToKpi: 
     \PDzero\ invariant mass 
     (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:mass}); $\deltam = m(\PDstarp) 
-    - m(\PDzero)$ for a mass window of $\pm\SI{20}{\MeV}$ around the nominal 
-    \PDzero mass; and \PDzero\ \lnipchisq\ 
-    (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq}) with an additional 
-    mass window of $\pm\SI{3}{\MeV}$ around the nominal \PDstarp-\PDzero\ mass 
-    difference.
+    - m(\PDzero)$ (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:delta_mass}) for 
+    a mass window of $\pm\SI{20}{\MeV}$ around the nominal \PDzero mass; and 
+    \PDzero\ \lnipchisq\ (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq}) 
+    with an additional mass window of $\pm\SI{3}{\MeV}$ around the nominal 
+    \PDstarp-\PDzero\ mass difference.
     The sum of the simultaneous likelihood fits in each \pTy\ bin is shown, 
     with components as indicated in the legends.
   }
@@ -611,3 +633,186 @@ brevity.
   \centering
   \input{tables/production/fitting/DstToD0pi_D0ToKpi_signal_yields}
 \end{table}
+
+\begin{table}
+  \caption{%
+    Prompt signal yields in the fully selected dataset, summed over all
+    \pTy\ bins in which a measurement is made.
+  }
+  \label{tab:prod:fitting:integrated}
+  \centering
+  \input{tables/production/fitting/integrated_signal_yields}
+\end{table}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_mass_fit_pT_3_y_2}
+    \caption{Mass}
+    \label{fig:prod:fitting:D0ToKpi:mass_high_sig}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_ipchisq_fit_pT_3_y_2}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:D0ToKpi:ipchisq_high_sig}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_mass_fit_pT_0_y_3}
+    \caption{Mass}
+    \label{fig:prod:fitting:D0ToKpi:mass_high_bkg}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/D0ToKpi_ipchisq_fit_pT_0_y_3}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:D0ToKpi:ipchisq_high_bkg}
+  \end{subfigure}
+  \caption{%
+    Distributions for fully selected \DzToKpi\ candidates: \PDzero\ invariant 
+    mass (\subref*{fig:prod:fitting:D0ToKpi:mass_high_sig} and 
+    \subref*{fig:prod:fitting:D0ToKpi:mass_high_bkg}); and \PDzero\ \lnipchisq\ 
+    (\subref*{fig:prod:fitting:D0ToKpi:ipchisq_high_sig} and 
+    \subref*{fig:prod:fitting:D0ToKpi:ipchisq_high_bkg}) for a mass window of 
+    $\pm\SI{20}{\MeV}$ around the nominal \PDzero mass.
+    The top Figures (\subref*{fig:prod:fitting:D0ToKpi:mass_high_sig} and 
+    \subref*{fig:prod:fitting:D0ToKpi:ipchisq_high_sig}) show the data and fits 
+    in the region \pTyrange{2}{2.5}{3}{3.5}, whilst the bottom Figures 
+    (\subref*{fig:prod:fitting:D0ToKpi:mass_high_bkg} and 
+    \subref*{fig:prod:fitting:D0ToKpi:ipchisq_high_bkg}) show the data and fits 
+    in the \pTyrange{0}{1}{3.5}{4} region.
+  }
+  \label{fig:prod:fitting:D0ToKpi:sig_bkg}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_mass_fit_pT_4_y_2}
+    \caption{Mass}
+    \label{fig:prod:fitting:DpToKpipi:mass_high_sig}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_ipchisq_fit_pT_4_y_2}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:DpToKpipi:ipchisq_high_sig}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_mass_fit_pT_3_y_3}
+    \caption{Mass}
+    \label{fig:prod:fitting:DpToKpipi:mass_high_bkg}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DpToKpipi_ipchisq_fit_pT_3_y_3}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:DpToKpipi:ipchisq_high_bkg}
+  \end{subfigure}
+  \caption{%
+    Distributions for fully selected \DpToKpipi\ candidates: \PDplus\ invariant 
+    mass (\subref*{fig:prod:fitting:DpToKpipi:mass_high_sig} and 
+    \subref*{fig:prod:fitting:DpToKpipi:mass_high_bkg}); and \PDplus\ 
+    \lnipchisq\ (\subref*{fig:prod:fitting:DpToKpipi:ipchisq_high_sig} and 
+    \subref*{fig:prod:fitting:DpToKpipi:ipchisq_high_bkg}) for a mass window of 
+    $\pm\SI{20}{\MeV}$ around the nominal \PDplus mass.
+    The top Figures (\subref*{fig:prod:fitting:DpToKpipi:mass_high_sig} and 
+    \subref*{fig:prod:fitting:DpToKpipi:ipchisq_high_sig}) show the data and 
+    fits in the region \pTyrange{2.5}{3}{3}{3.5}, whilst the bottom Figures 
+    (\subref*{fig:prod:fitting:DpToKpipi:mass_high_bkg} and 
+    \subref*{fig:prod:fitting:DpToKpipi:ipchisq_high_bkg}) show the data and 
+    fits in the \pTyrange{2}{2.5}{3.5}{4} region.
+  }
+  \label{fig:prod:fitting:DpToKpipi:sig_bkg}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_mass_fit_pT_6_y_1}
+    \caption{Mass}
+    \label{fig:prod:fitting:DsToKKpi:mass_high_sig}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_ipchisq_fit_pT_6_y_1}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:DsToKKpi:ipchisq_high_sig}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_mass_fit_pT_2_y_3}
+    \caption{Mass}
+    \label{fig:prod:fitting:DsToKKpi:mass_high_bkg}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DsToKKpi_ipchisq_fit_pT_2_y_3}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:DsToKKpi:ipchisq_high_bkg}
+  \end{subfigure}
+  \caption{%
+    Distributions for fully selected \DspTophipi\ candidates: \PDsplus\ 
+    invariant mass (\subref*{fig:prod:fitting:DsToKKpi:mass_high_sig} and 
+    \subref*{fig:prod:fitting:DsToKKpi:mass_high_bkg}); and \PDsplus\ 
+    \lnipchisq\ (\subref*{fig:prod:fitting:DsToKKpi:ipchisq_high_sig} and 
+    \subref*{fig:prod:fitting:DsToKKpi:ipchisq_high_bkg}) for a mass window of 
+    $\pm\SI{20}{\MeV}$ around the nominal \PDsplus mass.
+    The top Figures (\subref*{fig:prod:fitting:DsToKKpi:mass_high_sig} and 
+    \subref*{fig:prod:fitting:DsToKKpi:ipchisq_high_sig}) show the data and 
+    fits in the region \pTyrange{4}{5}{2.5}{3}, whilst the bottom Figures 
+    (\subref*{fig:prod:fitting:DsToKKpi:mass_high_bkg} and 
+    \subref*{fig:prod:fitting:DsToKKpi:ipchisq_high_bkg}) show the data and 
+    fits in the \pTyrange{2}{2.5}{3.5}{4} region.
+  }
+  \label{fig:prod:fitting:DsToKKpi:sig_bkg}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_delta_mass_fit_pT_7_y_2}
+    \caption{Delta mass}
+    \label{fig:prod:fitting:DstToD0pi_D0ToKpi:delta_mass_high_sig}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_ipchisq_fit_pT_7_y_2}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq_high_sig}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_delta_mass_fit_pT_2_y_3}
+    \caption{Delta mass}
+    \label{fig:prod:fitting:DstToD0pi_D0ToKpi:delta_mass_high_bkg}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/production/fitting/DstToD0pi_D0ToKpi_ipchisq_fit_pT_2_y_3}
+    \caption{\lnipchisq}
+    \label{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq_high_bkg}
+  \end{subfigure}
+  \caption{%
+    Distributions for fully selected \DstToDzpi, with \DzToKpi, candidates: 
+    $\deltam = m(\PDstarp) - m(\PDzero)$ 
+    (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:delta_mass_high_sig} and 
+    \subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:delta_mass_high_bkg}) for a 
+    mass window of $\pm\SI{20}{\MeV}$ around the nominal \PDzero mass; and 
+    \PDzero\ \lnipchisq\ 
+    (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq_high_sig} and 
+    \subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq_high_bkg}) with an 
+    additional mass window of $\pm\SI{3}{\MeV}$ around the nominal 
+    \PDstarp-\PDzero\ mass difference.
+    The top Figures 
+    (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:delta_mass_high_sig} and 
+    \subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq_high_sig}) show the 
+    data and fits in the region \pTyrange{4}{5}{3}{3.5}, whilst the bottom 
+    Figures (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:delta_mass_high_bkg} 
+    and \subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq_high_bkg}) show the 
+    data and fits in the \pTyrange{1.5}{2}{3.5}{4} region.
+  }
+  \label{fig:prod:fitting:DstToD0pi_D0ToKpi:sig_bkg}
+\end{figure}
