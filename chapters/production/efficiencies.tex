@@ -78,10 +78,11 @@ simulated data.
 The acceptance is modelled by a set of cuts requiring that all stable charged 
 particles in the final state are within $10 < \theta < 
 \SI{400}{\milli\radian}$, where $\theta$ is the polar angle of the particle 
-momentum vector, and that all the particles in the final state point in same 
-$z$ direction.
+momentum vector, and that all the particles in the final state point in the 
+positive $z$ direction, as defined in \cref{chap:prod:data:mc}.
 These requirements are applied at the \emph{generator} level, before the 
 detector simulation, on the true kinematics of the particles.
+
 By counting the number of charm hadrons passing and failing the cut, the 
 acceptance efficiency is defined as
 \begin{equation}
@@ -93,15 +94,8 @@ acceptance efficiency is defined as
   }.
   \label{eqn:prod:effs:acc}
 \end{equation}
-
-To save computing resources, almost all \ac{MC} samples have this cut applied 
-during generation, such that the particles before the cuts are not available to 
-analysts.
-This reduces computing resources as fewer particles are propagated through the 
-detector simulation, and because fewer particles are stored to disk.
-Because of this, the acceptance efficiency is evaluated using a detected 
-\ac{MC} sample where only the generator is run, and not the detector 
-simulation.
+The input dataset to this computation is the generator-level set described in 
+\cref{chap:prod:data:mc}.
 % TODO should mention that we're using AC intervals, stating why and what they
 % are
 The acceptance efficiencies for \DzToKpi\ and \DpToKpipi, in \pTy\ bins, are 
@@ -129,15 +123,10 @@ given in \cref{tab:prod:effs:reco:dztokpi,tab:prod:effs:reco:dptokpipi}.
 \label{chap:prod:effs:truth}
 
 The evaluation of \cref{eqn:prod:effs:reco} requires that the reconstructed objects, tracks and vertices, be correctly associated back to the `truth-level' information, that is the \ac{MC} objects which were generated and then propagated through the detector simulation.
-The association of tracks is performed first.
-A track is marked as \emph{matched} to an \ac{MC} particle if at least \SI{70}{\percent} of the hits that formed the track were created by the \ac{MC} particle.
-Tracks are classified as \emph{ghost} tracks if there are no \ac{MC} particles that can be associated to it.
-Vertices can then be assigned categories based on the associations of their input tracks.
-A signal vertex is one in which all inputs are associated to \ac{MC} particles, all inputs have been assigned a particle identity equal to that of its associated \ac{MC} particle, all inputs have been associated with \ac{MC} particles which come from the same true \ac{MC} parent, and the identity of the \ac{MC} parent matches that assigned to the vertex.
-Any deviation from these requirements results in the vertex being assigned a particular \emph{background category}, dependent on the nature of the deviations~\cite{Gligorov:1035682}.
-For example, if at least one track is a ghost, the vertex is classified as a ghost, and if at least one track is associated to an \ac{MC} particle with a different \ac{PID}, the vertex is classified as a misidentification.
-
-Ideally, the background category information could be used to filter the \ac{MC} such that the number of remaining candidates could be counted to obtain the input to some efficiency computation, such as \cref{eqn:prod:effs:reco}.
+The truth-matching procedure is described in \cref{chap:prod:data:mc}.
+The background category information is used to filter the \ac{MC} such that the 
+number of remaining candidates are counted to obtain the input to some 
+efficiency computation, such as \cref{eqn:prod:effs:reco}.
 However, the requirement that a track is matched to \SI{70}{\percent} of the hits created by an \ac{MC} particle is not \SI{100}{\percent} efficient at accepting signal.
 This results in an underestimation of the number of signal particles, and hence an overestimation of the cross-section.
 The magnitude of the size of the inefficiency can be determined by counting the 
