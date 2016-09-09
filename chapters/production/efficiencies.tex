@@ -526,7 +526,61 @@ the individual track efficiencies $\eff_{t}$
 \begin{equation}
   \eff_{e} = \prod_{t \in \textnormal{tracks}} \eff_{t}.
 \end{equation}
+% TODO finish this section
 
+\section{Signal window}
+\label{chap:prod:effs:signal_window}
+
+As described in Section~\ref{chap:prod:fitting}, the number of prompt signal 
+candidates is measured by fitting the \lnipchisq\ distribution of candidates in 
+a signal window defined in the mass distribution.
+This mass window requirement removes some signal candidates.
+The efficiency of the requirement is evaluated by computing the fractional 
+integral of the signal component of the model $f_{\text{Sig.}}(m)$ fitted to 
+the mass distribution
+\begin{equation}
+  \effsigwin = \frac{%
+    \int_{M - \delta_{M}}^{M +\delta_{M}} f_{\text{Sig.}}(m) \dif{m}
+  }{%
+    \int_{-\infty}^{\infty} f_{\text{Sig.}}(m) \dif{m}
+  }
+  = \int_{M - \delta_{M}}^{M +\delta_{M}} f_{\text{Sig.}}(m) \dif{m},
+    \label{eqn:prod:effs:signal_window}
+\end{equation}
+where $M$ is the nominal charm meson mass, on which the signal window is 
+centred, and $\delta_{M}$ is half the width of the signal window.
+In the case of the \PDstarp measurement, there is an additional requirement 
+that the candidates used in the \lnipchisq\ fit fall in a signal window defined 
+in the \deltam\ distribution.
+The efficiency of the \deltam\ signal window requirement is computed in the 
+same way as for the mass signal window requirement, except the signal component 
+of the model fitted to the \deltam\ distribution $g_{\text{Sig}}(\deltam)$ is 
+used.
+The total signal window for the \PDstarp\ measurement is then
+\begin{equation}
+  \effsigwin^{\PDstarp} =
+    \int_{\deltam_{0} - \delta_{\deltam}}^{\deltam_{0} +\delta_{\deltam}} g_{\text{Sig.}}(\deltam) \dif{\deltam}
+    \int_{M - \delta_{M}}^{M +\delta_{M}} f_{\text{Sig.}}(m) \dif{m},
+    \label{eqn:prod:effs:signal_window:dst}
+\end{equation}
+where $\deltam_{0}$ is the nominal \PDstarp-\PDzero mass difference, and $\delta_{\deltam}$ is half the width of the \deltam\ window.
+
+The integral of a probability density function, as in \cref{eqn:prod:effs:signal_window,eqn:prod:effs:signal_window:dst}, is a number.
+To assign an uncertainty to this number, the fractional integral is recomputed 
+in a series of 500 pseudo-experiments.
+Within each one, each shape parameter is assigned a value sampled from a 
+normal distribution with a mean as the `nominal' value of that parameter, the 
+value found by the fit, and with a width equal to the uncertainty on that nominal 
+value. Correlations between the different shape parameters are taken into account.
+The variance on the deviation of the integrals, with respect to the integral 
+computed using the nominal shape parameter values, is taken as the square of 
+the uncertainty on the nominal integral value.
+
+As the shape of some mass signal models are \pTy\ bin dependent, as described 
+in Section~\ref{chap:prod:fitting:details}, the signal window efficiency is computed 
+separately in each \pTy\ bin.
+\Cref{tab:prod:effs:sigwin:dztokpi,tab:prod:effs:sigwin:dptokpipi}
+give the per-bin signal window efficiencies for each mode.
 
 \section{Combination of efficiencies}
 \label{chap:prod:effs:tot}
@@ -624,4 +678,22 @@ the individual track efficiencies $\eff_{t}$
   \label{tab:prod:effs:sel:dptokpipi}
   \centering
   \input{tables/production/efficiencies/DpToKpipi_selection.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Signal window efficiencies \effsigwin\ for \DzToKpi, measured in \PDzero \pTy\ bins.
+  }
+  \label{tab:prod:effs:sigwin:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_signal_window.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Signal window efficiencies \effsigwin\ for \DpToKpipi, measured in \PDplus \pTy\ bins.
+  }
+  \label{tab:prod:effs:sigwin:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_signal_window.tex}
 \end{table}
