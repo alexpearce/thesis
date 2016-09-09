@@ -209,7 +209,7 @@ def delta_mass_fit(mode, bin=('integrated', 'integrated')):
     plt.close(fig)
 
 
-def ipchisq_fit(mode, bin=('integrated', 'integrated')):
+def ipchisq_fit(mode, bin=('integrated', 'integrated'), prefit=False):
     if mode == DsToKKpi:
         mmode = 'DsTophipi'
     else:
@@ -222,7 +222,14 @@ def ipchisq_fit(mode, bin=('integrated', 'integrated')):
     else:
         parent = 'D0'
     pT_bin, y_bin = bin
-    c = f.Get('IP chi^2/canvas_{0}_{1}_log_IPCHI2_OWNPV_pT_bin_{2}_y_bin_{3}'.format(  # noqa
+    if prefit:
+        if prefit == 'sig':
+            plot_path = 'IP chi^2/MC prompt signal/canvas_{0}_{1}_log_IPCHI2_OWNPV_sig_prefit_pT_bin_{2}_y_bin_{3}'  # noqa
+        elif prefit == 'sec':
+            plot_path = 'IP chi^2/MC secondary signal/canvas_{0}_{1}_log_IPCHI2_OWNPV_sec_prefit_pT_bin_{2}_y_bin_{3}'  # noqa
+    else:
+        plot_path = 'IP chi^2/canvas_{0}_{1}_log_IPCHI2_OWNPV_pT_bin_{2}_y_bin_{3}'  # noqa
+    c = f.Get(plot_path.format(
         mmode, parent, pT_bin, y_bin
     ))
     c = c.GetListOfPrimitives().At(0)
@@ -240,21 +247,24 @@ def ipchisq_fit(mode, bin=('integrated', 'integrated')):
         primitive = it.Next()
 
     tcurve_tot = c.GetPrimitive('Fit')
-    tcurve_sig = c.GetPrimitive('Signal')
-    tcurve_sec = c.GetPrimitive('Secondary')
-    tcurve_bkg = c.GetPrimitive('Comb. bkg.')
+    if not prefit:
+        tcurve_sig = c.GetPrimitive('Signal')
+        tcurve_sec = c.GetPrimitive('Secondary')
+        tcurve_bkg = c.GetPrimitive('Comb. bkg.')
 
     fig = plt.figure(figsize=(9, 8))
     ax = fig.add_subplot(1, 1, 1)
-    bkgx, bkgy = roocurve_data(tcurve_bkg)
-    secx, secy = roocurve_data(tcurve_sec)
-    assert (bkgx == secx).all()
-    artists.curve(ax, bkgx, bkgy + secy, color='#9fb9e5', linestyle='-',
-                  fill=True, label='Secondary')
+    if not prefit:
+        bkgx, bkgy = roocurve_data(tcurve_bkg)
+        secx, secy = roocurve_data(tcurve_sec)
+        assert (bkgx == secx).all()
+        artists.curve(ax, bkgx, bkgy + secy, color='#9fb9e5', linestyle='-',
+                      fill=True, label='Secondary')
     roocurve(ax, tcurve_tot, color=colours.blue,
              label='Fit')
-    roocurve(ax, tcurve_bkg, color='#6d91cd', linestyle='-', fill=True,
-             label='Comb. bkg.')
+    if not prefit:
+        roocurve(ax, tcurve_bkg, color='#6d91cd', linestyle='-', fill=True,
+                 label='Comb. bkg.')
     tgraphasymerrors(ax, tgraph, color=colours.black,
                      label=r'${0}$ data'.format(PARENT[mode]))
 
@@ -279,9 +289,10 @@ def ipchisq_fit(mode, bin=('integrated', 'integrated')):
     #         horizontalalignment='center',
     #         verticalalignment='center')
 
-    fig.savefig('output/{0}_ipchisq_fit_pT_{1}_y_{2}.pdf'.format(
-        mode, pT_bin, y_bin
-    ))
+    fname = '{0}_ipchisq_fit_pT_{1}_y_{2}'.format(mode, pT_bin, y_bin)
+    if prefit:
+        fname += '_{0}'.format(prefit)
+    fig.savefig('output/{0}.pdf'.format(fname))
     plt.close(fig)
 
 
@@ -300,5 +311,7 @@ if __name__ == '__main__':
             delta_mass_fit(mode, bin=(pT_max_bkg, y_max_bkg))
 
         ipchisq_fit(mode)
+        ipchisq_fit(mode, prefit='sig')
+        ipchisq_fit(mode, prefit='sec')
         ipchisq_fit(mode, bin=(pT_max_sig, y_max_sig))
         ipchisq_fit(mode, bin=(pT_max_bkg, y_max_bkg))
