@@ -242,6 +242,102 @@
 \newcommand*{\abs}[1]{\ensuremath{\left\|#1\right\|}}
 \newcommand*{\dif}{\mathop{}\!\textnormal{d}}
 
+% Statistics
+% Taken from the Uni Bonn thesis template
+% https://www.pi.uni-bonn.de/lehre/uni-bonn-thesis
+\newcommand*{\stat}{\ensuremath{\text{stat.}}}
+\newcommand*{\syst}{\ensuremath{\text{syst.}}}
+\newcommand*\valuesep{\,}
+% Explicitly set the unit separator, so our manual usage below matches the \SI 
+% macro
+\sisetup{number-unit-product=\valuesep}
+% Formatting uncertainties, optionally with text descriptions
+% \numerrt{0.05}{\stat} => "0.05 (stat.)"
+\newcommand*\numerrt[3][]{%
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\pm \num{#2}\valuesep\text{(#3)}}%
+  \endgroup
+}
+% \numpmerr{0.06}{0.05} => "^{+0.06}_{-0.05}"
+\newcommand*\numpmerr[3][]{%
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{^{\num[explicit-sign=+]{#2}}_{\num[explicit-sign=-]{#3}}}%
+  \endgroup
+}
+% \numpmerrt{0.06}{0.05}{\stat} => "^{+0.06}_{-0.05} (stat.)"
+\newcommand*\numpmerrt[4][]{%
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{^{\num[explicit-sign=+]{#2}}_{\num[explicit-sign=-]{#3}}%
+    \valuesep\text{(#4)}}%
+  \endgroup
+}
+% \SIpmerr{3.88}{0.06}{0.05}{\percent} => "(3.88^{+0.06}_{-0.05}) %"
+\newcommand*\SIpmerr[5][]{%
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{(\num{#2}\valuesep\numpmerr{#3}{#4})\valuesep{\si{#5}}}%
+  \endgroup
+}
+% \SIerrt{3.88}{0.05}{\stat}{\percent} => "(3.88 \pm {0.05} (stat.)) %"
+\newcommand*\SIerrt[5][]{%
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{(\num{#2}\valuesep\numerrt{#3}{#4})\valuesep{\si{#5}}}%
+  \endgroup
+}
+% \SIerrtt{3.88}{0.05}{\stat}{0.06}{\syst}{\percent} => "(3.88 \pm {0.05} (stat.) \pm 0.06 (syst.)) %"
+\newcommand*\SIerrtt[7][]{%
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{(\num{#2}%
+    \valuesep\numerrt{#3}{#4}%
+    \valuesep\numerrt{#5}{#6})%
+    \valuesep{\si{#7}}}%
+  \endgroup
+}
+% \SIpmerrt{3.88}{0.05}{0.06}{\stat}{\percent} => "(3.88 \pm {}^{+0.05}_{-0.06} (stat.)) %"
+\newcommand*\SIpmerrt[6][]{%
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{(\num{#2}%
+    \valuesep\numpmerrt{#3}{#4}{#5})%
+    \valuesep\si{#6}}%
+  \endgroup
+}
+% \SIpmerrtt{3.88}{0.05}{0.06}{\stat}{0.04}{0.03}{\syst}{\percent} => "(3.88 {}^{+0.05}_{-0.06} (stat.) {}^{+0.04}_{-0.03} (syst.)) %"
+\newcommand*\SIpmerrtt[9][]{%
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{(\num{#2}%
+    \valuesep\numpmerrt{#3}{#4}{#5}%
+    \valuesep\numpmerrt{#6}{#7}{#8})%
+    \valuesep\si{#9}}%
+  \endgroup
+}
+% \SIerrs{3.88}{0.05}{0.06}{\percent} => "(3.88 \pm 0.05 (stat.) \pm 0.06} (syst.)) %"
+\newcommand*\SIerrs[5][]{%
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{(\num{#2}%
+    \valuesep\numerrt{#3}{\stat}%
+    \valuesep\numerrt{#4}{\syst})%
+    \valuesep\si{#5}}%
+  \endgroup
+}
+% \SIpmerrs{3.88}{0.05}{0.06}{0.04}{0.03}{\percent} => "(3.88 {}^{+0.05}_{-0.06} (stat.) {}^{+0.04}_{-0.03} (syst.)) %"
+\newcommand*\SIpmerrs[7][]{%
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{(\num{#2}
+    \valuesep\numpmerrt{#3}{#4}{\stat}
+    \valuesep\numpmerrt{#5}{#6}{\syst})%
+    \valuesep\si{#7}}%
+  \endgroup
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 % Software
 %%%%%%%%%%%%%%%%%%%%%%%%
