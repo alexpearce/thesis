@@ -45,6 +45,7 @@
 % Charm mesons
 \newcommand*\cToHc{\decay{\Pcharm}{\PHc}}
 \newcommand*\ppToHc{\decay{\pp}{\PHc}}
+\newcommand*\ppToccbarX{\decay{\pp}{\ccbar{}X}}
 \newcommand*\HcTof{\decay{\PHc}{f}}
 \newcommand*\DzToKpi{\decay{\PDzero}{\PKminus\Ppiplus}}
 \newcommand*\DzToKpiDCS{\decay{\PDzero}{\PKplus\Ppiminus}}
@@ -73,6 +74,10 @@
 \newcommand*\zeus{ZEUS}
 \newcommand*\icecube{IceCube}
 \newcommand*\cleo{CLEO}
+\newcommand*\babar{BaBar}
+\newcommand*\belle{Belle}
+\newcommand*\bfactory{\PB factory}
+\newcommand*\bfactories{\PB factories}
 
 \newcommand*\prosa{PROSA}
 \newcommand*\nnpdf{NNPDF3.0}
@@ -156,6 +161,7 @@
 \newcommand*\ccbar {\ensuremath{\Pcharm\APcharm}}
 \newcommand*\qqbar {\ensuremath{\Pquark\APquark}}
 \newcommand*\pp {\ensuremath{\Pproton\Pproton}}
+\newcommand*\epem {\ensuremath{\Pelectron\APelectron}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % Variables
@@ -175,7 +181,9 @@
 \newcommand*\bjorkenx{\ensuremath{x}}
 \newcommand*\pdfqsquared{\ensuremath{Q^{2}}}
 
-\newcommand*{\pTyrange}[4]{\ensuremath{#1 < \pT < \SI{#2}{\GeVc},\,#3 < \rapidity < #4}}
+\newcommand*{\pTrange}[2]{\ensuremath{#1 < \pT < \SI{#2}{\GeVc}}}
+\newcommand*{\yrange}[2]{\ensuremath{#1 < \rapidity < #2}}
+\newcommand*{\pTyrange}[4]{\ensuremath{\pTrange{#1}{#2},\,\yrange{#3}{#4}}}
 
 % Electromagnetic interaction length
 \newcommand*\radlen{\ensuremath{X_{0}}}
@@ -229,6 +237,9 @@
 \newcommand*\bfrac{\ensuremath{\mathcal{B}}}
 
 \newcommand*\likelihood{\ensuremath{\mathcal{L}}}
+
+\newcommand*\resultratio[2]{\ensuremath{R_{#1/#2}}}
+\newcommand*\xsectimesbfrac{\ensuremath{\xsec(\PHc)\times\bfrac(\HcTof)}}
 
 % QCD
 \newcommand*\alphas{\ensuremath{\alpha_{s}}}

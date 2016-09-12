@@ -1,4 +1,388 @@
 \chapter{Systematic uncertainties}
-\label{chap:prod:systs}
+\label{chap:prod:syst}
 
-\lipsum[1-2]
+Each experimental measurement of the double-differential cross-section defined 
+in \cref{eqn:prod:introduction:differential_cross_section} is comprised of a 
+central value and a set of uncertainties.
+One uncertainty is \emph{statistical}, and is taken to be the uncertainty on 
+the prompt signal yield $N(\HcTof)$, as measured in the fitting procedure 
+described in \cref{chap:prod:fitting}.
+The second uncertainty is the \emph{systematic} uncertainty, which quantifies 
+all other sources of experimental precision.
+This section will describe the individual components of this uncertainty, how 
+they arise and how their values are estimated, and will finish with a summary 
+stating how the components are combined as a single number.
+
+% TODO talk about how these uncertainties relate to the MC propagation we've 
+% already talked about in the intro
+The statistical treatment of systematic uncertainties is similar to that
+
+\section{Finite \acl{MC} sample size}
+\label{chap:prod::syst:mcstat}
+
+The Monte Carlo samples used to estimate the acceptance, reconstruction, and 
+selection efficiencies are of a finite size, and so the computed efficiencies 
+carry a non-zero statistical uncertainty.
+This is propagated to the cross-section measurements as a systematic 
+uncertainty.
+% TODO what about D0 effs using the D*+ MC?
+As the set of \ac{MC} events is unique for each \pTy\ bin and mode, this 
+systematic uncertainty is fully uncorrelated between bins and between modes.
+As discussed in \cref{chap:prod:effs:tot}, the posteriori probability 
+for the estimated efficiency is described by the beta distribution, and so 
+the corresponding nuisance parameter is modelled by this distribution after 
+shifting it such that the most probable value coincides with zero.
+
+The resulting relative systematic uncertainties are given in 
+Tables~\ref{tab:syst:mc:stat:DzToKpi},
+\ref{tab:syst:mc:stat:DpToKpipi},
+\ref{tab:syst:mc:stat:DsTophipi}, and
+\ref{tab:syst:mc:stat:DstToDzpi_DzToKpi} for \DzToKpi, \DpToKpipi, \DspTophipi, 
+and \DstToDzpi\ with \DzToKpi.
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the finite size of the Monte Carlo sample used to assess the 
+    selection efficiency.
+  }
+  \label{tab:prod:syst:mc:stat:D0ToKpi}
+  \centering
+  % \input{tables/systematics/D0ToKpi/mc_stat}
+\end{table}
+
+\section{\acl{MC} modelling}
+\label{chap:prod:syst:mc}
+
+% TODO create MC-data comparison plots
+% Need to run create_weight_tree in tracking_mcerp on the modes to create 
+% tracking weights
+
+If the simulated data does not correctly model the selection variables, the 
+selection efficiencies that are evaluated with \ac{MC}, described in 
+\cref{chap:prod:effs:sel}, will be incorrect.
+To assess the accuracy of the \acl{MC} modelling, signal distributions are 
+extracted from the signal using the \sPlot\ method~\cite{Pivk:2004ty} and are 
+compared to the \ac{MC}.
+As the selection efficiency does not include the effects \ac{PID} selection, the data distributions are corrected for the \ac{PID} efficiency by a per-event weighting.
+The signal distributions in data are only available after the selection has been applied, and so the same selection is also applied to the simulated data (with the exception of the \ac{PID} requirements which are treated separately).
+The resulting histograms are shown in the Figures in 
+Appendix~\label{app:mcdata}.
+
+To assess the effect of any mis-modelling on the selection efficiencies, the 
+following procedure is performed for each selection variable $x$:
+\begin{enumerate}
+  \item Find the cut value $y$ on $x$ which rejects half of the simulated data;
+  \item Apply the cut value $y$ on $x$ to the \emph{real data}, counting the 
+    number of signal candidates passing the requirement as the sum of signal 
+    weights divided by the \ac{PID} selection efficiencies
+    \begin{equation}
+      N_{\text{Passed}} = \sum_{N}^{i} I(i)\frac{w_{i,\text{signal}}}{\effpid},
+    \end{equation}
+    where $I(i)$ is 1 if the value of $x$ for the $i$th event passes the 
+    requirement on $x$, and is zero otherwise;
+  \item The efficiency-corrected signal yield corresponding to the requirement 
+    on $x$ is $2N_{\text{Passed}}$, which should equal the number of signal 
+    candidates before the requirement $y$, if the \ac{MC} describes the data.  
+    The quantity
+    \begin{equation}
+      \Delta = 2N_{\text{Passed}} - \sum_{N}^{i} \frac{w_{i,\text{signal}}}{\effpid},
+      \label{eqn:prod:syst:mc:eff_diff}
+    \end{equation}
+    is then a handle on the mis-modelling of the data in the \ac{MC}.
+\end{enumerate}
+The signal weights are the product of signal sWeights, computed using the \sPlot\ method, and weights that equalise the \pT\ and \rapidity\ distributions between the data and the \ac{MC}.
+
+To account for correlations between variables, which may lead to 
+double-counting of the mis-modelling if neglected, the procedure is repeated 
+in ten thousand pseudo-experiments per selection variable.
+For each trial, each candidate is sampled $n$ times from the real data, with $n$ being randomly sampled from a Poisson distribution of mean 1.
+The total systematic uncertainty on the efficiency-corrected signal yield due 
+to \ac{MC} mis-modelling is the mean of the set of ten thousand values of $\Delta$, as defined in \cref{eqn:prod:syst:mc:eff_diff}.
+
+As the \ac{MC} sample sizes are too small to make precise differential 
+measurements of this uncertainty, the above procedure is performed on the data 
+integrated across all \pTy\ bins.
+The \pTy-integrated systematic uncertainty is given for each mode in 
+Table~\ref{tab:prod:syst:mc:result}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the finite size of the Monte Carlo sample used to assess the truth 
+    matching efficiency.
+  }
+  \label{tab:prod:syst:mc:result}
+  \centering
+  \input{tables/production/systematics/mc_modelling}
+\end{table}
+
+\section{Monte Carlo truth matching}
+\label{chap:prod:syst:mc:truth_matching}
+
+The truth matching efficiency described in \cref{chap:prod:effs:truth} is computed using an \ac{MC} 
+sample of finite size, and so carries a statistical uncertainty.
+As in \cref{chap:prod::syst:mcstat}, this statistical uncertainty is propagated to the cross-section 
+measurements as a systematic uncertainty.
+Unlike the selection efficiency uncertainty, the \ac{MC} sample size is too 
+small to compute the truth matching systematic in \pTy\ bins, and so an 
+integrated value is computed.
+The values for each mode are given in Table~\ref{tab:prod:syst:mc:truth_matching}.
+
+% TODO this table isn't in the 13 TeV ANA
+% can make it using the run_studies script, look in the split_uncertainties 
+% folder
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the finite size of the Monte Carlo sample used to compute the truth 
+    matching efficiency.
+  }
+  \label{tab:prod:syst:mc:truth_matching}
+  \centering
+  \input{tables/production/systematics/mc_truth_stat}
+\end{table}
+
+
+\section{Particle identification calibration}
+\label{chap:prod:syst:pid}
+
+Four common sources are typically mentioned when discussing systematic 
+uncertainties in the PIDCalib approach:
+\begin{enumerate}
+  \item Mis-modelling in the reference sample: the chosen reference
+    sample does not correctly model the kinematics. This does not apply
+    to this analysis as a purely data-driven approach is used where the
+    actual data is reweighted.
+  \item Uncertainty due to the \sPlot\ technique in the calibration sample:
+    We perform fits in each calibration bin separately, hence this does not 
+    apply here.
+  \item Limited sample size of the calibration sample: This is incorporated
+    as described before by bootstrapping the calibration sample before each
+    fit and including the variation of the obtained efficiency in each as 
+    part of the Monte Carlo error propagation.
+  \item The chosen binning scheme can bias the efficiency if the distributions 
+    of the reference and calibration sample within a bin are significantly
+    different. The treatment of this uncertainty will be discussed in the following.
+\end{enumerate}
+
+To estimate the effect of the binning systematic, we employ an alternative method using
+the boosted decision tree based reweighting algorithm of the \texttt{hep\_ml} package.
+An efficiency can be seen as the weight that as the weight that has to be assigned
+to an event before the selection criteria to have the obtained distribution agree
+with the one obtained after the cut.
+
+Therefore, we trained the BDT classifier to discriminate between the 
+distributions in the calibration sample before and after the \dllkpi\ cut being 
+applied to the track. As
+training variables, we use \ptot, \Eta, and \spd, while additional variables 
+can be
+included, no significant change was observed if $\phi$, \pT, or the number of 
+tracks were
+added in additional to the nominal three variables.
+
+The trained reweighter is then used to predict the efficiencies for every event in the
+reference sample and the efficiency in each \pTy\ bin is obtained as before.  
+The difference
+in obtained efficiency to the nominal method using a binned calibration sample is then taken
+as the systematic uncertainty.
+
+The resulting relative systematic uncertainties due to the finite size of the 
+\ac{PID} calibration sample are given in 
+Tables~\ref{tab:syst:pid:stat:DzToKpi},
+\ref{tab:syst:pid:stat:DpToKpipi},
+\ref{tab:syst:pid:stat:DsTophipi}, and
+\ref{tab:syst:pid:stat:DstToDzpi_DzToKpi} for \DzToKpi, \DpToKpipi, 
+\DspTophipi, and \DstToDzpi with \DzToKpi.
+The corresponding tables for the relative systematic uncertainties due to the 
+choice of binning are given in Tables~\ref{tab:syst:pid:binning:DzToKpi},
+\ref{tab:syst:pid:binning:DpToKpipi},
+\ref{tab:syst:pid:binning:DsTophipi}, and
+\ref{tab:syst:pid:binning:DstToDzpi_DzToKpi}.
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the finite size of the \ac{PID} calibration sample.
+  }
+  \label{tab:syst:pid:stat:DzToKpi}
+  \centering
+  % \input{tables/systematics/D0ToKpi/pid_stat}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the choice of \ac{PID} calibration binning.
+  }
+  \label{tab:syst:pid:binning:DzToKpi}
+  \centering
+  % \input{tables/systematics/D0ToKpi/pid_bin}
+\end{table}
+
+
+\section{Luminosity}
+\label{chap:prod:syst:lumi}
+
+There is an uncertainty on the luminosity measurement provided by the 
+luminosity group, which we will propagate as a systematic uncertainty on our 
+measurement.
+The relative uncertainty on the luminosity measurement is expected to be around 
+$5\%$.
+
+\section{Tracking efficiency correction}
+\label{chap:prod:syst:tracking}
+
+There is an uncertainty on the tracking correction, discussed in 
+\cref{chap:prod:effs:tracking}, provided by the tracking group, which we will 
+propagate as a systematic uncertainty on our measurement.
+There are several potential sources for systematic uncertainties:
+\begin{itemize}
+  \item The uncertainties given in \cref{fig:prod:effs:tracking_table} which incorporate the 
+    statistical uncertainties from the calibration mode and differences between different methods
+    used to extract these factors.
+  \item The correction table provides numbers estimated using muons. An additional uncertainty
+    of \SI{1.1}{\percent} (\SI{1.4}{\percent}) is applied for kaons (pions) due 
+    to uncertainties in the hadronic interactions.
+    This is dominated by the uncertainty on the material budget and hence full correlation
+    between kaons and pions is assumed.
+  \item An additional uncertainty of \SI{0.4}{\percent} is applied due to the 
+    reweighting procedure.
+\end{itemize}
+All of these sources are propagated using Monte Carlo error propagation and assuming 
+Gaussian distributions with the above mentioned relative widths for the different
+contributions to the tracking systematic uncertainty.
+% a toy study. Per toy, a new value for each of these
+% contributions is randomly drawn from a Gaussian distribution, taking into account the known
+% correlation for the hadronic interaction uncertainty. The calibration procedure is 
+% repeated for each of these toys. The overall uncertainty is then given by the standard deviation
+% of the values obtained from 10000 toy experiments. A common set of toy calibration histograms is generated
+% which is used for determining the uncertainty in each bin and for each mode, allowing to determine the correct correlations.
+Even though different bins and modes have different final state kinematics and hence access the table of correction
+factors for each track differently, the obtained uncertainty is driven by the global factors for the reweighting and the hadronic
+interaction uncertainty and the results are found to be highly correlated (at 
+least \SI{90}{\percent} between different bins and modes.
+
+
+The resulting relative systematic uncertainties are given in 
+Table~\ref{tab:syst:tracking:DzToKpi} for \DzToKpi, in 
+Table~\ref{tab:syst:tracking:DpToKpipi} for \DpToKpipi, in 
+Table~\ref{tab:syst:tracking:DsTophipi} for \DspTophipi, and in 
+Table~\ref{tab:syst:tracking:DstToDzpi_DzToKpi} for \DstToDzpi with \DzToKpi.
+
+The posteriori distribution obtained from the toy propagation of the uncertainties is then used as the distribution
+for the associated nuisance parameter after shifting it such that the most probable value coincides with zero.
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the finite sample size and hadronic interaction uncertainty on the 
+    tracking efficiency correction measurement.
+  }
+  \label{tab:syst:tracking:DzToKpi}
+  \centering
+  % \input{tables/systematics/D0ToKpi/tracking}
+\end{table}
+
+\section{Branching fractions}
+\label{chap:prod:syst:bf}
+
+There is an uncertainty on the branching fractions, provided by the Particle 
+Data Group~\cite{PDG2014}, which we will propagate as a systematic uncertainty 
+on our measurement. The numerical values used are listed in 
+\cref{tab:prod:introduction:branching_ratios}. We use these particular values 
+as they are the same as those used in the \sqrtseq{13} charm production 
+measurement, making the statistical treatment when computing ratios between 
+centre-of-mass energies very easy (the branching fractions will cancel).
+
+% TODO shorten this *a lot*, it's discussed in the intro and sel chapters
+As this measurement does not determine the resonant \phiToKK\ contribution in 
+the \DspTophipi\ sample, but instead only selects events within a 
+$\pm\SI{20}{\MeV}$ window around the \Pphi mass, as described in 
+Section~\ref{chap:prod:sel:offline}, a dedicated measurement by CLEO is used 
+\cite{Alexander:2008aa}.
+This measures the branching fraction of \DspTophipi, where a `$\phi$' is 
+identified by the same $\pm\SI{20}{\MeV}$ window definition.
+
+\section{Fit model}
+\label{chap:prod:syst:fitting}
+
+Other fit models may describe the well but give different results.
+The magnitude of the difference between the cross sections computed with other 
+fit models and our `nominal' model, described in \cref{chap:prod:fitting}, is 
+assigned as a systematic uncertainty on the result.
+This corresponds to an uncertainty on what the true generating probability 
+density function is for the observed data.
+
+The resulting relative systematic uncertainties are given in 
+Tables~\ref{tab:syst:fitting:DzToKpi},
+\ref{tab:syst:fitting:DpToKpipi},
+\ref{tab:syst:fitting:DsTophipi}, and
+\ref{tab:syst:fitting:DstToDzpi_DzToKpi} for \DzToKpi, \DpToKpipi, \DspTophipi, 
+and \DstToDzpi with \DzToKpi.
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the arbitrary choice of fit model.
+  }
+  \label{tab:syst:fitting:DzToKpi}
+  \centering
+  % \input{tables/systematics/D0ToKpi/fit}
+\end{table}
+
+\section{Signal window}
+\label{chap:prod:syst:signal_window}
+
+The signal window that is applied to the data entering the \lnipchisq\ fit, as 
+described in \cref{chap:prod:fitting}, and this has an efficiency, as 
+described in \cref{chap:prod:effs:signal_window}.
+The computation of this efficiency assumes the signal model is known, but the 
+parameters of the model are fitted to the data, and so have an uncertainty, 
+which results in a systematic uncertainty on the signal window efficiency.
+
+This computation of the uncertainty on the signal window efficiency is given in
+\cref{chap:prod:effs:signal_window}.
+This uncertainty is propagated the cross-sections as the systematic 
+uncertainty.
+
+\section{Correlations and summary}
+The different sources of systematic uncertainty discussed in this section can 
+be grouped into different categories:
+global uncertainties which are correlated between all bins and all modes, 
+uncertainties which are are only correlated
+between the bins of one mode and those which are uncorrelated between bins and 
+modes.
+\subsubsection*{Global uncertainties}
+\begin{itemize}
+  \item Branching ratio for \PDzero and \DstToDzpi\ for the same \PDzero final 
+    state.
+  \item Luminosity
+  \item Tracking correction
+\end{itemize}
+\subsubsection*{Correlated between different bins}
+\begin{itemize}
+  \item Branching ratio
+  \item Fit model
+  \item \ac{PID} calibration sample size
+  \item \ac{PID} binning
+\end{itemize}
+\subsubsection*{Uncorrelated}
+\begin{itemize}
+  \item Monte Carlo sample size
+\end{itemize}
+An overview of the uncertainties is given in Table~\ref{tab:sys:summary}. As we 
+employ Monte Carlo
+error propagation, correlations due to a common input to the measurement of 
+meson species (e.g.\ they all use the same tracking correction tables and 
+systematic uncertainty due to detector material modelling) are implicitly 
+included in the computation (also across different centre-of-mass energies) the 
+same Monte Carlo error propagation list is used.
+% \input{./tables/systematics/overview.tex}
+
+% \section{Correlations between \comenergy and \SI{13}{\TeV} measurements}
+% \label{sec:syst:13tev_correlations}
+
+% The use of Monte Carlo error propagation allows a seamless treatment of correlations even between different years.
+% Correlated systematic uncertainties are: the branching fractions, the luminosity and the tracking calibration.
+% As the same numerical values for the branching fractions are used, the corresponding systematic uncertainty is fully correlated between the two years. The correlation between for the luminosity uncertainty is taken to be 32\% (luminosity working group) and the contributions to tracking due to the uncertainty on the material budget are assumed to be fully correlated.
