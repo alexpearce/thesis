@@ -157,6 +157,34 @@ includes contributions from \DstToDzpi\ decays.
   \input{tables/production/introduction/fragmentation_fractions}
 \end{table}
 
+\subsection{Treatment of uncertainties}
+\label{chap:prod:introduction:uncertainties}
+
+Throughout this analysis, the method of \acl{MC} error propagation is used.
+With this, each quantity entering 
+\cref{eqn:prod:introduction:differential_cross_section} is assumed to be drawn 
+from some \acf{PDF} with a known set of parameters, and then ten thousand 
+numbers are sampled from that \ac{PDF}.
+When performing operations using such quantities, the operations are performed 
+on the input sample vectors, and then statistics on the result can be computed 
+on the new, resulting sample vector.
+
+Unless stated otherwise, each quantity that is measured directly is assumed to 
+follow a normal distribution, whose mean is equal to the measured value, and 
+whose width is equal to the measured uncertainty on that value.
+The computation of that measured uncertainty will be described when the 
+respective measurements are presented.
+When the result of operations using such measurements is presented, such as 
+cross-sections, the central value given is the most probable value of the 
+sample vector representing the result, and the lower and upper uncertainty 
+bounds are given by the \SI{15.9}{\percent} and \SI{84.1}{\percent} percentiles 
+either side of the central value.
+
+% TODO motivation?
+
+\subsection{Document structure}
+\label{chap:prod:introduction:structure}
+
 The data used for the measurements were collected in July 2016, under a set of 
 special conditions used for the restart of the \ac{LHC} after \ac{LS1}.
 The conditions of the \ac{LHC} and of the \lhcb\ detector will be described in 
