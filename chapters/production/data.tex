@@ -3,11 +3,11 @@
 
 The data used for this measurement were collected at the very beginning of 
 \runtwo\ of the \ac{LHC}, during a special 15-day `early measurements' period.
-The number of bunches in the accelerator was gradually increased from 50 to 482 
-bunches at the end of the period, with the number colliding at IP8 increasing 
-from 36 to 397 bunches.
+The number of bunches in the accelerator was gradually increased from 50 at the 
+beginning to 482 bunches at the end of the period, with the number colliding at 
+IP8 increasing from 36 to 397 bunches.
 In addition, the minimum bunch spacing was set to \SI{50}{\nano\second}, as in 
-\runone, rather than the nominal \runtwo spacing of \SI{25}{\nano\second}.
+\runone, rather than the nominal \runtwo\ spacing of \SI{25}{\nano\second}.
 These steps were taken primarily for machine safety, as the \ac{LHC} began 
 operating at a new centre-of-mass energy, \sqrtseq{13}, never before seen at a 
 particle collider.
@@ -20,9 +20,9 @@ uses fills 3976, 3981, 3988, 3992, and 3996.
 The combination of these fills corresponds to around \SI{32}{\hour} of 
 collisions.
 Other fills taken during the early measurements period were excluded from the 
-analysis due to them either having short times, usually corresponding to 
-unstable beams unfit for physics, or because one or more sub-detector was found 
-to be operating incorrectly during data-taking.
+analysis due to them either being of a short length of time, usually 
+corresponding to unstable beam conditions, or because one or more sub-detector 
+was found to be operating incorrectly during data-taking.
 
 The combined dataset used for the measurement corresponds to an integrated 
 luminosity, defined in \cref{eqn:prod:introduction:integrated_lumi}, of
@@ -30,6 +30,8 @@ luminosity, defined in \cref{eqn:prod:introduction:integrated_lumi}, of
   \intlumi = \SI{\xsectotlumi}{\per\pico\barn}.
   \label{eqn:prod:xsectotlumi}
 \end{equation}
+The measurement of this quantity will be described in 
+\cref{chap:prod:data:lumi}.
 For reference, the total integrated luminosity collected in \runone\ at \lhcb\ 
 was \SI{3}{\per\femto\barn}, 600 times more, whilst that for the \sqrtseq{7}\ 
 \lhcb\ open charm production measurement was \SI{15}{\per\nb}, 300 times less.
@@ -40,7 +42,6 @@ A matching set of simulated \ac{MC} events is also used in the analysis, which
 is described in \cref{chap:prod:data:mc}.
 The selection of events and charm candidates, both in the trigger and offline, 
 will be described in \cref{chap:prod:sel}.
-A description of the luminosity measurement will now be given.
 
 \section{Luminosity determination}
 \label{chap:prod:data:lumi}
@@ -86,7 +87,7 @@ As the \ac{VDM} and \ac{BGI} methods are independent, they serve as
 cross-checks of one another and can be combined in an average if they are 
 compatible.
 They were both used in an analysis to measure the \runone\ integrated 
-luminosity, where a relative uncertainty on the combination of 
+luminosity where a relative uncertainty on the combination of 
 \SI{1.16}{\percent} was achieved, the highest precision on a luminosity 
 measurement at an \ac{LHC} experiment~\cite{LHCb-PAPER-2014-047}.
 For the early measurements campaign, only the data for the \ac{BGI} measurement 
@@ -94,8 +95,8 @@ was available, and a precision of \SI{3.8}{\percent} was reached.
 
 Both the \ac{VDM} and the \ac{BGI} methods require special \ac{LHC} running 
 conditions.
-The data for the luminosity analysis is collected during dedicated fills, the 
-data from which is not used for physics analyses.
+The data for the luminosity analysis is collected during dedicated fills and is 
+not used for physics analyses.
 The absolute luminosity is then determined only for these fills, and so it is 
 necessary to translate this to a luminosity measurement for the fills used for 
 physics data.
@@ -149,13 +150,13 @@ The total simulation is configured to model the beam parameters relating to the
 After \evtgen, the particles are propagated through a simulation of the entire 
 detector using the \geant\ 4 program, where interactions with the detector are 
 recorded as `\ac{MC} hits'.
-These \ac{MC} hits are converted into a format identical to the electrical 
+These \ac{MC} hits are converted into a format mimicking the electrical 
 response of the real detector through an \lhcb-specific emulation, and the 
 response is then processed through the trigger and reconstruction software in 
 an identical manner to real data.
 
-This analysis uses simulated samples of \DstToDzpi, with \DzToKpi, decays, 
-\DpToKpipi, and \DspToKKpi\ decays.
+This analysis uses simulated samples of \DstToDzpi\ with \DzToKpi, \DpToKpipi, 
+and \DspToKKpi\ decays.
 The \DstToDzpi\ sample is sufficient for studying both \DstToDzpi\ and 
 (untagged) \DzToKpi efficiencies, as the effect of the soft pion is 
 parameterised in \PDzero\ \pT\ and \rapidity, which this measurement is also 
@@ -168,14 +169,14 @@ an additional \num{1} million events generated where the decay head is required
 to have $\pT > \SI{10}{\GeVc}$.
 To save computing resources, the decays are required to be within the \lhcb\ 
 geometric acceptance after \evtgen\ has run.
-This requirement imposes all final state, charged particles have a positive $z$ 
-component of their three-momentum, and that those particles also satisfy
+This requirement imposes all charged final state particles have a positive $z$ 
+component of their three-momentum and that they satisfy
 \begin{equation}
   10 < \theta < \SI{400}{\milli\radian},
   \label{eqn:prod:data:lhcb_acceptance}
 \end{equation}
 where $\theta$ is the polar angle.
-As this cut is not \SI{100}{\percent} efficiency in some \pTy\ bins, its 
+As this cut is not \SI{100}{\percent} efficient in some \pTy\ bins, its 
 efficiency must be assessed, as described in \cref{chap:prod:effs:acc}, and so 
 dedicated, generator-only datasets are also produced.
 These data are not processed beyond the \evtgen\ step.
@@ -189,11 +190,103 @@ question.
 The process of assigning \ac{MC} objects to reconstructed objects is referred 
 to as \emph{truth matching}.
 Tracks are classified as \emph{ghost} tracks if there are no \ac{MC} particles 
-that can be associated to it.
+that can be associated to them.
 Vertices can then be assigned categories based on the associations of their 
 input tracks.
 A signal vertex is one in which all inputs are associated to \ac{MC} particles, all inputs have been assigned a particle identity equal to that of its associated \ac{MC} particle, all inputs have been associated with \ac{MC} particles which come from the same true \ac{MC} parent, and the identity of the \ac{MC} parent matches that assigned to the vertex.
 Any deviation from these requirements results in the vertex being assigned a particular \emph{background category}, dependent on the nature of the deviations~\cite{Gligorov:1035682}.
 For example, if at least one track is a ghost, the vertex is classified as a ghost, and if at least one track is associated to an \ac{MC} particle with a different \ac{PID}, the vertex is classified as a misidentification.
+In the case of a vertex than can be associated to an \ac{MC} particle, the 
+vertex can be further classified as prompt or secondary based on the true 
+lifetime of the \ac{MC} particle.
+For this analysis, a vertex is classified as secondary if any particle in the 
+ancestry of the associated \ac{MC} particle has a lifetime greater than 
+\SI{0.1}{\femto\second}.\footnotemark
 In what follows, the \ac{MC} data has been filtered such that only 
 truth-matched, prompt charm hadron candidates remain, unless stated otherwise.
+
+\footnotetext{%
+  The order of magnitude of the lifetimes of the ground-state charm and beauty 
+  hadrons is between $0.1$ and \SI{1}{\pico\second}.
+}
+
+\section{Crossing angle correction}
+\label{chap:prod:data:crossing_angle}
+
+Due to the non-zero crossing angles of the two proton beams provided by the 
+\ac{LHC}, the \pp\ collision frame is boosted with respect to the laboratory 
+frame.
+As this measurement is made in bins of charm hadron transverse momentum and 
+rapidity measured in the \pp\ collision rest frame, a correction must be 
+applied to the \pT\ and \rapidity\ measured in the laboratory frame.
+
+Two crossing angles are defined per beam: $\theta_{h}$ is the angle made with 
+the $z$ axis in the horizontal $xz$ plane, and $\theta_{v}$ is the angle made 
+with the $z$ axis in the vertical $yz$ plane.
+With $\theta_{h} = 0$ and $\theta_{v} = 0$ we have
+\begin{equation}
+  p_{z+}^{\mu} = \begin{pmatrix}\Ebeam\\0\\0\\\pbeam\end{pmatrix}
+    \quad\text{and}\quad
+  p_{z-}^{\mu} = \begin{pmatrix}\Ebeam\\0\\0\\-\pbeam\end{pmatrix},
+\end{equation}
+where $z\pm$ marks the beam moving with increasing or decreasing $z$, \Ebeam\ 
+is the nominal beam energy of $\sqrts/2 = \SI{6.5}{\TeV}$, and \pbeam\ is the 
+beam momentum as $\pbeam^{2} = \Ebeam^{2} - m_{\text{Proton}}^{2}$.
+With non-zero crossing angles, the beam four-vectors become
+\begin{align}
+  p_{z+}^{\mu} &= \begin{pmatrix}
+    \Ebeam\\
+    \pbeam\sin{\theta_{h,+}}\\
+    \pbeam\sin{\theta_{v,+}}\\
+    \pbeam\sqrt{1 - \sin^{2}{\theta_{h,+}} - \sin^{2}{\theta_{v,+}}}
+  \end{pmatrix}\quad\text{and}\nonumber\\
+  p_{z-}^{\mu} &= \begin{pmatrix}
+    \Ebeam\\
+    -\pbeam\sin{\theta_{h,-}}\\
+    -\pbeam\sin{\theta_{v,-}}\\
+    -\pbeam\sqrt{1 - \sin^{2}{\theta_{h,-}} - \sin^{2}{\theta_{v,-}}}
+  \end{pmatrix},
+\end{align}
+where $\theta_{h,\pm}$ and $\theta_{v,\pm}$ are defined to allow for 
+asymmetrical crossing angles between the two beams.
+The centre-of-mass four vector $\ptot_{\text{CoM}}^{\mu}$ is then the sum of 
+$p_{z+}^{\mu}$ and $p_{z-}^{\mu}$.
+
+Charm hadron candidates in both the real data and the \ac{MC} are boosted into 
+the centre-of-mass rest frame, and the system is then rotated to make the 
+boosted beam $z$ axis coincident with that in the laboratory frame.
+The transverse momentum and rapidity are then recomputed and recorded.
+Example \pT\ and \rapidity\ distributions as measured in the laboratory and 
+\pp\ centre-of-mass frame are given for the simulated \DzToKpi\ dataset in 
+\cref{fig:prod:data:com_boost}.
+Whenever charm hadron \pT\ or \rapidity\ are mentioned, it is the \pp\ rest 
+frame quantities that are used, unless stated otherwise.
+
+In the data sample used, the only non-zero crossing angle was in the $xz$ plane 
+and this was symmetric between the two beams.
+The crossing angle values were $\theta_{h,+} = -\theta_{h,-} = 
+\SI{790}{\micro\radian}$ and $\theta_{v,+} = -\theta_{v,-} = 
+\SI{0}{\micro\radian}$.
+These values are used in the beam parameterisation in the \ac{MC} data.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{production/data/D0ToKpi_MC_PT}
+    \caption{\pT}
+    \label{fig:prod:data:com_boost:pt}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{production/data/D0ToKpi_MC_Y}
+    \caption{\rapidity}
+    \label{fig:prod:data:com_boost:y}
+  \end{subfigure}
+  \caption{%
+    Distributions of \PDzero\ \pT~(\subref*{fig:prod:data:com_boost:pt}) and 
+    \rapidity~(\subref*{fig:prod:data:com_boost:y}) as measured in the 
+    laboratory frame (black) and in the proton-proton centre-of-mass~(CoM) 
+    frame (red), in the simulated \DzToKpi\ dataset.
+  }
+  \label{fig:prod:data:com_boost}
+\end{figure}
