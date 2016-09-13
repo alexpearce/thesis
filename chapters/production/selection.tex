@@ -13,7 +13,7 @@ worth noting at this point that such fits are simpler if the data is `clean',
 that is if the fraction of charm meson signal in the data is high.
 It is then advantageous to optimise the selection of the data to reduce 
 backgrounds, while retaining as much signal as possible to maximise the 
-statistical significance.
+statistical significance of the measurement.
 
 The selection of fully charged, hadronic decay modes of charm mesons has 
 already been performed by many other analysis at \lhcb,\footnotemark and their 
@@ -40,8 +40,8 @@ background.
   \DspTophipi~\cite{Aaij:2012cy} decays.
 }
 
-For this measurement of prompt charm production, it is preferable not to make 
-\pT\ requirements on the charm candidate, as they would restrict the \pT\ range 
+For this measurement of prompt charm production it is preferable not to make 
+\pT\ requirements on the charm candidate as they would restrict the \pT\ range 
 available for differential measurements.
 Nor is it desirable to make \ipchisq\ cuts, as the \ipchisq\ distribution is 
 used for prompt-secondary discrimination, and having access to only part of the 
@@ -50,7 +50,7 @@ The selection used is then informed by previous \lhcb\ studies of fully
 charged, hadronic charm decays, but with modifications to improve the 
 usefulness for the measurement in hand.
 The selection variables that are useful for discriminating between signal and 
-background, in addition to those previously mention, are given below.
+background, in addition to those discussed, are given and described below.
 The `parent' is the charm hadron \PHc, and the `children' are the charged 
 hadrons in the final state.
 
@@ -93,18 +93,15 @@ hadrons in the final state.
     A global likelihood fit is then performed across all radiators and tracks, 
     and a likelihood, relative to the pion hypothesis, is assigned to each 
     track for each particle hypothesis.
-  \item[Pairwise child \ac{DOCA}] \hfill \\
+  \item[Child pairwsie \ac{DOCA}] \hfill \\
     For a set of tracks physically originating from a common vertex, the 
     largest distance between any two tracks, the \ac{DOCA}, should be small.
-  \item[Pairwise child \ac{DOCA} \chisq] \hfill \\
-    This variable is used in one trigger line and relates to \ac{DOCA} as 
-    \ipchisq\ relates to \ac{IP}.
   \item[Parent reconstructed mass] \hfill \\
     Invariant mass, either computed before the vertex fit as the sum of the 
     child four-momenta, or after as the mass of the fitted vertex.
     In a signal sample, a peaking structure will be seen around the nominal 
     charm hadron invariant mass.
-    To confidently describe the combinatorial background, the window around the 
+    To be able to model the combinatorial background, the window around the 
     nominal mass should be many times wider than the resolution on this peak.
   \item[Parent vertex quality] \hfill \\
     Quality of the vertex fit.
@@ -134,7 +131,7 @@ generally being loosened to account for the higher rate available to charm
 triggers during the early measurements period, and the desire to have as high 
 an efficiency as possible in the low \pT\ regions of the measurement.
 
-As this analysis uses the Turbo stream, the only selection in `online', in that 
+As this analysis uses the Turbo stream, the only selection is `online', in that 
 is performed on quantities computed in the trigger.
 Still, the values computed are available `offline', once the data has been made 
 available to analysts.
@@ -143,8 +140,9 @@ defined in the trigger and cannot be tuned once the data has been taken, and
 the `offline' selection, which is any selection made after this.
 The use of the Turbo stream permits only one pass of the full event 
 reconstruction, that done `online' in the trigger.
-The following selection shall detail the online selection, and will be followed 
-by a description of the offline selection shall follow.
+The following \namecref{chap:prod:sel:online} shall detail the online 
+selection, and will be followed by a description of the offline selection shall 
+follow in \cref{chap:prod:sel:offline}.
 
 \section{Online selection and reconstruction}
 \label{chap:prod:sel:online}
@@ -153,7 +151,7 @@ The different stages of the trigger are described in
 \cref{chap:intro:lhcb:detector:trigger}.
 At \lzero, bunch-bunch crossings are accepted randomly by the \nobias\ trigger, 
 so called because it should not bias any distributions of interest.
-The rate at which the \nobias\ trigger sets events is programmed into the 
+The rate at which the \nobias\ trigger accepts events is programmed into the 
 hardware controller manually, with the exact rate depending on the number of 
 colliding bunches at \lhcb.
 The rates were tuned throughout the early measurements period so as to keep the 
@@ -169,7 +167,7 @@ The \lzero\ rate is given for each fill in
   Dead time can then occur if several triggers occur too close to one 
   another~\cite{Schmelling:1998qta}.
 }
-ve
+
 In \hltone, the following sequence is performed for events passing \lzero:
 \begin{enumerate}
   \item The full offline charged particle (track) reconstruction is run for 
@@ -184,8 +182,8 @@ In \hltone, the following sequence is performed for events passing \lzero:
     hits within a search window assuming a \pT\ of at least \SI{800}{\MeVc} are 
     considered.
 \end{enumerate}
-Requiring all child tracks from a charm hadron to have $\pT > \SI{800}{\MeVc}$ 
-would be inefficient for low \pT\ charm, and so the full decay is not 
+Requiring all child tracks from a vertex to have $\pT > \SI{800}{\MeVc}$ would 
+be inefficient for low \pT\ charm hadrons, and so the full decay is not 
 reconstructed in \hltone.
 Instead, the presence of a single, good quality track is required, which is 
 consistent with having originated from a heavy flavour decay by having a large 
@@ -207,7 +205,7 @@ are combined with pion candidates, referred to here as `soft pions',
 \Ppiplussoft, due to their soft momentum distribution.
 There are three stages to the particle combination: when cuts are applied to 
 the input tracks; when cuts applied to the four-vector sum of these tracks; and 
-when cuts are applied to the fitted vertex formed by tracks.
+when cuts are applied to the fitted vertex.
 For computing efficiency, the combination does not proceed past a failing step, 
 and combinations where the vertex fit fails to converge are discarded, although 
 the likelihood of a failing vertex fit is suppressed by making \ac{DOCA} 
@@ -308,7 +306,7 @@ of the \Pphi resonance makes this cut efficient at reducing the fraction of
 combinatorial background in the data, as well as reducing the fraction of $\Ppi 
 \to \PK$ mis-identifications.
 As the \DspToKKpi sample is then dominated by resonant \DspTophipi, the 
-\PDsplus sample is be referred as `\DspTophipi'.
+\PDsplus sample is referred as `\DspTophipi'.
 The effective reduction of the total number of \PDsplus mesons produced due to 
 the \Pphi requirement is treated as part of the branching fraction contribution 
 in \cref{eqn:prod:introduction:differential_cross_section}, rather than as part 
