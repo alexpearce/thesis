@@ -20,6 +20,9 @@ cp $INPUT/DstToD0pi_D0ToKpi_delta_mass_offline_selection_regions.pdf $OUTPUT/pro
 cp $INPUT/D0ToKpi_BKGCAT{,_fit}.pdf $OUTPUT/production/efficiencies/
 cp $INPUT/DpToKpipi_BKGCAT{,_fit}.pdf $OUTPUT/production/efficiencies/
 
+cp $INPUT/D0ToKpi_MC_PT.pdf $OUTPUT/production/data/
+cp $INPUT/D0ToKpi_MC_Y.pdf $OUTPUT/production/data/
+
 cp $INPUT/tracking_correction_table.pdf $OUTPUT/production/efficiencies/
 
 cp $INPUT/D0ToKpi_{mass,ipchisq}_fit_*.pdf $OUTPUT/production/fitting/
