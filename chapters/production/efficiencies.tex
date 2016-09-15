@@ -7,8 +7,9 @@ The efficiency chain defines the fraction of produced prompt signal candidates
 that survive the full reconstruction and selection procedure.
 The chain is defined in steps grouped by physical requirements and those 
 imposed by software, with each step being relative to the previous one.
-In the order of steps by which candidates are lost, this starts with the efficiency of a signal charm hadron to decay within the 
-\lhcb\ acceptance having been produced in a \pp\ collision, \effacc.
+In the order of steps by which candidates are lost, this starts with the 
+efficiency of a signal charm hadron to decay within the \lhcb\ acceptance 
+having been produced in a \pp\ collision, \effacc.
 The efficiency of such a decay to be fully reconstructed is the reconstruction 
 efficiency is \effreco, and then the efficiency of the reconstructed decay to 
 be triggered through \lzero, \hltone, and \hlttwo is the trigger efficiency 
@@ -56,8 +57,9 @@ truth-matching as described in \cref{chap:prod:data:mc}, is not \SI{100}{\%}
 efficient, and so a correction factor \efftruth is be computed to account for 
 the deficit.
 
-To summarise: the total efficiency $\eff_{i}(\decay{\PHc}{f})$, for charm candidates in the $i$th \pTy\ bin, is 
-the product of the individual efficiencies and correction factors
+To summarise: the total efficiency $\eff_{i}(\decay{\PHc}{f})$, for charm 
+candidates in the $i$th \pTy\ bin, is the product of the individual 
+efficiencies and correction factors
 % TODO should revisit this to include how the sections actually flow; could 
 % have the L0 efficiency explicitly, for example
 \begin{align}
@@ -68,9 +70,9 @@ the product of the individual efficiencies and correction factors
 where each efficiency \eff\ is dependent on the charm hadron \PHc\ and the 
 final state $f$, and is conditional on the previous step.
 
-In this \namecref{chap:prod:effs} the details of the efficiency computation for each step is 
-given, along with example efficiency tables in \pTy\ for the two-body \DzToKpi\ 
-and three-body \DpToKpipi\ decay.
+In this \namecref{chap:prod:effs} the details of the efficiency computation for 
+each step is given, along with example efficiency tables in \pTy\ for the 
+two-body \DzToKpi\ and three-body \DpToKpipi\ decay.
 The notation for conditional yields will be used throughout, where $N_{B|A}$ 
 denotes the prompt signal yields after process $B$ given that process $A$ 
 preceded $B$.
@@ -105,16 +107,24 @@ acceptance efficiency is defined as
 \end{equation}
 The input dataset to this computation is the generator-level set described in 
 \cref{chap:prod:data:mc}.
-% TODO should mention that we're using AC intervals, stating why and what they
-% are
 The acceptance efficiencies for \DzToKpi\ and \DpToKpipi, in \pTy\ bins, are 
 given in \cref{tab:prod:effs:acc:dztokpi,tab:prod:effs:acc:dptokpipi}.
 
 \section{Reconstruction}
 \label{chap:prod:effs:reco}
 
-The reconstruction efficiency \effreco\ parameterises the fraction of charm meson decays passing the acceptance requirements that are also fully reconstructed as tracks, for the final state particles, and vertices, for the charm mesons.
-This folds in several effects: whether the final state particles have a large enough momentum not to be bent out of the detector acceptance by the magnetic field; whether the final state particles leave enough hits in the tracking system to be \emph{reconstructible} (that is, above the minimum threshold at which the tracking system \emph{could} reconstruct a track); whether, given that enough hits were deposited by a final state particle, a track was actually \emph{reconstructed}; and whether a vertex can be formed, given that all final state particles have associated tracks.
+The reconstruction efficiency \effreco\ parameterises the fraction of charm 
+meson decays passing the acceptance requirements that are also fully 
+reconstructed as tracks, for the final state particles, and vertices, for the 
+charm mesons.
+This folds in several effects: whether the final state particles have a large 
+enough momentum not to be bent out of the detector acceptance by the magnetic 
+field; whether the final state particles leave enough hits in the tracking 
+system to be \emph{reconstructible} (that is, above the minimum threshold at 
+which the tracking system \emph{could} reconstruct a track); whether, given 
+that enough hits were deposited by a final state particle, a track was actually 
+\emph{reconstructed}; and whether a vertex can be formed, given that all final 
+state particles have associated tracks.
 
 The reconstruction efficiency is defined as the ratio of fully reconstructed 
 decays to those passing the acceptance requirements
@@ -133,13 +143,19 @@ given in \cref{tab:prod:effs:reco:dztokpi,tab:prod:effs:reco:dptokpipi}.
 \subsection{Truth matching inefficiency}
 \label{chap:prod:effs:truth}
 
-The evaluation of \cref{eqn:prod:effs:reco} requires that the reconstructed objects, tracks and vertices, be correctly associated back to the `truth-level' information, that is the \ac{MC} objects which were generated and then propagated through the detector simulation.
+The evaluation of \cref{eqn:prod:effs:reco} requires that the reconstructed 
+objects, tracks and vertices, be correctly associated back to the `truth-level' 
+information, that is the \ac{MC} objects which were generated and then 
+propagated through the detector simulation.
 The truth-matching procedure is described in \cref{chap:prod:data:mc}.
 The background category information is used to filter the \ac{MC} such that the 
 number of remaining candidates are counted to obtain the input to some 
 efficiency computation, such as \cref{eqn:prod:effs:reco}.
-However, the requirement that a track is matched to \SI{70}{\percent} of the hits created by an \ac{MC} particle is not \SI{100}{\percent} efficient at accepting signal.
-This results in an underestimation of the number of signal particles, and hence an overestimation of the cross-section.
+However, the requirement that a track is matched to \SI{70}{\percent} of the 
+hits created by an \ac{MC} particle is not \SI{100}{\percent} efficient at 
+accepting signal.
+This results in an underestimation of the number of signal particles, and hence 
+an overestimation of the cross-section.
 The magnitude of the size of the inefficiency can be determined by counting the 
 number of signal decays that fail the truth matching requirement.
 \cref{fig:prod:effs:truth:categories} shows the \PDzero and \PDplus mass 
@@ -423,10 +439,10 @@ the \ac{PDF} of the efficiency model for the given \ac{PID} requirement on the
 given particle.
 
 One method to obtain the track counts $C_{i}$ and $C_{i}'$ is to perform two 
-maximum likelihood fits to the $\PKminus\Ppiplus$ invariant mass distributions, 
-one before and one after the \ac{PID} requirement, where the signal \PDzero 
-decays can be modelled as a peaking structure and the combinatorial background 
-can be modelled as a linear or exponential function.
+maximum likelihood fits to the $\PKminus\Ppiplus$ invariant mass distributions 
+in each \ptotetanspd\ bin, one before and one after the \ac{PID} requirement, 
+where the signal \PDzero decays can be modelled as a peaking structure and the 
+combinatorial background can be modelled as a linear or exponential function.
 This can take a substantial amount of time, however, as many fits must be 
 performed and checked.
 Instead, a single fit is run on the entire calibration sample, and weights are 
@@ -592,7 +608,7 @@ The correlation term $\rho_{tt'}$ accounts for cases where pairs of tracks in
 the reference decay are of the same species and fall in the same \ptotetanspd\ 
 bin, in which case it is equal to one otherwise it is zero.
 
-As the reference sample is of a finite size, they is an additional, associated 
+As the reference sample is of a finite size, there is an additional, associated 
 uncertainty on the per-event \ac{PID} efficiency.
 However, the reference sample is identical to the sample entering the fits 
 described in \cref{chap:prod:fitting}, and so this uncertainty is already 
@@ -602,7 +618,7 @@ The uncertainty due to the finite calibration sample size, given in
 uncertainty on the cross-section measurement, and is discussed further in 
 \cref{chap:prod:syst:pid}.
 
-\subsection{Optimisation on efficiency binning scheme}
+\subsection{Optimisation of \texorpdfstring{\ptotetanspd}{(p, eta, Nspd)} binning scheme}
 \label{chap:prod:effs:pid:binning}
 
 An assumption in the method of \ac{PID} calibration previously described is 
