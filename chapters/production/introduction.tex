@@ -172,6 +172,19 @@ numbers are sampled from that \ac{PDF}.
 When performing operations using such quantities, the operations are performed 
 on the input sample vectors, and then statistics on the result can be computed 
 on the new, resulting sample vector.
+This technique is used as error analysis of the measurement is complex: what 
+enters into the cross-section is the inverse of the efficiency, for example, 
+the corresponding \acl{PDF} of which may be obvious, in particular whether the 
+uncertainties can be treated as Gaussian.
+The use of \ac{MC} error propagation simplifies such analysis.
+
+An example cross-section, measured in the region \pTyrange{12}{13}{2.5}{3}, is 
+given in \cref{fig::prod:introduction:uncertainties:posterior}.
+The blue curve shows the \ac{PDF} of the cross-section when only the 
+statistical uncertainty is considered, whilst the green curve also includes the 
+contributions from the systematic uncertainties.
+The green curve is not symmetric, and the mode is shifted with respect to the 
+blue.
 
 Unless stated otherwise, each quantity that is measured directly is assumed to 
 follow a normal distribution, whose mean is equal to the measured value, and 
@@ -184,7 +197,19 @@ sample vector representing the result, and the lower and upper uncertainty
 bounds are given by the \SI{15.9}{\percent} and \SI{84.1}{\percent} percentiles 
 either side of the central value.
 
-% TODO motivation?
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{production/D0ToKpi_posterior_pdf}
+  \caption{%
+    Posterior probability densities for a measurement of the \PDzero 
+    cross-section in the region \pTyrange{12}{13}{2.5}{3}.
+    The blue curve shows the density including contributions only from the 
+    statistical uncertainty on the prompt signal count.
+    The green curve shows the density including contributions from all 
+    uncertainties that enter the measurement.
+  }
+  \label{fig::prod:introduction:uncertainties:posterior}
+\end{figure}
 
 \subsection{Document structure}
 \label{chap:prod:introduction:structure}
