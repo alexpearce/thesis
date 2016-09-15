@@ -738,29 +738,50 @@ separately in each \pTy\ bin.
 \Cref{tab:prod:effs:sigwin:dztokpi,tab:prod:effs:sigwin:dptokpipi}
 give the per-bin signal window efficiencies for each mode.
 
-\section{Combination of efficiencies and their uncertainties}
+\section{Uncertainties on efficiencies}
 \label{chap:prod:effs:tot}
 
-% TODO describe how we actually compute the reco+sel eff as one step, and how
-% uncertainties are treated (i.e. not using the standard binomial approach)
 % TODO normalise tables. D+ tables use [0, 1000[, D0 use [0, 1000]
 
-For the efficiencies computed by counting the number $N$ of decays before and the number $k$ after some selection, the estimate of the true efficiency is $k/N$.
-The application of the selection on the $N$ events is a binomial process, with the probability $P$ to observe $k$ counts given the true efficiency \eff\ and the number of initial $N$ counts given by
+For the efficiencies computed by counting the number $N$ of decays before and 
+the number $k$ after some selection, the estimator \effest\ of of the true 
+efficiency is $k/N$.
+The application of the selection on the $N$ events is considered as a binomial 
+process, with the probability $P$ to observe $k$ counts given the true 
+efficiency \eff\ and the number of initial $N$ counts given by
 \begin{equation}
   P(k | \eff, N) = \begin{pmatrix}n\\k\end{pmatrix}\eff^{k}{(1 - \eff)}^{N - k}.
+  \label{eqn:prod:effs:binomial_pdf}
 \end{equation}
-% TODO need to say that the standard variance is broken
-To exploit the \acl{MC} error propagation technique discussed in \cref{}, the posterior \ac{PDF} $P(\eff|k, N)$ must be obtained.
-This can be done using Bayes' theorem as
+To utilise the \ac{MC} error propagation discussed in 
+\cref{chap:prod:introduction:uncertainties}, a \ac{PDF} of $\eff$ given $k$ and 
+$N$ is needed.
+This can be found by using Bayes' theorem
 \begin{equation}
-  P(\eff|k,n) \propto P(k|\eff,n)P(\eff|n).
+  P(\eff | k, N) \propto P(k | \eff, N)P(\eff |N).
+  \label{eqn:prod:effs:binomial_bayes}
 \end{equation}
-The normalisation of this Equation depends on the choice of prior $P(\eff|n)$, which is chosen to be the uniform distribution and gives
+where $P(\eff | N)$ is the prior probability and $P(\eff | k, N)$ is the 
+posterior probability.
+For this analysis, a flat prior in $\eff$ is chosen, encoding the belief that, 
+given only $N$, any value of \eff\ between 0 and 1 is reasonable.
+Substituting such a prior and \cref{eqn:prod:effs:binomial_pdf} into 
+\cref{eqn:prod:effs:binomial_bayes}, the posterior becomes
 \begin{equation}
-  P(\eff|k,n) \propto \eff^{k}{(1 - \eff)}^{n - k}.
+  P(\eff | k, N) \propto \eff^{k}{(1 - \eff)}^{N - k}.
 \end{equation}
-% TODO finish
+This is the beta distribution $B(\alpha, \beta)$ for $\alpha = k + 1$ and 
+$\beta = N - k - 1$, and is what is used as the generating \ac{PDF} in the 
+\ac{MC} error propagation.
+
+For the purposes of visualisation, it is useful to quote an uncertainty on the 
+estimator \effest.
+The standard treatments of uncertainty evaluation on an efficiency can yield 
+symmetric uncertainties of zero, or $\pm1\sigma$ intervals that include 
+unphysical efficiencies when \effest\ is small.
+Instead, asymmetric \SI{68.2}{\percent} confidence intervals are computed using 
+the Agresti-Coull method~\cite{Agresti:2685469}, and are given as uncertainties 
+on all efficiencies computed as ratios of counts.
 
 % These tables are big and ugly, so stick them all at the end of the Chapter
 \begin{table}
