@@ -396,13 +396,13 @@ Selection efficiencies for \DzToKpi\ and \DpToKpipi\ are given in
 \label{chap:prod:effs:pid}
 
 The efficiency of a decay to pass all requirements on the variables that are 
-discriminatory between charged particle species is the \ac{PID} efficiency 
-\effpid.
-The variables are those in the \acf{DLL} family, of which this analysis uses 
-the \dllkpi\ variable to discriminate between kaon and pion tracks, with the 
-exception of the soft pion in the \DstToDzpi decay on which no \ac{PID} 
-requirement is made.
-This \namecref{chap:prod:effs:pid} shall describe how the \effpid\ is computed 
+discriminatory between particle species is the \ac{PID} efficiency \effpid.
+The variables are those in the \acf{DLL} family, whose computation is described 
+in \cref{chap:intro:lhcb:detector:pid}.
+This analysis uses the \dllkpi\ variable to discriminate between kaon and pion 
+tracks, with the exception of the soft pion in the \DstToDzpi\ decay on which 
+no \ac{PID} requirement is made.
+This \namecref{chap:prod:effs:pid} shall describe how \effpid\ is computed 
 using a calibration technique.
 
 It is assumed that the efficiency of a \ac{PID} cut for a given particle type 
@@ -415,14 +415,27 @@ detector is used.
 If a model can be constructed of the efficiency for a particular \ac{PID} 
 requirement as a function of \ptot, \Eta, and \nspd, the model can then be used 
 to determine the \ac{PID} efficiency of that requirement on any sample.
-The purpose of the calibration technique to build such a model.
+The purpose of the calibration technique is to construct such a model.
 
 A clean sample of \DzToKpi\ decays can be obtained without the use of \ac{PID} 
 information.
-This sample will be referred to here as the \emph{calibration} sample, and a 
-has a \SI{20}{\percent} overlap with the sample used for the cross-section 
-measurement, due to the different selection strategy that is required when 
-\ac{PID} information is ignored.
+The \DzToKpi\ decay is reconstructed, and \PDzero mesons are then combined with 
+the remaining tracks in the event to form candidate \DstToDzpi\ decays.
+Kaon (pion) candidates are those with the opposite (same) electric charge as 
+the pion from the \PDstarp.
+Mis-identifications of other true \PDzero decays, such as 
+\decay{\PDzero}{\Ppiplus\Ppiminus} and \decay{\PDzero}{\PKplus\PKminus}, can be 
+resolved in the \PDzero invariant mass spectrum due to the high momentum 
+resolution of the detector, and true \PDstarp\ decays can be separated from 
+combinatorial background in the delta mass distribution, defined in 
+\cref{eqn:prod:fitting:delta_mass}.
+
+The sample of \PDstarp-tagged \PDzero decays will be referred to here as the 
+\emph{calibration} sample, and has a \SI{20}{\percent} overlap with the sample 
+used for the cross-section measurement.
+This is partly due to the different selection strategy that is necessary when 
+\ac{PID} information is ignored, and also due to inclusive trigger requirements 
+used.
 To compute the efficiency of a given \ac{PID} requirement on either a kaon or a 
 pion track, kaons or pions from the calibration sample are partitioned in 
 \ptot, \Eta, and \nspd\ as a three-dimensional histogram.
@@ -434,31 +447,28 @@ such that the efficiency in the $i$th bin is
 \end{equation}
 It is assumed that the \ptotetanspd\ partitions are sufficiently small that the 
 \ac{PID} efficiency within a bin is single-valued.
-The normalised three-dimensional histogram of efficiencies is an estimate of 
-the \ac{PDF} of the efficiency model for the given \ac{PID} requirement on the 
-given particle.
+The three-dimensional histogram of efficiencies is an estimate of the 
+efficiency model for the given \ac{PID} requirement on the given particle.
 
 One method to obtain the track counts $C_{i}$ and $C_{i}'$ is to perform two 
-maximum likelihood fits to the $\PKminus\Ppiplus$ invariant mass distributions 
-in each \ptotetanspd\ bin, one before and one after the \ac{PID} requirement, 
-where the signal \PDzero decays can be modelled as a peaking structure and the 
-combinatorial background can be modelled as a linear or exponential function.
+two-dimensional maximum likelihood fits to the \PDzero mass and delta mass 
+distributions, one before and one after the \ac{PID} requirement.
 This can take a substantial amount of time, however, as many fits must be 
 performed and checked.
-Instead, a single fit is run on the entire calibration sample, and weights are 
-computed that can be used to statistically remove the background contribution 
-in variable distributions that are uncorrelated with the invariant 
-mass.\footnotemark
-As \ptot, \Eta, and \nspd\ are found to be uncorrelated with 
-$m(\PKminus\Ppiplus)$, these weights can be used to compute $C_{i}$ by summing 
-the weights of the tracks that fall in the $i$th bin.
+Instead, a single two-dimensional fit is run on the entire calibration sample, 
+and weights are computed that can be used to statistically remove the 
+background contribution in variable distributions that are uncorrelated with 
+the invariant mass.\footnotemark
+As \ptot, \Eta, and \nspd\ are found to be uncorrelated with the fit variables, 
+these weights can be used to compute $C_{i}$ by summing the weights of the 
+tracks that fall in the $i$th bin.
 They can also be used to compute $C_{i}'$ in the same way, as the \dll\ 
-variables are also found to be uncorrelated with $m(\PKminus\Ppiplus)$, and a 
-cut on a variable is the same as partitioning data into bins.
-Once the efficiency in each \ptotetanspd\ bin is computed, the \ac{PID}\ 
-efficiency for the same cut can be computed for a track from \emph{any} source 
-by looking up which bin it falls into, and assigning the corresponding 
-efficiency to it.
+variables are also found to be uncorrelated with the fit variables, and a cut 
+on a variable is the same as partitioning data into bins.
+Once the efficiency in each \ptotetanspd\ bin is known, the \ac{PID}\ 
+efficiency for the same cut on \emph{any} track can be evaluated by looking up 
+which bin the track falls into, and assigning the corresponding efficiency to 
+it.
 
 \footnotetext{%
   These weights are called \emph{sWeights}~\cite{Pivk:2004ty}.
@@ -536,37 +546,27 @@ reference track in the $i$th \ptotetanspd\ bin
             \sum_{i \in \textnormal{bins}}\sum_{j} a_{ij}\eff_{i}.
   \label{eqn:prod:effs:pid:expanded_ref_eff}
 \end{equation}
-The weight term accounts for the possibility of an impure reference sample, 
+The weight term can account for the possibility of an impure reference sample, 
 where, for example, it can be the same type of background-subtracting weight as 
 used for the creation the efficiency histogram from the calibration sample.
-\Cref{eqn:prod:effs:pid:expanded_ref_eff} can be expressed equivalently as the 
-sum over all tracks
-\begin{equation}
-  \effpid = \frac{1}{R}
-            \sum_{t \in \textnormal{tracks}} a_{t}\eff_{t}.
-  \label{eqn:prod:effs:pid:expanded_ref_eff_tracks}
-\end{equation}
 With this, the \ac{PID} efficiency calculation can be thought of as either of 
 two equivalent methods: weighting the calibration to look like the reference 
 sample, as in \cref{eqn:prod:effs:pid:single_track_ref_eff}, or assigning 
 per-track efficiencies to the reference sample based on \ptotetanspd\ bins they 
-fall into, as in \cref{eqn:prod:effs:pid:expanded_ref_eff_tracks}.
-\Cref{eqn:prod:effs:pid:expanded_ref_eff_tracks} can be generalised to 
-multi-track efficiencies by summing over all \emph{decays} in the reference 
-sample, replacing the per-track efficiency by a per-event efficiency 
-\effpiddecay
+fall into, as in \cref{eqn:prod:effs:pid:expanded_ref_eff}.
+The latter can be generalised to multi-track efficiencies by summing over all 
+\emph{decays} in the reference sample, replacing the per-track efficiency by a 
+per-decay efficiency \effpiddecay
 \begin{equation}
   \effpid = \frac{1}{R}\sum_{d\in\text{decays}} a_{d}\effpiddecay,
 \end{equation}
-where $a_{d}$ is the total weight of the decay, and \effpiddecay\ is the 
-\ac{PID} efficiency for that decay.
-The per-decay weight $a_{d}$ and efficiency \effpiddecay\ for the case in which 
-a \ac{PID} requirement is made on only a single track are $a_{t}$ and 
-\effpidtrack, whilst for a multi-track decay they are
+where $a_{d}$ is the weight of the decay, and \effpiddecay\ is the \ac{PID} 
+efficiency for that decay.
+The per-decay and efficiency \effpiddecay\ for the case in which a \ac{PID} 
+requirement is made on only a single track is \effpidtrack, whilst for a 
+multi-track decay it is
 \begin{equation}
-  a_{d} = \sum_{t \in \textnormal{tracks}} a_{t},
-  \quad\textnormal{and}\quad
-  \effpiddecay = \prod_{t \in \textnormal{tracks}} \effpidtrack
+  \effpiddecay = \prod_{t \in \textnormal{tracks}} \effpidtrack.
 \end{equation}
 
 In this analysis, the reference sample used for the calibration is the fully 
@@ -607,6 +607,12 @@ efficiency \effpiddecay\ can be derived using Gaussian error propagation
 The correlation term $\rho_{tt'}$ accounts for cases where pairs of tracks in 
 the reference decay are of the same species and fall in the same \ptotetanspd\ 
 bin, in which case it is equal to one otherwise it is zero.
+In this analysis, each efficiency \effpidtrack\ is modelled as a normal 
+distribution with mean equal to the value found in the calibration procedure, 
+and width equal to the statistical uncertainty on that value due to the finite 
+size of the calibration sample.
+The correlations are taken into account through a series of pseudo-experiments, 
+which will be described in \cref{chap:prod:syst:pid:stat}.
 
 As the reference sample is of a finite size, there is an additional, associated 
 uncertainty on the per-event \ac{PID} efficiency.
@@ -804,8 +810,8 @@ $\beta = N - k - 1$, and is what is used as the generating \ac{PDF} in the
 For the purposes of visualisation, it is useful to quote an uncertainty on the 
 estimator \effest.
 The standard treatments of uncertainty evaluation on an efficiency can yield 
-symmetric uncertainties of zero, or $\pm1\sigma$ intervals that include 
-unphysical efficiencies when \effest\ is small.
+symmetric uncertainties of zero, or even $\pm1\sigma$ intervals that include 
+unphysical efficiencies, when extreme values of $k$ and $N$ are used.
 Instead, asymmetric \SI{68.2}{\percent} confidence intervals are computed using 
 the Agresti-Coull method~\cite{Agresti:2685469}, and are given as uncertainties 
 on all efficiencies computed as ratios of counts.

@@ -78,12 +78,17 @@ The agreement is generally good.
 To quantify the effect of the mis-modelling of the selection efficiencies, the 
 following procedure is performed for each selection variable $x$:
 \begin{enumerate}
-  \item Find the cut value $y$ on $x$ which rejects half of the simulated data;
+  \item Find the cut value $y$ on $x$ which rejects half of the selected 
+    simulated data;
   \item Apply the cut value $y$ on $x$ to the \emph{real data}, counting the 
     number of signal candidates passing the requirement as the sum of signal 
     weights divided by the \ac{PID} selection efficiencies
     \begin{equation}
-      N_{\text{Passed}} = \sum_{i}^{N} I(i)\frac{w_{i,\text{signal}}}{\effpid},
+      N_{\text{Passed}} = \sum_{i}^{N} I(i) \frac{%
+        w_{i,\text{signal}}
+      }{%
+        \eff_{i,\text{PID}}
+      },
     \end{equation}
     where $I(i)$ is 1 if the value of $x$ for the $i$th event passes the 
     requirement $y$ on $x$, and is zero otherwise;
