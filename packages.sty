@@ -25,6 +25,12 @@
 \usepackage{lineno}
 \input{lineno-ams-fix}
 
+% Manchester guidelines require "Double or 1.5 spacing in a font type and size 
+% which ensures readability"
+% This macro is implemented by the memoir class, rather than the (usual) 
+% setspace package
+\OnehalfSpacing
+
 % Grey line numbers
 \renewcommand{\linenumberfont}{\normalfont\tiny\ttfamily\color{gray}}
 
