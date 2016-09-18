@@ -56,9 +56,13 @@
 \newcommand*\DstToDzpi{\decay{\PDstarp}{\PDzero\Ppiplus}}
 \newcommand*\JpsiTomumu{\decay{\PJpsi}{\Pmuon\APmuon}}
 % Charm baryons
-\newcommand*\LcTophh{\decay{\PLambdac}{\Pproton\Php\Phm}}
+\newcommand*\LcTof{\decay{\PLambdac}{f}}
+\newcommand*\LcTophh{\decay{\PLambdac}{\phh}}
+\newcommand*\LcTopKK{\decay{\PLambdac}{\pKK}}
+\newcommand*\LcToppipi{\decay{\PLambdac}{\ppipi}}
 % Beauty mesons
 \newcommand*\BsTomumu{\decay{\PBs}{\Pmuon\APmuon}}
+\newcommand*\LbToLcmuX{\decay{\PLambdab}{\PLambdac\Pmuon X}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % Experiments and detectors
@@ -125,13 +129,15 @@
 \newcommand*\Ptransform{\ensuremath{P}}
 \newcommand*\CP{\ensuremath{\Ctransform\!\Ptransform}}
 \newcommand*\ACP{\ensuremath{A_{\CP}}}
-\newcommand*\Araw{\ensuremath{\ACP^{\textnormal{Raw}}}}
+\newcommand*\ARaw{\ensuremath{\ACP^{\textnormal{Raw}}}}
 \newcommand*\dACP{\ensuremath{\Delta\ACP}}
 
 % dACP Background asymmetries
 \newcommand*\AP{\ensuremath{A_{P}}}
 \newcommand*\AD{\ensuremath{A_{D}}}
 \newcommand*\ADf{\ensuremath{A_{D}^{f}}}
+\newcommand*\APLb{\ensuremath{\AP^{\PLambdab}}}
+\newcommand*\ADmu{\ensuremath{\AD^{\Pmuon}}}
 
 % CKM matrix elements
 \newcommand*\Vud{\ensuremath{V_{\Pup\Pdown}}}
@@ -159,6 +165,12 @@
 % D*+
 \newcommand*\PDstp{\ensuremath{\PDst(2010)^{+}}}
 \newcommand*\PDstarp{\ensuremath{\PDstar^{+}}}
+% Lambda_c
+\renewcommand*\PLambdac{\ensuremath{\Lambda_{\Pcharm}^{+}}}
+\newcommand*\APLambdac{\ensuremath{\Lambda_{\Pcharm}^{-}}}
+% Lambda_b
+\renewcommand*\PLambdab{\ensuremath{\Lambda_{\Pbottom}^{0}}}
+\newcommand*\APLambdab{\ensuremath{\bar{\Lambda}_{\Pbottom}^{0}}}
 
 \newcommand*\bbbar {\ensuremath{\Pbottom\APbottom}}
 \newcommand*\ccbar {\ensuremath{\Pcharm\APcharm}}
@@ -247,6 +259,7 @@
 
 \newcommand*\bfrac{\ensuremath{\mathcal{B}}}
 
+\newcommand*\prob{\ensuremath{\mathcal{P}}}
 \newcommand*\likelihood{\ensuremath{\mathcal{L}}}
 
 \newcommand*\resultratio[2]{\ensuremath{R_{#1/#2}}}

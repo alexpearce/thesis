@@ -1,4 +1,209 @@
-\chapter{Theory}
+\chapter{Formalism}
 \label{chap:cpv:theory}
 
-\lipsum[1-2]
+\subsection{\texorpdfstring{\ACP\ and \dACP}{ACP and delta ACP}}
+\label{chap:cpv:theory:acp}
+
+The size of the asymmetry in the decay of a \PLambdac\ baryon 
+($\Pup\Pdown\Pcharm$) to some final state $f$ is given by the parameter \ACP\
+\begin{equation}
+  \ACP(f) = \frac{\Gamma(f) - \Gamma(\bar{f})}{\Gamma(f) + \Gamma(\bar{f})},
+  \label{eqn:cpv:theory:acp}
+\end{equation}
+where $\Gamma(f)$ is the decay rate of \decay{\PLambdac}{f}, and $\bar{f}$ is 
+the charge conjugate of $f$.\footnotemark
+If the process \decay{\PLambdac}{f} occurs at a higher rate than 
+\decay{\APLambdac}{\bar{f}}, for example, then $\ACP > 0$.
+Measuring the decay rate $\Gamma$ experimentally requires counting the number 
+of \PLambdac\ produced, which is hard to measure precisely, as shown in 
+\cref{chap:prod}.
+It is simpler to count only the number $N$ of \emph{reconstructed} \PLambdac\ 
+decays, and to form an asymmetry parameter as
+\begin{equation}
+  \ARaw(f) = \frac{N(f) - N(\bar{f})}{N(f) + N(\bar{f})}.
+  \label{eqn:cpv:theory:araw}
+\end{equation}
+This is the \emph{raw} asymmetry as is it not necessarily equal to \ACP, being 
+contaminated by possible detector and production effects.
+
+As discussed in \cref{chap:cpv:introduction}, this analysis reconstructs 
+\PLambdac\ decays originating from \decay{\PLambdab}{\PLambdac\Pmuon X}\ 
+decays.
+The value of \ARaw\ can then include the effects of the \PLambdab/\APLambdab\ 
+production asymmetry, the \Pmuon/\APmuon detection asymmetry, and the detection 
+asymmetry of the \PLambdac\ final state $f$/$\bar{f}$, if they are non-zero.
+
+% citation for non-zero Lb prod asym?
+The \PLambdab\ production asymmetry is predicted to be non-zero due to the \pp\ 
+collisions provided by the \ac{LHC}.
+The higher `availability' of matter quarks compared to antimatter quarks 
+results in higher production cross sections of matter hadrons compared to that 
+of antimatter.
+% TODO should make a statement like the one for the det. asyms., that more Lb 
+% means more Lc means more f, looking like a non-zero ACP
+The two detection asymmetries are also expected to be non-zero, due to the 
+known differences between the \PKminus/\PKplus, \Ppiminus/\Ppiplus, and 
+\Pproton/\APproton cross-sections with matter (the material which makes up the 
+\lhcb\ detector).
+A higher \Pmuon reconstruction efficiency with respect that for \APmuon would 
+result in a higher proportion of \PLambdac\ decays being reconstructed, and 
+similarly so for the reconstruction efficiency of the final states $f$ and 
+$\bar{f}$.
+If these effects were not taken into account, one might incorrectly conclude 
+that a measured difference between the number of reconstructed final states $f$ 
+and $\bar{f}$, that is \ARaw, means a non-zero value of \ACP\@.
+% As the $\Php\Phm$ meson pair is charge-symmetric, the detection asymmetry of 
+% the final state is effectively the proton detection asymmetry.
+
+The number of reconstructed \LcTof\ decays can be expressed as the product of 
+several effective probabilities
+\begin{equation}
+  N(f) = \prob(\PLambdab)\cdot
+         \Gamma(\LbToLcmuX)\cdot
+         \Gamma(\LcTof)\cdot
+         \eff(\Pmuon)\cdot
+         \eff(f),
+  \label{eqn:cpv:theory:yield}
+\end{equation}
+and similarly for $N(\bar{f})$, where $\prob(\PLambdab)$ is the probability of 
+producing a $\PLambdab$ baryon given a \pp\ collision, $\Gamma(\decay{A}{B})$ 
+is the decay rate of the particle $A$ to final state $B$, and $\eff(\Pmuon)$ 
+and $\eff(f)$ are the muon and $\PLambdac$ final-state detection efficiencies.
+% TODO can we back up this assumption?
+It is assumed that the \LbToLcmuX decay is \CP-symmetric, but that all other 
+factors may not be, for example $\eff(\Pmuon) \neq \eff(\APmuon)$.
+In the following, it will be shown how a variable can be constructed to 
+eliminate the various background asymmetries, leaving only the asymmetry of 
+interest, \ACP\@.
+
+To express \ARaw\ in terms of all of its component asymmetries, it is useful to 
+first define the notation of a general asymmetry parameter $X$, which describes 
+the asymmetry between two quantities $x$ and $\bar{x}$
+\begin{equation}
+  X = \frac{x - \bar{x}}{x + \bar{x}}.
+  \label{eqn:cpv:theory:generic_asym}
+\end{equation}
+This general form can be rearranged as
+\begin{align}
+  x &= \frac{1}{2}(x + \bar{x})(1 + X),\label{eqn:cpv:theory:asym_form_one}\\
+  \bar{x} &= \frac{1}{2}(x + \bar{x})(1 - X).\label{eqn:cpv:theory:asym_form_two}
+\end{align}
+An asymmetry parameter like that in \cref{eqn:cpv:theory:generic_asym} can be defined for each of the relevant terms in 
+\cref{eqn:cpv:theory:yield}
+\begin{align*}
+  \APLb(f) &= \frac{%
+    \prob(\PLambdab) - \prob(\APLambdab)
+  }{%
+    \prob(\PLambdab) + \prob(\APLambdab)
+  },\\
+  \ADmu(f) &= \frac{%
+    \eff(\Pmuon) - \eff(\APmuon)
+  }{%
+    \eff(\Pmuon) + \eff(\APmuon)
+  },\\
+  \ADf(f)  &= \frac{%
+    \eff(f) - \eff(\bar{f})
+  }{%
+    \eff(f) + \eff(\bar{f})
+  }.
+\end{align*}
+% TODO should say why
+Each parameter is, at least implicitly, dependent on the detected final state 
+$f$.
+
+Substituting in Equation~\ref{eqn:cpv:theory:yield} to 
+Equation~\ref{eqn:cpv:theory:araw}
+\begin{equation*}
+  \ARaw(f) = \frac{%
+    \prob(\PLambdab)\Gamma(f)\eff(\Pmuon)\eff(f) - 
+    \prob(\APLambdab)\Gamma(\bar{f})\eff(\APmuon)\eff(\bar{f})
+  }{%
+    \prob(\PLambdab)\Gamma(f)\eff(\Pmuon)\eff(f) + 
+    \prob(\APLambdab)\Gamma(\bar{f})\eff(\APmuon)\eff(\bar{f})
+  },
+\end{equation*}
+and then substituting each quantity for its equivalent form as in 
+\cref{eqn:cpv:theory:asym_form_one,eqn:cpv:theory:asym_form_two}, all factors 
+of $\sfrac{1}{2}$ and all factors of the form $(x - \bar{x})$ cancel, leaving
+% TODO format this disgustingly long equation
+\begin{equation*}
+  \ARaw(f) = \frac{%
+    \APLb\ADmu\ADf + \APLb\ADmu\ACP + \APLb\ADf\ACP + \ADmu\ADf\ACP + \APLb + 
+    \ADmu + \ADf + \ACP
+  }{%
+    1 + \APLb\ADmu + \APLb\ADf + \APLb\ACP + \ADmu\ADf + \ADmu\ACP + \ADf\ACP + 
+    \APLb\ADmu\ADf\ACP
+  }.
+\end{equation*}
+Assuming that the individual asymmetries are small, of the order of 
+\SI{1}{\percent}, the product of two or more asymmetries is negligible with 
+respect to the leading order, and so
+\begin{equation}
+  \ARaw(f) \approx \ACP(f) + \APLb + \ADmu + \ADf.
+\end{equation}
+
+\footnotetext{%
+  It is assumed that charge is conserved, so a final state $\bar{f}$ implies an 
+  initial state \APLambdac.
+}
+
+% TODO haven't said that ADf is mostly proton det. asym. yet, so it seems 
+% bizarre that ADf would cancel in the different between pKK and ppipi
+By assuming that these background asymmetries are mode-independent, that is to 
+say $\AD(f) = \AD(g)$ and $\AP(f) = \AP(g)$, we can take two \PLambdac\ decay 
+modes and measure the \emph{difference} in their raw asymmetries, eliminating 
+the background asymmetries by construction.
+This analysis reconstructs the \ac{SCS} decays \LcTopKK\ and \LcToppipi, giving
+\begin{align}
+  \dACP &= \ARaw(\pKK) - \ARaw(\ppipi),\\
+        &\approx \ACP(\pKK) - \ACP(\ppipi)\nonumber.
+  \label{eqn:cpv:theory:dacp}
+\end{align}
+
+The assumption that the production and detection asymmetries in \cref{} are 
+mode independent is not true in general.
+By making a more reasonable assumption that these background asymmetries are 
+dependent only on the kinematics of the representative particles, this is made 
+clear by considering that different final states will in general have different 
+reconstruction and selection efficiencies as a function of \PLambdac\ 
+kinematics.
+Two samples with different \PLambdac\ kinematics will also have different 
+\PLambdab\ and muon kinematics, and hence there will be net production and 
+detection asymmetries between them.
+
+The assumption that the background asymmetries depend only on particle 
+kinematics is not unreasonable; the production asymmetry, for example, is a 
+difference in cross sections, which are generally parameterised by the 
+kinematics of the produced particle (some combination of momentum \ptot, 
+transverse momentum \pT, and pseudorapidity \Eta), and of the properties of the 
+colliding beams (which are independent of the produced particle).
+Similarly, a detection asymmetry describes the differences of material 
+interactions between matter and antimatter, and these are dependent on the 
+momentum of the particle in question and, assuming a non-uniform material 
+distribution, its flight path.
+These can be described by some combination of the kinematic variables 
+previously given.
+
+Given a sample of \PLambdac\ decays with equal kinematics, it is reasonable to 
+assume that the kinematics of the muon and of the \PLambdab\ are independent of 
+the decay modes present in that sample.
+Hence, for a sample of \LcTopKK and \LcToppipi decays, after calibrating the 
+\PLambdac\ kinematics to match one another, we posit that the \PLambdab\ and 
+\Pmuon kinematics will match between the two modes, and hence the background 
+asymmetries \AP\ and \ADmu\ will cancel in the difference \dACP\@.
+The assumption of matching \PLambdab\ and \Pmuon kinematics will have to be 
+proven explicitly.
+
+Finally, it is required to show that the kinematics of the protons between the 
+\pKK\ and \ppipi\ also agree.
+It is not so obvious, as before, that these variables would a priori match, and 
+indeed it seems sensible to assume that they would not, and so we must 
+demonstrate explicitly whether it is the case.
+If it is not, we cannot cannot imagine any clever calibration which would make 
+it so, and consequently a proton detection asymmetry would be required which, 
+as of this writing, does not exist.\footnotemark
+
+\footnotetext{%
+  There have been preliminary studies performed in to the feasibility of a 
+  proton detection asymmetry measurement~\cite{Pearce:2014bb}.
+}
