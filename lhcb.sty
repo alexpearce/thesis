@@ -121,6 +121,8 @@
 \newcommand*\hltone{\hlt1}
 \newcommand*\hlttwo{\hlt2}
 \newcommand*\nobias{\texttt{NOBIAS}}
+\newcommand*\tis{TIS}
+\newcommand*\tos{TOS}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % CP violation
@@ -160,11 +162,20 @@
 % Generic 'hadron' symbol
 \newcommand*\Php{\ensuremath{h^{+}}}
 \newcommand*\Phm{\ensuremath{h^{-}}}
+% Lambda_c child pairs
+\newcommand*\phh{\ensuremath{\Pproton\Phm\Php}}
+\newcommand*\php{\ensuremath{\Pproton\Php}}
+\newcommand*\phm{\ensuremath{\Pproton\Phm}}
+\newcommand*\hmhp{\ensuremath{\Phm\Php}}
+\newcommand*\pKK{\ensuremath{\Pproton\PKminus\PKplus}}
+\newcommand*\ppipi{\ensuremath{\Pproton\Ppiminus\Ppiplus}}
 % Soft pion
 \newcommand*\Ppiplussoft{\ensuremath{\Ppi^{+}_{\textnormal{Soft}}}}
 % D*+
-\newcommand*\PDstp{\ensuremath{\PDst(2010)^{+}}}
+\newcommand*\PDstp{\ensuremath{\PDst{(2010)}^{+}}}
 \newcommand*\PDstarp{\ensuremath{\PDstar^{+}}}
+% Lambda
+\renewcommand*\PLambda{\ensuremath{\Lambda^{0}}}
 % Lambda_c
 \renewcommand*\PLambdac{\ensuremath{\Lambda_{\Pcharm}^{+}}}
 \newcommand*\APLambdac{\ensuremath{\Lambda_{\Pcharm}^{-}}}
@@ -217,10 +228,12 @@
 % Track quality
 \newcommand*\ip{IP}
 \newcommand*\chisq{\ensuremath{\chi^2}}
+\newcommand*\ndof{\ensuremath{N_\text{DOF}}}
 \newcommand*\ipchisq{\ensuremath{\chisq_{\textnormal{IP}}}}
 \newcommand*\lnipchisq{\ensuremath{\ln\ipchisq}}
 \newcommand*\logipchisq{\ensuremath{\log\ipchisq}}
 \newcommand*\ipchisqndof{\ensuremath{\ipchisq/\mathrm{ndof}}}
+\newcommand*\pghost{\ensuremath{p_{\text{Ghost}}}}
 
 % PID
 % Cherenkov angle
@@ -230,7 +243,7 @@
 \newcommand*\dllpk{\ensuremath{\dll_{\Pproton-\PK}}}
 \newcommand*\dllppi{\ensuremath{\dll_{\Pproton-\Ppi}}}
 \newcommand*\dllepi{\ensuremath{\dll_{\Pelectron-\Ppi}}}
-\newcommand*\dllmupi{\ensuremath{\dll_{\Pmuon-\Ppi}}}
+\newcommand*\dllmupi{\ensuremath{\dll_{\Pmu-\Ppi}}}
 \newcommand*\probnn{ProbNN}
 \newcommand*\probnnp{\texttt{ProbNNp}}
 \newcommand*\probnnk{\texttt{ProbNNk}}
@@ -385,5 +398,7 @@
 \newcommand*\pythia{\textsc{PYTHIA}}
 \newcommand*\evtgen{\textsc{EvtGen}}
 \newcommand*\geant{\textsc{Geant}}
+\newcommand*\decaytreefitter{\textsc{DecayTreeFitter}}
+\newcommand*\rapidsim{\textsc{RapidSim}}
 
 \endinput

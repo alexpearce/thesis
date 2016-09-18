@@ -1,0 +1,202 @@
+\chapter{Data}
+\label{chap:cpv:data}
+
+This analysis exploits the full dataset collected with the \lhcb\ detector 
+during \runone\ of the \ac{LHC}.
+The data were collected over a period of two years, 2011 and 2012, over which 
+the polarity of the \lhcb\ dipole magnet was periodically switched between two 
+configurations, referred to here as `magnet up' and `magnet down'.
+As the beam conditions changed significantly between 2011 and 2012, from 
+\sqrtseq{7} to \SI{8}{\TeV}, the analysis is performed separately on the 2011 
+and 2012 datasets.
+Furthermore, the analysis is split into magnet up and magnet down sub-samples 
+with the years, as the sign of particle detection asymmetries changes with the 
+magnet polarity~\cite{Vesterinen:1642153}.
+The individual measurements made on these sub-samples is later combined in an 
+average.
+The total integrated luminosity corresponding to the dataset is \totlumi, the 
+breakdown of which for the different sub-samples is given in 
+\cref{tab:cpv:data:luminosity}.
+This section shall describe the generalities of the data, such as the 
+processing workflow and application of calibrations, as well as the simulated 
+\ac{MC} data that shall be used.
+
+% TODO this will be described in more detail in the general LHCb intro I guess
+The data are first processed by the trigger, and the passing events are saved 
+to disk.
+They are then reconstructed offline, and filtered through a set of selections 
+in a process called the \emph{stripping}.
+Like the trigger, the stripping is arranged as a series of parallel 
+\emph{lines}, each of which is designed to select a particular physics process.
+
+For this analysis, two stripping lines select the \LcTopKK\ and \LcToppipi\ 
+decays of interest.
+Sets of tracks are assigned a particular particle hypothesis based on the 
+combined response of the \ac{PID} detectors, and then protons and kaons are 
+combined to form candidate \pKK\ decays, and protons and pions are combined to 
+form candidate \ppipi\ decays.
+The resulting \PLambdac\ vertices are combined with muon candidates to form 
+candidate \PLambdab\ vertices.
+The muon candidate is required to have fired the muon trigger in \lzero, as 
+well as the muon trigger in \hltone.
+The tracks comprising the \PLambdab\ candidate are required to have been used 
+in a positive decision of the \emph{topological semileptonic \PB\ decay} 
+trigger line in \hlttwo, which is designed to inclusively select events which 
+contain particles topologies characteristic of those in semileptonic \PB 
+decays~\cite{Gligorov:2011qxa}.
+Candidates passing these trigger requirements are then refined by a tighter 
+offline selection to further reduce the fraction of combinatorial background in 
+the sample, which is dominant at this stage.
+Distributions of the \pKK\ and \ppipi\ mass in the 2012 magnet down dataset 
+after the stripping and trigger requirements are given in 
+\cref{fig:cpv:data:mass}, as an illustration of the signal purity.
+Details of the trigger, stripping, and offline selection will be given in 
+\cref{chap:cpv:selection}.
+
+To improve the \PLambdac\ mass resolution in the datasets, and the consistency 
+of that between them, two algorithms are run on the data offline.
+The first of these is the momentum scale calibration.
+This corrects the track momenta by a linear factor $\alpha$, which is found by 
+comparing mass measurements made with \JpsiTomumu\ and 
+\decay{\PBplus}{\PJpsi\PKplus} decays to the corresponding world 
+averages~\cite{Aaij:2014jba}.
+As the momentum resolution of the detector varies with the running conditions, 
+correcting the track momenta with the calibration factor $\alpha$, which also 
+varies, creates a more uniform dataset.
+The second algorithm is \decaytreefitter~\cite{Hulsbergen:2005pu}.
+This fits the entire \LbToLcmuX, \LcTophh\ decay chain in a single step, rather 
+than the back-to-front (or leaf-by-leaf) reconstruction described previously.
+The advantage of such a method is that all the information known about the 
+decay can influence the fit parameters, whereas the `traditional' 
+reconstruction can only propagate information in one direction.
+This global treatment of information in the fit is particularly useful when 
+applying \emph{constraints}, such as requiring the mass of a vertex is exactly 
+some value, or that the head of the decay originated from the \ac{PV}.
+In this analysis, \decaytreefitter\ is applied to the \PLambdab\ decay with the 
+constraint that the \phh\ vertex has the nominal \PLambdac\ mass of 
+\SI{2286}{\MeVcc}~\cite{PDG2014}.
+The principle benefit of this is that it improves the resolution of \PLambdac\ 
+child pair masses, such as $m(\phm)$ and $m(\hmhp)$, and restricts the 
+\PLambdac\ phase space to physical values.
+Unless stated otherwise, kinematic quantities used in this analysis are those 
+computed by the \decaytreefitter\ algorithm, with the notable exception of the 
+\phh\ invariant mass entering the mass fit.
+
+\section{Monte Carlo}
+\label{sec:data:mc}
+
+The only information made available for offline analysis is that passing the 
+stripping.
+Simulated data is used to infer properties of the data before that stage.
+There are three different sets of Monte Carlo~(MC) data that are used in this 
+analysis.
+
+\subsection{Pseudo-experiments}
+\label{chap:cpv:data:mc:toy}
+
+The \rapidsim\ package\footnotemark\ to generate `toy' \ac{MC}.
+\rapidsim\ is a phase space \Pbottom-decay generator, which uses a fixed-order
+next-to-leading logarithm model to boost the generated \Pbottom-decays in to an 
+\lhcb-like laboratory frame, and smears the momenta of visible final state 
+particles in order to more closely match the distributions seen in data.
+The smearing is based on measurements of the difference between the momentum
+resolution between data and \ac{MC}, and is applied in bins of track momentum 
+\ptot.
+
+\footnotetext{\url{https://github.com/gcowan/RapidSim}}
+
+One million \LcTopKK\ and one million \LcToppipi\ decays per
+centre-of-mass energy are generated with \rapidsim.
+The boosting parameters depend on the proton-proton collision centre-of-mass
+energy \sqrts, and so samples are generated individually for both \sqrtseq{7} 
+and \SI{8}{\TeV}.
+The \PLambda\ and \PKshort vetoes, described in 
+Section~\ref{chap:cpvselection:offline}, are
+applied to the \LcToppipi\ sample, and the \PLambdab\ mass requirement shown in 
+Table~\ref{tab:cpv:selection:stripping_composite} is also applied.
+The $\PLambdac\Pmuon$ mass, that is the \PLambdab\ mass missing the 
+contribution from the neutrino, is required to be in the range $2.5 < 
+m(\PLambdac\Pmuon) < \SI{6}{\GeV}$, to match the requirements made in the 
+stripping selection shown in Table~\ref{tab:cpv:selection:stripping_composite}.
+No acceptance requirements are made.
+
+\subsection{Full detector simulation}
+\label{chap:cpv:data:mc:full}
+
+The full \lhcb\ Monte Carlo is used to obtain distributions of the phase space 
+variables after the \lhcb\ acceptance, stripping, trigger, and offline 
+requirements.
+The general procedure of the \lhcb\ \ac{MC} generation is described in 
+\cref{chap:prod:data:mc}, and the acceptance requirements are identical to 
+those given in \cref{eqn:prod:data:lhcb_acceptance}.
+
+The samples contain around \num{2.5e6} \pKK\ and \num{2.5e6} \ppipi\ generated 
+candidates per magnet polarity, simulated using the most representative 
+data-taking conditions for 2012.
+These conditions correspond to an average number of \pp\ interactions per bunch 
+crossing of $\nu = 2.5$, a beam energy of \SI{4}{\TeV}, and a trigger 
+configuration representative of the average trigger conditions used in 2012.
+The simulated data is reconstructed with the same offline reconstruction as the 
+real data, and is then passed through a near-identical version of the 
+stripping, with the only difference being the omission of any \ac{PID} 
+selection, as the related variables are known to be poorly modelled in the 
+\ac{MC}.
+The \decaytreefitter\ algorithm is run on the candidates passing the stripping, 
+but the momentum scale calibration is not run as the conditions in the \ac{MC} 
+are stable.
+
+The decay chain is generated in such a way that the \PLambdab\ is forced to 
+decay to $\PLambdac\Pmuon\APnum$.
+In one sample, the \PLambdac\ is forced to decay to the \pKK\ final state, with 
+a \SI{52}{\percent} probability of proceeding through the resonant 
+$\Pproton\Pphi$ channel.
+% The hepnames \Pfz macro shows f_0(975), which is unconventional
+The \ppipi\ sample is generated similarly, but with \SI{44}{\percent} 
+probability of the \LcToppipi\ decay proceeding through the resonant $\Pproton 
+f_{0}(980)$ channel.
+In each case, the intermediate resonance is simulated incoherently to the 
+non-resonant component, and is added to coarsely mimic the dominant resonant 
+structure seen in data.
+
+\subsection{Generator-level simulation}
+\label{chap:cpv:data:mc:gen}
+
+The Monte Carlo sample described in Section~\ref{chap:cpv:data:mc:full} has 
+requirements made on it at the generator level, specifically the \lhcb\ 
+acceptance requirements in \cref{eqn:prod:data:lhcb_acceptance}.
+This selection do not necessarily have a flat efficiency across the \LcTophh\ 
+phase space, and so additional samples are required to study these effects.
+A sample of \num{5e5} \ac{MC} events are generated for each \LcTophh\ mode 
+before the acceptance cut, for each 2012 magnet polarity.
+These samples are not propagated through the detector simulation, and so only 
+generator-level, or `truth level', information is available.
+
+\begin{table}
+  \centering
+  \caption{%
+    Integrated luminosity for each data sample used in the analysis.
+  }
+  \label{tab:cpv:data:luminosity}
+  \input{tables/cpv/data/luminosity.tex}
+\end{table}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/data/fits-stripping_trigger-selection_unweighted_no-simultaneous/LcTopKK_2012_MagDown_fit.pdf}
+    \caption{\pKK}
+    \label{fig:cpv:data:mass:pKK}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/data/fits-stripping_trigger-selection_unweighted_no-simultaneous/LcToppipi_2012_MagDown_fit.pdf}
+    \caption{\ppipi}
+    \label{fig:cpv:data:mass:ppipi}
+  \end{subfigure}
+  \caption{%
+    Fits to the \PLambdac\ mass spectrum in the 2012 magnet down dataset for 
+    \pKK\ (\subref*{fig:cpv:data:mass:pKK}) and \ppipi\ 
+    (\subref*{fig:cpv:data:mass:ppipi}).
+    Only the stripping and trigger selection is applied.
+    The fit that is overlaid is described in \cref{}.
+  }
+  \label{fig:cpv:data:mass}
+\end{figure}

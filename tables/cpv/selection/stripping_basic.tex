@@ -1,0 +1,24 @@
+\begin{tabular}{crl}
+  Particle                 & Variable             & Cut value          \\
+  \midrule
+  \multirow{4}{*}{All}     & \pT                  & $> \SI{250}{\MeV}$ \\
+                           & \ptot                & $> \SI{2}{\GeV}$   \\
+                           & Track $\chisq/\ndof$ & $< 3$              \\
+                           & \pghost              & $< 0.5$            \\
+  \midrule
+  \multirow{4}{*}{Muons}   & \pT                  & $> \SI{800}{\MeV}$ \\
+                           & \ptot                & $> \SI{3}{\GeV}$   \\
+                           & \ipchisq             & $> 4$              \\
+                           & \dllmupi             & $> 0$              \\
+  \midrule
+  \multirow{2}{*}{Pions}   & \ipchisq             & $> 9$              \\
+                           & \dllkpi              & $< 4$              \\
+  \midrule
+  \multirow{2}{*}{Kaons}   & \ipchisq             & $> 9$              \\
+                           & \dllkpi              & $> 4$              \\
+  \midrule
+  \multirow{3}{*}{Protons} & \ipchisq             & $> 9$              \\
+                           & \dllppi              & $> 4$              \\
+                           & \dllpk               & $> \num{1e-10}$    \\
+  \bottomrule
+\end{tabular}

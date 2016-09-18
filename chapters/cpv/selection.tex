@@ -1,0 +1,114 @@
+\chapter{Selection}
+\label{chap:cpv:selection}
+
+The \lhcb\ experiment is optimised for efficiently selecting heavy flavour 
+hadron decays and rejecting the relatively huge levels of combinatorial 
+background.
+The \PLambdac\ charm baryon has a lifetime of \SI{0.2}{\pico\second}, half that 
+of the \PDzero\ and eight times less than that of the \PBzero.
+Indeed, it is one of the shortest-lived weakly decaying heavy flavour hadrons, 
+and as such presents particular challenges when a clean, efficient selection is 
+desired, as in this analysis, as the secondary decay vertex is not so 
+significantly displaced from the \ac{PV}.
+Although the \bbbar\ cross-section is of the order of 100 times less than the 
+\ccbar\ cross-section, reconstructing the decay chain \LbToLcmuX\ can allow for 
+the exploitation of the excellent secondary vertex resolution and high \PB 
+trigger efficiency provided by the \lhcb\ detector.
+This analysis takes that approach, selecting \emph{secondary} \PLambdac\ 
+candidates by association with a muon.
+This \namecref{chap:cpv:selection} shall describe each stage of the selection.
+
+The selection of the data described in \cref{chap:cpv:data} proceeds in two 
+steps: firstly the stripping is run, and then an `offline selection' is made on 
+the candidates passing the stripping.
+All events passing the trigger are available to the stripping, and so the 
+trigger `requirements' can be made at any stage.
+In this analysis, these are made in the stripping lines themselves.
+These two steps shall be described in turn.
+
+\section{Stripping and trigger}
+\label{chap:cpv:selection:stripping_trigger}
+
+The selections in the stripping lines were not tuned specifically for this 
+analysis, instead serving as general-purpose requirements suitable for a range 
+of studies that use \LcTophh\ decays originating from semileptonic \PLambdab\ 
+decays.
+As such, they are similar to the selections of other \PB decays made at \lhcb\ 
+in that they exploit the long decay times of \PB hadrons, such that they fly as 
+significant, measurable distance in the \velo, and the high \pT of the child 
+vertices and tracks.
+The additional requirements are similar in nature to those made for charm 
+hadrons such as track and vertex fit quality and track \ipchisq, which are 
+described in \cref{chap:prod:sel}.
+
+The selection of final state particles in the stripping lines, that is protons, 
+charged kaons and pions, and muons, is given in 
+\cref{tab:cpv:selection:stripping_basic}.
+One variable given has not been discussed previously is \pghost, the 
+\emph{ghost probability}, which is the response of an \ac{ANN} trained to 
+discriminate between real and fake (ghost) tracks~\cite{Brehmer:1478372}.
+The \ac{ANN} response is transformed in such a way as to be within the range 
+$[0, 1]$, and that it is linearly efficient at rejecting ghost tracks in 
+simulated data in that range.
+The requirement $\pghost < 0.5$ made on real data is made with the intent to 
+reject \SI{50}{\percent} of the ghost tracks in the sample.
+
+The selected final state particles are combined into a \LcTophh\ candidates, 
+which is then combined with muon candidates to form candidate \LbToLcmuX\ 
+decays.
+The requirements on the combinations and vertices are given in 
+\cref{tab:cpv:selection:stripping_composite}.
+As in \cref{chap:prod:sel}, the selection of composite particles proceeds in 
+two stages: firstly by imposing requirements on the union of the inputs; and 
+secondly on the vertex formed after the fit.
+
+Trigger requirements are made after the \PLambdab\ candidate is created and 
+selected in the stripping lines.
+They are driven by the powerful discrimination provided by the muon from the 
+\PLambdab which, for a signal particle, will have a high \pT\ and \ipchisq.
+At \lzero\ the muon candidate is required to have fired the muon trigger, which 
+itself requires the presence of a track in the muon stations with $\pT > 
+\SI{1.8}{\GeVc}$, and likewise at \hltone, which requires the \lzero muon 
+candidate to be reconstructed as a good-quality track.
+At \hlttwo, the tracks comprising the \PLambdab\ candidate are required to have 
+fired the topological semileptonic \PB lines, which were briefly described in 
+\cref{chap:cpv:data}.
+These topological lines cut on the output of a \ac{BDT} trained to discriminate 
+sets of 2, 3, and 4 charged particle tracks originating in the decays of \PB 
+hadrons to those randomly selected from the event.
+The inputs to the \ac{BDT} include the \emph{corrected mass}, which accounts 
+for missing particles in the candidate \PB decay and peaks near the \PB mass 
+for signal, the sum of the \pT\ of the input objects, the minimum \pT\ amongst 
+those objects, and the \PB candidate flight distance \chisq.
+The topological trigger lines are typically 80--\SI{90}{\percent} efficient in 
+accepting signal \PB decays, with a high background rejection 
+rate~\cite{Gligorov:2011qxa}.
+Distributions of the \pKK\ and \ppipi\ mass in the 2012 magnet down dataset 
+after the stripping and trigger requirements are given in 
+\cref{fig:cpv:data:mass}, as an illustration of the signal purity at this 
+stage.
+
+% As this table is so close to the beginning of the section, try to position it 
+% at the bottom of the page so it doesn't come before the section header
+\begin{table}[bp]
+  \centering
+  \caption{%
+    Selection of tracks, with associated particle hypotheses, used in the 
+    \PLambdab\ and \PLambdac\ stripping selection.
+    Cuts listed under ``All'' are applied to all tracks.
+  }
+  \label{tab:cpv:selection:stripping_basic}
+  \input{tables/cpv/selection/stripping_basic}
+\end{table}
+
+\begin{table}
+  \centering
+  \caption{%
+    Stripping selection of particle combinations, vertices, and events.
+  }
+  \label{tab:cpv:selection:stripping_composite}
+  \input{tables/cpv/selection/stripping_composite}
+\end{table}
+
+\section{Offline}
+\label{chap:cpv:selection:offline}
