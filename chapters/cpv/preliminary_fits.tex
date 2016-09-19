@@ -1,0 +1,270 @@
+\chapter{Preliminary fits}
+\label{chap:cpv:prelim_fits}
+
+The yield extraction technique used to measure the signal yields entering the 
+computation of \ARaw, shown in \cref{eqn:cpv:theory:araw}, is described in 
+\cref{chap:cpv:measuring_araw}.
+Before then, it is useful to have a simple fit to the charge-combined data in 
+order to perform studies that require background subtraction, selection 
+efficiency estimates, and the like.
+This section describes the binned \chisq\ fit to the \phh\ invariant mass 
+spectrum that is used for such studies.
+
+\subsection{Least-squares parameter estimation}
+\label{chap:cpv:prelim_fits:least_squares}
+
+The least-squares method of parameter estimation is similar to the method of 
+maximum likelihood, described in \cref{chap:prod:fitting:mle}, in that the 
+parameter values are determined by those which optimise the value of a 
+function.
+For least-squares, that function is the \chisq, defined as
+\begin{equation}
+  \chisq(\vec{x}; \vec{\theta}) = \sum_{i = 1}^{N} \frac{%
+    {(f(x_{i}, \vec{\theta}) - x_{i})}^{2}
+  }{%
+    \sigma_{i}^{2}
+  },
+\end{equation}
+where, as before, $\vec{x}$ is the vector of observations, $\vec{\theta}$ is 
+the parameter vector, and $f$ is the \ac{PDF} under study.
+In this analysis, the data are binned in the \phh\ invariant mass, and so 
+$x_{i}$ is the number of candidates in the $i$th mass bin, of which there are 
+$N$, and $f$ is the integral of the \ac{PDF} over the $i$th bin.\footnotemark
+
+\footnotetext{%
+  The value of the fitted \ac{PDF} at the bin centre can be used instead, 
+  assuming the bin width is small enough such that the function can be 
+  considered to be varying linearly across the bin.
+}
+
+The method of least-squares is equivalent to maximum likelihood fitting in the 
+case of independent, normally distributed measurements $x_{i}$, but it handles 
+weighted events more naturally.
+In this case, $x_{i}$ changes from the number $n$ of events in the $i$th bin to 
+the sum of weights $w_{j}$ in the bin $x_{i} = \sum_{j}^{n} w_{j}$.
+The variance on this `count' is taken to be the sum of the squares of the 
+weights $\sigma_{i}^{2} = \sum_{j} w_{j}^{2}$.
+An `unweighted' \chisq\ fit is that in which $w_{j} = 1$.
+
+The inclusion of per-event weights in the fit is necessary when equalising the 
+\pKK\ and \ppipi\ kinematics.
+The computation of the weights will be discussed in 
+\cref{chap:cpv:kinematic_weighting}, whilst the weighted fit to the 
+charge-separated datasets (that is with non-unit weights) is presented in 
+\cref{chap:cpv:measuring_araw}.
+
+After the definition of the input data and the functional form of the \ac{PDF} 
+to be fitted, the \chisq\ is minimised with \minuit\ and the parameter 
+uncertainties are estimated with \hesse\ as in the maximum likelihood fit in 
+\cref{chap:prod:fitting:mle}.
+
+\section{Input data and shape parameterisation}
+\label{chap:cpv:prelim_fits:data_pdfs}
+
+The data entering the fit depends on the study that the information is needed 
+for.
+For example, the study of the optimal \ac{PID} requirements described in 
+\cref{chap:cpv:offline} requires a mass fit before the offline \ac{PID} 
+requirements are applied.
+In all cases, the models and general fit procedure are the same.
+
+The mass spectrum of the three-body \phh\ system is used to discriminate 
+between signal and background.
+The following will list the functional forms used in the fit to describe the 
+these components of the data.
+In all cases, the normalisation factors are omitted from the definitions, and 
+the variable $x$ represents the \PLambdac\ mass.
+
+For both the \pKK\ and \ppipi\ samples, the signal model $f$ is the linear sum 
+of two normal distributions sharing a common mean $\mu$ but with different 
+widths $\sigma_{1}$ and $\sigma_{2}$.
+A `single Gaussian' is defined as
+\begin{equation}
+  G(x; \mu, \sigma) = \exp\left(-\frac{{(x - \mu)}^{2}}{2\sigma^{2}}\right),
+\end{equation}
+and then a `double Gaussian' is defined as
+\begin{equation}
+  f(x) = (1 - \alpha)G(x; \mu, \sigma_{1}) + \alpha{}G(x; \mu, \sigma_{2}),
+  \label{eqn:cpv:prelim_fits:sig_model}
+\end{equation}
+where $\alpha$ describes the `relative strength' of each normal distribution, 
+and the width $\sigma_{2}$ is parameterised as
+\begin{equation}
+  \sigma_{2} = \sigma_{1} + \omega,
+  \label{eqn:cpv:prelim_fits:sigma2_def}
+\end{equation}
+where $\omega$ is bounded from below at zero.
+This enforces the relation that $\sigma_{1} < \sigma_{2}$, which is useful to 
+know when trying to reason about the fitted values of $\alpha$.
+
+For both modes, the background model $g$ is a first-order polynomial with 
+coefficient $a_{0}$
+\begin{equation}
+  g(x) = 1 + a_{0}x.
+  \label{eqn:prelim_fits:bkg_model}
+\end{equation}
+
+The signal and background models are combined as a linear sum to form a total 
+function $h$, where each component is weighted by their respective yields 
+\nsig\ and \nbkg
+\begin{equation}
+  h(x) = \nsig f(x) + \nbkg g(x).
+\end{equation}
+A \chisq\ fit is performed on the data by minimising a normalised version of 
+$h$ (as a probability density function), in the range
+\begin{equation}
+  2230 < m(\PLambdac) < \SI{2350}{\GeV},
+\end{equation}
+with bins of width \SI{1}{\MeV}, for 120 bins in total.
+The \chisq\ is minimised with \minuit, with all parameters allowed to float, 
+and the covariance matrix is computed with \hesse.
+
+Once a fit has converged and the associated covariance matrix is confirmed to 
+be positive-definite, sWeights~\cite{Pivk:2004ty} are computed and are attached 
+to each candidate that entered the fit.
+This allows for the statistical subtraction of either the signal or the 
+background component in bins of some other variable that is not correlated with 
+the \PLambdac\ mass variable that enters the fit.
+% The computation of the \sWeight{s} performs an additional fit where all model 
+% parameters are fixed to the values from the initial fit, except $N_{\text{S}}$ 
+% and $N_{\text{B}}$ which are free to vary.
+% This is done as the \sWeight formalism assumes that the negative log-likelihood 
+% is minimised with respect to the yield parameters.
+
+Fits to the fully selected 2012 magnet down dataset for the \pKK\ and \ppipi\ 
+modes are given in \cref{fig:cpv:prelim_fits:full}.
+The corresponding correlation matrices are given in 
+\cref{fig:cpv:prelim_fits:full_correlation}.
+A good description of the data is seen, and this is representative of the fit 
+quality in all data sub-samples.
+
+Tables of signal and background yields measured in the preliminary fit are 
+given for each fully selected subset of the data for \pKK\ in 
+\cref{tab:cpv:prelim_fits:yields:pKK} and for \ppipi\ in 
+\cref{tab:cpv:prelim_fits:yields:ppipi}.
+Also given are the number of signal candidates per unit of integrated 
+luminosity $\nsig/\intlumi$, where the integrated luminosity is given for each 
+data subset in \cref{tab:cpv:data:luminosity}.
+
+\section{Validation}
+\label{chap:cpv:prelim_fits:validation}
+
+To evaluate the bias and variance of the fitter, pseudo-experiments are 
+performed by generating \ac{MC} data from the fitted \ac{PDF}.
+One thousand pseudo-experiments are run for each mode and for each data 
+sub-sample.
+The parameter values of the generating \acp{PDF}, from which data points are 
+drawn, are the same as those found in the fits to the fully selected data, 
+except for the values of yield parameters.
+Each yield parameter value for each pseudo-experiment is drawn from a Poisson 
+distribution whose mean is set to the value of the yield found in the fits to 
+the data.
+
+For each pseudo-experiment, the fitted parameter value and the uncertainty on 
+that fit are recorded, and a pull value $p$ is computed as the difference 
+between the fitted value $v'$ and the true generating value $v$, divided by the 
+parameter value uncertainty $\unc{v}$
+\begin{equation}
+  p = \frac{v - v'}{\unc{v}}.
+\end{equation}
+The true value for each yield parameter is taken to be the mean value of the 
+Poisson distribution from which the generating value is drawn.
+An unbiased fitter should have a distribution of pull values drawn from a unit 
+Gaussian.
+
+The results of the pseudo-experiments are shown in 
+\cref{fig:cpv:prelim_fits:validation:pKK} and 
+\cref{fig:cpv:prelim_fits:validation:ppipi} for the 2012 magnet down \pKK\ and 
+\ppipi\ data.
+It is seen that the signal yield parameter is unbiased.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/preliminary_fits/fits-unweighted_no-simultaneous/LcTopKK_2012_MagDown_fit.pdf}
+    \caption{\pKK}
+    \label{fig:cpv:prelim_fits:full:pKK}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/preliminary_fits/fits-unweighted_no-simultaneous/LcToppipi_2012_MagDown_fit.pdf}
+    \caption{\ppipi}
+    \label{fig:cpv:prelim_fits:full:ppipi}
+  \end{subfigure}
+  \caption{%
+    Fits to the \PLambdac\ mass spectrum in the 2012 magnet down dataset for 
+    \pKK~(\subref*{fig:cpv:prelim_fits:full:pKK}) and 
+    \ppipi~(\subref*{fig:cpv:prelim_fits:full:ppipi}).
+    The full offline selection is applied.
+    The solid blue line is the total fit to the data in black points, and the 
+    dotted red and dashed blue lines are the background and signal components, 
+    respectively.
+    Below each fit is a pull plot, showing the difference between the total fit 
+    model and the data in each bin, normalised by the Poisson uncertainty on 
+    the number of entries in that bin.
+  }
+  \label{fig:cpv:prelim_fits:full}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/preliminary_fits/fits-unweighted_no-simultaneous/LcTopKK_2012_MagDown_correlation_matrix.pdf}
+    \caption{\pKK}
+    \label{fig:cpv:prelim_fits:full_correlation:pKK}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/preliminary_fits/fits-unweighted_no-simultaneous/LcToppipi_2012_MagDown_correlation_matrix.pdf}
+    \caption{\ppipi}
+    \label{fig:cpv:prelim_fits:full_correlation:ppipi}
+  \end{subfigure}
+  \caption{%
+    Correlation matrices for the fit parameters used in the fit to the 
+    \PLambdac\ mass spectrum in the fully selected 2012 magnet down dataset for 
+    \pKK~(\subref*{fig:cpv:prelim_fits:full_correlation:pKK}) and 
+    \ppipi~(\subref*{fig:cpv:prelim_fits:full_correlation:ppipi}).
+    The corresponding fits are shown in \cref{fig:cpv:prelim_fits:full}.
+  }
+  \label{fig:cpv:prelim_fits:full_correlation}
+\end{figure}
+
+\begin{table}
+  \centering
+  \caption{%
+    Signal and background yields measured in the preliminary fit for each fully 
+    selected subset of the \pKK\ data.
+  }
+  \label{tab:cpv:prelim_fits:yields:pKK}
+  \input{tables/cpv/preliminary_fits/LcTopKK_yields}
+\end{table}
+
+\begin{table}
+  \centering
+  \caption{%
+    Signal and background yields measured in the preliminary fit for each fully 
+    selected subset of the \ppipi\ data.
+  }
+  \label{tab:cpv:prelim_fits:yields:ppipi}
+  \input{tables/cpv/preliminary_fits/LcToppipi_yields}
+\end{table}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{cpv/preliminary_fits/fits-unweighted_no-simultaneous/LcTopKK_2012_MagDown_pulls.pdf}
+  \caption{%
+    Validation of the fits to the \PLambdac\ mass spectrum in the 
+    charge-combined 2012 magnet down \pKK\ dataset.
+    Each plot shows the distribution of the pull values for a single fit 
+    parameter, indicated in the legend, along with a fit of a Gaussian 
+    distribution with mean $\mu$ and width $\sigma$.
+  }
+  \label{fig:cpv:prelim_fits:validation:pKK}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{cpv/preliminary_fits/fits-unweighted_no-simultaneous/LcToppipi_2012_MagDown_pulls.pdf}
+  \caption{%
+    Validation of the fits to the \PLambdac\ mass spectrum in the 
+    charge-combined 2012 magnet down \ppipi\ dataset.
+    Each plot shows the distribution of the pull values for a single fit 
+    parameter, indicated in the legend, along with a fit of a Gaussian 
+    distribution with mean $\mu$ and width $\sigma$.
+  }
+  \label{fig:cpv:prelim_fits:validation:ppipi}
+\end{figure}
