@@ -112,3 +112,654 @@ stage.
 
 \section{Offline}
 \label{chap:cpv:selection:offline}
+
+The offline selection serves three purposes: to increase the signal purity of 
+the data after the stripping selection and trigger requirements; to remove 
+specific physics backgrounds; and to process the data such that it is most 
+suitable for offline analysis.
+
+A mass window requirement is imposed on the \PLambdac\ candidates, which is 
+equal to the cut made on candidates entering the mass fit (first described in 
+Section~\ref{chap:cpv:prelim_fits})
+\begin{equation}
+  2230 < m(\PLambdac) < \SI{2350}{\GeV}.
+  \label{eqn:cpv:selection:mass_window}
+\end{equation}
+This is the three-body \phh\ invariant mass computed in the vertex fit, rather 
+than that from the decay tree fit.
+Each fit made by \decaytreefitter\ has an associated \chisq, and fits that 
+failed to converged are assigned a nominal negative value.
+The decay tree fit is required to have converged by removing candidates with 
+negative values of the fit \chisq\ and number of degrees of freedom
+\begin{equation}
+  \chisq_{\text{DTF}} > 0,\ N_{\text{DOF}} > 0.
+  \label{eqn:selection:dtf_convergence}
+\end{equation}
+
+The \ppipi\ mode contains a number of $\Pproton\PKshort$ and $\PLambda\Ppiplus$ 
+candidates, as shown in 
+\cref{fig:cpv:selection:ppipi_ks_cut,fig:cpv:selection:ppipi_lambda_cut}.
+These modes are non-resonant, and so the candidates are removed by applying an 
+exclusion window \SI{40}{\MeV} wide centred near the nominal \PKshort 
+mass~\cite{PDG2014}
+\begin{equation}
+  485 < m(\Ppiplus\Ppiminus) < \SI{510}{\MeV},
+\end{equation}
+and an exclusion window \SI{10}{\MeV} wide centred near the nominal \PLambda\ 
+mass~\cite{PDG2014}
+\begin{equation}
+  1100 < m(\Pproton\Ppiminus) < \SI{1120}{\MeV}.
+\end{equation}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/LcToppipi_2012_MagDown_Lc_h1_h2_M}
+    \caption{Full spectrum}
+    \label{fig:cpv:selection:ppipi_ks_cut:full}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/LcToppipi_2012_MagDown_Lc_h1_h2_M_zoom}
+    \caption{Detail}
+    \label{fig:cpv:selection:ppipi_ks_cut:zoom}
+  \end{subfigure}
+  \caption{%
+    Mass spectrum of the $\Ppiplus\Ppiminus$ pair in the \ppipi\ decay mode, in 
+    the magnet up 2012 data.
+    The background contribution in the black spectrum has been statistically 
+    subtracted, whereas the red spectrum has the signal component subtracted.
+    The red lines indicate the boundaries of the requirement designed to remove 
+    the $\Pproton\PKshort$ component of the sample.
+    Also visible are the $\rho(770)/\omega(782)$ and $f_{0}(980)$ strong 
+    resonances.
+  }
+  \label{fig:cpv:selection:ppipi_ks_cut}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/LcToppipi_2012_MagDown_Lc_p_h1_M}
+    \caption{Full spectrum}
+    \label{fig:cpv:selection:ppipi_lambda_cut:full}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/LcToppipi_2012_MagDown_Lc_p_h1_M_zoom}
+    \caption{Detail}
+    \label{fig:cpv:selection:ppipi_lambda_cut:zoom}
+  \end{subfigure}
+  \caption{%
+    Mass spectrum of the $\Pproton\Ppiminus$ pair in the \ppipi\ decay mode, 
+    weighted by signal sWeights, in the magnet up 2012 data.
+    The spectrum weighted by background sWeights is shown for reference in red.
+    The red lines indicate the boundaries of the requirement designed to remove 
+    the $\PLambda\Ppiplus$ component of the sample.
+    The additional features in the $\Pproton\Ppiminus$ spectrum have not been 
+    identified.
+  }
+  \label{fig:cpv:selection:ppipi_lambda_cut}
+\end{figure}
+
+The largest source of combinatorial background is due to $\PK \to \Pproton$ and 
+$\Ppi \to \Pproton$ misidentification, as pions and kaons are produced much 
+more numerously than protons.
+The \ac{PID} requirements on the proton, kaon, and pion candidates are 
+tightened offline.
+The \probnn\ family of variables is used, which contains one \probnn\ variable 
+each charged particle hypothesis~(\Pproton/\APproton, \PKpm, \Ppipm, \Pmupm, 
+\Pepm), and is the response of an \ac{ANN} trained to discriminate each 
+hypothesis from all others.
+The \ac{ANN} is trained on a set of truth-matched tracks from a sample of 
+\ac{MC} generated under 2012 running conditions, and is scaled such that the 
+signal probability is uniform between the extent of the variable, 
+$\text{\probnn} \in [0, 1]$.
+
+To define a starting point for the cut values, a simultaneous optimisation of 
+all \ac{PID} requirements was performed by maximising the signal significance 
+$\sigma$, defined as
+\begin{equation}
+  \sigma = \frac{%
+    \nsig
+  }{%
+    \sqrt{\nsig + \nbkg}
+  },
+  \label{eqn:cpv:selection:signal_significance}
+\end{equation}
+where \nsig\ and \nbkg\ are the signal and background yields in the sample.
+The optimisation showed that the most powerful discriminants between signal and 
+background were the proton \ac{PID} information, as expected, and the \ac{PID} 
+information of the kaon or pion with the same electric charge as the proton.
+Applying the optimisation result would then result in the \ac{PID} requirements 
+being asymmetric in the $\Phm\Php$ meson pair.
+As it is known that the \ac{PID} efficiency for a given requirement on a given 
+particle is dependent on the particle kinematics, as discussed in 
+\cref{chap:prod:effs:pid}, and that the detection asymmetries also depend on 
+the same kinematics, it was chosen to apply the same \ac{PID} to both mesons in 
+the \PLambdac\ final state so as not to induce any additional detection 
+asymmetries.
+The optimal value found for the cut on the meson with opposite sign to the 
+proton was chosen as the value for the cut on the same-sign meson.
+The cut values required of the candidate protons, kaons, and pions are given in 
+\cref{tab:cpv:selection:pid_cut_values}.
+
+The \phh\ invariant mass distributions after the weak decay vetoes, \ac{PID} 
+cuts, and \decaytreefitter\ convergence requirements are given in 
+\cref{fig:cpv:selection:postpid} for the 2012 magnet down dataset.
+
+\begin{table}
+  \centering
+  \caption{%
+    Particle identification requirements made on the \PLambdac\ decay products.
+  }
+  \label{tab:cpv:selection:pid_cut_values}
+  \begin{tabular}{ccc}
+    \toprule
+    Particle           & Variable  & Requirement \\
+    \midrule
+    \Pproton/\APproton & \probnnp  & $ > 0.3$    \\
+    \PKpm              & \probnnk  & $ > 0.3$    \\
+    \Ppipm             & \probnnpi & $ > 0.3$    \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/fits-offline_stripping_trigger_weak_decay-selection_unweighted_no-simultaneous/LcTopKK_2012_MagDown_fit.pdf}
+    \caption{\pKK}
+    \label{fig:cpv:selection:postpid:pKK}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/fits-offline_stripping_trigger_weak_decay-selection_unweighted_no-simultaneous/LcToppipi_2012_MagDown_fit.pdf}
+    \caption{\ppipi}
+    \label{fig:cpv:selection:postpid:ppipi}
+  \end{subfigure}
+  \caption{%
+    Fits to the \PLambdac\ mass spectrum in the 2012 magnet down dataset for 
+    \pKK\ (\subref*{fig:cpv:data:mass:pKK}) and \ppipi\ 
+    (\subref*{fig:cpv:data:mass:ppipi}).
+    The stripping, trigger, and \ac{PID} selection is applied, as well as the 
+    \decaytreefitter\ convergence requirements, and the weak decay vetoes for 
+    the \ppipi\ data.
+    The fit that is overlaid is described in \cref{chap:cpv:prelim_fits}.
+  }
+  \label{fig:cpv:selection:postpid}
+\end{figure}
+
+\section{Background study}
+\label{chap:cpv:selection:background_study}
+
+Although \ac{PID} requirements are made on the proton candidate, it is possible 
+that a true meson decay will be misidentified as a \PLambdac\ decay.
+For example, a true \decay{\PDsplus}{\PKminus\PKplus\Ppiplus} decay could be 
+misidentified as \LcTopKK\ if the true pion is assigned the proton mass 
+hypothesis and passes the \ac{PID} cuts.
+The presence of any such misidentification (or `mis-ID') can add structures to 
+the \PLambdac\ mass spectrum, making the signal yield extraction more 
+challenging.
+Such structures may peak near the nominal \PLambdac\ mass and be incorrectly 
+counted as \PLambdac\ signal.
+
+One method of checking for the presence of misidentified decays is by 
+inspecting three-body mass distributions when each particle is assigned 
+different mass hypotheses.
+For example, by assigning the pion mass to the proton candidate in the \pKK\ 
+sample and inspecting the invariant mass of the $\PKplus\PKminus\Ppiplus$ 
+combination, a peak near the \PDsplus mass would indicate a contamination of 
+\PDsplus candidates in the data.
+
+% TODO reference
+A second way to look for meson backgrounds is to inspect the `momentum 
+asymmetry' parameter of the proton
+\begin{equation}
+  \beta_{\Pproton} = \frac{-p_{\Pproton} + p_{\Php} + p_{\Phm}}{p_{\Pproton} + p_{\Php} + p_{\Phm}},
+  \label{eqn:cpv:selection:background_study:mom_asym}
+\end{equation}
+where $p_{\Pproton}$ is the momentum of the proton candidate and $p_{h^{\pm}}$ 
+is the momentum of the $h^{\pm}$ candidate.
+Along with the mass of the \PLambdac, this fully parameterises the mass of the 
+$\phh$ system under different hypotheses, and so one can infer the presence of 
+meson backgrounds by inspecting the $\beta_{\Pproton}$--$m(\phh)$ plane.
+As the relationship between $m(\phh)$, $\beta_{\Pproton}$, and the three-body 
+mass under the background hypothesis is known, contours of the expected mis-ID 
+shape can be drawn on this plane and compared with the data.
+
+The \PLambdac\ mass is well above any lighter baryons, and so the most likely 
+backgrounds are decays of \PD mesons with misidentified children, and 
+multi-body decays of \PLambdac\ with missing children.
+The latter background would manifest as a `shoulder' at values of the 
+\PLambdac\ mass below the signal peak.
+As this feature is not seen in the \pKK\ or \ppipi\ mass distributions, shown 
+in \cref{fig:cpv:selection:postpid}, it is considered insignificant and is not 
+studied further.
+
+Throughout this \namecref{chap:cpv:selection:background_study}, the variables 
+shown are not computed using any information from the \decaytreefitter\ 
+algorithm described in Section~\ref{chap:cpv:data}.
+
+\subsection{Exchanging mass hypotheses}
+\label{chap:cpv:selection:background_study:mass_hypo}
+
+\Cref{fig:cpv:selection:background_study:pKK_meson} shows the three-body mass 
+distributions in the 2012 magnet down \pKK\ data for several mass hypothesis 
+sets, where each set does not contain the proton mass hypothesis.
+\Cref{fig:selection:background_study:pKK_baryon} shows the same, but where each 
+set does contain the proton mass hypothesis.
+The two Figures show the charm meson and charm baryon background contributions, 
+respectively.
+\Cref{fig:selection:background_study:ppipi_meson,fig:selection:background_study:ppipi_baryon} 
+show the same but for the 2012 magnet down \ppipi\ data.
+
+The distributions from the \pKK\ data show contributions from 
+\decay{\PDplus}{\PKplus\PKminus\Ppiplus}, 
+\decay{\PDsplus}{\PKplus\PKminus\Ppiplus}, and 
+\decay{\PLambdac}{\Pproton\PKminus\Ppiplus} decays in the \pKK\ data.
+The \ppipi\ data show \decay{\PDplus}{\PKplus\Ppiminus\Ppiplus}, 
+\decay{\PDplus}{\PKplus\PKminus\Ppiplus}, 
+\decay{\PDsplus}{\PKplus\Ppiminus\Ppiplus}, and 
+\decay{\PDsplus}{\PKplus\PKminus\Ppiplus} contributions.
+Each of these backgrounds are removed by vetoing \PLambdac\ candidates whose 
+wrong-mass value falls within \SI{8}{\MeV} of the nominal \PDplus, \PDsplus, or 
+\PLambdac\ mass, taken to be \SI{1869.62}{\MeV}, \SI{1968.49}{\MeV}, and 
+\SI{2286.46}{\MeV}~\cite{PDG2014}.
+
+A double misidentification of \pKK\ is present in the \pKK\ data, where the 
+hypotheses of the nominal proton and nominal kaon with the same charge as the 
+proton are swapped, visible in 
+\cref{fig:cpv:selection:background_study:pKK_baryon:lcp_KKp}.
+This is not removed from the data, as the distribution of candidates that fall 
+in the signal region of the swapped hypothesis ($\PKplus\PKminus\Pproton$) have 
+no irregular structures under the nominal hypothesis (\pKK), as shown in 
+\cref{fig:cpv:selection:background_study:pKK_lcp_KKp_Lc_M}.
+
+\subsection{Momentum asymmetry}
+\label{chap:cpv:selection:background_study:mom_asym}
+
+The momentum asymmetry of the proton is defined in 
+\cref{eqn:cpv:selection:background_study:mom_asym}.
+Along with the mass of the \PLambdac\ under the nominal three-body mass 
+hypothesis, it fully parameterises alternative three-body hypotheses where the 
+hypothesis of the proton is changed.
+The $\beta_{\Pproton}$--$m(\PLambdac)$ plane then provides an additional handle 
+on misidentification backgrounds, in additional to the technique described in 
+\cref{chap:cpv:selection:background_study:mass_hypo}.
+
+\Cref{fig:cpv:selection:background_study:mom_asym:pKK,fig:cpv:selection:background_study:mom_asym:ppipi} 
+show the $\beta_{\Pproton}$--$m(\PLambdac)$ plane with 2012 magnet down data.
+There are distinct contributions from \decay{\PDplus}{\PKplus\PKminus\Ppiplus} 
+and \decay{\PDsplus}{\PKplus\PKminus\Ppiplus} in the \pKK\ data, and from 
+\decay{\PDsplus}{\PKplus\Ppiminus\Ppiplus} in the \ppipi\ data.
+Also shown are the $\beta_{\Pproton}$--$m(\PLambdac)$ planes after the 
+misidentification vetoes described in 
+\cref{chap:cpv:selection:background_study:mass_hypo} have been applied.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_beta_p-Lb_DTF_Lc_M}
+    \caption{Before mis-ID vetoes}
+    \label{fig:cpv:selection:background_study:mom_asym:pKK:before}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_beta_p-Lb_DTF_Lc_M_contours}
+    \caption{With theoretical contours}
+    \label{fig:cpv:selection:background_study:mom_asym:pKK:contours}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_beta_p-Lb_DTF_Lc_M-vetoes}
+    \caption{After mis-ID vetoes}
+    \label{fig:cpv:selection:background_study:mom_asym:pKK:after}
+  \end{subfigure}
+  \caption{%
+    Plane of $\beta_{\Pproton}$--$m(\PLambdac)$ for the \pKK\ mode in the 2012 
+    magnet down dataset.
+    The ``theoretical contours'' shown on 
+    \cref{fig:cpv:selection:background_study:mom_asym:pKK:contours} are the 
+    solution of the parametric equation that defines the relationship between 
+    $m(\PLambdac)$, $\beta_{\Pproton}$, and the mass of the misidentified 
+    particle decaying to a particular final state.
+    The plane after the misidentification vetoes, defined in 
+    \cref{chap:cpv:selection:background_study:mass_hypo}, is shown in 
+    \cref{fig:cpv:selection:background_study:mom_asym:pKK:after}.
+  }
+  \label{fig:cpv:selection:background_study:mom_asym:pKK}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_beta_p-Lb_DTF_Lc_M}
+    \caption{Before mis-ID vetoes}
+    \label{fig:cpv:selection:background_study:mom_asym:ppipi:before}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_beta_p-Lb_DTF_Lc_M_contours}
+    \caption{With theoretical contours}
+    \label{fig:cpv:selection:background_study:mom_asym:ppipi:contours}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_beta_p-Lb_DTF_Lc_M-vetoes}
+    \caption{After mis-ID vetoes}
+    \label{fig:cpv:selection:background_study:mom_asym:ppipi:after}
+  \end{subfigure}
+  \caption{%
+    Plane of $\beta_{\Pproton}$--$m(\PLambdac)$ for the \ppipi\ mode in the 
+    2012 magnet down dataset.
+    The ``theoretical contours'' shown on 
+    \cref{fig:cpv:selection:background_study:mom_asym:ppipi:contours} are the 
+    solution of the parametric equation that defines the relationship between 
+    $m(\PLambdac)$, $\beta_{\Pproton}$, and the mass of the misidentified 
+    particle decaying to a particular final state.
+    The plane after the misidentification vetoes, defined in 
+    \cref{chap:cpv:selection:background_study:mass_hypo}, is shown in 
+    \cref{fig:cpv:selection:background_study:mom_asym:ppipi:after}.
+  }
+  \label{fig:cpv:selection:background_study:mom_asym:ppipi}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Dp_ppTokp_km_kpTopip}
+    \caption{\decay{\PDplus}{\PKplus\PKminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:pKK_meson:dplus_kkpi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Dp_ppTopip_kmTopim_kpTopip}
+    \caption{\decay{\PDplus}{\Ppiplus\Ppiminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:pKK_meson:dplus_pipipi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Dp_ppTopip_km_kp}
+    \caption{\decay{\PDplus}{\Ppiplus\PKminus\PKplus}}
+    \label{fig:cpv:selection:background_study:pKK_meson:dplus_pikk}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Dp_ppTopip_km_kpTopip}
+    \caption{\decay{\PDplus}{\Ppiplus\PKminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:pKK_meson:dplus_pikpi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Ds_ppTokp_kmTopim_kpTopip}
+    \caption{\decay{\PDsplus}{\PKplus\Ppiminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:pKK_meson:dsplus_Kpipi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Ds_ppTokp_km_kp}
+    \caption{\decay{\PDsplus}{\PKplus\PKminus\PKplus}}
+    \label{fig:cpv:selection:background_study:pKK_meson:dsplus_KKK}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Ds_ppTopip_kmTopim_kpTopip}
+    \caption{\decay{\PDsplus}{\Ppiplus\Ppiminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:pKK_meson:dsplus_pipipi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Ds_ppTopip_km_kp}
+    \caption{\decay{\PDsplus}{\Ppiplus\PKminus\PKplus}}
+    \label{fig:cpv:selection:background_study:pKK_meson:dsplus_piKK}
+  \end{subfigure}
+
+  \caption{%
+    Wrong-mass distributions obtained when changing the mass hypotheses of the 
+    fully selected \PLambdac\ children in the \pKK\ mode, where no child is 
+    assigned the proton mass hypothesis.
+    The $x$-axis on each sub-figure shows the substitutions that have been 
+    made.
+    For example, the ${(\Pproton \to \Ppiplus)(\PKminus \to \Ppiminus)\PKplus}$ distribution is 
+    where the nominal proton candidate has been assigned the pion mass 
+    hypothesis, and the nominal kaon with opposite charge to the proton has 
+    been also assigned the pion hypothesis.
+    Only the 2012 magnet down data is shown.
+  }
+  \label{fig:cpv:selection:background_study:pKK_meson}
+\end{figure}
+
+
+\begin{figure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Lc_ppTokp_kmTopim_kpTopp}
+    \caption{\decay{\PLambdac}{\PKplus\Ppiminus\Pproton}}
+    \label{fig:cpv:selection:background_study:pKK_baryon:lcp_Kpip}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Lc_ppTokp_km_kpTopp}
+    \caption{\decay{\PLambdac}{\PKplus\PKminus\Pproton}}
+    \label{fig:cpv:selection:background_study:pKK_baryon:lcp_KKp}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Lc_ppTopip_kmTopim_kpTopp}
+    \caption{\decay{\PLambdac}{\Ppiplus\Ppiminus\Pproton}}
+    \label{fig:cpv:selection:background_study:pKK_baryon:lcp_pipip}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Lc_ppTopip_km_kpTopp}
+    \caption{\decay{\PLambdac}{\Ppiplus\PKminus\Pproton}}
+    \label{fig:cpv:selection:background_study:pKK_baryon:lcp_pikp}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Lc_pp_kmTopim_kp}
+    \caption{\decay{\PLambdac}{\Pproton\Ppiminus\PKplus}}
+    \label{fig:cpv:selection:background_study:pKK_baryon:lcp_ppik}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Lc_pp_kmTopim_kpTopip}
+    \caption{\decay{\PLambdac}{\Pproton\Ppiminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:pKK_baryon:lcp_ppipi}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Lc_pp_km_kpTopip}
+    \caption{\decay{\PLambdac}{\Pproton\PKminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:pKK_baryon:lcp_pkpi}
+  \end{subfigure}
+
+  \caption{%
+    Wrong-mass distributions obtained when changing the mass hypotheses of the 
+    fully selected \PLambdac\ children in the \pKK\ mode, where one child is 
+    assigned the proton mass hypothesis.
+    The $x$-axis on each sub-figure shows the substitutions that have been 
+    made.
+    For example, the ${\Pproton\PKminus(\PKplus \to \Ppiplus)}$ distribution is where the 
+    nominal kaon with same charge as the proton has been also assigned the pion 
+    hypothesis.
+    Only the 2012 magnet down data is shown.
+  }
+  \label{fig:cpv:selection:background_study:pKK_baryon}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_Lc_ppTokp_km_kpTopp-Lc_M}
+  \caption{%
+    Mass spectrum of \pKK\ candidates that fall within \SI{8}{\MeV} of the 
+    nominal \PLambdac\ mass when the proton and same-sign kaon mass hypotheses 
+    are swapped.
+    The mass spectrum of \PLambdac\ candidates with the swapped hypotheses is 
+    shown in 
+    Figure~\ref{fig:cpv:selection:background_study:pKK_baryon:lcp_KKp}.
+    The lack of structures other than the flat combinatorial-background-like 
+    and peaking signal-like components indicate that the presence of this 
+    misidentification background does not affect the nominal \pKK\ yield 
+    extraction.
+  }
+  \label{fig:cpv:selection:background_study:pKK_lcp_KKp_Lc_M}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Dp_ppTokp_pimTokm_pip}
+    \caption{\decay{\PDplus}{\PKplus\PKminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:ppipi_meson:kkpi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Dp_ppTopip_pimTokm_pip}
+    \caption{\decay{\PDplus}{\Ppiplus\PKminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:ppipi_meson:pikpi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Dp_ppTopip_pimTokm_pipTokp}
+    \caption{\decay{\PDplus}{\Ppiplus\PKminus\PKplus}}
+    \label{fig:cpv:selection:background_study:ppipi_meson:pikk}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Dp_ppTopip_pim_pip}
+    \caption{\decay{\PDplus}{\Ppiplus\Ppiminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:ppipi_meson:pipipi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Ds_ppTokp_pimTokm_pip}
+    \caption{\decay{\PDsplus}{\PKplus\PKminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:ppipi_meson:kkpi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Ds_ppTokp_pimTokm_pipTokp}
+    \caption{\decay{\PDsplus}{\PKplus\PKminus\PKplus}}
+    \label{fig:cpv:selection:background_study:ppipi_meson:kkk}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Ds_ppTokp_pim_pip}
+    \caption{\decay{\PDsplus}{\PKplus\Ppiminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:ppipi_meson:kpipi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Ds_ppTopip_pimTokm_pipTokp}
+    \caption{\decay{\PDsplus}{\Ppiplus\PKminus\PKplus}}
+    \label{fig:cpv:selection:background_study:ppipi_meson:pikk}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Ds_ppTopip_pim_pip}
+    \caption{\decay{\PDsplus}{\Ppiplus\Ppiminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:ppipi_meson:pipipi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Ds_ppTopip_pim_pipTokp}
+    \caption{\decay{\PDsplus}{\Ppiplus\Ppiminus\PKplus}}
+    \label{fig:cpv:selection:background_study:ppipi_meson:pipik}
+  \end{subfigure}
+  \caption{%
+    Wrong-mass distributions obtained when changing the mass hypotheses of the 
+    fully selected \PLambdac\ children in the \ppipi\ mode, where no child is 
+    assigned the proton mass hypothesis.
+    The $x$-axis on each sub-figure shows the substitutions that have been 
+    made.
+    For example, the ${(\Pproton \to \Ppiplus)(\Ppiminus \to \PKminus)\Ppiplus}$ distribution is 
+    where the nominal proton candidate has been assigned the pion mass 
+    hypothesis, and the nominal pion with opposite charge to the proton has 
+    been assigned the kaon hypothesis.
+    Only the 2012 magnet down data is shown.
+  }
+  \label{fig:cpv:selection:background_study:ppipi_meson}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Lc_ppTokp_pimTokm_pipTopp}
+    \caption{\decay{\PLambdac}{\PKplus\PKminus\Pproton}}
+    \label{fig:cpv:selection:background_study:ppipi_baryon:kkp}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Lc_ppTokp_pim_pipTopp}
+    \caption{\decay{\PLambdac}{\PKplus\Ppiminus\Pproton}}
+    \label{fig:cpv:selection:background_study:ppipi_baryon:kpip}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Lc_ppTopip_pimTokm_pipTopp}
+    \caption{\decay{\PLambdac}{\Ppiplus\PKminus\Pproton}}
+    \label{fig:cpv:selection:background_study:ppipi_baryon:pikp}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Lc_ppTopip_pim_pipTopp}
+    \caption{\decay{\PLambdac}{\Ppiplus\Ppiminus\Pproton}}
+    \label{fig:cpv:selection:background_study:ppipi_baryon:pipip}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Lc_pp_pimTokm_pip}
+    \caption{\decay{\PLambdac}{\Pproton\PKminus\Ppiplus}}
+    \label{fig:cpv:selection:background_study:ppipi_baryon:pkpi}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Lc_pp_pimTokm_pipTokp}
+    \caption{\decay{\PLambdac}{\Pproton\PKminus\PKplus}}
+    \label{fig:cpv:selection:background_study:ppipi_baryon:pkk}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_Lc_pp_pim_pipTokp}
+    \caption{\decay{\PLambdac}{\Pproton\Ppiminus\PKplus}}
+    \label{fig:cpv:selection:background_study:ppipi_baryon:ppik}
+  \end{subfigure}
+  \caption{%
+    Wrong-mass distributions obtained when changing the mass hypotheses of the 
+    fully selected \PLambdac\ children in the \ppipi\ mode, where one child is 
+    assigned the proton mass hypothesis.
+    The $x$-axis on each sub-figure shows the substitutions that have been 
+    made.
+    For example, the ${\Pproton(\Ppiminus \to \PKminus)\Ppiplus}$ distribution is where the 
+    nominal proton candidate has been assigned the pion mass hypothesis, and 
+    the nominal pion with opposite charge to the proton has been also assigned 
+    the kaon hypothesis.
+    Only the 2012 magnet down data is shown.
+  }
+  \label{fig:cpv:selection:background_study:ppipi_baryon}
+\end{figure}
+
+\section{Multiple candidates}
+\label{chap:cpv:selection:multiple_candidates}
+
+It is possible that two or more true \LcTophh\ decays are reconstructed in a 
+single \ac{LHC} bunch crossing, but it is unlikely.
+It is more likely that such multiple candidates are caused by unphysical means, 
+such as cloned tracks~\cite{LHCb-INT-2011-009}, and so the fully selected data 
+is checked for multiple candidates.
+
+Before the offline selection, that is after the stripping, the \pKK\ sample 
+contains around \SI{8.5}{\percent} of events with more than one candidate, and 
+the \ppipi\ sample contains around \SI{7.5}{\percent}.
+In each case, the fraction of events with duplicate \PLambdac\ candidates, 
+where the same \PLambdac\ candidate is used in multiple \PLambdab\ candidates, 
+is around \SI{0.5}{\percent}.
+Such cases occur when the same \PLambdac\ candidate is combined with multiple 
+muon candidates.
+The number of events with more than one \PLambdab\ candidate passing the full 
+offline selection is found to be no higher than \SI{2}{\percent} for \pKK\ and 
+\ppipi\ across all subsets of the data, and no higher than \SI{0.5}{\percent} 
+within a signal mass window of $2270 < m(\PLambdac) < \SI{2300}{\MeV}$.
+Fractions of multiple candidates, both in the full sample, and within the 
+defined signal windows, for all data sub-samples are given in 
+\cref{tab:cpv:selection:multiple_candidates:pKK,tab:cpv:selection:multiple_candidates:ppipi}.
+
+To avoid any possible effects on the measurement of \dACP\ due to multiple 
+candidates, one candidate is randomly selected per event for further analysis, 
+and all others are discarded.
+
+\begin{table}
+  \caption{%
+    Statistics on multiple candidates in the \pKK\ data.
+    The total number of events $N_{\text{Events}}$ is the number of 
+    proton-proton collisions that make up the data sub-sample, and 
+    $N_{\text{Candidates}}$ is the number of \PLambdac\ candidates.
+    The fraction of events containing at least two candidates is 
+    $f_{\text{Multiple}}$, and the fraction of those events that fall within 
+    the signal window in the \PLambdac\ mass distribution is 
+    $f_{\text{Multiple, sig.}}$.
+  }
+  \label{tab:cpv:selection:multiple_candidates:pKK}
+  % \begin{adjustbox}{center}
+    \input{tables/cpv/selection/LcTopKK_multiple_candidates}
+  % \end{adjustbox}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Multiple candidates for the \ppipi\ data.
+    The total number of events $N_{\text{Events}}$ is the number of 
+    proton-proton collisions that make up the data sub-sample, and 
+    $N_{\text{Candidates}}$ is the number of \PLambdac\ candidates.
+    The fraction of events containing at least two candidates is 
+    $f_{\text{Multiple}}$, and the fraction of those events that fall within 
+    the signal window in the \PLambdac\ mass distribution is 
+    $f_{\text{Multiple, sig.}}$.
+  }
+  \label{tab:cpv:selection:multiple_candidates:ppipi}
+  % \begin{adjustbox}{center}
+    \input{tables/cpv/selection/LcToppipi_multiple_candidates}
+  % \end{adjustbox}
+\end{table}
