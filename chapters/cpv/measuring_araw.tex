@@ -22,6 +22,8 @@ $b_{i}$, to which to fit model is compared, is
 where $N_{i}$ is the number of candidate decays in the $i$th \phh\ mass bin, 
 $w_{j}$ is per-candidate kinematic weight for the $j$th candidate in the $i$th 
 bin, and $\eff_{j}$ is the efficiency.
+The uncertainty on the bin contents $\unc{b_{i}}$ is taken to be the square 
+root of the sum of the squares of the summand.
 
 To try to reduce the effects of experimenter bias, the fitted central values of 
 \ARaw\ are \emph{blinded}, and cannot be inspected until they are 
@@ -268,7 +270,8 @@ uncertainty on those parameters is not under- or overestimated.
 
 Fits as described in this \namecref{chap:cpv:araw} are performed on real data 
 where the charge of the \PLambdac\ candidate is randomly assigned, with an 
-equal probability of being assigned a positive or a negative charge.
+there being an equal probability of any one decay being assigned a positive or 
+a negative charge.
 One thousand permutations of the charge assignments are tested for each mode 
 and data sub-sample, the fit is performed for each permutation and the value of 
 \ARaw is recorded.
@@ -282,7 +285,9 @@ value should have a mean of zero.
 % To prevent this, the blinding string for each mode is changed, such that the 
 % blinding offset for this study is different to that used in the nominal fits.
 
-The unblinded results of the charge permutation experiments are shown in 
+The true charge of the \PLambdac\ candidates do not enter the fit, and so the 
+charge permutation experiments are performed without blinding.
+The results are shown in 
 \cref{fig:cpv:araw:validation:null:pKK,fig:cpv:araw:validation:null:ppipi} for 
 the 2012 magnet down \pKK\ and \ppipi\ data.
 The width of the pull distribution of \ARaw for both is consistent with unity, 
