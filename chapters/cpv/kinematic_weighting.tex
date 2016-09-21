@@ -1,8 +1,6 @@
 \chapter{Kinematic weighting}
 \label{chap:cpv:kinematic_weighting}
 
-% TODO missing lots of BDT references here
-
 For the assumptions in \cref{eqn:cpv:theory:dacp} to hold, the
 kinematics of the particles contributing to the background asymmetries must be 
 equal between the \pKK and \ppipi final states.
@@ -28,7 +26,7 @@ A \acf{BDT} is used to equalise the relevant particle kinematics between the
 two modes.
 This is an uncommon technique in physics analyses, with ratios of 
 multi-dimensional histograms being used more often, and so it will be briefly 
-summarised in the following, proceeded by a introduction to decision trees in 
+summarised in the following, preceded by a introduction to decision trees in 
 order to established the required terminology.
 The creation of the specific models using for weighting will then be presented, 
 followed by a discussion on weighting validation.
@@ -36,8 +34,9 @@ followed by a discussion on weighting validation.
 \section{Boosted decision trees}
 \label{chap:cpv:kinematic_weighting:bdt_theory}
 
-Decision trees are one algorithm in the set of \acl{MVA} tools that also 
-includes \aclp{kNN} and \aclp{ANN}.
+Decision trees~\cite{breiman1984classification,Louppe:14077502} are one 
+algorithm in the set of \acl{MVA} tools that also includes \aclp{kNN} and 
+\aclp{ANN}.
 In \acl{HEP}, such tools are commonly used for the task of 
 \emph{classification}, where one wishes to discriminate between several species 
 that are mixed together, usually in unknown proportions, in the data.
@@ -50,8 +49,8 @@ or the algorithm cannot distinguish them with certainty across the entire
 feature space.
 For a given set of values of the features, the algorithm then returns a 
 probability that the point $\vec{x}$ belongs to a particular species.
-Throughout this \namecref{chap:cpv:kinematic_weighting:bdt}, only the problem 
-of binary classification shall be considered.
+Throughout this \namecref{chap:cpv:kinematic_weighting:bdt_theory}, only the 
+problem of binary classification shall be considered.
 
 The rectangular cuts used in the selection described in 
 \cref{chap:cpv:selection} are a crude attempt at a estimating the 
@@ -81,9 +80,9 @@ and the stopping criteria that determines whether additional nodes can be
 created.
 % TODO well, the hyper-parameters aren't tuned during fitting, its the features 
 % and cuts in each node
-The tuning of these \emph{hyper-parameters} is a complex optimisation problem, 
-the details of which are not necessary for understanding the classification 
-problem at hand.
+The tuning of these \emph{hyper-parameters} is a complex optimisation 
+problem~\cite{Louppe:14077502}, the details of which are not necessary for 
+understanding the classification problem at hand.
 The important feature of the construction is that it is performed using an 
 ensemble of individual \emph{events}, feature vectors $\vec{x}$, called the 
 \emph{training} sample, in which the true species of each event is known.
@@ -139,24 +138,26 @@ methods are often used.
 The error rate of a decision tree, the fraction of incorrectly classified 
 events, is due to two properties of the classifier: the bias, the consistent 
 deviation away from the true values, and the variance, the spread around the 
-mean value.
+mean value~\cite{Breiman96biasvariance}.
 A complex model, prone to over-fitting, may have a low bias but a high 
 variance, whereas a simple model may have a high bias but a low variance.
 
 To reduce the variance of a tree-based classifier, ensembles of complex trees 
-can be created, with each tree is grown using a subset of the training data.
+can be created, with each tree is grown using a subset of the training 
+data~\cite{Breiman1996}.
 The classification for an event is then determined using the set of 
 classifications produced by the ensemble, such as by taking the mean of that 
 set.
 This does not increase the bias of the model if the predictions of the 
 individual trees are uncorrelated.
-To guard against this possibility, the technique of \emph{random forests} can 
-be used, in which each node splitting can only use information from a random 
-subset of the features, in addition to the random sub-sampling of the training 
-data used to grow each tree in the ensemble.
+To guard against this possibility, the technique of \emph{random 
+  forests}~\cite{Breiman2001,Louppe:14077502} can be used, in which each node 
+splitting can only use information from a random subset of the features, in 
+addition to the random sub-sampling of the training data used to grow each tree 
+in the ensemble.
 
-The bias can be decreased by employing \emph{boosting}, for which \adaboost\ is 
-commonly used algorithm.
+The bias can be decreased by employing \emph{boosting}, for which 
+\adaboost~\cite{Freund1997119} is commonly used algorithm.
 Rather than training an ensemble of complex models in parallel, \adaboost\ 
 trains a \emph{sequence} of \emph{weak learners} (decisions trees here), whose 
 predictions are only slightly better than random guessing, and returns a 
@@ -170,7 +171,8 @@ A new tree is grown using the new weights, and the procedure is iterated.
 With each iteration, events that are consistently incorrectly classified are 
 given a greater importance in the training.
 
-The generalisation of the \adaboost\ algorithm is \emph{gradient boosting}.
+The generalisation of the \adaboost\ algorithm is \emph{gradient 
+  boosting}~\cite{friedman2001}.
 With \adaboost, additional weak learners compensate for previous incorrect 
 classifications by being trained with specially weighted data.
 In gradient boosting, additional weak learners try to correct the 
