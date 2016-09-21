@@ -23,7 +23,15 @@ where $N_{i}$ is the number of candidate decays in the $i$th \phh\ mass bin,
 $w_{j}$ is per-candidate kinematic weight for the $j$th candidate in the $i$th 
 bin, and $\eff_{j}$ is the efficiency.
 The uncertainty on the bin contents $\unc{b_{i}}$ is taken to be the square 
-root of the sum of the squares of the summand.
+root of the sum of the squares of the summand
+\begin{equation}
+  \unc{b_{i}} = \sqrt{\sum_{j = 1}^{N_{i}} \frac{%
+    w_{j}^{2}(\pT^{\PLambdac}, \Eta^{\PLambdac},
+          \pT^{\Pproton}, \Eta^{\Pproton})
+  }{%
+    \eff_{j}^{2}(\msqphm, \msqhh, \thetap, \phip, \phihh)
+  }},
+\end{equation}
 
 To try to reduce the effects of experimenter bias, the fitted central values of 
 \ARaw\ are \emph{blinded}, and cannot be inspected until they are 
