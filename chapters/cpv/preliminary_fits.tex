@@ -76,32 +76,35 @@ In all cases, the normalisation factors are omitted from the definitions, and
 the variable $x$ represents the \PLambdac\ mass.
 
 For both the \pKK\ and \ppipi\ samples, the signal model $f$ is the linear sum 
-of two normal distributions sharing a common mean $\mu$ but with different 
+of two normal distributions $G$ sharing a common mean $\mu$ but with different 
 widths $\sigma_{1}$ and $\sigma_{2}$.
 A `single Gaussian' is defined as
 \begin{equation}
   G(x; \mu, \sigma) = \exp\left(-\frac{{(x - \mu)}^{2}}{2\sigma^{2}}\right),
 \end{equation}
-and then a `double Gaussian' is defined as
+and then the `double Gaussian' is defined as
 \begin{equation}
-  f(x) = (1 - \alpha)G(x; \mu, \sigma_{1}) + \alpha{}G(x; \mu, \sigma_{2}),
+  f(x; \mu, w, \alpha) = \alpha{}G(x; \mu, \alpha{w}) +
+    (1 - \alpha)G(x; \mu, \frac{w}{\alpha}),
   \label{eqn:cpv:prelim_fits:sig_model}
 \end{equation}
-where $\alpha$ describes the `relative strength' of each normal distribution, 
-and the width $\sigma_{2}$ is parameterised as
+where $\alpha$ describes the `relative strength' of each normal distribution 
+and is bounded in the range $[0, 1]$, and the widths $\sigma_{1}$ and 
+$\sigma_{2}$ have been parameterised as
 \begin{equation}
-  \sigma_{2} = \sigma_{1} + \omega,
-  \label{eqn:cpv:prelim_fits:sigma2_def}
+  \sigma_{1} = \alpha{w},\ \text{and}\ \sigma_{2} = \frac{w}{\alpha}.
+  \label{eqn:cpv:prelim_fits:sigma_def}
 \end{equation}
-where $\omega$ is bounded from below at zero.
-This enforces the relation that $\sigma_{1} < \sigma_{2}$, which is useful to 
-know when trying to reason about the fitted values of $\alpha$.
+This enforces the relation $\sigma_{1} \leq \sigma_{2}$, which is useful to 
+know when trying to reason about the fitted values of $\alpha$, and was 
+observed to increase the stability of the fit compared to having free, 
+independent widths $\sigma_{1}$ and $\sigma_{2}$.
 
 For both modes, the background model $g$ is a first-order polynomial with 
 coefficient $a_{0}$
 \begin{equation}
   g(x) = 1 + a_{0}x.
-  \label{eqn:prelim_fits:bkg_model}
+  \label{eqn:cpv:prelim_fits:bkg_model}
 \end{equation}
 
 The signal and background models are combined as a linear sum to form a total 
