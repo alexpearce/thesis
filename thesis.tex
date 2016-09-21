@@ -1,7 +1,7 @@
 % This document should be printed double-sided on standard A4 paper
 % The default options for memoir are:
 %   letterpaper,10pt,twoside,onecolumn,openright,final
-\documentclass[a4paper,11pt]{memoir}
+\documentclass[a4paper,12pt]{memoir}
 
 % Number everything down to, and including, subsections
 % \setsecnumdepth{subsection}
@@ -30,6 +30,8 @@
 \hypersetup{%
   pdfauthor={\theauthor},
   pdfcreator={\theauthor},
+  pdfsubject={High energy physics},
+  pdfkeywords={Flavour physics} {Charm Production} {CP violation} {LHCb} {LHC} {CERN} {Thesis} {The University of Manchester},
   % Colour everything black
   % Citations, using \cite
   citecolor=[rgb]{0,0,0},
@@ -41,14 +43,30 @@
 
 \begin{document}
 
+% Starred version doesn't switch to roman numerals
+% Manchester requires all pages are numbered with arabic numerals, with the 
+% title page as page number 1, and that all pages display a number except the 
+% title page
+\frontmatter*
+
+% This is gross, but it overrides the cleared pagestyle to be the plain style, 
+% so that (almost) every page has a page number (as stipulated by the 
+% Manchester regulations)
+\makeatletter
+\let\ps@cleared\ps@plain
+\makeatother
+
 % Title page
-\begin{titlingpage}
+% Starred version doesn't reset the page number after the title page
+\begin{titlingpage*}
   \begin{center}
-    \textbf{\huge\thetitle}
+    % The \par makes the line spacing sensible given the \huge
+    % http://tex.stackexchange.com/a/84324/45857
+    {\huge \textbf{\thetitle}\par}
 
     \vfill
 
-    A thesis submitted to the University of Manchester for the degree of\\
+    A thesis submitted to The University of Manchester for the degree of\\
     Doctor of Philosophy\\
     in the Faculty of Science and Engineering\\
 
@@ -74,10 +92,14 @@
       \texttt{Draft generated on \today}
     }{}
   \end{center}
-\end{titlingpage}
+\end{titlingpage*}
 
-\frontmatter
-
+% Now the title page is done, we force *every* page to be numbered
+% Placing this before the title page declaration would cause the title page to
+% be number, which should not be the case according to the regulations
+\makeatletter
+\let\ps@empty\ps@plain
+\makeatother
 
 % Add a PDF bookmark for the contents page
 \pdfbookmark[0]{\contentsname}{tableofcontents}
@@ -89,31 +111,21 @@
 % TODO
 Word count: 0
 
-\cleardoublepage
-
 \include{chapters/frontmatter/abstract}
-
-\cleardoublepage
 
 \include{chapters/frontmatter/summary}
 
-\cleardoublepage
-
 \include{chapters/frontmatter/declaration}
-
-\cleardoublepage
 
 \include{chapters/frontmatter/copyright}
 
-\cleardoublepage
-
 \include{chapters/frontmatter/acknowledgements}
-
-\cleardoublepage
 
 \include{chapters/frontmatter/preface}
 
-\mainmatter
+% Starred version doesn't reset the page counter
+\mainmatter*
+
 \iftoggle{draft}{\linenumbers}{}
 
 \part{%
@@ -181,9 +193,12 @@ Word count: 0
 
 \include{chapters/cpv/summary}
 
-\cleardoublepage
-
+% Do a little dance to have the appendices appear 'outside' the last Part in 
+% the table of contents
+% http://tex.stackexchange.com/a/286452/45857
+\phantomsection
 \appendix
+\addcontentsline{toc}{part}{Appendices}
 
 \appendixpage*
 

@@ -37,6 +37,18 @@
 % Memoir layouts
 \chapterstyle{hangnum}
 
+% The spacing in the table of contents between the part and section numbers and 
+% their titles is a bit tight by default, for numbers like 11.10, so increase 
+% it a bit
+% The chapter width and section indent are set so everything lines up nicely
+\setlength\cftpartnumwidth{2em}
+\setlength\cftchapternumwidth{2em}
+\setlength\cftsectionindent{2em}
+\setlength\cftsectionnumwidth{2.5em}
+
+% Show the page number on blank pages when flushing before a new \chapter
+% \renewcommand{\clearforchapter}{\cleartooddpage[\thispagestyle{plain}]}
+
 % Maths and symbols
 \usepackage{amsmath}
 \usepackage{amssymb}
