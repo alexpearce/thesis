@@ -1,0 +1,110 @@
+\chapter{Results}
+\label{chap:cpv:results}
+
+The difference in the raw asymmetries of the \pKK\ and \ppipi\ data defines 
+\dACP
+\begin{equation*}
+  \dACP = \ARaw(\pKK) - \ARaw(\ppipi).
+\end{equation*}
+The values of and uncertainties on \ARaw\ are measured by the weighted fits 
+described in \cref{chap:cpv:araw}.
+In this section, the combinations of \ARaw\ are made within and across the 
+data-taking years (2011 and 2012) and magnet polarities (magnet up and down), 
+and the measured values of \ARaw\ and \dACP\ are reported.
+
+\section{Combining measurements}
+\label{chap:cpv:results:combination}
+
+The values of \ARaw\ for a given year and polarity are measured in the fits.
+Within a given year $\zeta$, $\zeta \in [2011, 2012]$, the average value of the 
+\ARaw\ is defined as the arithmetic mean of the two values of \ARaw\ measured 
+on the magnet up and magnet down data
+\begin{equation}
+  \ARaw(\zeta) = \frac{%
+    \ARaw{}^{\uparrow} + \ARaw{}^{\downarrow}
+  }{%
+    2
+  }.
+  \label{eqn:cpv:results:araw_year}
+\end{equation}
+This quantity is defined for both $\ARaw(\pKK)$ and $\ARaw(\ppipi)$.
+The average value of \dACP\ within a year is then defined using the results of 
+\cref{eqn:cpv:results:araw_year}
+\begin{equation}
+  \dACP(\zeta) = \ARaw(\zeta, \pKK) - \ARaw(\zeta, \ppipi).
+\end{equation}
+Across both years, the values of \ARaw\ are computed as the weighted sum of the 
+per-year values, where the weights are the inverses of the squares of the 
+statistical uncertainties $\sigma$ on the measurements
+\begin{equation}
+  \ARaw =
+    \frac{1}{\frac{1}{\sigma_{2011}^{2}} + \frac{1}{\sigma_{2012}^{2}}}
+    \left(
+      \frac{1}{\frac{1}{\sigma_{2011}^{2}}}\ARaw(2011) +
+      \frac{1}{\frac{1}{\sigma_{2012}^{2}}}\ARaw(2012)
+    \right)
+  \label{eqn:cpv:results:araw_polarity}
+\end{equation}
+Note that this quantity can be computed using the polarity-average \ARaw\ 
+measurements, defined in \cref{eqn:cpv:results:araw_year}, and it can also be 
+computed per polarity, for example to compute the average magnet down result 
+across 2011 and 2012.
+
+The measured values of $\ARaw(\pKK)$, $\ARaw(\ppipi)$, and \dACP\ are given in 
+\cref{tab:cpv:results:asymmetries}.
+Plots of the three measurements for each data sub-sample are given in 
+\cref{fig:cpv:results:asymmetries}, where a \chisq\ fit of a constant function 
+to the measurements is also shown.
+The average value of \dACP\ average across all magnet polarities and years, as 
+computed with \cref{eqn:cpv:results:araw_year,eqn:cpv:results:araw_polarity}, 
+is measured as
+\begin{equation*}
+  \dACP = \deltaACP.
+\end{equation*}
+
+\begin{table}
+  \centering
+  \caption{%
+    Measured asymmetries for each data sub-sample and combination of 
+    sub-samples.
+    The computation of the combinations, ``2011 + 2012'' and ``Average'', is 
+    defined in \cref{chap:cpv:results:combination}.
+  }
+  \label{tab:results:asymmetries}
+  % \begin{adjustbox}{center}
+    \input{tables/cpv/results/delta_acp.tex}
+  % \end{adjustbox}
+\end{table}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/results/araw_pKK}
+    \caption{$\ARaw(\pKK)$}
+    \label{fig:cpv:results:asymmetries:pKK}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/results/araw_ppipi}
+    \caption{$\ARaw(\ppipi)$}
+    \label{fig:cpv:results:asymmetries:ppipi}
+  \end{subfigure}
+
+  \vspace{0.5cm}
+
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{cpv/results/dacp}
+    \caption{\dACP}
+    \label{fig:cpv:results:asymmetries:dacp}
+  \end{subfigure}
+  \caption{%
+    Values of the asymmetries $\ARaw(\pKK)$ 
+    (\subref*{fig:cpv:results:asymmetries:pKK}), $\ARaw(\ppipi)$ 
+    (\subref*{fig:cpv:results:asymmetries:ppipi}), and \dACP\ 
+    (\subref*{fig:cpv:results:asymmetries:dacp}), for the four data 
+    sub-samples.
+    For each asymmetry, a \chisq\ fit of a constant function to the four data 
+    points is also shown, along with the best fit value and uncertainty, 
+    \chisq\ per degree of freedom~(DOF), and $p$-value.
+  }
+  \label{fig:cpv:results:asymmetries}
+\end{figure}
