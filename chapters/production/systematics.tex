@@ -19,8 +19,8 @@ hadrons.
 Uncertainties that are fully correlated, with a correlation coefficient $\rho$ 
 equal to 1, cancel in ratios.
 In addition, the quantification of the goodness-of-fit of a fit to the 
-cross-section measurements, as done by theorists, can change significantly when 
-correlated are accounted for.
+cross-section measurements, as done by theorists, can change significantly 
+depending on whether correlations are accounted for.
 In what follows, the range of correlations of each uncertainty between bins and 
 between charm hadrons will be given, with a summary presented in 
 \cref{chap:prod:syst:correlations}.
@@ -47,7 +47,7 @@ systematic uncertainty is fully uncorrelated between bins and between decay
 modes.
 As discussed in \cref{chap:prod:effs:tot}, the posteriori probability 
 for the estimated efficiency is described by the beta distribution, and so the 
-corresponding nuisance parameter is modelled by this distribution.
+corresponding nuisance parameter is also modelled by this distribution.
 
 The resulting systematic uncertainties, relative to the central value of the 
 cross-section measurement, are given in 
@@ -114,8 +114,8 @@ The total systematic uncertainty on the efficiency-corrected signal yield due
 to \ac{MC} mis-modelling is the mean of the set of ten thousand values of $\Delta$, as defined in \cref{eqn:prod:syst:mc:eff_diff}.
 
 The value of $\Delta$ for a given variable in a single \pTy\ bin is usually not 
-statistically significant, but the integration of the $\Delta$ values all over 
-\pTy\ values can be, and so a difference is evaluated for all \pTy\ bins as 
+statistically significant, but the integration of the values of $\Delta$ over 
+all \pTy\ values can be, and so a difference is evaluated for all \pTy\ bins as 
 such.
 The relative uncertainty on the efficiency-corrected yield $N/\eff$ is the 
 difference integrated across all \pTy\ divided by it's uncertainty.
@@ -244,10 +244,9 @@ The truth matching efficiency described in \cref{chap:prod:effs:truth} is comput
 sample of finite size, and so carries a statistical uncertainty.
 As in \cref{chap:prod::syst:mcstat}, this statistical uncertainty is propagated to the cross-section 
 measurements as a systematic uncertainty.
-Unlike the selection efficiency uncertainty, the \ac{MC} sample size is too 
-small to compute the truth matching systematic in \pTy\ bins, and so an 
-integrated value is computed.
-The values for each mode are given in Table~\ref{tab:prod:syst:mc:truth_matching}.
+The \ac{MC} sample size is too small to compute the truth matching systematic 
+in \pTy\ bins, and so a value is computed using the integrated \ac{MC}.
+The values for each mode are given in \cref{tab:prod:syst:mc:truth_matching}.
 
 \section{Particle identification calibration}
 \label{chap:prod:syst:pid}
@@ -270,10 +269,11 @@ The efficiency \effi\ in the $i$th \ptotetanspd\ bin of the efficiency
 histogram has a statistical uncertainty $\unc{\effi}$ due to the finite size of 
 the calibration sample.
 Each \ptotetanspd\ bin contains a disjoint set of calibration tracks, and hence 
-the efficiencies between bins fluctuate independently, hence there will be a 
-non-zero correlation between the \ac{PID} efficiencies of tracks in a single 
-decay if those tracks fall in the same efficiency bin, as well as between 
-different decays if there is an overlap in the efficiency bins that are used.
+the efficiencies between bins fluctuate independently.
+There will be a non-zero correlation between the \ac{PID} efficiencies of 
+tracks in a single decay if those tracks fall in the same efficiency bin, as 
+well as between different decays if there is an overlap in the efficiency bins 
+that are used.
 To model these correlations, a series of ten thousand pseudo-experiments are 
 performed to propagate the statistical uncertainty on \effi\ to a corresponding 
 uncertainty on \effpid.
@@ -345,8 +345,10 @@ agreement is seen between the two.
 Unlike with real calibration data, an effectively infinite amount of data can 
 be generated from the \acp{KDE}, allowing the effects of the binning scheme to 
 be probed.
-This is done by computing \effpid\ with a progressively finer binning until the 
-value converges, as shown in \cref{fig:prod:syst:pid:convergence}.
+This is done by computing \effpid\ with a progressively finer binning, where it 
+is observed that the value of the difference between the `\ac{KDE} efficiency' 
+and the nominal efficiency converges, as shown in 
+\cref{fig:prod:syst:pid:convergence}.
 The difference $\unc_{B}{\effpid}$ between the value at convergence and that 
 found in the nominal procedure is taken as the systematic uncertainty on 
 \effpid\ due to the chosen binning.
@@ -586,6 +588,11 @@ the \cleo\ collaboration~\cite{Alexander:2008aa} and listed in
 \cref{tab:prod:introduction:branching_ratios}, carry an uncertainty.
 These are propagated as a systematic uncertainty on the cross-sections as 
 normal distributions of mean of zero and width equal to the uncertainty.
+The uncertainties are fully correlated between \pTy\ bin within a mode, and 
+uncorrelated between all modes, except for that on the \DzToKpi\ branching 
+fraction which enters both the \DzToKpi\ and \DstToDzpi\ cross-section 
+% Where does 95% come from? It's in the summary table, but why...
+measurements, for which a correlation of \SI{95}{\percent} is assigned.
 
 \section{Fit model}
 \label{chap:prod:syst:fitting}
@@ -620,8 +627,8 @@ The resulting relative systematic uncertainties are given in
 \label{chap:prod:syst:signal_window}
 
 The signal window that is applied to the data entering the \lnipchisq\ fit, as 
-described in \cref{chap:prod:fitting}, and this has an efficiency, as 
-described in \cref{chap:prod:effs:signal_window}.
+described in \cref{chap:prod:fitting}, has an efficiency, as described in 
+\cref{chap:prod:effs:signal_window}.
 The computation of this efficiency assumes the signal model is known, but the 
 parameters of the model are fitted to the data, and so have an uncertainty, 
 which results in a systematic uncertainty on the signal window efficiency.
@@ -654,6 +661,10 @@ bins and between modes.
 
 A summary of the uncertainties entering the cross-section measurements, and 
 their correlations, is given in \cref{tab:prod:syst:summary}.
+The individual systematic uncertainties are combined in the cross-section 
+measurements by multiplying or dividing the measurement sample vector by the 
+sample vectors generated from the aforementioned \acp{PDF} assumed for each 
+uncertainty.
 
 \begin{table}
   \caption{%

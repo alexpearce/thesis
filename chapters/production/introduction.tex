@@ -7,12 +7,15 @@ This \namecref{chap:prod} describes a measurement of charm and \ccbar\
 production, performed using the \lhcb\ detector with data taken at $\sqrts = 
 \SI{13}{\TeV}$.
 At the \ac{LHC}, a given charm hadron \PHc\ can either be produced in the 
-proton-proton interaction, directly or in the strong decay of some excited 
-charm state, or in the decays of \PB hadrons.
+proton-proton interaction or in the decays of \PB hadrons.
 The latter mechanism is called \emph{secondary} production, whilst the former is called \emph{prompt} production.
-The type of charm hadron that can be produced can either be \emph{charmonium}, such as the \PJpsi meson, which contains charm quarks but whose net charm quantum number is zero, or \emph{open charm}, whose net charm quantum number is non-zero.
+The type of charm hadron produced can either be \emph{charmonium}, such as the 
+\PJpsi meson, which contains charm quarks but whose net charm quantum number is 
+zero, or \emph{open charm}, whose net charm quantum number is non-zero.
 This measurement is concerned with the prompt production of open charm hadrons.
-No attempt is made to distinguish between the two types of prompt production.
+Charm hadrons originating from the strong decay of prompt excited charm states 
+are also considered to be prompt, and here no attempt is made to distinguish 
+between the two sources.
 
 Measurements of \ccbar\ and \bbbar\ cross-sections at the \ac{LHC} are made to 
 test the predictions of \acf{QCD}.
@@ -23,17 +26,17 @@ of hadron \pT\ and rapidity \rapidity, defined as
   \label{eqn:prod:introduction:rapidity}
 \end{equation}
 and so experimental measurements can be compared with both the shape of 
-theoretical predictions as a function of \pTy, as well as to the total 
+theoretical predictions as a function of \pTy as well as to the total 
 integrated rate.
-They can also be used as inputs to constrain future predictions.
+Measurements can also be used as inputs to constrain future predictions.
 Heavy flavour production rates are also used to estimate sensitivities for experimental searches 
 for rare decays, and also as inputs to 
 atmospheric neutrino experiments, where charm production enters as a background 
 process.
 
 Measuring \ccbar\ and \bbbar\ cross-sections at \lhcb\ is complementary to such 
-measurements by the \acp{GPD}, due to the unique rapidity range it instruments, 
-as well as its ability to cleanly reconstruct low \pT\ hadrons.
+measurements made using the \acp{GPD}, due to the unique rapidity range it 
+instruments, as well as its ability to cleanly reconstruct low \pT\ hadrons.
 
 \section{Analysis overview}
 \label{chap:prod:introduction:analysis_overview}
@@ -45,8 +48,8 @@ from proton-proton collisions can be expressed by rearranging
   \xsec(\ppToHc{}X) = \frac{N(\PHc)}{\intlumi},
   \label{eqn:prod:introduction:simple_cross_section}
 \end{equation}
-where $N(\PHc)$ is the total number of \PHc\ hadrons that were produced, and 
-\intlumi\ is the instantaneous luminosity \emph{integrated} over the time 
+where $N(\PHc)$ is the total number of prompt \PHc\ hadrons that were produced, 
+and \intlumi\ is the instantaneous luminosity \emph{integrated} over the time 
 corresponding to the dataset used to measure $N(\PHc)$
 \begin{equation}
   \intlumi = \int \lumi \dif{t}.
@@ -68,8 +71,8 @@ cross-section is defined as
 \end{equation}
 where \eff\ is the efficiency of fully reconstructing and selecting the decay 
 \HcTof, given that it was produced, \bfrac\ is the branching fraction of the 
-decay, and the inclusive production from proton-proton collisions is now 
-implicit.
+decay, taken as external inputs, and the inclusive production from 
+proton-proton collisions is now implicit.
 To compare with the shapes of theoretical predictions, double differential 
 cross-sections can be determined in bins of charm hadron \pT\ and \rapidity, 
 using the width $\Delta\pT$ of the bin in \pT\ and the width $\Delta\rapidity$ 
@@ -88,13 +91,14 @@ of the bin in rapidity in which the yield and efficiency measurements were made
 where the $i$ is the index of the \pTy\ bin in which the measurement is made.
 The branching fraction and the integrated luminosity are the same across all bins.
 
-This analysis measures the double differential cross-sections of \PDzero, \PDp, 
-\PDsplus, and \PDstarp open charm mesons.\footnotemark
+The analysis presented in this \cref{chap:prod} measures the double 
+differential cross-sections of \PDzero, \PDp, \PDsplus, and \PDstarp open charm 
+mesons.\footnotemark
 The final states chosen are \DzToKpi, \DpToKpipi, \DspTophipi with \phiToKK, 
 and \DstToDzpi with \DzToKpi, the branching fractions of which are listed in 
 \cref{tab:prod:introduction:branching_ratios}.
-Charge conjugation is implied, in that the cross-sections measure the combined 
-rate of meson and anti-meson production.
+Charge conjugation is implied, in that the cross-sections are measured as the 
+combined rate of meson and anti-meson production.
 The measurements are made in the \pT\ range $0 < \pT < \SI{15}{\GeVc}$ and the 
 rapidity range $2 < \rapidity < 4.5$.
 In \rapidity, the measurements are made in five bins of width 0.5, and in \pT\ 
@@ -112,6 +116,8 @@ $1 < \pT < \SI{4}{\GeVc}$.
   \caption{%
       Branching ratios for the different decay 
       modes~\cite{PDG2014,Alexander:2008aa}.
+      The \DspTophipi\ branching fraction includes the branching fraction of 
+      \phiToKK\@.
   }
   \label{tab:prod:introduction:branching_ratios}
   \input{tables/production/introduction/branching_ratios}
@@ -119,7 +125,7 @@ $1 < \pT < \SI{4}{\GeVc}$.
 
 From the double differential measurements, several derived quantities are 
 computed, namely the ratio of charm production rates measured at $\sqrts = 
-\SI{13}{\TeV}$ and those measured by \lhcb\ at 
+\SI{13}{\TeV}$ to those measured by \lhcb\ at 
 \SI{7}{\TeV}~\cite{LHCb-PAPER-2012-041}, ratios of production rates between 
 charm mesons, open charm hadron cross-sections integrated across the \pTy\ 
 space, and integrated \ccbar\ cross-sections.
@@ -127,12 +133,12 @@ Each integrated per-meson cross-section is the sum over all \pTy\ bins of the
 respective double differential measurements
 \begin{equation}
   \xsec{(\PHc)} =
-    \sum_{i}^{N} \xsec_{i}(\PHc).
+    \sum_{i}^{N} \Delta\pT\Delta\rapidity\xsec_{i}(\PHc).
   \label{eqn:prod:introduction:integrated_cross_section}
 \end{equation}
 The total \ccbar\ cross-sections can be computed using \emph{fragmentation 
-  fractions}; each a measurement of the transition probability that a charm 
-quark will hadronise to a particular open charm hadron $f(\cToHc)$.
+  fractions}; each a measurement of the transition probability $f(\cToHc)$ that 
+a charm quark will hadronise to a particular open charm hadron.
 Given the fragmentation fraction, and the integrated cross-section defined in 
 \cref{eqn:prod:introduction:integrated_cross_section}, the integrated \ccbar\ 
 cross-section can be computed as
@@ -164,34 +170,35 @@ includes contributions from \DstToDzpi\ decays.
 \subsection{Treatment of uncertainties}
 \label{chap:prod:introduction:uncertainties}
 
-Throughout this analysis, the method of \acl{MC} error propagation is used.
+Throughout the analysis, the method of \acl{MC} error propagation is used.
 With this, each quantity entering 
 \cref{eqn:prod:introduction:differential_cross_section} is assumed to be drawn 
 from some \acf{PDF} with a known set of parameters, and then ten thousand 
 numbers are sampled from that \ac{PDF}.
 When performing operations using such quantities, the operations are performed 
-on the input sample vectors, and then statistics on the result can be computed 
-on the new, resulting sample vector.
-This technique is used as error analysis of the measurement is complex: what 
-enters into the cross-section is the inverse of the efficiency, for example, 
-the corresponding \acl{PDF} of which may be obvious, in particular whether the 
-uncertainties can be treated as Gaussian.
-The use of \ac{MC} error propagation simplifies such analysis.
+on the sample vectors, and then statistics on the result can be computed on the 
+new, resulting sample vector.
+This technique is used as an analytical error analysis of the measurement is 
+complex: what enters into the cross-section is the inverse of the efficiency, 
+for example, the corresponding \acl{PDF} of which may not be obvious, in 
+particular whether the uncertainties can be treated as Gaussian.
+The use of \acl{MC} error propagation simplifies such analysis.
 
 An example cross-section, measured in the region \pTyrange{12}{13}{2.5}{3}, is 
 given in \cref{fig::prod:introduction:uncertainties:posterior}.
-The blue curve shows the \ac{PDF} of the cross-section when only the 
-statistical uncertainty is considered, whilst the green curve also includes the 
-contributions from the systematic uncertainties.
+The blue curve shows the \ac{PDF} of the cross-section, as modelled by the 
+\ac{MC} error propagation technique, when only the statistical uncertainty is 
+considered, whilst the green curve also includes the contributions from the 
+systematic uncertainties.
 The green curve is not symmetric, and the mode is shifted with respect to the 
 blue.
 
 Unless stated otherwise, each quantity that is measured directly is assumed to 
-follow a normal distribution, whose mean is equal to the measured value, and 
+follow a normal distribution, whose mean is equal to the measured value and 
 whose width is equal to the measured uncertainty on that value.
 The computation of that measured uncertainty will be described when the 
-respective measurements are presented.
-When the result of operations using such measurements is presented, such as 
+respective quantities are first discussed.
+When the results of operations using such inputs are presented, such as 
 cross-sections, the central value given is the most probable value of the 
 sample vector representing the result, and the lower and upper uncertainty 
 bounds are given by the \SI{15.9}{\percent} and \SI{84.1}{\percent} percentiles 
@@ -216,13 +223,14 @@ either side of the central value.
 
 The data used for the measurements were collected in July 2016, under a set of 
 special conditions used for the restart of the \ac{LHC} after \ac{LS1}.
-The conditions of the \ac{LHC} and of the \lhcb\ detector will be described in 
-\cref{chap:prod:data}, along with a description of the corresponding simulated 
-data and a summary of the integrated luminosity measurement.
-After collection, the data are reconstructed and selected to build charm hadron 
-candidates, which will be presented in \cref{chap:prod:sel}.
-The extraction of the prompt yields is made on the fully reconstructed and 
-selected data using the method of maximum likelihood fits, as described in 
+The conditions of the \ac{LHC} and of the \lhcb\ detector during this period 
+will be described in \cref{chap:prod:data}, along with a description of the 
+corresponding simulated data and a summary of the integrated luminosity 
+measurement.
+After collection, the data are reconstructed and selected to create charm 
+hadron candidates, which will be presented in \cref{chap:prod:sel}.
+The extraction of the prompt charm yields is made on the fully reconstructed 
+and selected data using the method of maximum likelihood fits, as described in 
 \cref{chap:prod:fitting}.
 The evaluation of the associated efficiencies is performed using a mixture of 
 simulated \acl{MC} data and dedicated calibration samples, and is discussed in 
@@ -233,6 +241,6 @@ Finally, the cross-sections themselves are computed, and are presented in
 \cref{chap:prod:results}.
 
 Before the discussion on the experimental methods and the results, further 
-motivation for performing measurements heavy flavour cross-sections, both 
-theoretical and experimental, will be presented in the following 
+motivation, both theoretical and experimental, for performing measurements of 
+heavy flavour cross-sections will be presented in the following 
 \namecref{chap:prod:theory}.

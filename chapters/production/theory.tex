@@ -5,13 +5,13 @@ Hadrons contain quarks, and these are bound together through gluon exchange.
 As well as the `sea' of gluons binding the constituent quarks of the hadron 
 together, virtual \qqbar\ pairs can be created as the gluons propagate, quickly 
 annihilating internally to the hadrons.
-In high-energy interactions, it is these \emph{partons} that interact, the 
-quarks and gluons, rather than the composite hadrons.
-Their behaviour then must be understood in order to predict production rates at 
-hadron colliders.
+In high-energy interactions, it is the collection of these \emph{partons} that 
+interact, the quarks and gluons, rather than the composite hadrons.
+Parton behaviour then must be understood in order to predict production rates 
+at hadron colliders.
 This \namecref{chap:prod:theory} shall begin by describing how hadron 
 production rates can be computed using theoretical and experimental inputs, and 
-shall then give an example of how the results are used outside of collider 
+shall then give an example of how the inputs are used outside of collider 
 physics.
 
 \section{Parton density functions}
@@ -26,11 +26,11 @@ convolution of several terms
   \label{eqn:prod:theory:factorisation}
 \end{equation}
 where the sum runs over all parton types $a$ and $b$ in the respective hadrons 
-$h_{A}$ and $h_{B}$; $\sigma_{a,b}$ is the cross-section of the hard 
+$h_{A}$ and $h_{B}$; $\sigma_{a,b}$ is the cross-section of the hard partonic 
 interaction $\decay{ab}{PX}$; and $f$ is the \ac{QCDPDF} for the interacting 
 parton in the respective hadron~\cite{Collins:1989gx,Forte:2013wc}.
-The parton-parton cross-sections, for processes such as heavy quark pair 
-production via gluon-gluon fusion shown in 
+The parton-parton cross-sections $\sigma_{a,b}$, for processes such as heavy 
+quark pair production via gluon-gluon fusion shown in 
 \cref{fig:intro:lhcb:hf_production:gg_fusion}, can be computed using 
 perturbative \ac{QCD}.
 The computations of the \acp{QCDPDF} involve low energy processes below the 
@@ -40,12 +40,13 @@ Clearly, the computation of any cross-section at the \ac{LHC} relies on being
 able to evaluate \cref{eqn:prod:theory:factorisation}, including the 
 computation of production rates of the Higgs boson and particles beyond the 
 \ac{SM}, and hence on a knowledge of the \acp{QCDPDF}.
-Instead of being computed from first principles, they can be constrained using 
-measurements of cross-sections by experiments.
+As they cannot be computed first principles, they must be derived be alternate 
+means, and in practice are constrained using measurements of cross-sections by 
+experiments.
 Additional measurements of cross-sections can constrain the \acp{QCDPDF} 
-further, improving their precision, and hence there is always motivation for 
-making such measurements, until the theoretical understanding improves 
-sufficiently.
+further, improving their precision and hence the precision on the 
+cross-sections of interest, and so there is always motivation for making such 
+measurements, until the theoretical understanding improves sufficiently.
 
 Parton density functions are parameterised by \bjorkenx, the fraction of the 
 total hadron momentum carried by the interacting parton, and \pdfqsquared, a 
@@ -70,11 +71,14 @@ cannot be computed perturbatively.
 Such inputs were first provided by \ac{DIS} experiments, which probe the proton 
 structure by colliding leptons and protons and measuring the angle of the 
 deflection of the lepton due to its interactions with the partons.
+The subsequent evolution of the \acp{PDF} have been driven by additional 
+experimental measurements, and by an improved theoretical understanding of the 
+use of the perturbative expansion that must be employed when solving the 
+\ac{DGLAP} equations.
 
 The treatment of experimental inputs is a matter of debate, as there are 
-somewhat arbitrary choices to be made on \emph{what} experimental inputs should 
-be used, and on how the various experimental uncertainties should be 
-treated.
+somewhat arbitrary choices to be made on what experimental inputs should be 
+used, and on how the various experimental uncertainties should be treated.
 As a result, different groups of theorists provide so-called `\ac{QCDPDF} 
 sets', which differ not only in the treatment of the inputs, but also in the 
 treatment of the \emph{theoretical} uncertainties.
@@ -88,7 +92,8 @@ included in the factorisation theorem shown in
 \cref{eqn:prod:theory:factorisation}.\footnotemark
 The different \ac{QCDPDF} sets can be used to compute different cross-section 
 predictions, and so further experimental measurements can help to distinguish 
-between predictions, indicating which ones describe the true \acp{QCDPDF}.
+between predictions, indicating which ones describe the true \acp{QCDPDF}, and 
+hence which treatments are most appropriate.
 
 \footnotetext{%
   The fragmentation functions are generally assumed to be process independent, 
@@ -221,10 +226,8 @@ further reduce the gluon \ac{QCDPDF} uncertainties~\cite{Gauld:2015yia}.
     the top plot shows the gluon \ac{QCDPDF} density, and the $y$-axis on the 
     bottom bottom shows the relative uncertainty on the model.
     The solid band shows the fit when only using the \hera\ measurements as 
-    inputs, whilst the shaded bands show the fit when using both the \hera\ and 
+    inputs, whilst the hatced bands show the fit when using both the \hera\ and 
     \sqrtseq{7}\ \lhcb\ measurements.
-    Note that the model uncertainty significantly decreases in the 
-    low-\bjorkenx\ region with the inclusion of the \lhcb\ data.
   }
   \label{fig:prod:theory:prosa_gluon_pdf_fit}
 \end{figure}
@@ -250,7 +253,7 @@ The light is produced via high-energy neutrinos interacting with the protons
 and neutrons of the ice, creating high-energy charged leptons which then travel 
 through the ice and emit Cherenkov radiation, in an identical manner to that 
 described in \cref{chap:intro:lhcb:detector}.
-The photo-detectors are spatially arranged as an array, which can be used to 
+The photo-detectors are spatially arranged as an array, which is used to 
 measure the intensity of the light, proportional to the charged lepton energy 
 and hence to the neutrino energy, as well as its direction, which can be used 
 to identify point-like sources for further astronomical observation.
@@ -343,16 +346,16 @@ in \cref{fig:prod:theory:comparisons:7tev}, where at low \pT\ the data
 generally lie above the theory prediction.
 Additional measurements can help in the understanding of these discrepancies.
 
-For the analysis under discussion, a measurement of charm production at 
-\sqrtseq{13}, three theory groups have provided predictions for the double 
-differential cross-sections, as defined by 
+For the analysis presented in this \namecref{chap:prod}, a measurement of charm 
+production at \sqrtseq{13}, three theory groups have provided predictions for 
+the double differential cross-sections, as defined by 
 \cref{eqn:prod:introduction:cross_section}.
 Each set of predictions is computed at next-to-leading order in the 
 perturbative \ac{QCD} parameter \alphas\ (that is, up to the first power of 
 $\alphas$), and includes uncertainties from: the \emph{factorisation scale} 
 dependence, which is the scale \pdfqsquared\ at which the perturbative 
 expansion was made; and the \emph{renormalisation scale}, which is the scale at 
-which the expansion is renormalised to eliminate ultraviolet divergences.
+which the expansion is renormalised to remove ultraviolet divergences.
 These affect both the evaluation of the partonic cross-sections and of the 
 evolution of the \ac{QCDPDF} sets with the \ac{DGLAP} equations.
 
@@ -366,8 +369,8 @@ These predictions include a factor to account for the \cToHc\ transition
 probability, by convolving the \decay{\ccbar}{\PHc} cross-sections with the 
 appropriate fragmentation functions.
 Finally, \ac{FONLL} predicitions~\cite{Cacciari:2015fta} using the \nnpdf\ 
-\ac{QCDPDF} sets are provided for for the full \pTy phase space for \PDz, \PDp, 
-and \PDstarp mesons.
+\ac{QCDPDF} sets are provided for for the full \pTy\ phase space for \PDz, 
+\PDp, and \PDstarp mesons.
 The \fonll\ predictions assume a unit \cToHc\ transition probability, and so 
 are multiplied by the fragmentation fractions in 
 \cref{tab:prod:introduction:fragmentation_fractions} for comparison with the 
@@ -381,10 +384,10 @@ The comparison of these predictions with the data shall be given in
   \includegraphics[width=\textwidth]{production/lhcb_dz_xsec_7tev}
   \caption{%
     Prompt \PDzero production rates, measured using the \lhcb\ detector with 
-    proton-proton data taken at \sqrtseq{7}~\cite{LHCb-PAPER-2012-041}.
-    The measurement is made in \pTy\ bins, and the $x$-axis shows the \pT\ of 
-    the \PDzero, and the measurements are offset by a multiplicative factor 
-    based on the rapidity bin.
+    proton-proton data taken at \sqrtseq{7}~\cite{LHCb-PAPER-2012-041}, in 
+    \pTy\ bins.
+    The $x$-axis shows the \pT\ of the \PDzero, and the measurements are offset 
+    by a multiplicative factor based on the rapidity bin.
   }
   \label{fig:prod:theory:comparisons:7tev}
 \end{figure}

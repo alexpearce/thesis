@@ -172,6 +172,11 @@
 \newcommand*\pimpip{\ensuremath{\Ppiminus\Ppiplus}}
 \newcommand*\pKK{\ensuremath{\Pproton\PKminus\PKplus}}
 \newcommand*\ppipi{\ensuremath{\Pproton\Ppiminus\Ppiplus}}
+% The \PDzero macro from hepnames has the '0' superscript in italics for some
+% reason, so redefine it to stop that. Use xspace here because other I'll have 
+% to change all the instances of the macro
+\renewcommand*\PDzero{\ensuremath{D^{0}}\xspace}
+\renewcommand*\APDzero{\ensuremath{\bar{D}^{0}}\xspace}
 % Soft pion
 \newcommand*\Ppiplussoft{\ensuremath{\Ppi^{+}_{\textnormal{Soft}}}}
 % D*+
@@ -185,6 +190,8 @@
 % Lambda_b
 \renewcommand*\PLambdab{\ensuremath{\Lambda_{\Pbottom}^{0}}}
 \newcommand*\APLambdab{\ensuremath{\bar{\Lambda}_{\Pbottom}^{0}}}
+% Like PDzero, the PUpsilonFourS command has '4S' italicised
+\renewcommand*\PUpsilonFourS{\ensuremath{\Upsilon(4\text{S})}\xspace}
 
 \newcommand*\bbbar {\ensuremath{\Pbottom\APbottom}}
 \newcommand*\ccbar {\ensuremath{\Pcharm\APcharm}}

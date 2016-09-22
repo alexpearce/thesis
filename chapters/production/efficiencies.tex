@@ -10,7 +10,7 @@ efficiency of a signal charm hadron to decay within the \lhcb\ acceptance
 having been produced in a \pp\ collision, \effacc.
 The efficiency of such a decay to be fully reconstructed is the reconstruction 
 efficiency is \effreco, and then the efficiency of the reconstructed decay to 
-be triggered through \lzero, \hltone, and \hlttwo is the trigger efficiency 
+be triggered through \lzero, \hltone, and \hlttwo\ is the trigger efficiency 
 \efftrig.
 There is also the efficiency of triggered candidates to pass through the 
 offline selection \effoffline, and finally there is the signal window 
@@ -34,7 +34,7 @@ Calibration techniques use real data, and so can be more robust than \ac{MC},
 but obtaining clean calibration samples can be challenging.
 
 In \lhcb, it is known that the \ac{PID} selection efficiencies are not 
-well-modelled in the \ac{MC}, due to an under-estimation of the detector 
+well-modelled in the \ac{MC} due to an under-estimation of the detector 
 occupancies.
 The same is true, albeit to a lesser extent, for the reconstruction 
 efficiencies.
@@ -90,7 +90,7 @@ positive $z$ direction, as defined in \cref{chap:prod:data:mc}.
 These requirements are applied at the \emph{generator} level, before the 
 detector simulation, on the true kinematics of the particles.
 
-By counting the number of charm hadrons passing and failing the cut, the 
+By counting the number of prompt charm hadrons passing and failing the cut, the 
 acceptance efficiency is defined as
 \begin{equation}
   \effacc = \frac{%
@@ -158,6 +158,9 @@ number of signal decays that fail the truth matching requirement.
 distributions for the various background categories.
 The `ghost' category exhibits a peak identical in nature to that seen in the 
 `signal' category.
+As not all signal decays that are truly reconstructed are counted as such when 
+only the `signal' category is considered, associated efficiencies are 
+underestimated.
 
 Given that the number of correctly matched signal decays is $N$, and the number 
 of incorrectly labelled signal decays is $U$, the selection efficiency defined 
@@ -167,8 +170,8 @@ in \cref{eqn:prod:effs:reco} is incorrect by a factor
   \label{eqn:prod:effs:truth}
 \end{equation}
 The number of decays passing the signal requirement is used for $N$, and $U$ is 
-measured with a maximum likelihood fit to mass distribution of the decays not 
-passing that requirement.
+measured with a maximum likelihood fit to mass or \deltam\ distribution of the 
+decays not passing that requirement.
 As shown in \cref{fig:prod:effs:truth:categories}, the fraction of incorrectly 
 identified signal decays is small, and so a single fit is performed with the 
 data integrated across all \pTy\ bins.
@@ -247,9 +250,10 @@ observed differences between the data and the \ac{MC}.
 
 Only \emph{long} tracks are used in this analysis, which requires that the 
 particles create hits in the \velo\ and in the T stations.
-Hits in the \ttracker\ are not required to form long tracks, though the 
-information can be used to improve the momentum resolution.
-To probe the efficiency of long track creation, \JpsiTomumu\ decays are 
+Hits in the \ttracker\ are not required to form long tracks, though the any 
+matching hits that are found added to the track in order to improve the 
+momentum resolution.
+To measure the efficiency of long track creation, \JpsiTomumu\ decays are 
 reconstructed using a `tag-and-probe' technique, where one particle is fully 
 reconstructed as a long track, as usual, and the other track is created using 
 track segments made only using information from the muon stations.
@@ -282,8 +286,8 @@ reconstructed using the long+muon+\ttracker\ method, with those that can
   }.
   \label{eqn:prod:effs:tracking_eff}
 \end{equation}
-A long track an event is considered as `matched' to the probe track if there is 
-a \SI{70}{\percent} overlap of their hits in the muon stations.
+A long track in an event is considered as `matched' to the probe track if there 
+is a \SI{70}{\percent} overlap of their hits in the muon stations.
 The tag-and-probe method is performed using real data and \ac{MC}, and a ratio 
 is formed
 \begin{equation}
@@ -299,7 +303,7 @@ pseudorapidity \Eta, as the tracking efficiency is found to vary as a function
 of these variables, and is shown in \cref{fig:prod:effs:tracking_table}.
 As it is also found to vary as a function of the total number of reconstructed 
 long tracks in the event, the input tracks in the \ac{MC} are weighted such 
-that event multiplicity distribution matches that in the data.
+that the event multiplicity distributions match those in the data.
 
 The correction factor in \cref{eqn:prod:effs:tracking_ratio} can be applied to 
 the tracking efficiency found using any decay, as it is only a function of 
@@ -436,7 +440,7 @@ To compute the efficiency of a given \ac{PID} requirement on either a kaon or a
 pion track, kaons or pions from the calibration sample are partitioned in 
 \ptot, \Eta, and \nspd\ as a three-dimensional histogram.
 The number of signal tracks $C_{i}$ in the $i$th bin is computed, and then the 
-number of signal decays after the \ac{PID} requirement $C_{i}'$ is computed, 
+number of signal tracks after the \ac{PID} requirement $C_{i}'$ is computed, 
 such that the efficiency in the $i$th bin is
 \begin{equation}
   \eff_{i} = \frac{C_{i}'}{C_{i}}.
@@ -484,8 +488,8 @@ space can be expressed as
 \end{equation}
 For some other sample of tracks, referred to here as the \emph{reference} 
 sample,\footnotemark\ the contents of each bin can be scaled by a weight 
-$w_{i}$ based on the fraction of the total sample size in the $i$th bin 
-relative to that of the calibration sample
+$w_{i}$ based on the fraction of the total reference sample size in the $i$th 
+bin relative to that of the calibration sample
 \begin{equation}
   w_{i} = \frac{%
     R_{i}
@@ -499,7 +503,7 @@ relative to that of the calibration sample
   \label{eqn:prod:effs:pid:ref_weight}
 \end{equation}
 where $C_{i}$ ($R_{i}$) is the number of signal calibration (reference) tracks 
-in the $i$th bins, as before, and $C$ ($R$) is the total number of signal 
+in the $i$th bin, as before, and $C$ ($R$) is the total number of signal 
 calibration (reference) tracks in the sample.
 The average \ac{PID} efficiency for the weighted reference sample is then
 \begin{equation}
@@ -546,10 +550,10 @@ The weight term can account for the possibility of an impure reference sample,
 where, for example, it can be the same type of background-subtracting weight as 
 used for the creation the efficiency histogram from the calibration sample.
 With this, the \ac{PID} efficiency calculation can be thought of as either of 
-two equivalent methods: weighting the calibration to look like the reference 
-sample, as in \cref{eqn:prod:effs:pid:single_track_ref_eff}, or assigning 
-per-track efficiencies to the reference sample based on \ptotetanspd\ bins they 
-fall into, as in \cref{eqn:prod:effs:pid:expanded_ref_eff}.
+two equivalent methods: weighting the calibration sample to look like the 
+reference sample, as in \cref{eqn:prod:effs:pid:single_track_ref_eff}, or 
+assigning per-track efficiencies to the reference sample based on \ptotetanspd\ 
+bins they fall into, as in \cref{eqn:prod:effs:pid:expanded_ref_eff}.
 The latter can be generalised to multi-track efficiencies by summing over all 
 \emph{decays} in the reference sample, replacing the per-track efficiency by a 
 per-decay efficiency \effpiddecay
@@ -558,7 +562,7 @@ per-decay efficiency \effpiddecay
 \end{equation}
 where $a_{d}$ is the weight of the decay, and \effpiddecay\ is the \ac{PID} 
 efficiency for that decay.
-The per-decay and efficiency \effpiddecay\ for the case in which a \ac{PID} 
+The per-decay efficiency \effpiddecay\ for the case in which a \ac{PID} 
 requirement is made on only a single track is \effpidtrack, whilst for a 
 multi-track decay it is
 \begin{equation}
@@ -611,7 +615,7 @@ The correlations are taken into account through a series of pseudo-experiments,
 which will be described in \cref{chap:prod:syst:pid:stat}.
 
 As the reference sample is of a finite size, there is an additional, associated 
-uncertainty on the per-event \ac{PID} efficiency.
+uncertainty on the per-decay \ac{PID} efficiency.
 However, the reference sample is identical to the sample entering the fits 
 described in \cref{chap:prod:fitting}, and so this uncertainty is already 
 accounted for in the uncertainty on the fitted signal yields.
@@ -666,7 +670,7 @@ partitioned as a single bin:
         \end{equation}
       \item Compute the $p$-value of the \chisq\ value given 9 degrees of 
         freedom. If $p < 0.001$, the null hypothesis that the \ac{PID} 
-        efficiency within that bin is constant is rejected, and so the bin 
+        efficiency within the bin is constant is rejected, and so the bin 
         should be divided in two. Otherwise, the bin is not split.
     \end{enumerate}
   \item For each bin that should be divided in two:
@@ -755,8 +759,11 @@ To assign an uncertainty to this number, the fractional integral is recomputed
 in a series of 500 pseudo-experiments.
 Within each one, each shape parameter is assigned a value sampled from a 
 normal distribution with a mean as the `nominal' value of that parameter, the 
-value found by the fit, and with a width equal to the uncertainty on that nominal 
-value. Correlations between the different shape parameters are taken into account.
+value found by the fit, and with a width equal to the uncertainty on that 
+% TODO: what does this mean?
+nominal value. Correlations between the different shape parameters are taken 
+into account by sampling parameter values from the covariance matrix found in 
+the nominal fit.
 The variance on the deviation of the integrals, with respect to the integral 
 computed using the nominal shape parameter values, is taken as the square of 
 the uncertainty on the nominal integral value.
@@ -773,9 +780,9 @@ give the per-bin signal window efficiencies for each mode.
 % TODO normalise tables. D+ tables use [0, 1000[, D0 use [0, 1000]
 
 For the efficiencies computed by counting the number $N$ of decays before and 
-the number $k$ after some selection, the estimator \effest\ of of the true 
-efficiency is $k/N$.
-The application of the selection on the $N$ events is considered as a binomial 
+the number $k$ after some selection, the estimator \effest\ of the true 
+efficiency is taken to be $k/N$.
+The application of the selection on the $N$ decays is considered as a binomial 
 process, with the probability $P$ to observe $k$ counts given the true 
 efficiency \eff\ and the number of initial $N$ counts given by
 \begin{equation}
@@ -807,7 +814,8 @@ For the purposes of visualisation, it is useful to quote an uncertainty on the
 estimator \effest.
 The standard treatments of uncertainty evaluation on an efficiency can yield 
 symmetric uncertainties of zero, or even $\pm1\sigma$ intervals that include 
-unphysical efficiencies, when extreme values of $k$ and $N$ are used.
+unphysical efficiencies, when extreme values of $k$ and $N$ are 
+used~\cite{Paterno:2004cb}.
 Instead, asymmetric \SI{68.2}{\percent} confidence intervals are computed using 
 the Agresti-Coull method~\cite{Agresti:2685469}, and are given as uncertainties 
 on all efficiencies computed as ratios of counts.

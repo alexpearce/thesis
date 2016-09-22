@@ -2,18 +2,19 @@
 \label{chap:prod:sel}
 
 The decay modes chosen for this analysis,
-\DzToKpi, \DpToKpipi, \DspTophipi with \phiToKK, and \DstToDzpi with \DzToKpi, 
-including their charge conjugates, are the amongst the most probable fully 
-charged, hadronic final states for each meson.
+\DzToKpi, \DpToKpipi, \DspTophipi\ with \phiToKK, and \DstToDzpi\ with 
+\DzToKpi, including their charge conjugates, are the amongst the most probable 
+fully charged, hadronic final states for each meson.
 The advantage of choosing such final states is that it allows the invariant 
 mass of the charm hadrons to be computed unambiguously, so that a yield 
-determination can be performed via fits to the mass distribution.
+determination can be performed by modelling the peaking signal structure in the 
+mass distribution via fits.
 These fits shall be discussed in detail in \cref{chap:prod:fitting}, but it is 
 worth noting at this point that such fits are simpler if the data is `clean', 
 that is if the fraction of charm meson signal in the data is high.
 It is then advantageous to optimise the selection of the data to reduce 
-backgrounds, while retaining as much signal as possible to maximise the 
-statistical significance of the measurement.
+backgrounds, whilst retaining as much signal as possible to maximise the 
+statistical precision of the measurement.
 
 The selection of fully charged, hadronic decay modes of charm mesons has 
 already been performed by many other analysis at \lhcb,\footnotemark and their 
@@ -47,8 +48,8 @@ Nor is it desirable to make \ipchisq\ cuts, as the \ipchisq\ distribution is
 used for prompt-secondary discrimination, and having access to only part of the 
 distribution can hinder accurate modelling.
 The selection used is then informed by previous \lhcb\ studies of fully 
-charged, hadronic charm decays, but with modifications to improve the 
-usefulness for the measurement in hand.
+charged, hadronic charm decays, but with modifications to improve the utility 
+for the measurement in hand.
 The selection variables that are useful for discriminating between signal and 
 background, in addition to those discussed, are given and described below.
 The `parent' is the charm hadron \PHc, and the `children' are the charged 
@@ -88,7 +89,7 @@ hadrons in the final state.
     Particle identification information as the combined response of the 
     calorimeters, muon stations, and \rich\ detectors, as described in 
     \cref{chap:intro:lhcb:detector:pid}.
-  \item[Child pairwsie \ac{DOCA}] \hfill \\
+  \item[Pairwise child \ac{DOCA}] \hfill \\
     For a set of tracks physically originating from a common vertex, the 
     largest distance between any two tracks, the \ac{DOCA}, should be small.
   \item[Parent reconstructed mass] \hfill \\
@@ -104,17 +105,18 @@ hadrons in the final state.
     originated from the same spatial point, which would be true if the tracks 
     were the product of a particle decay.
   \item[Parent vertex displacement] \hfill \\
-    Displacement of the decay vertex from the production vertex, assumed to be 
-    the \ac{PV}, as either the reconstructed lifetime $c\lifetime$ or the 
+    Displacement of the secondary (decay) vertex from the \ac{PV}, assumed to 
+    be the \ac{PV}, as either the reconstructed lifetime $c\lifetime$ or the 
     vertex displacement \chisq.
     The `\chisq' is computed as $\Delta^{\text{T}}\Sigma^{-1}\Delta$, where 
     $\Delta$ is the difference in the spatial positions of the two vertices, and 
     $\Sigma$ is the sum of the covariance matrices of the two vertex fits.
   \item[Parent \ac{DIRA}] \hfill \\
-    If the child tracks are from a true decay, and the decay vertex position is 
-    correctly reconstructed, then the momentum vector of the parent should 
-    point in the same direction as the displacement vector between the 
-    production vertex and the decay vertex.
+    If the child tracks are from a true decay, all of the child tracks have 
+    been reconstructed, and the decay vertex position is correctly 
+    reconstructed, then the momentum vector of the parent should point in the 
+    same direction as the displacement vector between the \ac{PV} and the decay 
+    vertex.
     The angle between the momentum and displacement vectors, the \ac{DIRA}, 
     should be small for a correctly reconstructed signal decay.
 \end{description}
@@ -127,7 +129,7 @@ triggers during the early measurements period, and the desire to have as high
 an efficiency as possible in the low \pT\ regions of the measurement.
 
 As this analysis uses the Turbo stream, the only selection is `online', in that 
-is performed on quantities computed in the trigger.
+it is only performed on quantities computed in the trigger.
 Still, the values computed are available `offline', once the data has been made 
 available to analysts.
 The selection is then split in two: the `online' part, which is the selection 
@@ -135,17 +137,18 @@ defined in the trigger and cannot be tuned once the data has been taken, and
 the `offline' selection, which is any selection made after this.
 The use of the Turbo stream permits only one pass of the full event 
 reconstruction, that done `online' in the trigger.
-The following \namecref{chap:prod:sel:online} shall detail the online 
-selection, and will be followed by a description of the offline selection shall 
-follow in \cref{chap:prod:sel:offline}.
+The following \namecref{chap:prod:sel:online} shall detail the online selection 
+and reconstruction, and will be followed by a description of the offline 
+selection in \cref{chap:prod:sel:offline}.
 
 \section{Online selection and reconstruction}
 \label{chap:prod:sel:online}
 
-The different stages of the trigger are described in 
-\cref{chap:intro:lhcb:detector:trigger}.
-At \lzero, bunch-bunch crossings are accepted randomly by the \nobias\ trigger, 
-so called because it should not bias any distributions of interest.
+The different purpose and hierarchy of the different stages of the \lhcb\ 
+trigger are described in \cref{chap:intro:lhcb:detector:trigger}.
+For this analysis, at \lzero\ bunch-bunch crossings are accepted randomly by 
+the \nobias\ trigger, so called because it should not bias any distributions of 
+interest.
 The rate at which the \nobias\ trigger accepts events is programmed into the 
 hardware controller manually, with the exact rate depending on the number of 
 colliding bunches at \lhcb.
@@ -186,11 +189,11 @@ consistent with having originated from a heavy flavour decay by having a large
 The full set of selection requirements is given in 
 \cref{tab:prod:sel:online:hlt1_selection}.
 
-\hlttwo\ performs the full, offline event reconstruction on events passing 
-\hltone.
+\hlttwo\ performs the full, offline-quality event reconstruction on events 
+passing \hltone.
 One \hlttwo\ selection, or `\hlttwo\ line', is defined per charm decay 
 topology, corresponding to: one line for \DzToKpi; one line for the charged 
-three-body decays, namely \DpToKpipi\ and \DspToKKpi; and one line for 
+three-body decays, specifically \DpToKpipi\ and \DspToKKpi; and one line for 
 \DstToDzpi.
 In the \PDzero, \PDplus, and \PDsplus lines, candidates are made by combining 
 long tracks whose particle hypotheses are consistent with the final state under 
@@ -199,12 +202,14 @@ In the \PDstarp\ line, \PDzero\ candidates passing the \PDzero\ \hlttwo\ line
 are combined with pion candidates, referred to here as `soft pions', 
 \Ppiplussoft, due to their soft momentum distribution.
 There are three stages to the particle combination: when cuts are applied to 
-the input tracks; when cuts applied to the four-vector sum of these tracks; and 
-when cuts are applied to the fitted vertex.
-For computing efficiency, the combination does not proceed past a failing step, 
-and combinations where the vertex fit fails to converge are discarded, although 
-the likelihood of a failing vertex fit is suppressed by making \ac{DOCA} 
-requirements beforehand.
+the input tracks; when cuts are applied to the four-vector sum of these tracks; 
+and when cuts are applied to the fitted vertex.
+To save computing resources, the combination does not proceed past a failing 
+step, and combinations where the vertex fit fails to converge are discarded, 
+although the likelihood of a failing vertex fit is suppressed by making 
+\ac{DOCA} requirements beforehand.
+An event is saved for offline analysis if at least one \hlttwo\ line `fired', 
+that is if a charm candidate is made that passes all cuts.
 The \DzToKpi, \DTohhh, and \DstToDzpi\ requirements are given in 
 \cref{tab:prod:sel:online:hlt2_dztokpi_selection,tab:prod:sel:online:hlt2_dtohhh_selection,tab:prod:sel:online:hlt2_dsttodzpi_selection}.
 Distributions of the charm candidate invariant mass after the full trigger 
@@ -281,12 +286,12 @@ Furthermore, kinematic requirements are made on all \PDzero, \PDplus, and
 available for \ac{PID} efficiency calibration, which will be described in 
 \cref{chap:prod:effs:pid}, specifically $3 < \ptot < \SI{100}{\GeVc}$ and $2 < 
 \Eta < 5$.
-As the three-body distributions still contain a large fraction of combinatorial 
-background even after these additional cuts, the vertex fit \chisq\ and the 
-direction angle cuts are tightened to $\chisq < 6$ and $\ac{DIRA} < 
+As the three-body samples contain a large fraction of combinatorial background 
+even after these additional cuts, the vertex fit \chisq\ and the direction 
+angle cuts are tightened to $\chisq < 6$ and $\ac{DIRA} < 
 \SI{14}{\milli\radian}$.
 
-To reduce the combinatorial further for the \DspToKKpi\ mode, a requirement is 
+To reduce the combinatorial further in the \DspToKKpi\ data, a requirement is 
 made on the kaon pair as
 \begin{equation}
   999.46 < m(\PKminus\PKplus) < \SI{1039.46}{\MeVcc}.
@@ -308,19 +313,20 @@ in \cref{eqn:prod:introduction:differential_cross_section}, rather than as part
 of the selection efficiency.
 The \DspTophipi\ branching fraction used is that given by the \cleo\ 
 collaboration, where the same $\PKm\PKp$ mass window definition is 
-used~\cite{Alexander:2008aa}.
-The $\PKminus\PKplus$ mass spectrum from the \cleo\ measurement in shown in 
+used~\cite{Alexander:2008aa}, and hence includes the branching fraction of the 
+\phiToKK\ decay.
+The $\PKminus\PKplus$ mass spectrum from the \cleo\ measurement is shown in 
 Figure~\ref{fig:sel:offline:cleo_phi}, along with the various mass windows with 
-which they make several `\DspTophipi' branching fraction measurements, where 
-the window corresponding to the measurement we use is delimited by solid red 
-lines.
+which they make several `\DspTophipi' branching fraction measurements.
+The window corresponding to the measurement used in this analysis is delimited 
+by solid red lines.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{production/selection/cleo_phi_definition}
   \caption{%
     Definition of the $\PKminus\PKplus$ mass windows used by the \cleo\ 
-    collaboration to measure the \DspTophipi branching 
-    fraction~\cite{Alexander:2008aa}.
+    collaboration to measure \DspTophipi branching 
+    fractions~\cite{Alexander:2008aa}.
     The $\PKminus\PKplus$ mass window used in the charm production measurement 
     corresponds to the window delimited by the solid red lines in the figure.
   }
@@ -423,8 +429,6 @@ given in \cref{tab:prod:sel:candidates}.
   \caption{%
     Number of candidates before and after the offline selection for each charm 
     candidate under study.
-    The uncertainties given on the counts assuming Poisson statistics, and the 
-    uncertainties given on the ratios assume binomial statistics.
   }
   \label{tab:prod:sel:candidates}
   \centering

@@ -29,6 +29,10 @@ Combining all inputs, the measurements are presented in
 \cref{fig:prod:results:double_differential:D0_Dp,fig:prod:results:double_differential:Ds_Dst}.
 They are compared with the three set of predictions, where available for a 
 given meson and \pTy\ bin, described in \cref{chap:prod:theory:comparisons}.
+A comparison of the data with the predictions is given in 
+\cref{chap:prod:results:discussion}.
+Preceding that, measurements of charm production ratios between proton-proton 
+centre-of-mass energies and between charm mesons are presented.
 
 \section{Production ratios}
 \label{chap:prod:results:ratios}
@@ -64,7 +68,7 @@ Measurements of open charm meson production have been made using \epem\
 collision data by the \babar, \belle, and \cleo\ 
 collaborations~\cite{Artuso:2004pj,Seuster:2005tr,Aubert:2002ue}, collectively 
 `\bfactories', and so comparisons of meson ratios are made with those results.
-The \bfactory measurements of \PDzero, \PDplus, \PDsplus, and \PDstarp\ 
+The \bfactory\ measurements of \PDzero, \PDplus, \PDsplus, and \PDstarp\ 
 production were made using the same set of final states as the analysis 
 described here, and so more precise comparisons can be made by computing the 
 ratios of cross-sections multiplied by the ratio of respective branching 
@@ -80,7 +84,8 @@ fractions \xsectimesbfrac, for example
     \bfrac(\DzToKpi)
   }.
 \end{equation*}
-Such meson ratios, differential in \pT\ and \rapidity\, are presented in 
+The uncertainty due to the branching fractions does not enter in this ratio.
+The meson ratios, differential in \pT\ and \rapidity\, are presented in 
 \cref{fig:prod:results:ratio_mesons_a,fig:prod:results:ratio_mesons_b}, along 
 with comparisons to the ratios of the integrated measurements made by the 
 \bfactories.
@@ -120,8 +125,11 @@ and is propagated to the integrated cross-sections as a systematic uncertainty.
 \Cref{tab:prod:results:integrated_double_differential} gives the integrated 
 cross-sections for \PDzero, \PDplus, \PDsplus, and \PDstarp\ mesons.
 
-The integrated total charm cross-section, $\xsec(\ppToccbarX)$, is calculated 
-as $\xsec(D)/(2f(\cToHc))$ for each decay mode.
+The integrated total charm cross-section $\xsec(\ppToccbarX)$ is calculated as 
+\begin{equation}
+  \xsec(\ppToccbarX) = \frac{\xsec(D)}{(2f(\cToHc))},
+\end{equation}
+for each decay mode.
 The term $f(\cToHc)$ is the quark to hadron transition probability, and the 
 factor 2 accounts for the inclusion of charge conjugate (anti-charm) states in 
 the measurement.
@@ -137,8 +145,8 @@ The precision on the \ccbar\ cross-section can be improved by combining the
 individual estimates.
 For this, the \PDsplus and \PDstarp\ inputs are neglected, as the \PDzero and 
 \PDplus measurements are considerably more precise.
-The latter inputs are combined using the method of the \emph{best linear 
-  unbiased estimator}, or \blue\ method~\cite{Lyons:1988rp}.
+The \PDzero\ and \PDplus\ inputs are combined using the method of the 
+\emph{best linear unbiased estimator}, or \blue\ method~\cite{Lyons:1988rp}.
 This procedure combines a set of $N$ measurements $m_{i}$ as an average $m$ 
 using per-measurement weights $\alpha_{i}$
 \begin{equation}
@@ -206,7 +214,7 @@ presented in
 the data consistently lie at or above the upper limit of the $\pm1\,\sigma$ 
 uncertainty bands on the predictions.
 The shape in both \pT\ and \rapidity\ is well-modelled, but worsens with 
-increasing \pT and decreasing rapidity.
+increasing \pT\ and decreasing rapidity.
 The \gmvfns\ prediction provides the truest description of data, although it is 
 unable to make any predictions below $\pT = \SI{3}{\GeVc}$ due to large 
 theoretical uncertainties.
@@ -216,7 +224,7 @@ orders of magnitude.
 These factors point to a difficulty in predicting the overall scale of double 
 differential charm cross-sections.
 The measurements presented here can be used to constrain the \aclp{QCDPDF} 
-further, which may help improve the agreement between later measurements and 
+further, which may help improve the agreement between future measurements and 
 predictions.
 
 The agreement between the ratios of cross-sections at $\sqrts = 13$ and 
@@ -231,7 +239,7 @@ Additional high-precision measurements of open charm production cross-sections
 at \lhcb\ with different centre-of-mass energies would be useful constraints.
 
 The measurements of ratios of cross-sections times branching fractions 
-\xsectimesbfrac presented in 
+\xsectimesbfrac\ presented in 
 \cref{fig:prod:results:ratio_mesons_a,fig:prod:results:ratio_mesons_b} agree 
 with those made at the \bfactories, indicting that the assumption of 
 universality of the fragmentation fractions $f(\cToHc)$ is valid.
