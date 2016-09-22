@@ -1,21 +1,242 @@
 \chapter{Introduction}
 \label{chap:cpv:introduction}
 
-The breaking of the combined charge-parity~(\CP) symmetry in weak interactions, 
-as well as the definition \CP\ transformation, has been discussed in 
-\cref{chap:intro:sm}.
-\CP\ violation is necessary to generate the matter-antimatter asymmetry in the 
-universe, and in particular the process of baryogenesis which created the 
-imbalance between baryons and anti-baryons.
-The experimental study of \CP\ asymmetries is then intimately connected to a 
-wider understanding of nature.
+In 2011, the \lhcb\ collaboration announced the first evidence of \CP\ 
+violation in charm decays, claiming a deviation from the \CP\ symmetry 
+hypothesis at the
+\SI{3.5}{\sigma} level~\cite{Aaij:2011in}.
+The measurement was of the rate of direct \CP\ violation in the \ac{SCS} decays 
+of the \PDzero meson, $\decay{\PDzero}{\KmKp}$ and \pimpip, so called as the 
+weak decay changes the flavour of the up-type charm quark to either a strange 
+or a down quark, which are suppressed relative to \ac{CF} decays, where the 
+flavour changes to another up-type quark.
 
-Only interactions of the weak force have been observed to violate \CP\ 
-symmetry.
-The strong force, while not theoretically invariant under the \CP 
-transformation, has not been experimentally observed to violate \CP\@.
-Electromagnetism, the remaining force described by the \acl{SM}, is invariant 
-in its theoretical definition.
-However, the magnitude of the asymmetry produced by \ac{SM} processes is not 
-large enough to account for the origins of the universe, and so additional 
-sources of \CP\ violation must exist.
+The rate of direct \CP\ violation in the decay of any particle $P$ to a final 
+state $f$ is parameterised as
+\begin{equation}
+  \ACP(\decay{P}{f}) = \frac{%
+    \Gamma(\decay{P}{f}) - \Gamma(\decay{\bar{P}}{\bar{f}})
+  }{%
+    \Gamma(\decay{P}{f}) + \Gamma(\decay{\bar{P}}{\bar{f}})
+  },
+  \label{eqn:cpv:introduction:acp}
+\end{equation}
+that is the relative rate of the \decay{P}{f} process to its \CP\ conjugate.
+For \decay{\PDzero}{\hmhp} decays, this is expected to be of the order of 
+\num{e-3} in the \ac{SM}~\cite{Grossman:2006jg}, and so it sensitive to 
+contributions from physics \acl{BSM}.
+% TODO should make sure I know what this actually is
+Using arguments of $U$-spin symmetry between the \KmKp\ and \pimpip\ final 
+states, the sign of $\ACP(\KmKp)$ is predicted to be opposite that of 
+$\ACP(\pimpip)$~\cite{Grossman:2006jg}.
+The difference between the two is then particular sensitive to direct \CP\ 
+violation in this system
+\begin{equation}
+  \dACP = \ACP(\pKK) - \ACP(\ppipi).
+  \label{eqn:cpv:introduction:dacp_pure}
+\end{equation}
+It was the value of \dACP\ that was measured to deviate significantly from 
+zero.
+
+The observation generated much interest in the \acl{HEP} theory 
+community~\cite{Lenz:2013pwa}, creating a push for a better mathematical 
+understanding of \CP\ violation in charm decays.
+However, subsequent measurements of \dACP, by including additional data and 
+using \PDzero mesons from \PB\ decays, have not confirmed the initial 
+evidence~\cite{Aaij:2014gsa,Aaij:2016cfh}, and the current world average is 
+consistent with the hypothesis of no direct \CP\ violation in \PDzero 
+decays~\cite{Amhis:2014hma}, being\footnotemark
+\begin{equation}
+  \dACP = \SI{-0.252 \pm 0.104}{\percent}.
+  \label{eqn:cpv:introduction:dacp_world_average}
+\end{equation}
+This demonstrates that the experimental precision is now at level of some 
+\ac{SM} predictions.
+Future measurements of \dACP\ with \PDzero decays at \lhcb\ are of top 
+priority.
+
+\footnotetext{%
+  The world average is not strictly of \dACP, but of 
+  $\Delta{a}_{\CP}^{\text{dir}}$, which includes effects in \emph{indirect} 
+  \CP\ violation, which arise to the possibility of \CP\ violation in 
+  \PDzero-\APDzero mixing~\cite{Gersabeck:2011xj}.
+}
+
+Charm baryons, the lightest of which is the \PLambdac~($\Pup\Pdown\Pcharm)$, 
+are an additional system in which to search for \CP\ violation.
+Measurements using baryons are particularly evocative, as they relate directly 
+to the as-yet unexplained imbalance of baryons and antibaryons in the 
+observable universe, and as such are a potential source of signs of \ac{BSM} 
+physics.
+The first evidence for \CP\ violation in baryon decays was found only 
+recently~\cite{Aaij:2016cla}, using the decays of the lightest beauty baryon, 
+the \PLambdab~($\Pup\Pdown\Pbottom$).
+Charm baryons are then relevant not only because their study may uncover the 
+first evidence of \CP\ violation in the up-type quark sector, but also because 
+they can strengthen the understanding of the mechanisms that create baryon 
+asymmetries.
+
+An analogous measurement of \dACP\ using \PLambdac\ decays, to that made with 
+\PDzero decays, is searching for direct \CP\ violation in the decays \LcTopKK\ 
+and \LcToppipi.
+The dynamics of these \ac{SCS} decays, which can only be fully parameterised by 
+a five-dimensional phase space, are currently poorly 
+understood~\cite{Bigi:2012ev}, and so any experimental input can be useful to 
+guide and constrain the theory.
+The previous generation of heavy flavour collider experiments, such as \belle\ 
+and \babar, collected small samples of \PLambdac~\cite{Seuster:2005tr}, whereas 
+the large charm cross-section at \lhcb\ enables precision measurements.
+
+The large sample of \PB decays collected by \lhcb\ can also be used to study 
+\CP\ violation in \PLambdac\ decays.
+The \PLambdab\ has a lifetime around seven times greater than that of the 
+\PLambdac, which can be exploited to provide excellent background rejection, 
+and the semileptonic decay chain \LbToLcmuX\ would allow for a simple 
+triggering scheme, by requiring a single, high \pT\ muon whose trajectory is 
+significantly displaced from the \ac{PV}.
+A related inclusive branching fraction for this decay is~\cite{PDG2014}
+\begin{equation}
+  \bfrac(\decay{\PLambdab}{\PLambdac\Pleptonminus\APnu_{\Plepton}}) =
+    \SI{10.7 \pm 2.2}{\percent}.
+  \label{eqn:cpv:introduction:lb_bfrac}
+\end{equation}
+An estimate for the number of \LcTophh\ produced from semileptonic \PLambdab\ 
+decays at \lhcb\ during \runone\ of the \ac{LHC} can be computed as
+\begin{equation}
+  N(\LcTof, \zeta) =
+    \xsec(\PLambdab, \zeta)\times
+    \bfrac(\LbToLcmuX)\times
+    \bfrac(\LcTof)\times
+    \lumi(\zeta),
+\end{equation}
+where $\zeta$ is the year of data-taking, either 2011 or 2012; 
+$\xsec(\PLambdab)$ the \PLambdab\ cross-section, measured at \sqrtseq{7} and 
+\sqrtseq{8} to be \SI{20}{\micro\barn} and 
+\SI{25}{\micro\barn}~\cite{Aaij:2015fea}; $\bfrac(\LbToLcmuX)$ is taken to be 
+the branching fraction from \cref{eqn:cpv:introduction:lb_bfrac} divided by 3, 
+\SI{3.6 \pm 0.7}{\percent},
+assuming it is equally distributed between the leptons and that there are no 
+other contributions of a similar magnitude; $\bfrac(\LcTof)$ is the branching 
+fraction of the \PLambdac\ to either \pKK\ or \ppipi, where $\bfrac(\LcTopKK) = 
+(1.61 \pm 0.26)\times 10^{-3}$ and $\bfrac(\LcToppipi) = (3.91 \pm 0.4)\times 
+10^{-3}$~\cite{Ablikim:2016tze}; and \lumi\ is the integrated luminosity, 
+$\lumi(2011) = \SI{1}{\per\femto\barn}$ and $\lumi(2012) = 
+\SI{2}{\per\femto\barn}$.
+This gives
+\begin{align}
+  N(\LcTopKK, 2011) &\approx (1.2 \pm 0.4) \times 10^{6},\nonumber\\
+  N(\LcTopKK, 2012) &\approx (2.8 \pm 1.0) \times 10^{6},\nonumber\\
+  N(\LcToppipi, 2011) &\approx (2.8 \pm 0.9) \times 10^{6},\nonumber\\
+  N(\LcToppipi, 2012) &\approx (6.8 \pm 2.1) \times 10^{6}.
+\end{align}
+Assuming the full reconstruction and selection efficiencies are about 
+\SI{1}{\percent}, and that the precision to which \dACP\ can be measured is 
+dominated by the statistical uncertainty on the signal yield $N$, $\unc(\dACP) 
+\approx 1/\sqrt{N}$, a measurement of \dACP\ using the \runone\ data should be 
+able to achieve a precision of the order of \SI{0.1}{\percent}.
+
+This analysis aims to measure \dACP\ using \LcTopKK\ and \LcToppipi decays, 
+reconstructed in association with a high \pT\ muon assumed to originate from 
+the decay of a \PLambdab, using data collected with the \lhcb\ detector in 2011 
+and 2012, corresponding to an integrated luminosity of \SI{3}{\per\femto\barn}.
+For the remainder of this \namecref{chap:cpv:introduction}, an overview of the 
+analysis strategy will be discussed, to summarise and contextualise the 
+remaining body of this \namecref{chap:cpv}.
+% In addition, the phase space available to the final state is fully 
+% parameterised by five dimensions, allowing for the possibility of rich 
+% dynamics which vary across it.
+
+% The breaking of the combined charge-parity~(\CP) symmetry in weak interactions, 
+% as well as the definition \CP\ transformation, has been discussed in 
+% \cref{chap:intro:sm}.
+% \CP\ violation is necessary to generate the matter-antimatter asymmetry in the 
+% universe, and in particular the process of baryogenesis which created the 
+% imbalance between baryons and anti-baryons.
+% The experimental study of \CP\ asymmetries is then intimately connected to a 
+% wider understanding of nature.
+
+% Only interactions of the weak force have been observed to violate \CP\ 
+% symmetry.
+% The strong force, while not theoretically invariant under the \CP 
+% transformation, has not been experimentally observed to violate \CP\@.
+% Electromagnetism, the remaining force described by the \acl{SM}, is invariant 
+% in its theoretical definition.
+% However, the magnitude of the asymmetry produced by \ac{SM} processes is not 
+% large enough to account for the origins of the universe, and so additional 
+% sources of \CP\ violation must exist.
+
+\section{Analysis overview}
+\label{chap:cpv:introduction:overview}
+
+Rather than measuring the relative difference on decay rates in 
+\cref{eqn:cpv:introduction:acp}, it is simpler to measure the asymmetry in the 
+observed yields $N$
+\begin{equation*}
+  \ARaw(f) = \frac{N(f) - N(\bar{f})}{N(f) + N(\bar{f})},
+\end{equation*}
+where here, and throughout this \namecref{chap:cpv}, the origin of the final 
+state $f$ from a \PLambdac\ decay is implicit.
+However, this is not necessarily equal to the decay asymmetry in 
+\cref{eqn:cpv:introduction:acp}.
+For example, if more \PLambdab\ baryons are produced in \pp\ collisions than 
+\APLambdab, \ARaw\ will contain a contribution from that asymmetry.
+% The enumeration of the various production and detection asymmetries that enter 
+% \ARaw\ is given in \cref{chap:cpv:theory}.
+By assuming that each background asymmetry is independent of the decay mode, 
+their contributions will cancel in the difference \dACP\@.
+In general, however, this assumption is not true, and instead the asymmetries 
+depend on the kinematics of the particles involved, such as the \PLambdab\ 
+transverse momentum and pseudorapidity.
+If these kinematics are equal between the modes, they will cancel in \dACP\@.
+To ensure that this is the case, the kinematics are weighted between the modes.
+The signal distributions for the weighting are extracted via \chisq\ fits to 
+the \phh\ invariant mass distribution.
+
+Any theoretical computation of \ACP\ or \dACP\ for \LcTophh\ decays requires 
+some model for the five-dimensional \phh\ phase space, as it may be that the 
+strength of \CP\ violation varies across it.
+The selection and reconstruction of the \PLambdac\ candidates may sculpt this 
+distribution, and so the experimental efficiency as a function of the phase 
+space is computed, and the signal yields are corrected for it.
+For each mode, the quantity \ARaw\ is measured by simultaneous fitting the 
+\PLambdac\ and \APLambdac\ invariant mass distributions, which are weighted by 
+the product of the kinematic weights and the inverse of the phase space 
+efficiency.
+
+Provided that the kinematic weighting equalises the distributions between the 
+modes exactly, that the phase space efficiency is correctly modelled, and that 
+the \chisq\ fit describes the signal and background components and 
+normalisation correctly, the measurement of \dACP\ will be correct, within the 
+statistical precision available with the data.
+As it cannot be guaranteed that these assumptions are valid, they will be 
+tested in the context of systematic studies.
+Deviations from the nominal, measured value of \dACP\ that cannot be corrected 
+for will be assigned as systematic uncertainties on the measurement.
+
+\subsection{Document structure}
+\label{chap:cpv:introduction:overview:structure}
+
+The exact contributions of the various production and detection asymmetries to 
+\ARaw will be derived and enumerated in \cref{chap:cpv:theory}.
+The parameterisation of the five-dimensional phase space will also be given, 
+which is used when constructing the phase space efficiency model.
+The collision data and simulated \ac{MC} data used in the analysis is described 
+in \cref{chap:cpv:data}, and the reconstruction and selection of the real data 
+will be presented in \cref{chap:cpv:selection}.
+The extraction of the signal yields and of the kinematic distributions of the 
+signal from the fully selected data is presented in 
+\cref{chap:cpv:prelim_fits}, and then those signal distributions are equalised 
+between the two \PLambdac\ decay modes using \ac{MVA} techniques discussed in 
+\cref{chap:cpv:kinematic_weighting}.
+The resulting kinematic weights are combined with reconstruction and selection 
+efficiencies computed as a function of \phh\ phase space, whose method of 
+computation is shown is \cref{chap:cpv:phsp}, after which the combined weights 
+enter the \chisq\ fits that are used to measure \ARaw, described in 
+\cref{chap:cpv:araw}.
+The combination of $\ARaw(\pKK)$ and $\ARaw(\ppipi)$ to measure \dACP\ is in 
+\cref{chap:cpv:results}.
+Methods for and the results of various systematic studies are given in 
+\cref{chap:cpv:syst}.
+Finally, \cref{chap:cpv:summary} gives the combination of the measurements of 
+\dACP\ and the systematic studies, and concludes with a brief discussion on 
+future prospects of \CP\ violation measurements at \lhcb.
