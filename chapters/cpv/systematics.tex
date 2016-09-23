@@ -129,19 +129,11 @@ background \ac{PDF} is linear, and, implicitly, that there are no contributions
 to the data in the signal and sideband regions other than signal and 
 combinatorial background.
 
-\subsection{Evaluation}
-\label{chap:cpv:syst:fit:results}
+\subsection{Region definitions and method validity}
+\label{chap:cpv:syst:fit:defs}
 
 The sideband subtraction is applied to the data as a alternative method to 
 measure the \pKK\ and \ppipi\ signal yields in the charge-separated samples.
-The assumption of this technique that the background \ac{PDF} is linear is 
-justified by the good description of the background by a linear function in the 
-nominal fits.
-The lack of any visible physics backgrounds after the full selection described 
-in \cref{chap:cpv:selection} suggests that the sidebands are purely 
-combinatorial, and that no peaking structures are present in the signal region 
-other than the that of the signal.
-Finally,
 
 The signal region is defined as a window \SI{20}{\MeVcc} wide for the \pKK\ 
 data and \SI{30}{\MeVcc} wide for \ppipi, centred on the nominal value of the 
@@ -154,6 +146,22 @@ $\pm\sfrac{3}{2}$ signal window widths away from the signal window centre, $D =
 3S/2$.
 The signal and sideband regions are shown in \cref{fig:cpv:syst:mass_windows}, 
 with the 2012 magnet down data overlaid for reference.
+
+The assumption of the sideband subtraction technique that the background 
+\ac{PDF} is linear is justified by the good description of the background by a 
+linear function in the nominal fits.
+The lack of any visible physics backgrounds after the full selection described 
+in \cref{chap:cpv:selection} suggests that the sidebands are purely 
+combinatorial, and that no peaking structures are present in the signal region 
+other than the that of the signal.
+Finally, the assumption that the signal contribution to the data in the 
+sidebands is negligible is checked using \ac{MC}, where \SI{0.7}{\percent} of 
+the \ppipi\ truth-matched signal data is in the sidebands, and for \pKK the 
+fraction of \SI{0.3}{\percent}.
+These fractions are much smaller than the relative statistical uncertainties on 
+the signal yields in shown 
+\cref{tab:cpv:prelim_fits:yields:pKK,tab:cpv:prelim_fits:yields:ppipi}, and so 
+are considered acceptable level of contamination.
 
 \begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
@@ -174,6 +182,39 @@ with the 2012 magnet down data overlaid for reference.
   }
   \label{fig:cpv:syst:mass_windows}
 \end{figure}
+
+\subsection{Results}
+\label{chap:cpv:syst:fit:results}
+
+For each data sub-sample, the \pKK\ and \ppipi\ samples are split by the charge 
+of the \PLambdac\ and the sideband subtraction technique is used to measure the 
+yields.
+The yield asymmetry is then
+\begin{equation}
+  \ARaw(f) = \frac{%
+    (N_{\text{S}}(\PLambdac) - N_{\text{SB}}(\PLambdac)) -
+    (N_{\text{S}}(\APLambdac) - N_{\text{SB}}(\APLambdac))
+  }{%
+    (N_{\text{S}}(\PLambdac) - N_{\text{SB}}(\PLambdac)) +
+    (N_{\text{S}}(\APLambdac) - N_{\text{SB}}(\APLambdac))
+  },
+  \label{eqn:cpv:syst:fit:araw_sb}
+\end{equation}
+where $N_{\text{S(SB)}}(\PLambdac)$ is the number of candidates in the signal 
+(sideband) region in the \PLambdac\ sample, and $N_{\text{S(SB)}}(\APLambdac)$ 
+is the same but in the \APLambdac\ sample.
+The counts are assumed to be Poisson-distributed, and so the uncertainty 
+$\unc{N}$ on each count is taken to be $\unc{N} = \sqrt{N}$.
+
+The difference \dACP\ between \ARaw\ for \pKK\ and \ppipi\ is then computed 
+using the values obtain with \cref{eqn:cpv:syst:fit:araw_sb}, and the 
+difference is computed between those values and the nominal measurements given 
+in \cref{tab:results:asymmetries}.
+The uncertainty on \ARaw\ is found by propagating the uncertainties on the 
+candidate counts using an \ac{MC} error propagation, and the values are assumed 
+to be fully correlated with those from the nominal procedure.
+The deviation from the nominal values is taken as a systematic uncertainty on 
+\dACP\@.
 
 \section{Residual background asymmetries}
 \label{chap:cpv:syst:asym}
