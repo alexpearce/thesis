@@ -213,8 +213,30 @@ in \cref{tab:results:asymmetries}.
 The uncertainty on \ARaw\ is found by propagating the uncertainties on the 
 candidate counts using an \ac{MC} error propagation, and the values are assumed 
 to be fully correlated with those from the nominal procedure.
-The deviation from the nominal values is taken as a systematic uncertainty on 
-\dACP\@.
+The differences for the measurements in all data sub-samples, and their 
+averages across years and magnet polarities, are presented in 
+\cref{tab:syst:sbs_differences}.
+Almost all of the deviations from the nominal values are significant, and so 
+they taken as a systematic uncertainties on the measurements of \dACP\@.
+On the nominal result quoted in \cref{eqn:cpv:results:dacp}, the systematic 
+uncertainty is \SI{0.26}{\percent}.
+
+\begin{table}
+  \centering
+  \caption{%
+    Differences between asymmetries measured with the nominal fit method and 
+    the sideband subtraction, measured for each data sub-sample and combination 
+    of sub-samples.
+    The uncertainties quoted assume the values found by the two methods are 
+    fully correlated.
+    The computation of the combinations, ``2011 + 2012'' and ``Average'', is 
+    defined in \cref{chap:cpv:results:combination}.
+  }
+  \label{tab:syst:sbs_differences}
+  % \begin{adjustbox}{center}
+    \input{tables/cpv/systematics/delta_acp-sideband_subtraction-diff.tex}
+  % \end{adjustbox}
+\end{table}
 
 \section{Residual background asymmetries}
 \label{chap:cpv:syst:asym}
