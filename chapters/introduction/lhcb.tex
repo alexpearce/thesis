@@ -1,280 +1,26 @@
 \chapter{The \lhcb\ experiment}
 \label{chap:intro:lhcb}
 
-The \lhcb\ experiment comprises a collaboration of around one thousand 
-scientists and engineers, and a particle detector situated at point 8 of the 
-\cern\ \ac{LHC}.
-The general goal of the experiment is to explore the area of \emph{heavy 
-  flavour physics}, that is the interactions of charm and beauty quarks and 
-particles that contain them.
-Specific aims will be given in \cref{chap:intro:lhcb:physics}, and the design 
-and construction of the detector will be described in 
-\cref{chap:intro:lhcb:detector}.
-First, a brief introduction to the mechanisms of a high-energy particle physics 
-experiment will be given, such that the particular requirements of a heavy 
-flavour experiment can be related to the design of a detector.
-
-Heavy flavour hadrons, such as the \PBs meson, have short lifetimes, and do not 
-fly far enough to interact with active elements of a detector before decaying.
-By the studying the properties of decay products with longer lifetimes, the 
-properties of the unseen heavy flavour hadrons can be inferred, to be compared 
-with those predicted by the \ac{SM}.
-% Such properties include production and decay rates, lifetimes, and masses.
-
-The momentum four-vector $\fvec{p}$ of a particle is defined by three spatial 
-components, equal to components of the momentum three-vector $\vec{p}$, and the 
-energy $E$
-\begin{equation}
-  \fvec{p} = \begin{pmatrix}E\\\vec{p}\end{pmatrix}
-           = \begin{pmatrix}E\\p_{x}\\p_{y}\\p_{z}\end{pmatrix}.
-  \label{intro:lhcb:four_momentum}
-\end{equation}
-Both the energy and the momentum can be measured, using techniques which will 
-be discussed later.
-The mass of every massive particle is unique, and so by knowing the 
-four-momentum of a particle, one implicitly knows its identity by knowing the 
-mass using the relation
-% The energy can either be measured directly, using methods discussed later, or 
-% computed using an assumed mass \mass\ and the magnitude of the measured 
-% momentum three-vector $\ptot = |\vec{p}|$
-\begin{equation}
-  E = \sqrt{p^{2} + m^{2}}.
-  \label{intro:lhcb:energy}
-\end{equation}
-To compute the four-momentum of a heavy flavour hadron, in order to know its 
-identity, one can sum the four-momenta of the decay products
-\begin{equation}
-  \fvec{p}_{\text{Parent}} = \sum_{\text{Children}} \fvec{p}_{i}.
-  \label{intro:lhcb:four_momentum_sum}
-\end{equation}
-It is then the task of the experiment to measure the three-momentum and energy 
-of all the decay products in order to study heavy flavour.
-
-\subsection{Momentum measurements}
-
-Particles with lifetimes much greater than those of heavy flavour hadrons, such 
-as muons, kaons, pions, and protons (denoted \Pmupm, \PKpm, \Ppipm, and 
-\Pproton/\APproton), can pass through several layers of active detector 
-elements.
-The elements can be ionised by the passage of the charged particles, and this 
-can be converted into electrical signals.
-By studying the geometric pattern of these `hits', one can reconstruct the 
-physical path, or `track', the particle made as it travelled through the 
-detector.
-The set of detector elements used to measure hits is called the tracking 
-system.
-To measure the three-momentum of the particles, a magnetic field can be applied 
-across their path, as shown in \cref{fig:intro:lhcb:tracking}, causing them to 
-bend in a circular arc due to the Lorentz force
-\begin{equation}
-  \vec{F} = q\vec{v}\times\vec{B}
-          = \frac{q}{m}\vec{p}\times\vec{B},
-  \label{eqn:intro:lhcb:lorentz_force}
-\end{equation}
-where $\vec{v}$ is the particle velocity three-vector, $q$ is the electric 
-charge of the particle, $m$ is its invariant mass, and $\vec{B}$ is the 
-magnetic field vector.
-As the direction of the particle is already known from the track 
-reconstruction, the coordinate system can be aligned such that the magnetic 
-field is perpendicular to the momentum direction.
-\Cref{eqn:intro:lhcb:lorentz_force} then reduces to a scalar equation for the 
-force magnitude $F$, and can be equated to the centripetal force
-\begin{equation}
-  F = \frac{q}{m}pB = \frac{mv^{2}}{r},
-  \label{eqn:intro:lhcb:lorentz_centripetal}
-\end{equation}
-where $r$ is the radius of the circular path the charged particle will follow 
-in the magnetic field.
-The momentum can then be computed as
-\begin{equation}
-  p = qrB.
-  \label{eqn:intro:lhcb:momentum_from_magnet}
-\end{equation}
-In this coordinate system, positively charged particles will bend in a plane in 
-the opposite direction to negatively charged particles, and so the `charge' of 
-a track can be deduced by observing in which direction it bends in the magnetic 
-field.
-Neutral particles do not leave hits in the tracking system, and so, as there 
-are no known long-lived particles with $q \geq 2$, the magnitude is assumed to 
-be 1.
-
-For a given magnetic field strength $B$, higher momentum particles will bend 
-less, to the point where the tracking system is not precise enough to be able 
-to measure the bending radius, and hence the momentum.
-Particles with a low enough momentum will be bent out of the detector entirely.
-For a given tracking system, larger bending radii will lead to more precise 
-momentum measurements, and so there is a balance between the momentum range a 
-detector is able to measure, and the precision to which those measurements can 
-be made.
-
-\begin{figure}
-  \centering
-  \input{figures/introduction/tracking}
-  \caption{%
-    Illustration of particle tracking, showing two muons traversing through a 
-    series of tracking stations, with a magnetic field in the negative $y$ 
-    direction, bending charged particles in the $xz$ plane.
-    Hits made by the negatively charged muon are shown as red points.
-    The scatter the hits around the true particle trajectory signifies the 
-    inherent uncertainty in the experimental measurement.
-  }
-  \label{fig:intro:lhcb:tracking}
-\end{figure}
-
-\subsection{Energy measurements}
-
-With the momentum three-vector measured with the tracking system, the energy 
-$E$ is left as an unknown.
-This can be measured using a calorimeter.
-The ionisation of the tracking system discussed previously requires a small 
-amount of energy, which is lost from the particle traversing the detector.
-A calorimeter takes this process to its limit, being designed to absorb 
-particles completely, converting their kinetic energy into a measurable form.
-The incident particles lose their energy via particle showers, where 
-interactions with the detector material creates additional, lower energy 
-particles, and those particles traverse the detector, interact, and create 
-further particles with lower energy still.
-
-Calorimeters are placed after the tracking system, as most particles are fully 
-absorbed into them, making further measurements of their properties impossible.
-Also in contrast to the tracking system, calorimeters can be used to measure 
-both neutral and charged particles, and usually a series of individual 
-calorimeters is placed one after the other in order to measure different 
-particle types in turn, which interact differently with the detector.
-Electrons and photons deposit their energy via electromagnetic showers, which 
-form due to two processes: high-energy electrons emit photons via 
-\emph{bremsstrahlung}; and high-energy photons convert into electron-positron 
-pairs.
-These two processes alternate back and forth, with $\Pelectron\APelectron$ 
-pairs emitting bremsstrahlung photons, which in turn convert into 
-$\Pelectron\APelectron$ pairs.
-Hadrons, such as protons and charged and neutral pions, produce hadronic 
-showers, where the energy loss is due to several processes.
-Nuclear interactions, where the hadrons collide with the nuclei in the 
-detector, produce additional particles which in turn undergo nuclear 
-interactions, creating a cascade.
-Hadrons created in this cascade can include \Ppizero and \Peta mesons, which 
-decay primarily to final states comprised of electron and photons, and hence 
-electromagnetic showers are also created.
-The final states of the decays of other particles can include muons and 
-neutrinos, which can traverse the calorimeter without interacting further, 
-resulting in missing energy.
-The length at which electromagnetic and hadronic interactions occur is 
-characterised by the interaction lengths \radlen\ and \hadlen\ respectively, 
-which depends on the density of the material.
-For a given density the hadronic interaction length is much larger than the 
-electromagnetic, $\radlen \gg \hadlen$, and so typically an electromagnetic 
-calorimeter is placed before a hadronic calorimeter in an experiment, such that 
-the electron and photon energies can be measured independently of the hadron 
-energies.
-
-The \emph{active} elements of a calorimeter are the materials which converts 
-the deposited energy of the particles showers into some measurable quantity, 
-either electric charge or light.
-The amount of charge or light produced relates to the energy deposited.
-The \emph{absorber} elements of a calorimeter are high-density materials that 
-reduce the kinematic energy of the incident particles and provide the bulk of 
-interaction length.
-Homogeneous calorimeters are made solely from active materials, whereas 
-sampling calorimeters are constructed from alternating layers of active and 
-absorber elements.
-Homogeneous calorimeters provide the most accurate measurements, as the entire 
-energy deposit can be measured, whereas in a sampling calorimeter some fraction 
-is lost to the absorber elements and must be estimated.
-The disadvantage of using active elements exclusively is that the suitable 
-materials are less dense that the those available solely for absorption, and so 
-a larger detector is required for a given energy range that is to be measured.
-In practice, hadronic calorimeters are almost exclusively of the sampling type.
-
-\subsection{Particle identification}
-
-If the momentum and energy can be measured precisely, the mass of the particle 
-can be deduced with \cref{intro:lhcb:energy}, and hence the particle's identity 
-can be known.
-As the momentum and energy measurements are subject to experimental resolution, 
-there is an uncertainty on the mass measurement.
-Alternative \ac{PID} methods are often employed improve this precision.
-
-For charged particles, a measurement of the momentum from the tracking system 
-can be combined with a measurement of the velocity to determine the mass from 
-the relation $\ptot = \mass\beta\gamma c$.
-As $\gamma$ is a function only of $\beta$, as in 
-\cref{eqn:intro:sm:lorentz_factor}, and $\beta = v/c$, only one of $\gamma$ and 
-$\beta$ needs to be measured.
-
-One method for measuring $\beta$ is to measure the time taken for the particle 
-to travel between two detectors.
-The measured time difference between detection times $t_{1}$ and $t_{2}$ is 
-equal to the distance between the two detectors $L$ divided by the particle 
-velocity
-\begin{equation}
-  \delta t = t_{1} - t_{2} = \frac{L}{v}
-           = \frac{L}{\beta c}.
-\end{equation}
-For a given momentum \ptot, particles with different masses will have different 
-velocities, and hence different $\beta$ factors.
-In the ultra-relativistic limit, where $pc \gg mc^{2}$, the difference between 
-times for two particles with masses $m_{a}$ and $m_{b}$ will be
-\begin{equation}
-  \Delta t = \delta t_{a} - \delta t_{b}
-           \approx \frac{Lc}{2p^{2}}(m_{a}^{2} - m_{b}^{2}),
-\end{equation}
-The utility of such a technique reduces as the particle momentum increases, as 
-a very high precision is required on the time difference measurement in order 
-to be able to distinguish between different particle species.
-
-Another \ac{PID} technique is to exploit the phenomenon of Cherenkov radiation, 
-where charged particles emit light when they traverse a medium at faster than 
-the phase velocity of light in that medium.
-The phase velocity of light, or just `the speed of light', in a medium with a 
-refractive index $n$ is
-\begin{equation}
-  v_{\text{Light}} = \frac{c}{n}.
-\end{equation}
-A front of Cherenkov light is emitted at an angle \cherenkovangle\ to the 
-trajectory of the particle, and this angle is related to the speed of light in 
-the medium and the velocity magnitude of the particle
-\begin{equation}
-  \cos{\cherenkovangle} = \frac{v_{\text{Light}}}{v_{\text{Particle}}}
-                        = \frac{c}{n\beta c}
-                        = \frac{1}{n\beta},
-\end{equation}
-as illustrated in \cref{fig:intro:lhcb:cherenkov}.
-Given that the medium is chosen by the experimenter, so that $n$ is known, 
-$\beta$ can be measured by measuring the angle of the Cherenkov light.
-As in the time-of-flight method, different particle species with the same 
-measured momentum will have different values of $\beta$, and in this case 
-different angles \cherenkovangle.
-Unlike the time-of-flight method, which requires high temporal resolution to 
-distinguish particle hypotheses, the Cherenkov methods requires high spatial 
-resolution, so that different ring sizes can be measured.
-TODO: talk quantitatively about the precision, as in the time-of-flight example.
-
-% TODO: discuss muon ID
-% Muons are special because they punch through everything easily, so one method 
-% for ID'ing them is just to have an additional tracking system after the calo
-
-The techniques which have been discussed for measuring particle momentum, 
-energy, and identity are general.
-The technologies used to construct an experiment depend on the physics that 
-experiment intends to measure.
-
-\begin{figure}
-  \centering
-  \input{figures/introduction/cherenkov}
-  \caption{%
-    Illustration of Cherenkov light being emitted from a particle travelling 
-    with momentum $p$ and velocity $\beta$ through a medium with refractive 
-    index $n$.
-    The radiation is emitted at a angle \cherenkovangle\ to the trajectory of 
-    the particle, and forms a ring of radius $R$ when projected onto a plane 
-    transverse to the particle momentum direction.
-  }
-  \label{fig:intro:lhcb:cherenkov}
-\end{figure}
-
-\section{Physics goals}
-\label{chap:intro:lhcb:physics}
+The \lhcb\ experiment~\cite{Alves:2008zz,Aaij:2014jba} comprises a 
+collaboration of around one thousand scientists and engineers, and a particle 
+detector situated at point 8 of the \cern\ \ac{LHC}.
+The general goal of the experiment is to explore the area of heavy flavour 
+physics, that is the interactions of charm and beauty quarks and particles that 
+contain them, and in particular to make the most precise measurements of heavy 
+flavour properties to date, and to discover decays that were not observed by 
+previous experiments.
+Heavy flavour has a rich phenomenology: neutral particles can oscillate between 
+their matter and antimatter states in flight, such as $\PBds \leftrightarrow 
+\APBds$ and $\PDzero \leftrightarrow 
+\APDzero$~\cite{Abulencia:2006ze,Aaij:2012nva}; bound states of four or five 
+quarks can form~\cite{Aaij:2014jqa,Aaij:2015tga}; and they exhibit distinct 
+matter-antimatter 
+asymmetries~\cite{Aubert:2001nu,Abe:2001xe,Aaij:2012kz,Aaij:2013iua,Aaij:2016cla}.
+With this, the \lhcb\ detector must be flexible enough to accommodate a wide 
+physics programme.
+This \namecref{chap:intro:lhcb:physics} will link the properties of heavy 
+flavour decays with the requirements imposed on the detector if these 
+properties are to be studied.
 
 % TODO in order of importance:
 % heavy flavour at LHC is forward -> detector is forward
@@ -287,13 +33,36 @@ experiment intends to measure.
 %   * CP violation observables
 %   * Production rates
 
-The \lhcb\ experiment aims to make the most precise measurements of heavy 
-flavour properties to date, and to discover decays that were not observed by 
-previous experiments.
-This section will link the properties of heavy flavour decays with the 
-requirements imposed on the detector if one wants to study those properties.
+At the \ac{LHC}, heavy flavour quarks are primarily produced through 
+gluon-gluon fusion, illustrated in 
+\cref{fig:intro:lhcb:hf_production:gg_fusion}.
+With this mechanism, \bbbar\ and \ccbar\ pairs are predominantly produced in 
+the forward region, at low angles to the beam, as shown in 
+\cref{fig:intro:lhcb:hf_production:bbbar_angles}
+To exploit this, the \lhcb\ detector is instrumented in the pseudorapidity 
+region $2 < \Eta < 5$.
+Particles produced in this region are highly boosted in the laboratory frame, 
+and so given the lifetimes of the weakly decay heavy hadrons, of order of 
+$0.1$--$\SI{1}{\pico\second}$, they can fly several millimetres before 
+decaying.
+With a sufficiently sensitive detector, such secondary vertices can be 
+spatially distinguish from the primary proton-proton interaction vertices, 
+providing a powerful discriminant between signal and background.
+A good secondary vertex resolution also allows for a good decay time 
+resolution, which is necessary for measuring the fast oscillations of \PBds\ 
+and \PDzero mesons, and for measuring any possible decay time asymmetries.
+In addition, the large displacement of the decay vertices with respect to the 
+\ac{PV} causes the particles produced at the vertex to have a high \ac{IP}, 
+defined in \cref{fig:intro:lhcb:vertexing} as the smallest transverse distance 
+from the particle trajectory to the \ac{PV}.
+A sufficient experimental resolution on the \ac{IP} would allow for additional 
+discrimination between random tracks in the event and those from heavy flavour 
+decays.
+design of the \lhcb\ detector is particular optimised for the precise 
+reconstruction of primary and second vertices, which itself requires a very 
+good track reconstruction.
 
-As discussed previously, the properties of short-lived heavy flavour hadrons 
+The properties of heavy flavour hadrons, such as their masses and lifetimes, 
 can be inferred by reconstructing the four-momenta of their decay products, and 
 so \lhcb\ aims to fully reconstruct the decays of beauty and charm hadrons, 
 such as $\decay{\PBz}{\PKplus\PKminus}$, $\decay{\PBs}{\PDspm\PKmp}$ with 
@@ -307,44 +76,25 @@ For example, the decay $\decay{\PDz}{\PKplus\Ppiminus}$ is of the order of one
 thousand times less likely than the decay $\decay{\PDz}{\PKminus\Ppiminus}$, 
 and so a poor \ac{PID} performance would result in a search for the 
 $\PKplus\Ppiminus$ final state being swamped by $\PKminus\Ppiplus$.
+In general, misidentification cannot be excluded completely, and so in addition 
+a high momentum resolution is required to be able to distinguish between 
+different final states in the parent mass spectrum.
 
-The short lifetime of heavy flavour hadrons can be exploited to reduce 
-background.
-In general, tens to hundreds of particles are produced per proton-proton 
-interaction, only one or two of which may be the signal particle of interest.
-Most of the background particles will be pions, kaons, and protons, which are 
-long lived an will fly through the tracking system, with their reconstructed 
-tracks pointing back to the proton-proton interaction region, called the 
-\ac{PV}.
-As the heavy flavour hadrons are much lighter than the centre-of-mass energy of 
-the colliding beams, with the \PBz meson having a mass of \SI{5.28}{\GeVcc} and 
-the \PDz meson having a mass of \SI{1.86}{\GeVcc}, they have a large boost in 
-the laboratory frame, greatly increasing their lifetime, in accordance with 
-\cref{eqn:intro:sm:lifetime_lab}.
-Heavy flavour hadrons can then fly millimetres in the laboratory frame before 
-decaying, and a displaced decay vertex can then be reconstructed by combining 
-tracks that intersect.
-Particles produced in decays displaced from the \ac{PV} will have tracks which, 
-in general, does not point back to the \ac{PV}.
-This is illustrated in \cref{fig:intro:lhcb:vertexing}, showing the 
-\emph{impact parameter}, the smallest perpendicular distance from the track to 
-the \ac{PV}.
-Particles produced directly in the proton-proton interaction will have a small 
-\ac{IP}, whereas those produced in \emph{secondary decays}, from heavy flavour 
-hadrons, will in general have large \acp{IP}.
-Being able to measure both the degree to which a decay vertex is displaced from 
-the \ac{PV} and the \acl{IP} of tracks with a high precision would then allow 
-for discrimination between signal and background.
+An example of power of, and necessity for, good particle identification and 
+momentum resolution is shown in \cref{fig:intro:lhcb:pid_power}.
+Here, the signal decay is \decay{\PBzero}{\pimpip}, and the distributions are 
+the two-body invariant mass before \ac{PID} requirements are made on the 
+tracks~(\ref{fig:intro:lhcb:pid_power:pre}) and 
+after~(\ref{fig:intro:lhcb:pid_power:post}).
+As can be seen, before the requirements the distribution is dominated by other 
+two-body \PBzero, \PBs, and \PLambdab\ decays, however after the backgrounds 
+are almost entirely removed.
+The presence of such backgrounds significantly increases the complexity of an 
+analysis and can reduce the precision of the measurement.
 
-Precision is driven by the amount of data that is collected, and so the 
-experiment aims to maximise this.
-At the \ac{LHC}, the primary interaction mechanism between proton-proton 
-bunches is gluon-gluon fusion, as in 
-\cref{fig:intro:lhcb:hf_production:gg_fusion}, and with this mechanism \bbbar\ 
-and \ccbar\ pairs are predominantly produced in the \emph{forward} region, as 
-shown in \cref{fig:intro:lhcb:hf_production:bbbar_angles}.
-Instrumenting this region is then beneficial to collect large samples of heavy 
-flavour, however it comes with a price.
+In the following, the construction of the detector will be described, as 
+motivated by the physics goals of the collaboration and the properties of heavy 
+flavour outlined above.
 
 \begin{figure}
   \begin{subfigure}[b]{0.4\textwidth}
@@ -368,61 +118,69 @@ flavour, however it comes with a price.
 \end{figure}
 
 \begin{figure}
-  \centering
-  \input{figures/introduction/vertexing}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{introduction/B2pipi_pre_pid}
+    \caption{Before \ac{PID} requirements}
+    \label{fig:intro:lhcb:pid_power:pre}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{introduction/B2pipi_post_pid}
+    \caption{After \ac{PID} requirements}
+    \label{fig:intro:lhcb:pid_power:post}
+  \end{subfigure}
   \caption{%
-    Illustration of vertexing, showing a \PDz meson decaying in flight to a 
-    kaon and a pion.
-    The kaon and pion are reconstructed as tracks, and then \PDz decay vertex 
-    is inferred from the point of closest approach of the two tracks.
-    The minimum transverse distance the tracks make when extrapolated back 
-    towards the primary proton-proton vertex, the \acf{IP}, is shown.
+    Two-body invariant mass spectrum, under the $\pimpip$ hypothesis, 
+    before~(\subref*{fig:intro:lhcb:pid_power:pre}) and 
+    after~(\subref*{fig:intro:lhcb:pid_power:post}) \ac{PID} 
+    requirements~\cite{Aaij:2012as}.
+    The contribution from the signal decay is hatched with horizontal lines.
   }
-  \label{fig:intro:lhcb:vertexing}
+  \label{fig:intro:lhcb:pid_power}
 \end{figure}
-
-% The \ac{LHC} provides higher production rates of charm and beauty hadrons that 
-% any previous collider, and \lhcb\ is the only dedicated heavy flavour 
-% experiment at the \ac{LHC}.
-% As such, its primary goal is to study the properties of charm and beauty 
-% hadrons, exploiting the large amount of data that has been and continues to 
-% made to make precise measurements.
-
-% Unlike \atlas\ and \cms\, the \lhcb\ detector is searching for \ac{BSM} physics 
-% primarily through indirect searches.
-% The two principle methods in which this is done is through measuring 
-% differences between matter and antimatter, and by measuring rare processes such 
-% as the \BsTomumu decay.
 
 \section{Detector}
 \label{chap:intro:lhcb:detector}
 
-When describing the detector, it is useful to define a common coordinate 
-system.
-Within the \lhcb\ experiment, it is customary to define a right-handed 
-coordinate system, where the $z$-axis is aligned along the beam direction, 
-increasing in the clockwise direction along the \ac{LHC} ring; the $y$-axis is 
-aligned with gravity, increasing away from the Earth's surface; and the 
-$x$-axis, defined as $x = y \times z$, is then increasing away from the centre 
-of the accelerator.
-In this section, and in all subsequent sections, this coordinate system will be 
-used.
+Within the \lhcb\ experiment, the co-ordinate system is defined such that the 
+$z$-axis is aligned along the beam direction, increasing in the clockwise 
+direction along the \ac{LHC} ring; the $y$-axis is aligned with gravity, 
+increasing away from the Earth's surface; and the $x$-axis, defined as $x = y 
+\times z$, is then increasing away from the centre of the accelerator.
+In this \namecref{chap:intro:lhcb:detector}, and in all that follows, this 
+coordinate system will be used.
 
 The detector is shown in \cref{fig:intro:lhcb:detector}.
-How forward a process or a detector is is defined by the polar angle $\theta$, 
-defined with respect to the beam, with $0 < \theta < \pi$.
-A polar angle close to the extremes is considered forward, whilst values around 
-$\sfrac{\pi}{2}$ are \emph{central}.
-Another measure is the pseudorapidity
-\begin{equation}
-  \Eta = -\ln\left(\tan{\frac{\theta}{2}}\right).
-  \label{eqn:intro:lhcb:pseudorapidity}
-\end{equation}
-The pseudorapidity is zero at $\sfrac{\pi}{2}$, and becomes infinite as 
-$\theta$ tends to it extremes.
-The general purpose \atlas\ and \cms\ detector are instrumented for particle 
-tracking in the region $|\Eta| < 2.5$, whereas the \lhcb\ detector is 
-instrumented in the region $2 < \Eta < 5$.
+Its forward geometry is evident, roughly forming a cone between 10 and 
+\SI{400}{\milli\radian} in the polar angle $\theta$, or equivalently $2 < \Eta 
+< 5$.
+A dipole magnet with an integrated field strength of \SI{4}{\tesla\metre} bends 
+charged particle trajectories in the $xz$ plane, with the trajectories 
+themselves being recorded by the tracking system.
+This comprises a vertex detector centred around the proton-proton interaction 
+region, three planes of tracking stations before the magnet, and three planes 
+after.
+Immediately downstream of the vertex detector, increasing is $z$, in the first 
+of two \ac{RICH} detectors, used for particle identification, the second of 
+which is after the tracking stations downstream of the magnet.
+After this, a calorimetry system is in place to identify neutral particles such 
+as the \Ppizero\ and the photon, as well as to measure their energy and that of 
+the charged particles.
+Finally, a muon system is installed after the calorimeters, which is used for 
+muon identification.
+
+The data recorded by the detector is selected in real time by a hardware 
+trigger, after which a software triggers performs an event reconstruction.
+There are not enough computing resources available to the experiment to record 
+and analyse every proton-proton bunching crossing, and so the trigger is as 
+important to achieving the physics goals of the collaboration as the detector, 
+as it is responsible for deciding which crossings should be kept and which 
+should be discarded.
+
+Each sub-detector shall now be described in turn, followed by a description of 
+the trigger system and how the detector was upgraded in between \runone\ to 
+\runtwo.
 
 \begin{figure}
   \centering
@@ -439,11 +197,232 @@ instrumented in the region $2 < \Eta < 5$.
 \subsection{Tracking}
 \label{chap:intro:lhcb:detector:tracking}
 
+Charged particle trajectories are reconstructed as tracks using hits left in 
+the tracking system.
+This comprises the vertex locator~(\velo) centred around the proton-proton 
+interaction region, the Tracker Turicensis~(\ttracker) before the magnet, and 
+the T-stations after the magnet.
+In \runone, the tracking system achieved a momentum resolution 
+$\unc{\ptot}/\ptot$ from $0.5\%$ at $\ptot = \SI{5}{\GeVc}$ to $0.8\%$ at 
+\SI{100}{\GeVc}, and a track \acl{IP} resolution varying from around 
+\SI{70}{\micro\metre} for tracks with a low \pT\ to \SI{20}{\micro\metre} at 
+high \pT.
+
+The \velo\ is an extremely precise silicon strip detector, whose active 
+elements come as close as \SI{8}{\milli\metre} away from the \ac{LHC} beams.
+Two sets of 24 silicon modules are arranged either side of the beam, each of 
+which measures particle hits in $r$ and $\phi$ coordinates.
+Charged particles traversing the active silicon can ionise the material, 
+creating electron-hole pairs that drift towards the electrodes, registering a 
+hit as an electrical signal.
+The magnetic field strength inside the \velo\ is approximated to be zero, and 
+so track segments are reconstructed as straight lines using the hits in the 
+sensors.
+So-called long tracks, the track type used for the majority of physics 
+analyses, are created by combining \velo\ segments with hits in the T-stations 
+after the magnet.
+
+The three T-stations, T1--3, each comprise a silicon strip detector close to 
+the beam pipe~(the \itracker) and a drift-tube detector in the outer 
+regions~(the \otracker).
+The \itracker\ has a finer spatial resolution than the \otracker, and covers a 
+small area around the beam where the particle multiplicities are particularly 
+high.
+The \otracker\ covers an area of approximately \SI{30}{\metre\squared}, about 8 
+times greater than that covered by the \itracker.
+Ionising particles free electrons from the gas molecules within the tubes, 
+which are detected by anode wires and registered as hits.
+The point of ionisation within the wire is determined by measuring the electron 
+drift time, improving the track momentum resolution.
+This is further improved by adding the hits detected in the \ttracker, upstream 
+of the T-stations.
+The \ttracker\ is a silicon strip detector of the same technology as the 
+\itracker, with the three stations covering a total area of around 
+\SI{8}{\metre\squared}.
+
+The tracking efficiency, the fraction of real tracks that are formed given 
+enough hits were deposited to form one, is measured using a tag-and-probe 
+technique with \JpsiTomumu\ decays, which will be explained in more detail in 
+\cref{chap:prod:effs:tracking}.
+The formation of tracks assumes that the tracker system is perfectly aligned, 
+but the positions of the various stations can change with time.
+To compensate for this effect, alignment constants are computed periodically 
+and used in the reconstruction software.
+The effect of an improved alignment is illustrated in 
+\cref{fig:intro:lhcb:alignment}, where the $\Pmuon\APmuon$ mass resolution 
+improves from \SI{92}{\MeVcc} with an initial alignment to \SI{49}{\MeVcc} with 
+an improved one, that more accurately reflects the state of the 
+detector~\cite{Dujany:082010}.
+Without the improved alignment, it is harder to distinguish three distinct 
+resonant states.
+
 \subsection{Particle identification}
 \label{chap:intro:lhcb:detector:pid}
+
+In order to compute the invariant mass of a decay vertex, the mass of the 
+tracks forming that vertex must be known.
+As each long-lived charged particle has a unique mass, the mass measurement 
+assigns an identity to that track, in the process of \acf{PID}.
+Through the momentum-velocity relation, the mass of a particle can be 
+determined by combining the momentum measurement from the tracking system with 
+a velocity measurement.
+
+Tracks created by pions, kaons, and protons are identified using the response 
+of two \acl{RICH} detectors: \richone\ located upstream of the magnet; and 
+\richtwo\ located downstream.
+Electron and muon discrimination at a weaker level.
+\richtwo has larger surface area than \richone\ but has a smaller angular 
+acceptance, being designed to efficiently identify tracks with momenta in the 
+range \SIrange{15}{100}{\GeVc} which largely occupy the low-$\theta$ region.
+\richone\ is effective in the momentum range \SIrange{3}{60}{\GeVc}.
+During \runone, \richone contained a mixture of aerogel and \ce{C4F10} gas, of 
+which the former was removed before the start of \runtwo.
+\richtwo\ contains \ce{CF4} gas.
+
+As charged particles travels through one of these `radiators', each of 
+refractive index $n$, they emit Cherenkov radiation if they are travelling 
+faster than the phase velocity of light of the radiator.
+This light is emitted at an angle $\thetac$ to the particle trajectory, and is 
+related to the speed of the particle as
+\begin{equation}
+  \cos{\thetac} = \frac{1}{n\beta},
+\end{equation}
+where $\beta = v/c$.
+The refractive indices of the radiators are known and are controlled by 
+monitoring the gas pressure and temperature over time.
+By measuring \thetac\ the \rich\ detectors can provide velocity measurements of 
+charged tracks, and hence identify them.
+
+Each Cherenkov light cone is detected as a ring of photons by planes of photon 
+detectors arranged in arrays outside of the geometric acceptance of the \lhcb\ 
+detector, after having been reflected by a set of spherical and plane mirrors.
+In order to assign a particle mass hypothesis to a track, a maximum likelihood 
+method is used~\cite{Forty:1998eqa}.
+Initially, all reconstructed tracks are assumed to be pions, and the 
+\emph{predicted} Cherenkov rings assuming this hypothesis set are projected 
+onto the photo-detector planes within both \richone\ and \richtwo.
+The value of the log-likelihood is computed by comparing the predicted number 
+of photons within each photon detector to those observed.
+For each track, the mass hypothesis is then changed to each of (\Pe, \Pmu, 
+\Ppi, \PK, \Pproton), the rings assuming the new global hypothesis set are 
+projected, and the log-likelihood is re-computed.
+The hypothesis giving the largest increase in the log-likelihood is recorded, 
+and the track hypothesis is returned back to its original value.
+After all individual track hypotheses have been trialled, the single hypothesis 
+change that gave the largest increase in the log-likelihood is applied to the 
+respective track.
+This procedure is repeated until the log-likelihood no longer increases with 
+any change in the hypothesis set.
+The outputs of this method are the \ac{DLL} variables, with one value per track 
+for each of the (\Pe, \Pmu, \PK, \Pproton) hypotheses.
+Each \ac{DLL} variable is defined as the difference in the log-likelihood value 
+when the track mass hypothesis is changed from the pion hypothesis to the one 
+of the variable, for example \dllkpi.
+
+\subsection{Calorimetry}
+\label{chap:intro:lhcb:detector:calo}
+
+Given the momentum measurements from the tracking system and the mass 
+measurements from the \ac{RICH} detectors, the particle energy is already 
+determined.
+For hadrons then, a precise calorimetry system is not necessary.
+However, the momentum and mass measurements are complex and require a 
+significant amount of time to compute, and so cannot be used in the first stage 
+of the trigger where the proton-proton collision rate must be reduced from 
+\SI{40}{\mega\hertz} down to around \SI{1}{\mega\hertz}.
+In addition, the \rich\ detectors are much less sensitive to electron \ac{PID} 
+than (\Pe, \Pmu, \Pproton), and the tracking system cannot detect photons or 
+neutral pions, and so additional detection methods are required.
+
+To provide a fast positive trigger decision for events containing hadronic 
+decays of heavy flavour, a hadronic calorimeter, the \hcal, is employed.
+This is a sampling calorimeter, comprised of alternating layers of iron and 
+active scintillating material and positioned downstream of \richtwo.
+Hadrons traversing the \hcal\ deposit energy in these layers, with the 
+scintillation light collected by plastic fibres and recorded by 
+photo-multiplier tubes.
+The \hcal\ is segmented transversely into square cells, \SI{130}{\milli\metre} 
+in width near the beam and \SI{260}{\milli\metre} in width in the outer 
+regions, decreasing in granularity to account for the lower particle 
+multiplicities.
+The total transverse energy \ET\ in all clusters of $2\times2$ cells is 
+computed, and a positive trigger decision is made if the maximum \ET\ is above 
+some threshold, typically between \SIrange{3.5}{3.7}{\GeV}.
+The \hcal\ provides the highest rate of positive trigger decisions out of those 
+at the first trigger level, giving a signal efficiency of around 
+\SI{40}{\percent} for two-body \PB decays, and \SI{20}{\percent} for four-body 
+\PD decays.
+The resolution on the energy measured by the \hcal\ has been measured to be 
+$\unc{E}/E = \SI{69 \pm 5}{\percent}/\sqrt{E}$ plus a constant term of \SI{9 
+  \pm 2}{\percent}~\cite{Perret:2015pla}.
+
+An electromagnetic calorimeter, the \ecal, is located in front of the \hcal, 
+and measures the energies of electrons and photons.
+It is made of longitudinally alternating transverse layers of lead and 
+scintillator, throughout which run clear plastic fibres, collecting the 
+scintillation light to be read by photo-multiplier tubes.
+It is segmented in the transverse plane into three regions, increasing in 
+granularity towards the beam.
+The energy measurements it makes are used in the first trigger level to accept 
+high \ET\ electrons and photons, and in the reconstruction of \Ppizero and 
+\Peta mesons.
+The ability to discriminate between electrons and photons in the trigger 
+decision is provided by the scintillating pad/preshower detector~(\spd/\ps) 
+which consists of two layers of near-identical scintillator either side of a 
+\SI{15}{\milli\metre}-thick layer of lead~(\ce{Pb}) converter, transversely 
+segmented in the same manner as the \ecal.
+A positive electron trigger decision requires an \ET\ measurement of between 
+\SIrange{2.5}{3.0}{\GeV} in a cluster of $2\times2$ cells in the \ecal, along 
+with hits in both the \spd\ and the \ps\ pads in front of the corresponding 
+\ecal\ cluster.  A positive photon trigger decision is near-identical to this, 
+except that no hits must be present in the corresponding \spd\ cells.
+The resolution on \ecal\ energy measurements are $\unc{E}/E = \SI{9 \pm 
+  0.5}{\percent}/\sqrt{E}$, plus a constant term of 
+\SI{0.8}{\percent}~\cite{Perret:2015pla}.
 
 \subsection{Event selection}
 \label{chap:intro:lhcb:detector:trigger}
 
 \subsection{Data flow}
 \label{chap:intro:lhcb:detector:dataflow}
+
+
+\begin{figure}
+  \centering
+  \input{figures/introduction/vertexing}
+  \caption{%
+    Illustration of vertexing, showing a \PDz meson decaying in flight to a 
+    kaon and a pion.
+    The kaon and pion are reconstructed as tracks, and then the \PDzero decay 
+    vertex is inferred from the point of closest approach of the two tracks.
+    The minimum transverse distance the tracks make when extrapolated back 
+    towards the primary proton-proton vertex, the \acf{IP}, is shown.
+  }
+  \label{fig:intro:lhcb:vertexing}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \input{figures/introduction/mumu_pre_alignment}
+    \caption{Before}
+    \label{fig:intro:lhcb:alignment:pre}
+  \end{subfigure}
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \input{figures/introduction/mumu_post_alignment}
+    \caption{After}
+    \label{fig:intro:lhcb:alignment:post}
+  \end{subfigure}
+  \caption{%
+    Invariant mass distribution of $\Pmuon\APmuon$ candidates in the region of 
+    the first three \PUpsilon resonances~\cite{Dujany:082010}.
+    The left plot~(\subref*{fig:intro:lhcb:alignment:pre}) shows the data 
+    reconstructed with a preliminary alignment, whilst the right 
+    plot~(\subref*{fig:intro:lhcb:alignment:post}) shows the result of a 
+    reconstruction performed with a revised alignment.
+    The $\Pmuon\APmuon$ mass resolution improves from \SI{92}{\MeVcc} to 
+    \SI{49}{\MeVcc}.
+  }
+  \label{fig:intro:lhcb:alignment}
+\end{figure}
