@@ -2,37 +2,27 @@
 \label{chap:intro:lhc}
 
 As high-energy particle physics has progressed over the last century, the 
-meaning of `high energy' has changed from referring to accelerators with beam 
-energies around one \si{\MeV}, to today's machines whose energies reach the 
-\si{\TeV} scale.
-The operation of a particle collider involves accelerating at least one beam of 
-charged particles up to a given energy, and then steering and focusing the beam 
-into a target, which can be fixed, such as a sheet of gold foil, or another 
-beam, which can be of a different particle type.
-The nature of the physics to be explored dictates the nature of the beams and 
-targets, which in turns guides the development of the accelerator.
+meaning of `high energy' has continuously evolved.
+Today, high energy refers to the \acl{LHC}~\cite{Bruning:2004ej}, a circular 
+collider which begin operating at a proton-proton centre of mass energy of 
+\sqrtseq{7} in 2010, and in 2015 reached \sqrtseq{13}.
 
-The \acl{LHC}~\cite{Bruning:2004ej} is a circular particle accelerator, 
-designed to accelerate each of two oppositely-circulating beams of protons up 
-to energies of \SI{7}{\TeV}, meaning a total centre-of-mass energy, denoted 
-\sqrts, of \SI{14}{\TeV}.
-The use of protons allows for such high energies to be reached, which are 
-necessary for direct discoveries of new particles.
-Bunches of 120 billion protons are obtained through the ionisation of hydrogen 
-gas, and are then accelerated through a chain of progressively larger, more 
-powerful accelerators before being injected into the \ac{LHC}.
+In order to produce collisions, bunches of 120 billion protons are obtained 
+through the ionisation of hydrogen gas, and are then accelerated through a 
+chain of progressively larger, more powerful accelerators before being injected 
+into the \ac{LHC}.
 During nominal operation, a single \ac{LHC} `fill' consists of injecting 2808 
 bunches into the machine, each of which is about \SI{30}{\centi\metre} long, 
 separated from the surrounding bunches by about \SI{7}{\metre}, completing a 
 full revolution of the ring at a rate of \SI{11.2}{\mega\hertz}.
 
 The beams are steered around the \ac{LHC} by superconducting dipole magnets, 
-cooled to a temperature of \SI{1.9}{\kelvin}, and are kept in focus by 
-quadrupole and other, higher-order, magnets.
+cooled to a temperature of \SI{1.9}{\kelvin}, and are focussed by quadrupole 
+and other, higher-order, magnets.
 The beams are made to collide at four \acp{LHCIP}, before which they are 
-focused from the usual bunch diameter of \SI{0.2}{\milli\metre} while 
-circulating to a width on the order of microns, such that they can interact and 
-collide.
+focussed further, from the usual bunch diameter of \SI{0.2}{\milli\metre} while 
+circulating, to a width on the order of microns, such that they can interact 
+and collide.
 
 For a collision experiment, the number of times $N$ a particular process occurs 
 per second is the product of two quantities
@@ -42,15 +32,12 @@ per second is the product of two quantities
 \end{equation}
 where \lumi\ is the instantaneous luminosity of the accelerator and \xsec\ is 
 the cross-section of the process in question.
-Cross-sections are measured in units of area, and are a measure of the 
-probability of a particular process occurring during a scattering event.
 At $\sqrts = \SI{13}{\TeV}$, the largest cross-section seen at the \ac{LHC} for 
-a visible proton-proton interaction, producing particles that can be measured 
-by a detector, is around $\xsecppvis = 
+a visible proton-proton interaction is around $\xsecppvis = 
 \SI{70}{\milli\barn}$~\cite{Aaboud:2016mmw,CMS:2016ael}.
 Given that this number is fixed by the beam energy and colliding particle type, 
-accelerators are usually designed to maximise the luminosity \lumi, which can 
-be expressed for circular colliders such as the \ac{LHC} as
+the \ac{LHC} is designed to maximise the luminosity \lumi, which can be 
+expressed as
 \begin{equation}
   \lumi = \frac{N_{\text{p}}^{2}N_{\text{b}}\revfreq\gamma}{4\pi\epsilon\beta^{*}}F,
   \label{eqn:intro:lhc:inst_lumi}
@@ -63,9 +50,8 @@ circulation, a measure of the beam size transverse to the beam direction;
 $\beta^{*}$ is a measure of the transverse beam size at a particular 
 \ac{LHCIP}; and $F$ accounts for non-zero crossing angles between the two beams 
 at an \ac{LHCIP}.
-Depending on the experiment centred around an \ac{LHCIP}, the \betastar 
-parameter can be tuned to provide a specific average number of collisions per 
-bunch crossing.
+Depending on the experiment, the \betastar\ parameter can be tuned to provide a 
+specific average number $\nu$ of collisions per bunch crossing.
 Maximising the luminosity is limited by the technological and monetary 
 constraints present at the time of construction: increasing the number of 
 bunches or particles per bunch increases the beam current, requiring stronger 
@@ -79,28 +65,6 @@ visible proton-proton interactions of
                   = \SI{700}{\mega\hertz}.
   \label{eqn:intro:lhc:nppvis}
 \end{equation}
-
-During a fill, the number of bunches in the machine, and hence the luminosity, 
-decreases as protons are lost to collisions at the \acp{LHCIP} and due to 
-imperfections in the focusing systems.
-The latter causes protons to drift outside the nominal circular beam 
-trajectory, most of which are removed by the beam cleaning devices installed 
-around the ring.
-As the protons have a high energy, collisions with the magnets can generate 
-large amounts of heat.
-% TODO: this would be more meaningful if the current was expressed as energy, 
-% then we could equate the current and sudden onset of resistence in joules, 
-% equivalent to some explosion
-If the heat build-up is too high, the magnets can `quench', whereby their 
-temperature increases above the threshold below which they are superconducting.
-This can be dangerous, as the superconducting magnets carry tens of thousands 
-of amperes of current.
-The prevent this, the beam can be steered into a beam dump within about 
-\SI{3}{\micro\second} of a fault being detected.
-The large amount of energy stored in the beam, as electric current, requires 
-some sensitive detector components to be able to move away from the beam while 
-it is being stabilised at the beginning of the fill, as will be discussed in 
-\cref{chap:intro:lhcb:detector}.
 
 As the most powerful particle accelerator in the world, the \ac{LHC} is itself 
 an experiment, pushing the boundaries of what is capable with a particle 
@@ -125,9 +89,8 @@ diameter.
 % TODO: check this statement is true, does the Higgs really do that
 They are designed to discover and study the properties of the Higgs boson 
 \PHiggs, the particle the generates the mass of the fundamental particles, and 
-to study the physics of \ac{QCD} and \ac{EW} interactions; that is the physics 
-of the strong force and weak force.
-The signals they search for are generally high energy and high momentum 
+to study the physics of \ac{QCD} and \ac{EW} interactions.
+The signals they search for are generally high-energy and high-momentum 
 electrons, muons, photons, and jets, collimated clusters of charged and neutral 
 hadrons.
 The high momentum of these signals is due to the large masses of the particles 
@@ -135,8 +98,8 @@ The high momentum of these signals is due to the large masses of the particles
 masses between 80 and \SI{125}{\GeVcc}, and particles predicted by \ac{BSM} 
 theories, which can be in the order of \SI{1}{\TeV}.
 
-The design luminosity at points 1 and 5 is 
-\SI{1e34}{\per\square\centi\metre\per\second}, and the rate of \PHiggs 
+Given the design luminosity at points 1 and 5 of 
+\SI{1e34}{\per\square\centi\metre\per\second}, and that the rate of \PHiggs 
 production in proton-proton collisions is of the order of tens of 
 picobarn~\cite{Khachatryan:2016vau}, $\xsec_{\PHiggs} \sim \SI{10}{\pico\barn} 
 = \SI{1e-35}{\per\square\centi\metre}$, translating to around 0.1 Higgs bosons 
