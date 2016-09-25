@@ -179,8 +179,10 @@ as it is responsible for deciding which crossings should be kept and which
 should be discarded.
 
 Each sub-detector shall now be described in turn, followed by a description of 
-the trigger system and how the detector was upgraded in between \runone\ to 
-\runtwo.
+the trigger system.
+The descriptions will relate to the detector and its performance during 
+\runone, and shall be followed by a Section on the upgrades performed during 
+\ac{LS1}.
 
 \begin{figure}
   \centering
@@ -256,137 +258,6 @@ detector~\cite{Dujany:082010}.
 Without the improved alignment, it is harder to distinguish three distinct 
 resonant states.
 
-\subsection{Particle identification}
-\label{chap:intro:lhcb:detector:pid}
-
-In order to compute the invariant mass of a decay vertex, the mass of the 
-tracks forming that vertex must be known.
-As each long-lived charged particle has a unique mass, the mass measurement 
-assigns an identity to that track, in the process of \acf{PID}.
-Through the momentum-velocity relation, the mass of a particle can be 
-determined by combining the momentum measurement from the tracking system with 
-a velocity measurement.
-
-Tracks created by pions, kaons, and protons are identified using the response 
-of two \acl{RICH} detectors: \richone\ located upstream of the magnet; and 
-\richtwo\ located downstream.
-Electron and muon discrimination at a weaker level.
-\richtwo has larger surface area than \richone\ but has a smaller angular 
-acceptance, being designed to efficiently identify tracks with momenta in the 
-range \SIrange{15}{100}{\GeVc} which largely occupy the low-$\theta$ region.
-\richone\ is effective in the momentum range \SIrange{3}{60}{\GeVc}.
-During \runone, \richone contained a mixture of aerogel and \ce{C4F10} gas, of 
-which the former was removed before the start of \runtwo.
-\richtwo\ contains \ce{CF4} gas.
-
-As charged particles travels through one of these `radiators', each of 
-refractive index $n$, they emit Cherenkov radiation if they are travelling 
-faster than the phase velocity of light of the radiator.
-This light is emitted at an angle $\thetac$ to the particle trajectory, and is 
-related to the speed of the particle as
-\begin{equation}
-  \cos{\thetac} = \frac{1}{n\beta},
-\end{equation}
-where $\beta = v/c$.
-The refractive indices of the radiators are known and are controlled by 
-monitoring the gas pressure and temperature over time.
-By measuring \thetac\ the \rich\ detectors can provide velocity measurements of 
-charged tracks, and hence identify them.
-
-Each Cherenkov light cone is detected as a ring of photons by planes of photon 
-detectors arranged in arrays outside of the geometric acceptance of the \lhcb\ 
-detector, after having been reflected by a set of spherical and plane mirrors.
-In order to assign a particle mass hypothesis to a track, a maximum likelihood 
-method is used~\cite{Forty:1998eqa}.
-Initially, all reconstructed tracks are assumed to be pions, and the 
-\emph{predicted} Cherenkov rings assuming this hypothesis set are projected 
-onto the photo-detector planes within both \richone\ and \richtwo.
-The value of the log-likelihood is computed by comparing the predicted number 
-of photons within each photon detector to those observed.
-For each track, the mass hypothesis is then changed to each of (\Pe, \Pmu, 
-\Ppi, \PK, \Pproton), the rings assuming the new global hypothesis set are 
-projected, and the log-likelihood is re-computed.
-The hypothesis giving the largest increase in the log-likelihood is recorded, 
-and the track hypothesis is returned back to its original value.
-After all individual track hypotheses have been trialled, the single hypothesis 
-change that gave the largest increase in the log-likelihood is applied to the 
-respective track.
-This procedure is repeated until the log-likelihood no longer increases with 
-any change in the hypothesis set.
-The outputs of this method are the \ac{DLL} variables, with one value per track 
-for each of the (\Pe, \Pmu, \PK, \Pproton) hypotheses.
-Each \ac{DLL} variable is defined as the difference in the log-likelihood value 
-when the track mass hypothesis is changed from the pion hypothesis to the one 
-of the variable, for example \dllkpi.
-
-\subsection{Calorimetry}
-\label{chap:intro:lhcb:detector:calo}
-
-Given the momentum measurements from the tracking system and the mass 
-measurements from the \ac{RICH} detectors, the particle energy is already 
-determined.
-For hadrons then, a precise calorimetry system is not necessary.
-However, the momentum and mass measurements are complex and require a 
-significant amount of time to compute, and so cannot be used in the first stage 
-of the trigger where the proton-proton collision rate must be reduced from 
-\SI{40}{\mega\hertz} down to around \SI{1}{\mega\hertz}.
-In addition, the \rich\ detectors are much less sensitive to electron \ac{PID} 
-than (\Pe, \Pmu, \Pproton), and the tracking system cannot detect photons or 
-neutral pions, and so additional detection methods are required.
-
-To provide a fast positive trigger decision for events containing hadronic 
-decays of heavy flavour, a hadronic calorimeter, the \hcal, is employed.
-This is a sampling calorimeter, comprised of alternating layers of iron and 
-active scintillating material and positioned downstream of \richtwo.
-Hadrons traversing the \hcal\ deposit energy in these layers, with the 
-scintillation light collected by plastic fibres and recorded by 
-photo-multiplier tubes.
-The \hcal\ is segmented transversely into square cells, \SI{130}{\milli\metre} 
-in width near the beam and \SI{260}{\milli\metre} in width in the outer 
-regions, decreasing in granularity to account for the lower particle 
-multiplicities.
-The total transverse energy \ET\ in all clusters of $2\times2$ cells is 
-computed, and a positive trigger decision is made if the maximum \ET\ is above 
-some threshold, typically between \SIrange{3.5}{3.7}{\GeV}.
-The \hcal\ provides the highest rate of positive trigger decisions out of those 
-at the first trigger level, giving a signal efficiency of around 
-\SI{40}{\percent} for two-body \PB decays, and \SI{20}{\percent} for four-body 
-\PD decays.
-The resolution on the energy measured by the \hcal\ has been measured to be 
-$\unc{E}/E = \SI{69 \pm 5}{\percent}/\sqrt{E}$ plus a constant term of \SI{9 
-  \pm 2}{\percent}~\cite{Perret:2015pla}.
-
-An electromagnetic calorimeter, the \ecal, is located in front of the \hcal, 
-and measures the energies of electrons and photons.
-It is made of longitudinally alternating transverse layers of lead and 
-scintillator, throughout which run clear plastic fibres, collecting the 
-scintillation light to be read by photo-multiplier tubes.
-It is segmented in the transverse plane into three regions, increasing in 
-granularity towards the beam.
-The energy measurements it makes are used in the first trigger level to accept 
-high \ET\ electrons and photons, and in the reconstruction of \Ppizero and 
-\Peta mesons.
-The ability to discriminate between electrons and photons in the trigger 
-decision is provided by the scintillating pad/preshower detector~(\spd/\ps) 
-which consists of two layers of near-identical scintillator either side of a 
-\SI{15}{\milli\metre}-thick layer of lead~(\ce{Pb}) converter, transversely 
-segmented in the same manner as the \ecal.
-A positive electron trigger decision requires an \ET\ measurement of between 
-\SIrange{2.5}{3.0}{\GeV} in a cluster of $2\times2$ cells in the \ecal, along 
-with hits in both the \spd\ and the \ps\ pads in front of the corresponding 
-\ecal\ cluster.  A positive photon trigger decision is near-identical to this, 
-except that no hits must be present in the corresponding \spd\ cells.
-The resolution on \ecal\ energy measurements are $\unc{E}/E = \SI{9 \pm 
-  0.5}{\percent}/\sqrt{E}$, plus a constant term of 
-\SI{0.8}{\percent}~\cite{Perret:2015pla}.
-
-\subsection{Event selection}
-\label{chap:intro:lhcb:detector:trigger}
-
-\subsection{Data flow}
-\label{chap:intro:lhcb:detector:dataflow}
-
-
 \begin{figure}
   \centering
   \input{figures/introduction/vertexing}
@@ -426,3 +297,416 @@ The resolution on \ecal\ energy measurements are $\unc{E}/E = \SI{9 \pm
   }
   \label{fig:intro:lhcb:alignment}
 \end{figure}
+
+\subsection{Particle identification}
+\label{chap:intro:lhcb:detector:pid}
+
+In order to compute the invariant mass of a decay vertex, the mass of the 
+tracks forming that vertex must be known.
+As each long-lived charged particle has a unique mass, the mass measurement 
+assigns an identity to that track, in the process of \acf{PID}.
+Through the momentum-velocity relation, the mass of a particle can be 
+determined by combining the momentum measurement from the tracking system with 
+a velocity measurement.
+
+Tracks created by pions, kaons, and protons are identified using the response 
+of two \acl{RICH} detectors: \richone\ located upstream of the magnet; and 
+\richtwo\ located downstream.
+Electron and muon discrimination at a weaker level.
+\richtwo\ has larger surface area than \richone\ but has a smaller angular 
+acceptance, being designed to efficiently identify tracks with momenta in the 
+range \SIrange{15}{100}{\GeVc} which largely occupy the low-$\theta$ region.
+\richone\ is effective in the momentum range \SIrange{3}{60}{\GeVc}.
+During \runone, \richone\ contained a mixture of aerogel and \ce{C4F10} gas, of 
+which the former was removed before the start of \runtwo.
+\richtwo\ contains \ce{CF4} gas.
+
+As charged particles travels through one of these `radiators', each of 
+refractive index $n$, they emit Cherenkov radiation if they are travelling 
+faster than the phase velocity of light of the radiator.
+This light is emitted at an angle $\thetac$ to the particle trajectory, and is 
+related to the speed of the particle as
+\begin{equation}
+  \cos{\thetac} = \frac{1}{n\beta},
+\end{equation}
+where $\beta = v/c$.
+The refractive indices of the radiators are known and are controlled by 
+monitoring the gas pressure and temperature over time.
+By measuring \thetac\ the \rich\ detectors can provide velocity measurements of 
+charged tracks, and hence identify them.
+
+Each Cherenkov light cone is detected as a ring of photons by planes of photon 
+detectors arranged in arrays outside of the geometric acceptance of the \lhcb\ 
+detector, after having been reflected by a set of spherical and plane mirrors.
+The angle \thetac\ is related to the radius of the rings, and for a given 
+momentum particles of different masses will produced smaller or larger rings.
+\Cref{fig:intro:lhcb:cherenkov_angles} illustrates the Cherenkov angles emitted 
+by different particle species as a function of particle momentum.
+Separation between mass hypotheses is given by the difference been angles on 
+the $y$-axis.
+The Cherenkov angle resolution in \richone\ is around \SI{1.6}{\milli\radian}, 
+and around \SI{0.66}{\milli\radian} in \richtwo.
+
+In order to assign a particle mass hypothesis to a track, a maximum likelihood 
+method is used~\cite{Forty:1998eqa}.
+Initially, all reconstructed tracks are assumed to be pions, and the 
+\emph{predicted} Cherenkov rings assuming this hypothesis set are projected 
+onto the photo-detector planes within both \richone\ and \richtwo.
+The value of the log-likelihood is computed by comparing the predicted number 
+of photons within each photon detector to those observed.
+For each track, the mass hypothesis is then changed to each of (\Pe, \Pmu, 
+\Ppi, \PK, \Pproton), the rings assuming the new global hypothesis set are 
+projected, and the log-likelihood is re-computed.
+The hypothesis giving the largest increase in the log-likelihood is recorded, 
+and the track hypothesis is returned back to its original value.
+After all individual track hypotheses have been trialled, the single hypothesis 
+change that gave the largest increase in the log-likelihood is applied to the 
+respective track.
+This procedure is repeated until the log-likelihood no longer increases with 
+any change in the hypothesis set.
+The outputs of this method are the \ac{DLL} variables, with one value per track 
+for each of the (\Pe, \Pmu, \PK, \Pproton) hypotheses.
+Each \ac{DLL} variable is defined as the difference in the log-likelihood value 
+when the track mass hypothesis is changed from the pion hypothesis to the one 
+of the variable, for example \dllkpi.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{introduction/cherenkov_angles}
+  \caption{%
+    Cherenkov angles for different particle species as a function of particle 
+    momentum, in the different radiators used in the \rich\ detectors.
+    The Cherenkov angle resolution in \richone~(aerogel and \ce{C4F10} 
+    radiators) is around \SI{1.6}{\milli\radian}, and around 
+    \SI{0.66}{\milli\radian} in \richtwo~(\ce{CF4}).
+  }
+  \label{fig:intro:lhcb:cherenkov_angles}
+\end{figure}
+
+\subsection{Calorimetry}
+\label{chap:intro:lhcb:detector:calo}
+
+Given the momentum measurements from the tracking system and the mass 
+measurements from the \ac{RICH} detectors, the particle energy is already 
+determined.
+For hadrons then, a precise calorimetry system is not necessary.
+However, the momentum and mass measurements are complex and require a 
+significant amount of time to compute, and so cannot be used in the first stage 
+of the trigger where the proton-proton collision rate must be reduced from 
+\SI{40}{\mega\hertz} down to around \SI{1}{\mega\hertz}.
+In addition, the \rich\ detectors are much less sensitive to electron \ac{PID} 
+than (\Pe, \Pmu, \Pproton), and the tracking system cannot detect photons or 
+neutral pions, and so additional detection methods are required.
+
+To provide a fast positive trigger decision for events containing hadronic 
+decays of heavy flavour, a hadronic calorimeter, the \hcal, is employed.
+This is a sampling calorimeter, comprised of alternating layers of iron and 
+active scintillating material and positioned downstream of \richtwo.
+Hadrons traversing the \hcal\ deposit energy in these layers, with the 
+scintillation light collected by wavelength-shifting optical fibres and 
+recorded by photo-multiplier tubes.
+This general construction and detection mechanism is common to all \lhcb\ 
+calorimeters.
+The \hcal\ is segmented transversely into square cells, \SI{130}{\milli\metre} 
+in width near the beam and \SI{260}{\milli\metre} in width in the outer 
+regions, decreasing in granularity to account for the lower particle 
+multiplicities.
+The total transverse energy \ET\ in all clusters of $2\times2$ cells is 
+computed, and a positive trigger decision is made if the maximum \ET\ is above 
+some threshold, typically between \SIrange{3.5}{3.7}{\GeV}.
+The \hcal\ provides the highest rate of positive trigger decisions out of those 
+at the first trigger level, giving a signal efficiency of around 
+\SI{40}{\percent} for two-body \PB decays, and \SI{20}{\percent} for four-body 
+\PD decays.
+The resolution on the energy measured by the \hcal\ has been measured to be 
+$\unc{E}/E = \SI{69 \pm 5}{\percent}/\sqrt{E}$ plus a constant term of \SI{9 
+  \pm 2}{\percent}~\cite{Perret:2015pla}.
+
+An electromagnetic calorimeter, the \ecal, is located in front of the \hcal, 
+and measures the energies of electrons and photons.
+It is segmented in the transverse plane into three regions, increasing in 
+granularity towards the beam.
+The \ecal\ is partitioned more finely than the \hcal\ due to the smaller 
+characteristic scale at which electromagnetic showers occur, compared to 
+hadronic showers.
+The energy measurements it makes are used in the first trigger level to accept 
+high \ET\ electrons and photons, and in the reconstruction of \Ppizero and 
+\Peta mesons.
+The ability to discriminate between electrons and photons in the trigger 
+decision is provided by the scintillating pad/preshower detector~(\spd/\ps) 
+which consists of two layers of near-identical scintillator either side of a 
+\SI{15}{\milli\metre}-thick layer of lead~(\ce{Pb}) converter, transversely 
+segmented in the same manner as the \ecal.
+A positive electron trigger decision requires an \ET\ measurement of between 
+\SIrange{2.5}{3.0}{\GeV} in a cluster of $2\times2$ cells in the \ecal, along 
+with hits in both the \spd\ and the \ps\ pads in front of the corresponding 
+\ecal\ cluster.  A positive photon trigger decision is near-identical to this, 
+except that no hits must be present in the corresponding \spd\ cells.
+The resolution on \ecal\ energy measurements are $\unc{E}/E = \SI{9 \pm 
+  0.5}{\percent}/\sqrt{E}$, plus a constant term of 
+\SI{0.8}{\percent}~\cite{Perret:2015pla}.
+
+\subsection{Muon reconstruction and identification}
+
+Used in first trigger stage: muon requires \SIrange{1.48}{1.76}{\GeVc}, di-muon 
+requires between \SIrange{1.69}{2.56}{(\GeVc)\squared}.
+
+\section{Online event reconstruction and selection}
+\label{chap:intro:lhcb:trigger}
+
+There are three stages to the \lhcb\ trigger system, run sequentially one after 
+the other.
+Each stage comprises a series of parallel trigger \emph{lines}, and each stage 
+runs only if at least one line in the previous stage gave a positive decision.
+
+The first stage is a hardware trigger, called the level-zero or \lzero.
+It comprises a set of decision units as custom circuitry that evaluate 
+decisions at the full \SI{40}{\mega\hertz} of \pp\ collisions provided by the 
+accelerator.
+The \lzero\ output rate is limited to the \SI{1}{\mega\hertz} rate at which the 
+full detector is able to be read out.
+The muon stations and the calorimeters can be read at \SI{40}{\mega\hertz}, and 
+it is the information from these sub-detectors that is used for making the 
+\lzero\ decisions.
+The single muon decision requires a high \pT\ muon, and the di-muon decision 
+requires two.
+The hadron, electron, and photon triggers require high \ET\ signatures in the 
+\hcal\ or \ecal, as appropriate.
+On a positive \lzero\ decision, when one or more line has `fired', the entire 
+detector is read out and sent to the \ac{HLT} computing farm for processing in 
+software.
+Beginning in 2012, around \SI{20}{\percent} of events sent to the farm are 
+deferred to disk, to be processed during the inter-fill periods when the 
+detector is idle~\cite{1742-6596-513-1-012006}.
+This technique increases the average CPU time available for processing each 
+event, allowing for looser momentum requirements in the reconstruction and 
+hence more efficient triggers.
+
+The first stage of the software trigger, \hltone, and performs a simplified 
+track reconstruction in order to confirm the \lzero\ decisions and improve 
+their discriminatory power.
+Segments in the \velo\ detector are first reconstructed, and \pp vertices are 
+formed.
+Segments that do not have a significant \ac{IP} with respect to all \acp{PV} or 
+that cannot be matched to hits in the muon stations are discarded..
+The remaining segments are matched to hits in the T-stations to form long 
+tracks.
+To save processing some due to combinatorics, a search window is defined by a 
+minimum momentum that varied between \SIrange{3}{6}{\GeVc} and a minimum \pT\ 
+requirement that varied between \SIrange{0.5}{1.25}{\GeVc}.
+The transverse momentum window is not required on tracks that can be matched to 
+hits in the muon stations.
+Using the faster track reconstruction, the mass resolution on \JpsiTomumu\ 
+candidates is around \SI{3}{\percent} lower than that achieved in the offline 
+reconstruction.
+
+For final states not containing leptons, the most efficient trigger path is 
+through the one-track line, which requires the presence of a single, good 
+quality, high \pT\ track with a large \ac{IP}.
+Typical thresholds were $1.6$--\SI{1.7}{\GeVc} in \pT\ and 
+\SI{0.1}{\milli\metre} in \ac{IP}.
+This line dominates the \hltone\ output rate, contributing over 
+\SI{70}{\percent} of all triggers.
+Similar lines exist for muon and di-muon candidates, where the corresponding 
+\ac{IP} thresholds are not required if the candidate has a very \pT\ (or a high 
+$\Pmuon\APmuon$ invariant mass in the case of the di-muon line).
+The muon triggers have efficiencies upwards of \SI{70}{\percent} for \PB\ 
+decays containing muons.
+
+Events passing \hltone\ are sent to the second software stage, \hlttwo, at a 
+rate of \SI{80}{\kilo\hertz}, where a full event reconstruction is performed, 
+including the tracks, vertices, and \ac{PID} information.
+As more processing time is now available per event, all \velo\ segments are now 
+reconstructed as long tracks, with looser search window requirements in 
+comparison with \hltone\ of $\ptot > \SI{3}{\GeVc}$ and $\pT > 
+\SI{0.3}{\GeVc}$.
+A relative loss in efficiency of \SIrange{1}{2}{\percent} per track is seen 
+compared to the offline reconstruction.
+In \hlttwo, tracks are combined into vertex candidates, and \hlttwo\ lines are 
+grouped as either \emph{exclusive}, where decays are fully reconstructed, and 
+\emph{inclusive}, where generic signatures are considered.
+
+For beauty decays, the inclusive `topological' lines select two, three, and 
+four-body vertices of charged tracks that are characteristic of those produced 
+by \PB decays.
+Input tracks are required to have a high \ac{IP}, and then the vertex is 
+selected based on its distance from the \ac{PV}, the \ac{IP} of the vertex 
+momentum vector, the \ac{DOCA} and the sum of the \pT\ of the input tracks, and 
+the vertex mass and corrected mass, the latter of which accounts for decay 
+products not explicitly included in the vertex.
+The \ac{DOCA} requirements are loose enough to accommodate \PB decays involving 
+a long-lived charm hadron, where a tertiary vertex would be defined in the 
+offline reconstruction.
+The vertex quantities are used as input to a \ac{BDT}, and the single output 
+value is used to make the trigger 
+decision~\cite{Gligorov:2011qxa,Gligorov:1384380}.
+Decision trees will be discussed in more detail in 
+\cref{chap:cpv:kinematic_weighting:bdt_theory}.
+A similar set of topological lines exists that are optimised for \PB decays 
+that included a high \pT\ muon, and an inclusive \PDstarp\ line exists for 
+selecting \DstToDzpi\ with $\decay{\PDzero}{hhX}$ decays, where $hh$ are two 
+charged hadrons.
+The topological \PB triggers are around \SI{75}{\percent} efficient on average 
+at selecting fully charged \PB decays, and the \PDstarp\ triggers is between 
+\SIrange{25}{90}{\percent}.
+The efficiencies generally increase with increasing heavy flavour \pT, and for 
+the charm triggers are strongly dependent on the multiplicity of the final 
+state, with higher multiplicities having a lower efficiency.
+The remaining inclusive lines are the single muon and di-muon lines, which are 
+similar to those in \hltone.
+
+Exclusive \hlttwo\ lines fully reconstruct the signal decay under study, such 
+as \decay{\PB}{\pimpip} and \decay{\PLambdac}{\Pproton\PKminus\Ppiplus}.
+Some of these lines are included to increase the efficiency of the inclusive 
+lines for specific final states, whilst others are the only trigger path which 
+would give a high efficiency trigger path.
+
+After the \acl{HLT}, events passing at least one \hlttwo\ line are saved to 
+disk.
+The offline processing then begins with the full event reconstruction, which is 
+more precise than that in the trigger due to the longer processing times 
+permitted.
+One example is the reconstruction of long tracks, where two methods are 
+employed offline rather than the one online.
+The differences between the online and offline reconstruction were removed 
+during \ac{LS1}, which shall be discussed in \cref{chap:intro:lhcb:ofline}
+
+\section{Offline data flow and the \ac{LS1} upgrades}
+\label{chap:intro:lhcb:offline}
+
+During \runone, all data passing \hlttwo\ was saved to disk and was 
+reconstructed offline by a separate software application.
+The output of this reconstruction is tracks and the information associated to 
+them such as the \ac{DLL} \ac{PID} responses.
+
+To facilitate easier processing offline for analysts, a central selection is 
+run called the `stripping', which defines stripping lines that reconstruct 
+inclusive and exclusive decays in a similar manner to those defined in \hlttwo.
+The lines are grouped in to `streams' which group together stripping lines with 
+similar selections, such as those of semileptonic \PB decays or di-muon decays.
+This is simpler for analysts as they do not need to analyse the entire dataset, 
+but only the particular stream that contains the selection they are interested 
+in.
+Additionally, it saves computing resources as analysts do not need to run the 
+candidate building step if they want to add information to their analysis 
+later.
+In general, any one stripping line contains events which could have been saved 
+due to the decision of any trigger line, and so analysts were able to choose 
+which triggers to include in their analysis dataset offline.
+This can be a complex procedure, as now there are at least two sets of 
+selections to consider, those in the trigger and those in the stripping, and 
+one must also consider the difference in resolution between the two 
+reconstructions: using the same selection online and offline would result in 
+visible resolution effects around the selection boundaries, which can be hard 
+to model.
+
+To overcome these complications, three parallel efforts were made during 
+\ac{LS1}.
+The first of these was a major review of the online and offline reconstruction 
+software, resulting in a large decrease in the execution time required per 
+event in the offline reconstruction, such that the online reconstruction was 
+made to be identical to that offline.
+The second effort was the development and deployment of a real-time alignment 
+and calibration of the full detector per fill.
+The full output of \hltone\ of the current \ac{LHC} fill is buffered to disk, 
+the detector alignment and calibration constants are computed using that data, 
+and are then applied during the reconstruction performed in 
+\hlttwo~\cite{Dujany:082010}.
+The second effort, facilitated by the first, was the introduction of the Turbo 
+stream processing model~\cite{Benson:2019752}.
+Given that the additional offline processing was no longer necessary to improve 
+the resolution of the various physics quantities, and that the best possible 
+detector alignment and calibration is already applied, it was realised that 
+physics analyses could be performed directly on the output of the trigger.
+
+There are several benefits due to these efforts.
+The improvement of the online reconstruction allows for near-parity between the 
+online and offline selections, increasing the trigger efficiency and the 
+possible number of signal candidates available for analysis.
+One notable example is the inclusion of a new two-track trigger in \hltone, 
+which is able to build and select two-prong vertices.
+In addition, these efforts negate the need for an additional, offline 
+reconstruction, saving computing resources,
+ and analyses can progress more quickly as the data are available almost 
+ immediately, within hours rather than days or weeks with the \runone\ 
+ processing model.
+ Analyses have already been performed that exploited this 
+ model~\cite{LHCb-PAPER-2015-037,Aaij:2015bpa}.
+
+ The Turbo stream currently has some limitations, however.
+ The most restrictive of these is that the candidates available to analysts are 
+ only those explicitly used in the trigger decision.
+ For example, if a trigger line reconstructs \DzToKpi\ and the candidate passes 
+ the selection, analysts can only use the information pertaining to the kaon 
+ and pion tracks, the \PDzero vertex, and the associated primary vertex.
+ For many analyses, this information is all that is needed, however sometimes 
+ additional information about the event is required.
+ Effort is ongoing to resolve these problems, and it is expected that a vast 
+ majority of analyses will be using the Turbo stream in \runthree.
+
+\section{Simulation}
+\label{chap:intro:lhcb:simulation}
+
+Simulated data is used to model effects that cannot be modelled using the real 
+data, such as acceptance efficiencies, and to perform detector performance 
+studies during the design phases.
+
+Proton-proton collisions are generated by the \pythia\ 8 program using a tune 
+specific to \lhcb.
+\pythia simulates the parton interactions, quark and gluon fragmentation, and 
+resulting hadronisation and creation of other particles, such as leptons.
+The behaviour of the hadrons is simulated by the \evtgen\ program, which models 
+phenomena such as branching fractions, neutral meson mixing, \CP\ violation, 
+decay amplitude models, and decay times.
+Simulated samples for a specific decay are generated by running \pythia\ in 
+`minimum bias mode', where proton-proton collisions are generated until the 
+head of the decay is created somewhere in the set of particles produced, and 
+then this head particle is forced to decay to the final state under study by 
+\evtgen~\cite{Clemencic:2011zza}.
+The behaviour of the other particles generated in the event is also controlled 
+by \evtgen, but is not forced to any particular state.
+
+The total simulation is configured to model the beam parameters relating to the 
+`real data' the \ac{MC} is to be used with~\cite{Belyaev:1322400}.
+After \evtgen, the particles are propagated through a simulation of the entire 
+detector using the \geant\ 4 program, where interactions with the detector are 
+recorded as `\ac{MC} hits'.
+These \ac{MC} hits are converted into a format mimicking the electrical 
+response of the real detector through an \lhcb-specific emulation, and the 
+response is processed through the trigger and reconstruction software in an 
+identical manner to real data.
+
+The simulated data is processed in such a way that reconstructed objects can be 
+associated to the \ac{MC} objects that created them.
+For charged, stable particles reconstructed via tracks, a particle is 
+associated to an \ac{MC} particle if at least \SI{70}{\percent} of the hits 
+comprising the associated track were deposited by the \ac{MC} particle in 
+question.
+The process of assigning \ac{MC} objects to reconstructed objects is referred 
+to as \emph{truth matching}.
+Tracks are classified as \emph{ghost} tracks if there are no \ac{MC} particles 
+that can be associated to them.
+Vertices can then be assigned categories based on the associations of their 
+input tracks.
+A signal vertex is one in which all inputs are associated to \ac{MC} particles, 
+all inputs have been assigned a particle identity equal to that of its 
+associated \ac{MC} particle, all inputs have been associated with \ac{MC} 
+particles which come from the same true \ac{MC} parent, and the identity of the 
+\ac{MC} parent matches that assigned to the vertex.
+Any deviation from these requirements results in the vertex being assigned a 
+particular \emph{background category}, dependent on the nature of the 
+deviations~\cite{Gligorov:1035682}.
+For example, if at least one track is a ghost, the vertex is classified as a 
+ghost, and if at least one track is associated to an \ac{MC} particle with a 
+different \ac{PID}, the vertex is classified as a misidentification.
+In the case of a vertex than can be associated to an \ac{MC} particle, the 
+vertex can be further classified as prompt or secondary based on the true 
+lifetime of the \ac{MC} particle.
+
+In general, separate samples of simulated data are produced on a per-analysis 
+basis, with different samples taken for different beam energies and dipole 
+magnet polarities (usually only `up' and `down').
+The generation of \ac{MC} is done centrally by the experiment using a globally 
+distributed network of computers, and the resulting data files are then made 
+available to analysts in the same way as for real data, with the additional 
+inclusion of the truth-matching information.
