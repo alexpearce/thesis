@@ -2,15 +2,22 @@
 \label{chap:intro:sm}
 
 The \acf{SM} is a quantum field theory that describes the interactions of three 
-of the four fundamental forces of nature: electromagnetism, the weak force, and 
-the strong force.
-These forces interact with and between a set of fundamental particles, 
-particles which have no known substructure.
-The behaviour of these particles can be observed or inferred experimentally to 
-deduce the nature of the forces, such how their strength changes with distance.
-This \namecref{chap:intro:sm} shall enumerate and describe these particles and 
-forces, before discussing why additional theories are required and how they can 
-be verified.
+of the four fundamental forces of nature, electromagnetism, the weak force, and 
+the strong force, with a set of fundamental particles.
+The predictions made by the \ac{SM} are legion, and so far no experimental 
+results have provided conclusive proof that these predictions are incorrect.
+However, astronomical observations indicate that, at the very least, the 
+\ac{SM} is not a \emph{complete} understanding of the universe, in that it does 
+not describe the observed matter-antimatter asymmetry, nor the apparent 
+presence of dark matter.
+The purpose of the \ac{LHC} is to provide experiments with enough data to be 
+able to find minute deviations from the predictions on the \ac{SM} that would 
+point to alternate theories of nature.
+
+In this \namecref{chap:intro:sm}, the forces and particles described by the 
+\ac{SM} shall be summarised, ending with a particular emphasis on the 
+phenomenology of the weak force, which the \lhcb\ detector is optimised to 
+study.
 
 \subsection{Particles and forces}
 
@@ -198,138 +205,3 @@ question as to why the visible universe is dominated by matter.
 The study of \CP\ violation in and beyond the \ac{SM} is a key goal of the 
 \lhcb\ experiment, and will be discussed in more detail in 
 \cref{chap:cpv:theory}.
-
-% TODO could also describe how BSM models predict violations of conserved
-% quantum numbers/symmetries
-\section{Searching for new particles}
-
-The \acl{SM} is able to accurately predict much of the observed phenomena in 
-the universe, using only the forces and particles previously described.
-Two notable phenomena the \ac{SM} does not predict are the existence of 
-gravity, the fourth fundamental force of nature, and the aforementioned 
-imbalance between matter and antimatter in the universe.
-These shortcomings prevent a complete understanding of the physical world.
-To address this, theories \acf{BSM} have been proposed.
-
-% It is one task of high-energy physics experiments to find discrepancies with 
-% the predictions of the \ac{SM}, which may provide clues as to what direction 
-% theoretical physics should follow.
-
-In addition to agreeing with existing experimental data, \ac{BSM} theories must 
-make new predictions that can be tested experimentally, either using existing 
-data or with new experiments.
-Often, \ac{BSM} theories predict the existence of new particles, or the 
-breaking of a conservation law such as the conservation of lepton number.
-The principle task of the current generation of particle physics experiments at 
-the \acl{LHC}, which will be described in \cref{chap:intro:lhc}, is to search 
-for evidence of such phenomena.
-
-The existence of new particles can be inferred experimentally in two ways: 
-directly, where a new particle is produced and then decays into two or more 
-particles, which may themselves be new predictions of the theory; and 
-indirectly, where the visible constituents of a process remain the same, but 
-the new particles interact internally, changing some part of the interaction, 
-such as the rate at which it occurs.
-
-\cref{fig:intro:sm:particle_production:direct} illustrates one mechanism for 
-the production of a muon and an anti-muon from the annihilation of an electron 
-and a positron, denoted \decay{\Pelectron\APelectron}{\Pmuon\APmuon}.
-The rate at which this process occurs can be precisely computed within the 
-context of the \ac{SM}, and depends on the energies of the two electrons: when 
-their total energy is equal to the mass of the \PZ boson, around 
-\SI{91}{\GeVcc}~\cite{PDG2014}, the rate is high relative to the rate either 
-side of this value.
-This is a prediction of the theory: given two electrons interacting, such as in 
-a particle collider, an experiment will measure a large increase in the number 
-of muon pairs when the electrons have a combined energy around \SI{91}{\GeV}.
-Seeing this behaviour in an experiment would validate the prediction of theory, 
-and the \PZ boson would be then be said to have been `observed'.
-This is an example of a direct observation of a particle.
-
-\cref{fig:intro:sm:particle_production:indirect} shows one mechanism for the 
-decay of a \PBs meson, made of a bottom anti-quark and a strange quark, to a 
-muon and an anti-muon, denoted \BsTomumu.
-The intermediary particles are all the other particles in the diagram, namely 
-the up-types quarks and the \PW bosons.
-The \ac{SM} can also be used to predict the rate for this 
-process~\cite{Bobeth:2013uxa}, which is equal to the probability that a given 
-\PBs meson will decay to the $\Pmuon\APmuon$ final state, having a value around 
-\num{3e-9}, or three \PBs mesons in every ten billion.
-If a \ac{BSM} theory introduces new particles, they may contribute to the 
-internal process in the diagram, either enhancing or reducing the rate.
-An experimentalist can then count the total number of \PBs mesons observed, and 
-compare that with the number of \BsTomumu\ decays.
-If they see a number of those decays that is significantly larger or smaller 
-than one per billion \PBs mesons, it is a sign that something beyond the 
-\ac{SM} is contributing to the process.
-If the experimentally observed rate is consistent with that predicted by a 
-particular theory, there is evidence for the validity of that theory.
-
-\begin{figure}
-  \begin{subfigure}[b]{0.4\textwidth}
-    \centering
-    \input{figures/introduction/particle_production_direct}
-    \caption{Direct}
-    \label{fig:intro:sm:particle_production:direct}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.6\textwidth}
-    \centering
-    \input{figures/introduction/particle_production_indirect}
-    \caption{Indirect}
-    \label{fig:intro:sm:particle_production:indirect}
-  \end{subfigure}
-  \caption{%
-    Feynman diagrams illustrating two processes through which the existence of 
-    new particles may be inferred.
-    Figure (\subref*{fig:intro:sm:particle_production:direct}) shows direct 
-    (resonant) production of \PZ bosons, in the process 
-    \decay{\Pelectron\APelectron}{\Pmuon\APmuon}.
-    Figure (\subref*{fig:intro:sm:particle_production:indirect}) shows the 
-    process \BsTomumu, where a new particle can enter in the `box' in the 
-    centre of the diagram.
-  }
-  \label{fig:intro:sm:particle_production}
-\end{figure}
-
-The \PZ boson was discovered in a similar process to that depicted in 
-\cref{fig:intro:sm:particle_production:direct} in 
-1983~\cite{1983398,BAGNAIA1983130}, and the decay \BsTomumu\ was first observed 
-in 2014.
-The rate of both processes were consistent with \ac{SM} predictions.
-
-New particles can be observed using indirect methods before collider energies 
-are high enough for them to be produced directly, as was the case for the \PZ 
-boson~\cite{HASERT1973138}.
-This is the benefit of indirect methods, which are possible due to quantum 
-mechanical principles that govern the internal interactions, in that they allow 
-particles to participate in an process internally for a short amount of time, 
-even if the total energy in the system is less than the mass of the particle.
-% \begin{equation}
-%   \Delta E \Delta t \geq \frac{\hbar}{2}.
-%   \label{eqn:intro:sm:uncertainty_principle}
-% \end{equation}
-The existence of new particles, and more detailed properties such as their 
-decay rates, can later be confirmed using direct methods.
-The disadvantage of indirect methods is that it may not be conclusive what the 
-nature of the new particle is, as it is interacting in somewhat subtle ways.
-The indirect effect of heavy particles can be seen in 
-\cref{fig:intro:sm:particle_production:indirect}, where a \PW boson enters the 
-diagram despite the mass of the \PBs meson being around fifteen times 
-lighter~\cite{PDG2014}.
-
-The introduction of new particles can break the internal symmetries of the 
-\ac{SM}, such as the conversation of baryon number.
-For example, the decay of a proton to three muons, 
-\decay{\Pproton}{\Pmuon\APmuon\Pmuon}, is forbidden in the \ac{SM} as the 
-baryon number changes from one to zero.
-If such a decay were to be observed experimentally, it would infer the 
-existence of a new particle indirectly, the nature of which could be explored 
-further with other indirect, as well as direct, methods.
-
-The \ac{SM} cannot describe every phenomenon, yet there has been no conclusive 
-deviation of experimental results from its predictions, and no searches for new 
-particles have yielded results.
-Further direct searches for new particles require a collider more powerful than 
-those in the past, and indirect searches require larger data samples in order 
-to be able to see small effects.
-Both of these requirements can be met with the \acl{LHC}.
