@@ -6,6 +6,8 @@ meaning of `high energy' has continuously evolved.
 Today, high energy refers to the \acl{LHC}~\cite{Bruning:2004ej}, a circular 
 collider which begin operating at a proton-proton centre of mass energy of 
 \sqrtseq{7} in 2010, and in 2015 reached \sqrtseq{13}.
+This section shall describe the machine, the experiments which it services, and 
+the changes in operation throughout its lifetime so far.
 
 In order to produce collisions, bunches of 120 billion protons are obtained 
 through the ionisation of hydrogen gas, and are then accelerated through a 
@@ -16,13 +18,13 @@ bunches into the machine, each of which is about \SI{30}{\centi\metre} long,
 separated from the surrounding bunches by about \SI{7}{\metre}, completing a 
 full revolution of the ring at a rate of \SI{11.2}{\mega\hertz}.
 
-The beams are steered around the \ac{LHC} by superconducting dipole magnets, 
-cooled to a temperature of \SI{1.9}{\kelvin}, and are focused by quadrupole and 
-other, higher-order, magnets.
+The beams are steered around the ring by superconducting dipole magnets, cooled 
+to \SI{1.9}{\kelvin}, and are focused by quadrupole and other, higher-order, 
+magnets.
 The beams are made to collide at four \acp{LHCIP}, before which they are 
-focused further, from the usual bunch diameter of \SI{0.2}{\milli\metre} while 
-circulating, to a width on the order of microns, such that they can interact 
-and collide.
+focused further, from the usual circulating bunch diameter of 
+\SI{0.2}{\milli\metre} to a width on the order of microns, such that they can 
+interact and collide.
 
 For a collision experiment, the number of times $N$ a particular process occurs 
 per second is the product of two quantities
@@ -43,11 +45,10 @@ expressed as
   \label{eqn:intro:lhc:inst_lumi}
 \end{equation}
 where $N_{\text{p}}$ is the number of particles per bunch; $N_{\text{b}}$ is 
-the number of bunches per beam; \revfreq\ is the bunch revolution frequency; $\gamma$ 
-is the Lorentz term as in \cref{eqn:intro:sm:lorentz_factor}, where $\beta 
-\approx 1$ at the \ac{LHC}; $\epsilon$ is the beam emittance during 
-circulation, a measure of the beam size transverse to the beam direction; 
-$\beta^{*}$ is a measure of the transverse beam size at a particular 
+the number of bunches per beam; \revfreq\ is the bunch revolution frequency; 
+$\gamma$ is the Lorentz term, where $v/c \approx 1$; $\epsilon$ is the beam 
+emittance during circulation, a measure of the beam size transverse to the beam 
+direction; $\beta^{*}$ is a measure of the transverse beam size at a particular 
 \ac{LHCIP}; and $F$ accounts for non-zero crossing angles between the two beams 
 at an \ac{LHCIP}.
 Depending on the experiment, the \betastar\ parameter can be tuned to provide a 
@@ -57,7 +58,7 @@ constraints present at the time of construction: increasing the number of
 bunches or particles per bunch increases the beam current, requiring stronger 
 magnetic fields to steer and focus the beams, and likewise for decreasing the 
 transverse bunch profile.
-The design luminosity of the \ac{LHC} at the \atlas\ and \cms\ \acp{LHCIP} is
+The design luminosity at the \atlas\ and \cms\ \acp{LHCIP} is
 \SI{1e34}{\per\square\centi\metre\per\second}, which results in a rate of 
 visible proton-proton interactions of
 \begin{equation}
@@ -102,8 +103,8 @@ Given the design luminosity at points 1 and 5 of
 \SI{1e34}{\per\square\centi\metre\per\second}, and that the rate of \PHiggs 
 production in proton-proton collisions is of the order of tens of 
 picobarn~\cite{Khachatryan:2016vau}, $\xsec_{\PHiggs} \sim \SI{10}{\pico\barn} 
-= \SI{1e-35}{\per\square\centi\metre}$, translating to around 0.1 Higgs bosons 
-being produced every second using \cref{eqn:intro:lhc:lumi_xsec}.
+= \SI{1e-35}{\per\square\centi\metre}$, around 0.1 Higgs bosons are produced 
+every second, from \cref{eqn:intro:lhc:lumi_xsec}.
 The cross-section for new particles predicted by \ac{BSM} theories are even 
 lower than that for the Higgs, and so \atlas\ and \cms\ must collect large 
 samples of data to make statistically significant discoveries, requiring high 
@@ -117,17 +118,21 @@ running, but most of this cannot be saved due to monetary and technological
 constraints.
 Instead, on order of 100 crossings per second are saved for subsequent 
 analysis.
+This balance of collecting as much data as possible and having the computing 
+resources to analyse it is a problem common to all experiments, and will be 
+explored further in \cref{chap:intro:lhcb:trigger}.
 
-In addition to the nominal proton running, the \ac{LHC} also runs with 
+In addition to the nominal \pp\ running, the \ac{LHC} also runs with 
 configurations of ion beams for about one-eighth of its operating time, 
 specifically with two beams of lead~(Pb) ions in the lead-lead configuration, 
 and with one beam of protons and another beam of lead ions in the proton-lead 
-configuration.
+and lead-proton configurations.
 The \alice\ detector~\cite{Aamodt:2008zz}, located at point 2, focuses on 
 studying these lead-lead and proton-lead collisions.
 Specifically, \alice\ measures the properties of the quark-gluon plasma that 
-forms in ion collisions, which is a hot, dense state of matter that was 
-dominant in the early stages of the universe.
+forms in ion collisions.
+The plasma is a hot, dense, and exotic state of matter that was dominant in the 
+early stages of the universe.
 Such measurements provide important input to the theoretical understanding of 
 macroscopic behaviour driven by the strong force, such as in the quark-gluon 
 plasma, where predictions are complex to compute.
@@ -151,10 +156,10 @@ The trend of increasing beam energies is driving towards reaching the design
 energy of \SI{7}{\TeV} per beam, giving $\sqrts = \SI{14}{\TeV}$.
 Higher beam energies are generally good for the experiments, as the 
 cross-sections of the physical processes of interest increases with \sqrts.
-It does come with a price, however, as the rate of other physical processes 
+It does come with a price, however, as the rates of other physical processes 
 also increases with \sqrts, including those one may not be interested in, which 
 are generally much larger than the rare processes of interest.
 This means that experiments must continually upgrade their own detectors and 
 software in order to suppress to the higher rate of uninteresting events.
 The upgrade of the \lhcb\ detector during \ac{LS1} will be described in 
-\cref{chap:intro:lhcb:detector:upgrades}.
+\cref{chap:intro:lhcb:offline}.
