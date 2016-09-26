@@ -3,7 +3,7 @@
 
 In order to calculate \dACP, \ARaw must first be measured for each mode.
 This is the asymmetry in the positively- and negatively-charged \PLambdac\ 
-yields, as in \cref{eqn:cpv:theory:araw}.
+yields, as in \cref{eqn:cpv:introduction:araw}.
 The yields are measured with \chisq\ fits to the \PLambdac\ and \APLambdac\ 
 mass spectra, in a similar manner to the fit to the charge-combined sample 
 discussed in \cref{chap:cpv:prelim_fits}.
@@ -22,20 +22,22 @@ $b_{i}$, to which to fit model is compared, is
 where $N_{i}$ is the number of candidate decays in the $i$th \phh\ mass bin, 
 $w_{j}$ is per-candidate kinematic weight for the $j$th candidate in the $i$th 
 bin, and $\eff_{j}$ is the efficiency.
-The uncertainty on the bin contents $\unc{b_{i}}$ is taken to be the square 
-root of the sum of the squares of the summand
+Each weight is scaled by a factor $B = \sum_{i} b_{i}/\sum_{i} b_{i}^{2}$ for 
+the reasons given in \cref{chap:cpv:kinematic_weighting:stats}.
+The uncertainty on the bin contents $\unc{b_{i}}$ is given by the effective 
+number of entries, as in \cref{eqn:cpv:kinematic_weighting:neff}
 \begin{equation}
-  \unc{b_{i}} = \sqrt{\sum_{j = 1}^{N_{i}} \frac{%
-    w_{j}^{2}(\pT^{\PLambdac}, \Eta^{\PLambdac},
-          \pT^{\Pproton}, \Eta^{\Pproton})
+  \unc{b_{i}}^{2} = \neff = \frac{%
+    {\left(\sum_{i}^{N}{b_{i}}\right)}^{2}
   }{%
-    \eff_{j}^{2}(\msqphm, \msqhh, \thetap, \phip, \phihh)
-  }},
+    \sum_{i}^{N}{b_{i}^{2}}
+  }.
 \end{equation}
+For \ppipi\ the kinematic weights are those described in 
+\cref{chap:cpv:kinematic_weighting}, where for \pKK\ there are unity.
 
 To try to reduce the effects of experimenter bias, the fitted central values of 
-\ARaw\ are \emph{blinded}, and cannot be inspected until they are 
-\emph{unblinded}.
+\ARaw\ are blinded, and cannot be inspected until they are unblinded.
 To be able to assess the quality of the fit results without inadvertently 
 unblinding the result, only the fit to \PLambdac\ data is inspected.
 For the \APLambdac data, only the pull distribution of the fit with respect to 
@@ -47,7 +49,7 @@ The specific method used to blind the central value is discussed in
 \section{Simultaneous fit}
 \label{chap:cpv:araw:simultaneous_fit}
 
-Simultaneously fits are performed on the charge-separated \PLambdac\ and 
+Fits are performed simultaneously on the charge-separated \PLambdac\ and 
 \APLambdac\ samples, measuring \ARaw\ by including it as a parameter in the 
 fit.
 This is advantageous as it increases the statistical sensitivity of the 

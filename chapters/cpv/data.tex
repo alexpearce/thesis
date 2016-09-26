@@ -3,9 +3,6 @@
 
 This analysis exploits the full dataset collected with the \lhcb\ detector 
 during \runone\ of the \ac{LHC}.
-The data were collected over a period of two years, 2011 and 2012, over which 
-the polarity of the \lhcb\ dipole magnet was periodically switched between two 
-configurations, referred to here as `magnet up' and `magnet down'.
 As the beam conditions changed significantly between 2011 and 2012, from 
 \sqrtseq{7} to \SI{8}{\TeV}, the analysis is performed separately on the 2011 
 and 2012 datasets.
@@ -17,36 +14,18 @@ average.
 The total integrated luminosity corresponding to the dataset is \totlumi, the 
 breakdown of which for the different sub-samples is given in 
 \cref{tab:cpv:data:luminosity}.
-This section shall describe the generalities of the data, such as the 
-processing workflow and application of calibrations, as well as the simulated 
-\ac{MC} data that shall be used.
+This \namecref{chap:cpv:data} shall describe the generalities of the data, such 
+as the processing workflow and application of calibrations, as well as the 
+simulated \ac{MC} data that shall be used.
 
-% TODO this will be described in more detail in the general LHCb intro I guess
-The data are first processed by the trigger, and the passing events are saved 
-to disk.
-They are then reconstructed offline, and filtered through a set of selections 
-in a process called the \emph{stripping}.
-Like the trigger, the stripping is arranged as a series of parallel 
-\emph{lines}, each of which is designed to select a particular physics process.
-
-For this analysis, two stripping lines select the \LcTopKK\ and \LcToppipi\ 
-decays of interest.
-Sets of tracks are assigned a particular particle hypothesis based on the 
-combined response of the \ac{PID} detectors, and then protons and kaons are 
-combined to form candidate \pKK\ decays, and protons and pions are combined to 
-form candidate \ppipi\ decays.
-The resulting \PLambdac\ vertices are combined with muon candidates to form 
-candidate \PLambdab\ vertices.
-The muon candidate is required to have fired the muon trigger in \lzero, as 
-well as the muon trigger in \hltone.
-The tracks comprising the \PLambdab\ candidate are required to have been used 
-in a positive decision of the \emph{topological semileptonic \PB\ decay} 
-trigger line in \hlttwo, which is designed to inclusively select events which 
-contain particles topologies characteristic of those in semileptonic \PB 
-decays~\cite{Gligorov:2011qxa}.
-Candidates passing these trigger requirements are then refined by a tighter 
-offline selection to further reduce the fraction of combinatorial background in 
-the sample, which is dominant at this stage.
+The data used for this analysis are processed through the offline 
+reconstruction and the stripping, described in \cref{chap:intro:lhcb:offline}.
+Two stripping lines select the \LcTopKK\ and \LcToppipi\ decays of interest, 
+and the output of the lines are required to have been used in the relevant 
+trigger decision.
+Candidates passing the stripping and trigger requirements are selected further 
+offline to further reduce the fraction of combinatorial background in the 
+sample, which is dominant at this stage.
 Distributions of the \pKK\ and \ppipi\ mass in the 2012 magnet down dataset 
 after the stripping and trigger requirements are given in 
 \cref{fig:cpv:data:mass}, as an illustration of the signal purity.
@@ -91,35 +70,6 @@ Simulated data is used to infer properties of the data before that stage.
 There are three different sets of Monte Carlo~(MC) data that are used in this 
 analysis.
 
-\subsection{Pseudo-experiments}
-\label{chap:cpv:data:mc:toy}
-
-The \rapidsim\ package\footnotemark\ to generate `toy' \ac{MC}.
-\rapidsim\ is a phase space \Pbottom-decay generator, which uses a fixed-order
-next-to-leading logarithm model to boost the generated \Pbottom-decays in to an 
-\lhcb-like laboratory frame, and smears the momenta of visible final state 
-particles in order to more closely match the distributions seen in data.
-The smearing is based on measurements of the difference between the momentum
-resolution between data and \ac{MC}, and is applied in bins of track momentum 
-\ptot.
-
-\footnotetext{\url{https://github.com/gcowan/RapidSim}}
-
-One million \LcTopKK\ and one million \LcToppipi\ decays per
-centre-of-mass energy are generated with \rapidsim.
-The boosting parameters depend on the proton-proton collision centre-of-mass
-energy \sqrts, and so samples are generated individually for both \sqrtseq{7} 
-and \SI{8}{\TeV}.
-The \PLambda\ and \PKshort vetoes, described in 
-Section~\ref{chap:cpvselection:offline}, are
-applied to the \LcToppipi\ sample, and the \PLambdab\ mass requirement shown in 
-Table~\ref{tab:cpv:selection:stripping_composite} is also applied.
-The $\PLambdac\Pmuon$ mass, that is the \PLambdab\ mass missing the 
-contribution from the neutrino, is required to be in the range $2.5 < 
-m(\PLambdac\Pmuon) < \SI{6}{\GeV}$, to match the requirements made in the 
-stripping selection shown in Table~\ref{tab:cpv:selection:stripping_composite}.
-No acceptance requirements are made.
-
 \subsection{Full detector simulation}
 \label{chap:cpv:data:mc:full}
 
@@ -161,9 +111,9 @@ structure seen in data.
 \subsection{Generator-level simulation}
 \label{chap:cpv:data:mc:gen}
 
-The Monte Carlo sample described in Section~\ref{chap:cpv:data:mc:full} has 
-requirements made on it at the generator level, specifically the \lhcb\ 
-acceptance requirements in \cref{eqn:prod:data:lhcb_acceptance}.
+The Monte Carlo samples described in \cref{chap:cpv:data:mc:full} have the 
+\lhcb\ acceptance requirements imposed upon them, as defined in 
+\cref{eqn:prod:data:lhcb_acceptance}.
 This selection do not necessarily have a flat efficiency across the \LcTophh\ 
 phase space, and so additional samples are required to study these effects.
 A sample of \num{5e5} \ac{MC} events are generated for each \LcTophh\ mode 

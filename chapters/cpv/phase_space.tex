@@ -10,13 +10,11 @@ selection efficiency across those variables is computed.
 \section{Distributions in data}
 \label{chap:cpv:phsp:data}
 
-It is firstly interesting to see what the data looks like in the five 
-dimensions of the phase space.
 \Cref{fig:cpv:phsp:data_1D:pKK,fig:cpv:phsp:data_1D:ppipi} show the 
 one-dimensional projections of \msqphm, \msqphp, \msqhh, \thetap, \phip, and 
-\phihh\ in the 2012 magnet down datasets.
-The respective one-dimensional projections from the toy \ac{MC}, described in 
-\cref{chap:cpv:data:mc:toy}, are overlaid.
+\phihh\ in the 2012 magnet down datasets, weighted by signal sWeights.
+The respective one-dimensional projections from the generator-level \ac{MC}, 
+described in \cref{chap:cpv:data:mc:gen}, are overlaid.
 \Cref{fig:cpv:phsp:data_2D:pKK,fig:cpv:phsp:data_2D:ppipi} show the 
 two-dimensional projections of \msqphp-\msqhh, \msqphm-\msqphp, and 
 \msqphp-\msqhh, and illustrate the complex resonant dynamics in the decays.
@@ -32,17 +30,17 @@ constrained to be the nominal \PLambdac\ mass, as described in
 
 As introduced in \cref{chap:cpv:theory:phsp}, for a meaningful comparison with 
 theoretical predictions of \dACP, the measurement must account for any 
-sculpting of the \PLambdac\ phase space due to our selection and the \lhcb\ 
+sculpting of the \PLambdac\ phase space due to the selection and the \lhcb\ 
 acceptance.
 This can be done either by providing an efficiency map for theorists to apply 
 to their models, or by correcting the measurement with it.
 Such a map can be computed by comparing the phase space distributions of the 
 signal before and after the selection.
 As the signal distributions before the stripping are not available for for 
-analysis, the \ac{MC} samples described in \cref{chap:cpv:data:mc}.
+analysis, the \ac{MC} samples described in \cref{chap:cpv:data:mc} are used.
 
 The phase space efficiency can be considered as a five-dimensional function 
-$\eff{\vec{x}}$, in the phase space $\vec{x}$, that transforms the original 
+$\eff(\vec{x})$, in the phase space $\vec{x}$, that transforms the original 
 distribution $D(\vec{x})$ to the observed one $D'(\vec{x})$
 \begin{equation}
   D'(\vec{x}) = \eff(\vec{x})D(\vec{x}).
@@ -64,7 +62,7 @@ which dimensions would be near-constant in the efficiency, if any.
 Indeed, this could be checked by inspecting one-dimensional projections of the 
 efficiency, but this neglects correlations between variables which could alter 
 the total efficiencies significantly.
-To avoid this difficulties, this analysis employs the gradient boosting 
+To avoid such difficulties, this analysis employs the gradient boosting 
 decision tree algorithm, as described in 
 \cref{chap:cpv:kinematic_weighting:bdt_method}, in order to estimate the 
 efficiency function $\eff(\vec{x})$.
@@ -88,7 +86,7 @@ This is likely due to the small sample size used in the training, such that the
 a comparatively flat efficiency.
 
 To correct the real data for the acceptance and selection efficiencies, they 
-are fed through the trained \ac{BDT} and assign per-decay weights.
+are fed through the trained \ac{BDT} and assigned per-decay weights.
 These weights are then used in the \chisq\ fit to measure \ARaw.
 
 \begin{figure}

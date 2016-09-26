@@ -1,9 +1,6 @@
 \chapter{Selection}
 \label{chap:cpv:selection}
 
-The \lhcb\ experiment is optimised for efficiently selecting heavy flavour 
-hadron decays and rejecting the relatively huge levels of combinatorial 
-background.
 The \PLambdac\ charm baryon has a lifetime of \SI{0.2}{\pico\second}, half that 
 of the \PDzero\ and eight times less than that of the \PBzero.
 Indeed, it is one of the shortest-lived weakly decaying heavy flavour hadrons, 
@@ -11,20 +8,12 @@ and as such presents particular challenges when a clean, efficient selection is
 desired, as in this analysis, as the secondary decay vertex is not so 
 significantly displaced from the \ac{PV}.
 Although the \bbbar\ cross-section is of the order of 100 times less than the 
-\ccbar\ cross-section, reconstructing the decay chain \LbToLcmuX\ can allow for 
+\ccbar\ cross-section, reconstructing the decay chain \LbToLcmuX\ allows for 
 the exploitation of the excellent secondary vertex resolution and high \PB 
 trigger efficiency provided by the \lhcb\ detector.
 This analysis takes that approach, selecting \emph{secondary} \PLambdac\ 
 candidates by association with a muon.
 This \namecref{chap:cpv:selection} shall describe each stage of the selection.
-
-The selection of the data described in \cref{chap:cpv:data} proceeds in two 
-steps: firstly the stripping is run, and then an `offline selection' is made on 
-the candidates passing the stripping.
-All events passing the trigger are available to the stripping, and so the 
-trigger `requirements' can be made at any stage.
-In this analysis, these are made in the stripping lines themselves.
-These two steps shall be described in turn.
 
 \section{Stripping and trigger}
 \label{chap:cpv:selection:stripping_trigger}
@@ -35,7 +24,7 @@ of studies that use \LcTophh\ decays originating from semileptonic \PLambdab\
 decays.
 As such, they are similar to the selections of other \PB decays made at \lhcb\ 
 in that they exploit the long decay times of \PB hadrons, such that they fly as 
-significant, measurable distance in the \velo, and the high \pT of the child 
+significant, measurable distance in the \velo, and the high \pT\ of the child 
 vertices and tracks.
 The additional requirements are similar in nature to those made for charm 
 hadrons such as track and vertex fit quality and track \ipchisq, which are 
@@ -44,18 +33,15 @@ described in \cref{chap:prod:sel}.
 The selection of final state particles in the stripping lines, that is protons, 
 charged kaons and pions, and muons, is given in 
 \cref{tab:cpv:selection:stripping_basic}.
-One variable given has not been discussed previously is \pghost, the 
-\emph{ghost probability}, which is the response of an \ac{ANN} trained to 
-discriminate between real and fake (ghost) tracks~\cite{Brehmer:1478372}.
+One variable that has not been discussed previously is \pghost, the ghost 
+probability, which is the response of an \ac{ANN} trained to discriminate 
+between real and fake (ghost) tracks~\cite{Brehmer:1478372}.
 The \ac{ANN} response is transformed in such a way as to be within the range 
 $[0, 1]$, and that it is linearly efficient at rejecting ghost tracks in 
 simulated data in that range.
-The requirement $\pghost < 0.5$ made on real data is made with the intent to 
-reject \SI{50}{\percent} of the ghost tracks in the sample.
 
-The selected final state particles are combined into a \LcTophh\ candidates, 
-which is then combined with muon candidates to form candidate \LbToLcmuX\ 
-decays.
+The selected final state particles are combined as \LcTophh\ candidates, which 
+are then combined with muon candidates to form candidate \LbToLcmuX\ decays.
 The requirements on the combinations and vertices are given in 
 \cref{tab:cpv:selection:stripping_composite}.
 As in \cref{chap:prod:sel}, the selection of composite particles proceeds in 
@@ -65,24 +51,11 @@ secondly on the vertex formed after the fit.
 Trigger requirements are made after the \PLambdab\ candidate is created and 
 selected in the stripping lines.
 They are driven by the powerful discrimination provided by the muon from the 
-\PLambdab which, for a signal particle, will have a high \pT\ and \ipchisq.
-At \lzero\ the muon candidate is required to have fired the muon trigger, which 
-itself requires the presence of a track in the muon stations with $\pT > 
-\SI{1.8}{\GeVc}$, and likewise at \hltone, which requires the \lzero muon 
-candidate to be reconstructed as a good-quality track.
-At \hlttwo, the tracks comprising the \PLambdab\ candidate are required to have 
-fired the topological semileptonic \PB lines, which were briefly described in 
-\cref{chap:cpv:data}.
-These topological lines cut on the output of a \ac{BDT} trained to discriminate 
-sets of 2, 3, and 4 charged particle tracks originating in the decays of \PB 
-hadrons to those randomly selected from the event.
-The inputs to the \ac{BDT} include the \emph{corrected mass}, which accounts 
-for missing particles in the candidate \PB decay and peaks near the \PB mass 
-for signal, the sum of the \pT\ of the input objects, the minimum \pT\ amongst 
-those objects, and the \PB candidate flight distance \chisq.
-The topological trigger lines are typically 80--\SI{90}{\percent} efficient in 
-accepting signal \PB decays, with a high background rejection 
-rate~\cite{Gligorov:2011qxa}.
+\PLambdab\ which will have a high \pT\ and \ac{IP}.
+The muon candidate is required to have fired the \lzero\ and \hltone\ single 
+muon lines, and at \hlttwo the tracks comprising the \PLambdab\ candidate are 
+required to have fired the topological semileptonic \PB lines, as described in 
+\cref{chap:intro:lhcb:trigger}.
 Distributions of the \pKK\ and \ppipi\ mass in the 2012 magnet down dataset 
 after the stripping and trigger requirements are given in 
 \cref{fig:cpv:data:mass}, as an illustration of the signal purity at this 
@@ -119,8 +92,8 @@ specific physics backgrounds; and to process the data such that it is most
 suitable for offline analysis.
 
 A mass window requirement is imposed on the \PLambdac\ candidates, which is 
-equal to the cut made on candidates entering the mass fit (first described in 
-Section~\ref{chap:cpv:prelim_fits})
+equal to the range used in the mass fits (first described in 
+\cref{chap:cpv:prelim_fits})
 \begin{equation}
   2230 < m(\PLambdac) < \SI{2350}{\GeV}.
   \label{eqn:cpv:selection:mass_window}
@@ -207,14 +180,17 @@ The \probnn\ family of variables is used, which contains one \probnn\ variable
 each charged particle hypothesis~(\Pproton/\APproton, \PKpm, \Ppipm, \Pmupm, 
 \Pepm), and is the response of an \ac{ANN} trained to discriminate each 
 hypothesis from all others.
+Input variables to the network include the \ac{DLL} \ac{PID} variables 
+described in \cref{chap:intro:lhcb:detector:pid}, the track \ptot\ and \pT, and 
+the total track fit quality and that within each tracking sub-detector.
 The \ac{ANN} is trained on a set of truth-matched tracks from a sample of 
 \ac{MC} generated under 2012 running conditions, and is scaled such that the 
 signal probability is uniform between the extent of the variable, 
 $\text{\probnn} \in [0, 1]$.
 
-To define a starting point for the cut values, a simultaneous optimisation of 
-all \ac{PID} requirements was performed by maximising the signal significance 
-$\sigma$, defined as
+To define a starting point for the \probnn\ cut values, a simultaneous 
+optimisation of all \ac{PID} requirements was performed by maximising the 
+signal significance $\sigma$, defined as
 \begin{equation}
   \sigma = \frac{%
     \nsig
@@ -224,6 +200,7 @@ $\sigma$, defined as
   \label{eqn:cpv:selection:signal_significance}
 \end{equation}
 where \nsig\ and \nbkg\ are the signal and background yields in the sample.
+% TODO why? I used to have a good reason for this
 The optimisation showed that the most powerful discriminants between signal and 
 background were the proton \ac{PID} information, as expected, and the \ac{PID} 
 information of the kaon or pion with the same electric charge as the proton.
@@ -299,8 +276,7 @@ Such structures may peak near the nominal \PLambdac\ mass and be incorrectly
 counted as \PLambdac\ signal.
 
 One method of checking for the presence of misidentified decays is by 
-inspecting three-body mass distributions when each particle is assigned 
-different mass hypotheses.
+inspecting three-body mass distributions for different mass hypothesis sets.
 For example, by assigning the pion mass to the proton candidate in the \pKK\ 
 sample and inspecting the invariant mass of the $\PKplus\PKminus\Ppiplus$ 
 combination, a peak near the \PDsplus mass would indicate a contamination of 
@@ -341,17 +317,17 @@ algorithm described in Section~\ref{chap:cpv:data}.
 \Cref{fig:cpv:selection:background_study:pKK_meson} shows the three-body mass 
 distributions in the 2012 magnet down \pKK\ data for several mass hypothesis 
 sets, where each set does not contain the proton mass hypothesis.
-\Cref{fig:selection:background_study:pKK_baryon} shows the same, but where each 
-set does contain the proton mass hypothesis.
+\Cref{fig:cpv:selection:background_study:pKK_baryon} shows the same, but where 
+each set does contain the proton mass hypothesis.
 The two Figures show the charm meson and charm baryon background contributions, 
 respectively.
-\Cref{fig:selection:background_study:ppipi_meson,fig:selection:background_study:ppipi_baryon} 
+\Cref{fig:cpv:selection:background_study:ppipi_meson,fig:cpv:selection:background_study:ppipi_baryon} 
 show the same but for the 2012 magnet down \ppipi\ data.
 
 The distributions from the \pKK\ data show contributions from 
 \decay{\PDplus}{\PKplus\PKminus\Ppiplus}, 
 \decay{\PDsplus}{\PKplus\PKminus\Ppiplus}, and 
-\decay{\PLambdac}{\Pproton\PKminus\Ppiplus} decays in the \pKK\ data.
+\decay{\PLambdac}{\Pproton\PKminus\Ppiplus} decays.
 The \ppipi\ data show \decay{\PDplus}{\PKplus\Ppiminus\Ppiplus}, 
 \decay{\PDplus}{\PKplus\PKminus\Ppiplus}, 
 \decay{\PDsplus}{\PKplus\Ppiminus\Ppiplus}, and 
@@ -379,7 +355,7 @@ Along with the mass of the \PLambdac\ under the nominal three-body mass
 hypothesis, it fully parameterises alternative three-body hypotheses where the 
 hypothesis of the proton is changed.
 The $\beta_{\Pproton}$--$m(\PLambdac)$ plane then provides an additional handle 
-on misidentification backgrounds, in additional to the technique described in 
+on misidentification backgrounds, in addition to the technique described in 
 \cref{chap:cpv:selection:background_study:mass_hypo}.
 
 \Cref{fig:cpv:selection:background_study:mom_asym:pKK,fig:cpv:selection:background_study:mom_asym:ppipi} 
@@ -390,68 +366,8 @@ and \decay{\PDsplus}{\PKplus\PKminus\Ppiplus} in the \pKK\ data, and from
 Also shown are the $\beta_{\Pproton}$--$m(\PLambdac)$ planes after the 
 misidentification vetoes described in 
 \cref{chap:cpv:selection:background_study:mass_hypo} have been applied.
-
-\begin{figure}
-  \begin{subfigure}[b]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_beta_p-Lb_DTF_Lc_M}
-    \caption{Before mis-ID vetoes}
-    \label{fig:cpv:selection:background_study:mom_asym:pKK:before}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_beta_p-Lb_DTF_Lc_M_contours}
-    \caption{With theoretical contours}
-    \label{fig:cpv:selection:background_study:mom_asym:pKK:contours}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_beta_p-Lb_DTF_Lc_M-vetoes}
-    \caption{After mis-ID vetoes}
-    \label{fig:cpv:selection:background_study:mom_asym:pKK:after}
-  \end{subfigure}
-  \caption{%
-    Plane of $\beta_{\Pproton}$--$m(\PLambdac)$ for the \pKK\ mode in the 2012 
-    magnet down dataset.
-    The ``theoretical contours'' shown on 
-    \cref{fig:cpv:selection:background_study:mom_asym:pKK:contours} are the 
-    solution of the parametric equation that defines the relationship between 
-    $m(\PLambdac)$, $\beta_{\Pproton}$, and the mass of the misidentified 
-    particle decaying to a particular final state.
-    The plane after the misidentification vetoes, defined in 
-    \cref{chap:cpv:selection:background_study:mass_hypo}, is shown in 
-    \cref{fig:cpv:selection:background_study:mom_asym:pKK:after}.
-  }
-  \label{fig:cpv:selection:background_study:mom_asym:pKK}
-\end{figure}
-
-\begin{figure}
-  \begin{subfigure}[b]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_beta_p-Lb_DTF_Lc_M}
-    \caption{Before mis-ID vetoes}
-    \label{fig:cpv:selection:background_study:mom_asym:ppipi:before}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_beta_p-Lb_DTF_Lc_M_contours}
-    \caption{With theoretical contours}
-    \label{fig:cpv:selection:background_study:mom_asym:ppipi:contours}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_beta_p-Lb_DTF_Lc_M-vetoes}
-    \caption{After mis-ID vetoes}
-    \label{fig:cpv:selection:background_study:mom_asym:ppipi:after}
-  \end{subfigure}
-  \caption{%
-    Plane of $\beta_{\Pproton}$--$m(\PLambdac)$ for the \ppipi\ mode in the 
-    2012 magnet down dataset.
-    The ``theoretical contours'' shown on 
-    \cref{fig:cpv:selection:background_study:mom_asym:ppipi:contours} are the 
-    solution of the parametric equation that defines the relationship between 
-    $m(\PLambdac)$, $\beta_{\Pproton}$, and the mass of the misidentified 
-    particle decaying to a particular final state.
-    The plane after the misidentification vetoes, defined in 
-    \cref{chap:cpv:selection:background_study:mass_hypo}, is shown in 
-    \cref{fig:cpv:selection:background_study:mom_asym:ppipi:after}.
-  }
-  \label{fig:cpv:selection:background_study:mom_asym:ppipi}
-\end{figure}
+No contributions beyond those given in 
+\cref{chap:cpv:selection:background_study:mass_hypo} are seen.
 
 \begin{figure}
   \begin{subfigure}[b]{0.3\textwidth}
@@ -699,6 +615,68 @@ misidentification vetoes described in
     Only the 2012 magnet down data is shown.
   }
   \label{fig:cpv:selection:background_study:ppipi_baryon}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_beta_p-Lb_DTF_Lc_M}
+    \caption{Before mis-ID vetoes}
+    \label{fig:cpv:selection:background_study:mom_asym:pKK:before}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_beta_p-Lb_DTF_Lc_M_contours}
+    \caption{With theoretical contours}
+    \label{fig:cpv:selection:background_study:mom_asym:pKK:contours}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/pKK/LcTopKK_2012_MagDown_beta_p-Lb_DTF_Lc_M-vetoes}
+    \caption{After mis-ID vetoes}
+    \label{fig:cpv:selection:background_study:mom_asym:pKK:after}
+  \end{subfigure}
+  \caption{%
+    Plane of $\beta_{\Pproton}$--$m(\PLambdac)$ for the \pKK\ mode in the 2012 
+    magnet down dataset.
+    The ``theoretical contours'' shown on 
+    \cref{fig:cpv:selection:background_study:mom_asym:pKK:contours} are the 
+    solution of the parametric equation that defines the relationship between 
+    $m(\PLambdac)$, $\beta_{\Pproton}$, and the mass of the misidentified 
+    particle decaying to a particular final state.
+    The plane after the misidentification vetoes, defined in 
+    \cref{chap:cpv:selection:background_study:mass_hypo}, is shown in 
+    \cref{fig:cpv:selection:background_study:mom_asym:pKK:after}.
+  }
+  \label{fig:cpv:selection:background_study:mom_asym:pKK}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_beta_p-Lb_DTF_Lc_M}
+    \caption{Before mis-ID vetoes}
+    \label{fig:cpv:selection:background_study:mom_asym:ppipi:before}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_beta_p-Lb_DTF_Lc_M_contours}
+    \caption{With theoretical contours}
+    \label{fig:cpv:selection:background_study:mom_asym:ppipi:contours}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/selection/background_study/ppipi/LcToppipi_2012_MagDown_beta_p-Lb_DTF_Lc_M-vetoes}
+    \caption{After mis-ID vetoes}
+    \label{fig:cpv:selection:background_study:mom_asym:ppipi:after}
+  \end{subfigure}
+  \caption{%
+    Plane of $\beta_{\Pproton}$--$m(\PLambdac)$ for the \ppipi\ mode in the 
+    2012 magnet down dataset.
+    The ``theoretical contours'' shown on 
+    \cref{fig:cpv:selection:background_study:mom_asym:ppipi:contours} are the 
+    solution of the parametric equation that defines the relationship between 
+    $m(\PLambdac)$, $\beta_{\Pproton}$, and the mass of the misidentified 
+    particle decaying to a particular final state.
+    The plane after the misidentification vetoes, defined in 
+    \cref{chap:cpv:selection:background_study:mass_hypo}, is shown in 
+    \cref{fig:cpv:selection:background_study:mom_asym:ppipi:after}.
+  }
+  \label{fig:cpv:selection:background_study:mom_asym:ppipi}
 \end{figure}
 
 \section{Multiple candidates}

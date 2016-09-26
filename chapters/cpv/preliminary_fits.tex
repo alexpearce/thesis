@@ -2,13 +2,13 @@
 \label{chap:cpv:prelim_fits}
 
 The yield extraction technique used to measure the signal yields entering the 
-computation of \ARaw, shown in \cref{eqn:cpv:theory:araw}, is described in 
-\cref{chap:cpv:measuring_araw}.
-Before then, it is useful to have a simple fit to the charge-combined data in 
-order to perform studies that require background subtraction, selection 
-efficiency estimates, and the like.
-This section describes the binned \chisq\ fit to the \phh\ invariant mass 
-spectrum that is used for such studies.
+computation of \ARaw, shown in \cref{eqn:cpv:introduction:araw}, is described 
+in \cref{chap:cpv:araw}.
+Before then, it is useful to fit to the charge-combined data in order to 
+perform studies that require background subtraction, selection efficiency 
+estimates, and the like.
+This \namecref{chap:cpv:prelim_fits} describes the binned \chisq\ fit to the 
+\phh\ invariant mass spectrum that is used for such studies.
 
 \subsection{Least-squares parameter estimation}
 \label{chap:cpv:prelim_fits:least_squares}
@@ -64,8 +64,8 @@ uncertainties are estimated with \hesse\ as in the maximum likelihood fit in
 The data entering the fit depends on the study that the information is needed 
 for.
 For example, the study of the optimal \ac{PID} requirements described in 
-\cref{chap:cpv:offline} requires a mass fit before the offline \ac{PID} 
-requirements are applied.
+\cref{chap:cpv:selection:offline} requires a mass fit before the offline 
+\ac{PID} requirements are applied.
 In all cases, the models and general fit procedure are the same.
 
 The mass spectrum of the three-body \phh\ system is used to discriminate 
@@ -113,26 +113,19 @@ function $h$, where each component is weighted by their respective yields
 \begin{equation}
   h(x) = \nsig f(x) + \nbkg g(x).
 \end{equation}
-A \chisq\ fit is performed on the data by minimising a normalised version of 
-$h$ (as a probability density function), in the range
+The \chisq\ fit is performed on the data by minimising a normalised version of 
+$h$ in the range
 \begin{equation}
   2230 < m(\PLambdac) < \SI{2350}{\GeV},
 \end{equation}
 with bins of width \SI{1}{\MeV}, for 120 bins in total.
-The \chisq\ is minimised with \minuit, with all parameters allowed to float, 
-and the covariance matrix is computed with \hesse.
 
 Once a fit has converged and the associated covariance matrix is confirmed to 
 be positive-definite, sWeights~\cite{Pivk:2004ty} are computed and are attached 
 to each candidate that entered the fit.
 This allows for the statistical subtraction of either the signal or the 
 background component in bins of some other variable that is not correlated with 
-the \PLambdac\ mass variable that enters the fit.
-% The computation of the \sWeight{s} performs an additional fit where all model 
-% parameters are fixed to the values from the initial fit, except $N_{\text{S}}$ 
-% and $N_{\text{B}}$ which are free to vary.
-% This is done as the \sWeight formalism assumes that the negative log-likelihood 
-% is minimised with respect to the yield parameters.
+the \PLambdac\ mass.
 
 Fits to the fully selected 2012 magnet down dataset for the \pKK\ and \ppipi\ 
 modes are given in \cref{fig:cpv:prelim_fits:full}.
