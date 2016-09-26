@@ -247,3 +247,46 @@ To do.
 \label{chap:cpv:syst:eff}
 
 To do.
+
+\section{Signal decays from other sources}
+\label{chap:cpv:syst:bkg}
+
+The mass fits count the number of real \PLambdac\ decays in the samples.
+However, backgrounds to \LbToLcmuX\ can peak in the \PLambdac\ mass spectrum, 
+such as baryonic \PB\ decays or promptly produced \PLambdac\ decays associated 
+with random muons.
+These backgrounds will have different asymmetries, contaminating \dACP\@.
+
+To assess the effect of prompt \PLambdac, a requirement on the \ipchisq\ of the 
+\PLambdac\ candidate is made of $\lnipchisq > 3$.
+This should remove almost all prompt decays, given the prompt \lnipchisq\ 
+distributions studied in \cref{chap:prod:fitting}.
+Distributions of \lnipchisq\ in the 2012 magnet down sub-samples are shown in 
+\cref{fig:cpv:syst:bkg:ipchisq}
+% TODO fill these in with actual values
+This cut reduces the \pKK\ signal yield by SOMEPERCENT the \ppipi\ signal yield 
+by SOMEPERCENT\@.
+The value of \dACP\ does not change.
+The kinematic weighting in \PLambdac\ $(\pT, \Eta)$ would suppress any 
+asymmetries arising from prompt \PLambdac\ candidates.
+
+Known alternative sources of \PLambdac\ from beauty decays are considered.
+These include \decay{\PBplus}{\APLambdac\Pproton\Ppiplus} decays and
+\decay{\PBplus}{\APSigmac\Pproton\Ppi\Ppi} with 
+\decay{\PSigmac}{\PLambdac\Ppi}.
+In total, the inclusive \decay{\PB}{\PLambdac X} branching fractions are, 
+conservatively, less than \SI{10}{\percent} for both \PBplus and \PBzero, and 
+the \PBs contribution is negligible~\cite{PDG2014}.
+The combined \PB cross-section is around four times that of the 
+\PLambdab~\cite{LHCb-PAPER-2013-004,Aaij:2015fea}, and the relative rate of 
+\decay{\PB}{\PLambdac X} is around 3 times that of \LbToLcmuX, for a total 
+relative rate of 12 times.
+However, the muon triggers and $\PLambdac\Pmuon$ vertex requirements strongly 
+suppress these alternate sources of \PLambdac\ decays.
+Using a simulated sample of one million generated 
+\decay{\PBzero}{\APLambdac\Pproton\Ppiminus\Ppiplus} decays, of the order of 
+100 \PLambdac\ candidates pass the selection requirements defined in 
+\cref{chap:cpv:selection}.
+Given this, and that at least the \PBzero production asymmetry is compatible 
+with zero below the percent level~\cite{Aaij:2014bba}, these backgrounds are 
+neglected.
