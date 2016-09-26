@@ -1,0 +1,64 @@
+% Rotation of the axes wrt the viewer
+% syntax: \tdplotsetdisplay{\theta_d}{\phi_d}
+\tdplotsetmaincoords{70}{110}
+
+% Define proton coordinates
+\pgfmathsetmacro{\rp}{.8}
+\pgfmathsetmacro{\angthetap}{60}
+\pgfmathsetmacro{\angphip}{50}
+
+% Define Kpi coordinates
+\pgfmathsetmacro{\rKpi}{.4}
+\pgfmathsetmacro{\thetaKpi}{80}
+\pgfmathsetmacro{\phiKpi}{340}
+
+% Start a TikZ picture, using the tdplot_main_coords system
+% tdplot provides the coordinate transformation
+\begin{tikzpicture}[scale=4,tdplot_main_coords]
+
+% Define the origin
+\coordinate (O) at (0,0,0);
+
+% Create a point P with coordinates r, theta, and phi
+% I think this is similar to \coordinate, but also transform the vector
+% in to the rotated coordinate system
+\tdplotsetcoord{P}{\rp}{\angthetap}{\angphip}
+\tdplotsetcoord{Kpi}{\rKpi}{\thetaKpi}{\phiKpi}
+
+% Draw main coordinate axes
+% The anchor key relates to the positioning of the label
+% South is towards the bottom of the diagram, east is to the left
+\draw[thick,->] (0,0,0) -- (1.0,0,0) node[anchor=north west]{
+  $x = \hat{p}_{\PLambdac}$
+};
+\draw[thick,->] (0,0,0) -- (0,0.5,0) node[anchor=north west]{
+  $y$
+};
+\draw[thick,->] (0,0,0) -- (0,0,0.5) node[anchor=south]{
+  $z = \polzlcp = \phatlbz \times \phatlcp$
+};
+
+% Draw a vector from origin to point P
+% The -stealth' option is the type of arrowhead
+\draw[-stealth',color=red] (O) -- (P) node[anchor=west]{\Pproton};
+\draw[-stealth',color=red] (O) -- (Kpi) node[anchor=east]{\hmhp};
+
+% Draw projection of vector on to xy plane, and a connecting line
+\draw[dashed, color=red] (O) -- (Pxy);
+\draw[dashed, color=red] (P) -- (Pxy);
+
+% Draw angle phi of xy projection
+% {} arguments are center point, radius, angle-from, angle-to, options, label
+% [] arguments are coordinate frame, draw options
+\tdplotdrawarc{(O)}{0.25}{0}{\angphip}{anchor=north}{\phip}
+
+%set the rotated coordinate system so the x'-y' plane lies within the
+%"theta plane" of the main coordinate system
+%syntax: \tdplotsetthetaplanecoords{\phi}
+% Rotate the "theta plane" (xz) by phi around z
+\tdplotsetthetaplanecoords{\angphip}
+
+% Draw arc in rotated system
+\tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.35}{0}{\angthetap}{anchor=south west}{\thetap}
+
+\end{tikzpicture}
