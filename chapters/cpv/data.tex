@@ -86,6 +86,9 @@ data-taking conditions for 2012.
 These conditions correspond to an average number of \pp\ interactions per bunch 
 crossing of $\nu = 2.5$, a beam energy of \SI{4}{\TeV}, and a trigger 
 configuration representative of the average trigger conditions used in 2012.
+Each \PLambdac\ is forced to decay to the appropriate \phh\ final state, with 
+no intermediate resonances simulated, and to have originated from \LbToLcmunu\ 
+decays.
 The simulated data is reconstructed with the same offline reconstruction as the 
 real data, and is then passed through a near-identical version of the 
 stripping, with the only difference being the omission of any \ac{PID} 
@@ -94,19 +97,6 @@ selection, as the related variables are known to be poorly modelled in the
 The \decaytreefitter\ algorithm is run on the candidates passing the stripping, 
 but the momentum scale calibration is not run as the conditions in the \ac{MC} 
 are stable.
-
-The decay chain is generated in such a way that the \PLambdab\ is forced to 
-decay to $\PLambdac\Pmuon\APnum$.
-In one sample, the \PLambdac\ is forced to decay to the \pKK\ final state, with 
-a \SI{52}{\percent} probability of proceeding through the resonant 
-$\Pproton\Pphi$ channel.
-% The hepnames \Pfz macro shows f_0(975), which is unconventional
-The \ppipi\ sample is generated similarly, but with \SI{44}{\percent} 
-probability of the \LcToppipi\ decay proceeding through the resonant $\Pproton 
-f_{0}(980)$ channel.
-In each case, the intermediate resonance is simulated incoherently to the 
-non-resonant component, and is added to coarsely mimic the dominant resonant 
-structure seen in data.
 
 \subsection{Generator-level simulation}
 \label{chap:cpv:data:mc:gen}
