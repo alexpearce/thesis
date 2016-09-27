@@ -6,8 +6,9 @@ uncertainty due to finite \pKK\ and \ppipi\ sample sizes.
 Three sources of systematic uncertainty are considered in this analysis: the 
 arbitrary choice of model used to extract the \PLambdac\ and \APLambdac\ signal 
 yields; the failure of the kinematic weighting procedure to fully equalise the 
-\PLambdab, muon, and proton kinematics between the modes; and the accuracy of 
-the efficiency model derived from the \ac{MC} data.
+\PLambdab, muon, and proton kinematics between the modes; and the breaking of 
+the assumption that the \PLambdac\ candidates originate from the \LbToLcmuX\ 
+decay.
 The effect of these on the measurement of \dACP\ will be discussed in this 
 \namecref{chap:cpv:syst} and, where appropriate, systematic uncertainties will 
 be computed and assigned.
@@ -84,7 +85,7 @@ This is equivalent to requiring
     \int_{X + D - \frac{S}{4}}^{X + D + \frac{S}{4}} g(x) \dif{x},
   \label{eqn:cpv:syst:fit:bkg_frac_equiv}
 \end{equation}
-which is satisfied when $g(x)$ is a linear function
+and is satisfied when $g(x)$ is a linear function
 \begin{equation*}
   g(x) = 1 + a_{0}x,
 \end{equation*}
@@ -118,7 +119,7 @@ Multiplying \cref{eqn:cpv:syst:fit:frac_diff} by $N$ gives
     N_{\text{S}} - N_{\text{SB}} =
     \nsig
     \int_{X - \frac{S}{2}}^{X + \frac{S}{2}} f(x) \dif{x}
-  \label{eqn:cpv:syst:fit:frac_diff}
+  \label{eqn:cpv:syst:fit:yield_diff}
 \end{equation}
 That is, the difference between the \emph{observed number} of candidates in the 
 signal window and the sidebands gives the number of signal candidate in the 
@@ -159,9 +160,9 @@ sidebands is negligible is checked using \ac{MC}, where \SI{0.7}{\percent} of
 the \ppipi\ truth-matched signal data is in the sidebands, and for \pKK the 
 fraction of \SI{0.3}{\percent}.
 These fractions are much smaller than the relative statistical uncertainties on 
-the signal yields in shown 
+the signal yields shown in 
 \cref{tab:cpv:prelim_fits:yields:pKK,tab:cpv:prelim_fits:yields:ppipi}, and so 
-are considered acceptable level of contamination.
+the level of contamination is considered to be negligible.
 
 \begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
@@ -189,6 +190,7 @@ are considered acceptable level of contamination.
 For each data sub-sample, the \pKK\ and \ppipi\ samples are split by the charge 
 of the \PLambdac\ and the sideband subtraction technique is used to measure the 
 yields.
+% TODO This should be the sum of the weights, rather than the candidate count
 The yield asymmetry is then
 \begin{equation}
   \ARaw(f) = \frac{%
@@ -221,7 +223,7 @@ they taken as a systematic uncertainties on the measurements of \dACP\@.
 On the nominal result quoted in \cref{eqn:cpv:results:dacp}, the systematic 
 uncertainty is \SI{0.26}{\percent}.
 
-\begin{table}
+\begin{sidewaystable}
   \centering
   \caption{%
     Differences between asymmetries measured with the nominal fit method and 
@@ -233,20 +235,228 @@ uncertainty is \SI{0.26}{\percent}.
     defined in \cref{chap:cpv:results:combination}.
   }
   \label{tab:syst:sbs_differences}
-  % \begin{adjustbox}{center}
-    \input{tables/cpv/systematics/delta_acp-sideband_subtraction-diff.tex}
-  % \end{adjustbox}
-\end{table}
+  \input{tables/cpv/systematics/delta_acp-sideband_subtraction-diff.tex}
+\end{sidewaystable}
 
 \section{Residual background asymmetries}
 \label{chap:cpv:syst:asym}
 
-To do.
+The kinematic weighting discussed in \cref{chap:cpv:kinematic_weighting} does 
+completely remove all differences between the \PLambdab, muon, and proton 
+kinematics between the \pKK\ and \ppipi\ datasets, nor does it remove all 
+\PKminus/\PKplus and \Ppiminus/\Ppiplus differences within the decay modes.
+Therefore, contributions from the respective background asymmetries will still 
+contribute to \dACP\@.
+A study is performed to quantity this contamination.
+Firstly, the available measurements of the detection and production asymmetries 
+are enumerated, and then their application to this analysis is described.
 
-\section{Efficiency modelling}
-\label{chap:cpv:syst:eff}
+The asymmetries considered are those that arise from the differences in the 
+matter and antimatter cross-sections with the detector, called detection 
+asymmetries.
+The trigger asymmetry for muons from \PB decays is known to be 
+small~\cite{Aaij:2016yze}, and is neglected here.
 
-To do.
+The pion detection asymmetry is measured using \sqrtseq{7} 
+data~\cite{Aaij:2012cy} by a method of partial reconstruction of 
+\PDstarp-tagged \decay{\PDzero}{\PKminus\Ppiplus\Ppiminus\Ppiplus} decays.
+In this, the delta mass variable, defined similarly to that in 
+\cref{eqn:prod:fitting:delta_mass}, provides a good signal-to-background 
+discrimination even if the pion is not required to have been reconstructed.
+The ratio of the signal yields before and after the explicit reconstruction 
+gives the pion detection efficiency, and this is performed separately for each 
+pion charge in bins of pion kinematics.
+The asymmetries are shown in \cref{fig:cpv:syst:asym:pion} as a function of 
+pion momentum.
+The central values of the relative asymmetries in bins of pion momentum are 
+small, generally less than \SI{2}{\percent}, and are very close to zero when 
+averaged across the magnet polarities.
+The integrated ratios are measured to the $0.9914 \pm 0.0040$ and $1.0045 \pm 
+0.0034$ for magnet up and magnet down configurations, respectively.
+Here, these values are considered to be compatible with zero, and so 
+contributions from a pion detection asymmetry are neglected.
+
+The kaon detection asymmetry is measured using the full \runone\ dataset with 
+\DpToKpipi\ and \decay{\PDplus}{\APKzero\Ppiplus} decays~\cite{Aaij:2014gsa}.
+The raw asymmetries between the two decays are subtracted, as is the 
+contribution from the $\APKzero$ interaction asymmetry, to measure \ADKpi.
+The kaon material cross-section asymmetry is known to be much larger than that 
+for pions~\cite{PDG2014}, as shown in \cref{fig:cpv:syst:asym:xsecs}, and so 
+\ADKpi\ is assumed to be dominated by the kaon detection asymmetry.
+The asymmetry as a function of kaon momentum, averaged across magnet 
+polarities, is shown in \cref{fig:cpv:syst:asym:kaon} and tabulated in 
+\cref{tab:cpv:syst:asym:kaon}, where it is seen to be significant larger in 
+magnitude than the pion asymmetry in \cref{fig:cpv:syst:asym:pion} and 
+significantly different from zero.
+
+The muon detection asymmetry is measured using the tag-and-probe technique described in \cref{chap:prod:effs:tracking} with \JpsiTomumu~\cite{Stahl:2010261}.
+The track reconstruction efficiency is computed separately for \Pmuon and \APmuon and an asymmetry is formed, shown in \cref{fig:cpv:syst:asym:muon} and tabulated in \cref{tab:cpv:syst:asym:muon}.
+The asymmetries are small, of the order of \SI{0.1}{\percent}.
+
+Measurements of the production asymmetry from unequal \PLambdab\ and 
+\APLambdab\ cross-sections have been made by \lhcb~\cite{Aaij:2015fea}, where 
+the asymmetry as a function of \pT\ was found to be negligible over both 2011 
+and 2012, but as a function of rapidity $\rapidity$ was found to be
+\begin{equation}
+  \APLb = (0.058 \pm 0.014)(y - \langle{y}\rangle),
+\end{equation}
+where $\langle{y}\rangle = 3.1$ is the average \PLambdab\ rapidity in the 
+sample used.
+These values are compatible between the 2011 and 2012 data.
+The same analysis also measured the proton detection asymmetry using simulated 
+data, assigning a systematic uncertainty to the result based on the relative 
+disagreement between the data and the \ac{MC} when evaluating the \emph{kaon} 
+detection asymmetry.
+The results are shown in \cref{tab:cpv:syst:asym:proton}.
+Simulations using both the \pKK\ and the \ppipi\ samples defined in 
+\cref{chap:cpv:data:mc} agree with these results, and are shown in 
+\cref{fig:cpv:syst:asym:proton_this}.
+
+\subsection{Evaluation}
+\label{chap:cpv:syst:asym:eval}
+
+The effect of the residual background asymmetry for a single asymmetry $A$ due to some particle $X$ on the value of \dACP\ is given by a shift $\Delta{A}$, defined as
+\begin{equation}
+  \Delta{A}^{X} = \frac{1}{\nsig^{\pKK}}\sum_{i} \nsig^{\pKK,i} A_{i} -
+    \frac{1}{\nsig^{\ppipi}}\sum_{i} \nsig^{\ppipi,i} A_{i},
+\end{equation}
+where $\nsig^{f}$ is the total number of signal candidates in the \LcTof\ sample, $i$ is the bin index of the asymmetry parameter, such as \PLambdab\ rapidity, and $\nsig^{f,i}$ is the number of signal candidates in the \LcTof\ sample that fall in the $i$th asymmetry bin.
+The number of signal candidates is computed as the sum of signal sWeights, weighted by kinematic weights and phase space efficiency corrections as in \cref{eqn:cpv:araw:total_weights}.
+One such shift is defined for the muon and proton detection asymmetries and the \PLambdab\ production asymmetry, $\Delta\APLb$, $\Delta\ADp$, and $\Delta\ADmu$.
+The shift due to the residual kaon detection asymmetry is similarly defined
+\begin{equation}
+  \Delta{\ADK} = \frac{1}{\nsig^{\pKK}}\left(%
+    \sum_{i} \nsig^{\pKK,\PKminus} A_{i} -
+    \sum_{i} \nsig^{\pKK,\PKplus} A_{i}
+  \right),
+\end{equation}
+where $\nsig^{\pKK,\PKpm}$ is the number of signal \PKplus/\PKminus particles in the $i$th asymmetry bin.
+
+The total shift of \dACP, $\Delta{A}$ is given by the sum of the individual shifts
+\begin{equation}
+  \Delta{A} = \Delta\APLb + \Delta\ADp + \Delta\ADmu + \Delta\ADK.
+\end{equation}
+These shifts for each year and data-taking condition are given in \cref{tab:cpv:syst:asym:results}, along with the shifts for the polarity-integrated datasets.
+All of the values found are below one per mille, with the proton detection asymmetry providing the largest contribution.
+Conservatively, a \SI{0.1}{\percent} systematic uncertainty is assigned to the measurement of \dACP\ based on the residual background uncertainty.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{cpv/systematics/pion_detection_asymmetry_p}
+  \caption{%
+    Ratio of pion detection asymmetries as a function of pion 
+    momentum~\cite{Aaij:2012cy}.
+    The uncertainties on the data points are statistical.
+  }
+  \label{fig:cpv:syst:asym:pion}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{cpv/systematics/kaon_detection_asymmetry_p}
+  \caption{%
+    Kaon detection asymmetry \ADKpi\ as a function of kaon momentum averaged 
+    across magnet polarities~\cite{Aaij:2014gsa}.
+    The average of the measurements is shown as a grey band.
+    The error bars on the data points include statistical and systematic 
+    uncertainties.
+  }
+  \label{fig:cpv:syst:asym:kaon}
+\end{figure}
+
+\begin{table}
+  \centering
+  \caption{%
+    Kaon detection asymmetries \ADKpi\ in bins of kaon 
+    momentum~\cite{Aaij:2014gsa}.
+  }
+  \label{tab:cpv:syst:asym:kaon}
+  \input{tables/cpv/systematics/kaon_detection_asymmetry}
+\end{table}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{cpv/systematics/muon_detection_asymmetry_pt}
+  \caption{%
+    Muon detection asymmetry as a function of muon \pT\ averaged 
+    across magnet polarities in \sqrtseq{8} data~\cite{Stahl:2010261}.
+    The average of the measurements is shown as a blue band.
+    The uncertainties on the data points are statistical.
+  }
+  \label{fig:cpv:syst:asym:muon}
+\end{figure}
+
+\begin{table}
+  \centering
+  \caption{%
+    Muon detection asymmetries in bins of muon \pT measured using \sqrtseq{7} 
+    (2011) and \SI{8}{\TeV} (2012)~\cite{Stahl:2010261}.
+  }
+  \label{tab:cpv:syst:asym:muon}
+  \input{tables/cpv/systematics/muon_detection_asymmetry}
+\end{table}
+
+\begin{figure}
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{cpv/systematics/pion_proton_cross_sections}
+    \caption{\decay{\Ppi\Pproton}{X}}
+    \label{fig:cpv:syst:asym:xsecs:pion}
+  \end{subfigure}
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{cpv/systematics/kaon_proton_cross_sections}
+    \caption{\decay{\PK\Pproton}{X}}
+    \label{fig:cpv:syst:asym:xsecs:kaon}
+  \end{subfigure}
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{cpv/systematics/proton_proton_cross_sections}
+    \caption{\decay{\Pproton\Pproton}{X}}
+    \label{fig:cpv:syst:asym:xsecs:proton}
+  \end{subfigure}
+  \caption{%
+    Cross-sections of $h^{\mp}\Pproton \to \text{anything}$~\cite{PDG2014}.
+    Each curve shows the hadronic cross-section with proton targets as a 
+    function of \sqrts, with the red curve showing the cross-section for the 
+    `matter' hadron (\PKplus, \Ppiplus, \Pproton) and the black curve showing 
+    that for the `antimatter' hadron (\PKminus, \Ppiminus, \APproton).
+  }
+  \label{fig:cpv:syst:asym:xsecs}
+\end{figure}
+
+\begin{table}
+  \centering
+  \caption{%
+    Proton detection asymmetries measured using simulated data in bins of 
+    proton momentum~\cite{Aaij:2015fea}.
+  }
+  \label{tab:cpv:syst:asym:proton}
+  \input{tables/cpv/systematics/proton_detection_asymmetry}
+\end{table}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{cpv/systematics/proton_detection_asymmetry_p_this}
+  \caption{%
+    Asymmetry of proton detection asymmetries as a function of proton momentum 
+    in \si{\GeVc}.
+    The uncertainties on the data points are statistical.
+  }
+  \label{fig:cpv:syst:asym:proton_this}
+\end{figure}
+
+\begin{sidewaystable}
+  \centering
+  \caption{%
+    Shifts in the measurement of \dACP\ due to background asymmetries not 
+    complete removed during the kinematic weighting.
+    The total shift $\Delta{A}$ is the sum of the individual ones, and all 
+    shifts are given in \num{e-4}.
+  }
+  \label{tab:cpv:syst:asym:results}
+  \input{tables/cpv/systematics/residual_asymmetries}
+\end{sidewaystable}
 
 \section{Signal decays from other sources}
 \label{chap:cpv:syst:bkg}
@@ -290,3 +500,22 @@ Using a simulated sample of one million generated
 Given this, and that at least the \PBzero production asymmetry is compatible 
 with zero below the percent level~\cite{Aaij:2014bba}, these backgrounds are 
 neglected.
+
+\section{Summary and combination}
+\label{chap:cpv:syst:summary}
+
+Sources of systematic uncertainties on the measurement of \dACP\ have been 
+studied.
+The effect of the arbitrary choice of fit model is assessed with a sideband 
+subtraction method, with the deviation from the nominal result found to be 
+\SI{0.26}{\percent}.
+Residual asymmetries arising from the failure of the kinematic weighting to 
+completely equalise all kinematic distributions are found to shift the value of 
+\dACP\ by \SI{0.1}{\percent}.
+The contribution of \PLambdac\ candidates from non-\PLambdab\ decays is 
+considered to be negligible.
+
+The two systematic uncertainties are added in quadrature in order to assign a 
+single systematic to \dACP, giving \SI{0.28}{\percent}.
+This is small compared with the statistical uncertainty of \SI{0.89}{\percent} 
+given in \cref{tab:cpv:results:asymmetries}.
