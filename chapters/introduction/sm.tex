@@ -6,29 +6,31 @@ of the four fundamental forces of nature, electromagnetism, the weak force, and
 the strong force, with a set of fundamental particles.
 The \ac{SM} makes many predictions, from the spectral lines of the hydrogen  
 atom to the rate of the \BsTomumu\ decay, and so far no experimental results 
-have provided conclusive proof that such predictions are fundamentally 
+have provided conclusive proof that such predictions are, fundamentally, 
 incorrect.
-However, astronomical observations indicate that, at the very least, the 
-\ac{SM} is not a complete description of the universe.
+The absence of a description of the fourth fundamental force, gravity, the 
+non-zero masses of neutrinos, and several astronomical observations indicate 
+that, at the very least, the \ac{SM} is not a complete description of the 
+universe.
 It does not describe the observed matter-antimatter asymmetry, nor can it 
 account for the apparent presence of dark matter.
 The purpose of the \ac{LHC} is to provide experiments with enough data to be 
 able to find minute deviations from the predictions of the \ac{SM}, which could point to particular alternate theories of nature.
 In this \namecref{chap:intro:sm}, the forces and particles described by the 
-\ac{SM} shall be summarised, ending with a particular emphasis on the 
-phenomenology of the weak force, which the \lhcb\ detector is optimised to 
-study.
+\ac{SM} are summarised, ending with an emphasis on the phenomenology of the 
+weak force, which the \lhcb\ detector is optimised to study.
 
 The \ac{SM} is a powerful predictive model partly due to its use of symmetries, which, through Noether's theorem, give rise to conserved currents.
 For example, the symmetry of physical laws to rotations in space and 
 translations in time leads to the conservation of total angular momentum and energy, 
 respectively.
-In a quantum field theory, these currents are quantised in units of quantum charge, 
-such that all 
-interactions change the quantum charge of a particular actor by integer multiples of 
-that unit, and that the total charge of the system is invariant.
+In a quantum field theory, each of these currents are quantised in units of a 
+quantum charge.
+An interaction with a field changes the value of the corresponding quantum 
+charge of a particular actor by integer multiples, and the total charge of the 
+system is invariant.
 Interactions with a field only occur if the actors are charged under that 
-field, such as the electric current for the electromagnetic field.
+field, such as the familiar electric charge for the electromagnetic field.
 
 Interactions with fields are mediated via the exchange of bosons, fundamental 
 particles with integer spin, such as the photon, the force carrier of the 
@@ -38,14 +40,14 @@ and neutrinos constitute the fundamental fermions.
 
 The strong force acts on particles with a non-zero colour charge, quarks and gluons, via the 
 exchange of gluons.
-Gluons being charged under the force they mediate significantly complicates the 
-theory of strong interactions.
+The theory of strong interactions is complex, due to gluons being charged under 
+the force they mediate.
 At low energies, this self interaction leads to the phenomenon of confinement, 
 whereby colour-charged objects cannot be observed experimentally, as the 
 attractive force between two colour-charged object is constant with increasing 
 distance, requiring an infinite amount of energy to be separated completely.
 Conversely, at higher energies, these particles become asymptotically free, 
-eventually forming the quark-gluon plasma.
+eventually forming a quark-gluon plasma.
 The energy scale at which the transition between these two regimes occurs is 
 denoted \qcdscale.
 
@@ -63,8 +65,9 @@ One such example of a non-perturbative problem is the prediction of \pp\
 cross-sections at the \ac{LHC}, which will be discussed in more detail in 
 \cref{chap:prod:theory}.
 
-The six quarks are only observed experimentally in colourless bound states of 
-two or more quarks called hadrons.
+The six quarks (\Pup, \Pdown, \Pcharm, \Pstrange, \Ptop, and \Pbottom) are only 
+observed experimentally in colourless bound states of two or more quarks called 
+hadrons.
 Mesons are hadrons made of two quarks, and baryons are hadrons made of three 
 quarks.
 The behaviour of mesons and baryons can be studied with a particle detector to 
@@ -80,24 +83,25 @@ and strong interactions have still not been observed to break them.
 One example is symmetry under the parity transformation \Ptransform, which 
 changes the sign of the spatial coordinates
 \begin{equation}
-  P: \begin{pmatrix}x\\y\\z\end{pmatrix}
-     \mapsto \begin{pmatrix}-x\\-y\\-z\end{pmatrix}.
+  P: \begin{pmatrix}x\\y\\z\\t\end{pmatrix}
+     \mapsto \begin{pmatrix}-x\\-y\\-z\\t\end{pmatrix}.
   \label{eqn:intro:sm:parity}
 \end{equation}
 The weak force violates this symmetry in the largest possible way by only 
 coupling to particles with left-handed chirality and anti-particles with 
 right-handed chirality.
-The discovery of \Ptransform\ violation was soon followed by the discovery of 
-\CP\ violation, the breaking of the symmetry of the \CP\ transformation which 
-simultaneously changes the handedness of particles (\Ptransform) and flips the sign of all 
-quantum charges (\Ctransform).
+The discovery of \Ptransform\ violation~\cite{Wu:1957my} was soon followed by 
+the discovery of \CP\ violation~\cite{Christenson:1964fg}, the breaking of the 
+symmetry of the \CP\ transformation which simultaneously changes the handedness 
+of particles (\Ptransform) and flips the sign of all quantum charges 
+(\Ctransform).
 
 \section{\texorpdfstring{\CP}{CP} violation}
 \label{chap:intro:sm:cp}
 
 As the measurement of \CP\ violation in charm and beauty hadron decays is a 
-cornerstone of the \lhcb\ physics programme, its mechanism shall be describe 
-here in more detail.
+cornerstone of the \lhcb\ physics programme, and indeed \cref{chap:cpv} of the 
+thesis, its mechanism shall be describe here in more detail.
 
 The weak interaction eigenstates $(\Pdown', \Pstrange', \Pbottom')$ 
 are different to the quark mass eigenstates $(\Pdown, \Pstrange, \Pbottom)$.
@@ -131,9 +135,14 @@ represented using only three mixing angles and a complex phase $\delta$
 \end{equation}
 where $s_{ij} = \sin{\theta_{ij}}$ and $c_{ij} = \cos{\theta_{ij}}$.
 In alternative formulations, the three angles are parameterised as $\alpha$, $\beta$ and $\gamma$.
-One of the key measurements of \lhcb\ is that of the angle $\gamma$, which is the least well-known of the three angles experimentally, with the precision on the world average around \SI{9}{\percent}~\cite{LHCb-CONF-2016-001}, to be compared with the \ac{SM} prediction precision being estimated to be between \SI{4}{\deg} and negligible, depending on the assumptions made~\cite{Brod:2013sga,Brod:2014bfa}.
+One of the key measurements of \lhcb\ is that of the angle $\gamma$, which is 
+the least well-known of the three angles experimentally, with the precision on 
+the world average around \SI{9}{\percent}~\cite{LHCb-CONF-2016-001}, to be 
+compared with the \ac{SM} prediction precision being estimated to be between 
+\SI{4}{\degree} and negligible, depending on the assumptions 
+made~\cite{Brod:2013sga,Brod:2014bfa}.
 
-It is not immediately obvious how a phase in the \ac{CKM} matrix permits \CP\ violation.
+It is the phase in the \ac{CKM} matrix that permits \CP\ violation.
 Consider a decay \decay{P}{f} and the \CP\ conjugate process
 \decay{\bar{P}}{\bar{f}}.
 The corresponding decay amplitude $\mathcal{M}_{f}$ and $\bar{\mathcal{M}}_{\bar{f}}$ can have some phase $\phi$, and the \ac{CKM} mechanism can add a additional phase $\theta$ which changes sign under \CP, giving
@@ -161,9 +170,8 @@ It then follows that
 \end{equation*}
 This is non-zero, provided that $\theta_{1} \neq \theta_{2}$ and $\phi_{1} \neq 
 \phi_{2}$, and hence introduces a possible \CP\ asymmetry.
-It is then the \emph{mixing between channels} that permits \CP\ symmetry 
-breaking, and only then in the weak interactions as only these conjugate a 
-phase.
+It is then the interference between channels that permits \CP\ symmetry 
+breaking in weak interactions.
 
 The breaking of the \CP\ symmetry was first observed in kaon decays, and, as mentioned in \cref{chap:intro:overview}, \CP\ violation has recently been observed in beauty decays.
 Observing \CP\ violation in charm decays would provide a more complete picture of what is possible in the \ac{SM}, but it will not solve the problem of the observed baryon asymmetry in the universe, which the \ac{SM} cannot account for.
