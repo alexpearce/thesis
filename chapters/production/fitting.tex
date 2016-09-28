@@ -214,7 +214,7 @@ For the \PDstarp\ measurements, the signal region is defined as a window
 The upper sideband, or just `sideband' as a lower sideband region is not 
 defined in \deltam, is defined as the region from \SI{4.5}{\MeVcc} to 
 \SI{9}{\MeVcc} above the centre of the signal region.
-\Cref{fig:prod:fitting:regions:D0ToKpi,fig:prod:fitting:regions:DpToKpipi,fig:prod:fitting:regions:DsToKKpi,fig:prod:fitting:regions:DstToD0pi_D0ToKpi}
+\Cref{fig:prod:fitting:regions_A,fig:prod:fitting:regions_B}
 show the signal and sideband regions for each mode.
 
 The integral of the \lnipchisq\ background template \ac{PDF} is constrained to 
@@ -437,68 +437,48 @@ prompt signal yield $N_{i} \pm \sigma_{N_{i}}$ in that bin as determined in the
 fit does not satisfy $N_{i} > 3\sigma_{N_{i}}$.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{production/fitting/D0ToKpi_mass_offline_selection_regions}
+  \begin{subfigure}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{production/fitting/D0ToKpi_mass_offline_selection_regions}
+    \caption{\DzToKpi}
+    \label{fig:prod:fitting:regions:D0ToKpi}
+  \end{subfigure}
+  \begin{subfigure}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{production/fitting/DpToKpipi_mass_offline_selection_regions}
+    \caption{\DpToKpipi}
+    \label{fig:prod:fitting:regions:DpToKpipi}
+  \end{subfigure}
   \caption{%
-    Definition of signal window, in blue, and sidebands, in red, for \DzToKpi\ 
+    Definition of signal window, in blue, and sidebands, in red, for 
+    \DzToKpi~(\subref*{fig:prod:fitting:regions:D0ToKpi}) and 
+    \DpToKpipi~(\subref*{fig:prod:fitting:regions:DpToKpipi}) candidates.
+    The boundaries of the different regions are defined in 
+    \cref{chap:prod:fitting:ipchisq}.
+    The full dataset is shown.
+  }
+  \label{fig:prod:fitting:regions_A}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{production/fitting/DsToKKpi_mass_offline_selection_regions}
+    \caption{\DspTophipi}
+    \label{fig:prod:fitting:regions:DsTophipi}
+  \end{subfigure}
+  \begin{subfigure}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{production/fitting/DstToD0pi_D0ToKpi_delta_mass_offline_selection_regions}
+    \caption{\DstToDzpi}
+    \label{fig:prod:fitting:regions:DstToD0pi_D0ToKpi}
+  \end{subfigure}
+  \caption{%
+    Definition of signal window, in blue, and sidebands, in red, for 
+    \DspTophipi~(\subref*{fig:prod:fitting:regions:DsTophipi}) and 
+    \DstToDzpi~(\subref*{fig:prod:fitting:regions:DstToD0pi_D0ToKpi}) 
     candidates.
-    The signal window is $\pm\SI{20}{\MeVcc}$ either side of the nominal 
-    \PDzero mass of \SI{1864.84}{\MeVcc}~\cite{PDG2014}.
-    The upper and lower sidebands are each \SI{20}{\MeVcc} wide, with the lower 
-    sideband ending \SI{40}{\MeVcc} below the nominal \PDzero mass and the 
-    upper sideband beginning \SI{40}{\MeVcc} above the nominal \PDzero mass.
+    The boundaries of the different regions are defined in 
+    \cref{chap:prod:fitting:ipchisq}.
     The full dataset is shown.
   }
-  \label{fig:prod:fitting:regions:D0ToKpi}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{production/fitting/DpToKpipi_mass_offline_selection_regions}
-  \caption{%
-    Definition of signal window, in blue, and sidebands, in red, for 
-    \DpToKpipi\ candidates.
-    The signal window is $\pm\SI{20}{\MeVcc}$ either side of the nominal 
-    \PDplus mass of \SI{1869.61}{\MeVcc}~\cite{PDG2014}.
-    The upper and lower sidebands are each \SI{20}{\MeVcc} wide, with the lower 
-    sideband ending \SI{40}{\MeVcc} below the nominal \PDplus mass and the 
-    upper sideband beginning \SI{40}{\MeVcc} above the nominal \PDplus mass.
-    The full dataset is shown.
-  }
-  \label{fig:prod:fitting:regions:DpToKpipi}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{production/fitting/DsToKKpi_mass_offline_selection_regions}
-  \caption{%
-    Definition of signal window, in blue, and sidebands, in red, for 
-    \DspTophipi\ candidates.
-    The signal window is $\pm\SI{20}{\MeVcc}$ either side of the nominal 
-    \PDsplus mass of \SI{1968.30}{\MeVcc}~\cite{PDG2014}.
-    The upper and lower sidebands are each \SI{20}{\MeVcc} wide, with the lower 
-    sideband ending \SI{40}{\MeVcc} below the nominal \PDsplus mass and the 
-    upper sideband beginning \SI{40}{\MeVcc} above the nominal \PDsplus mass.
-    The full dataset is shown.
-  }
-  \label{fig:prod:fitting:regions:DsToKKpi}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{production/fitting/DstToD0pi_D0ToKpi_delta_mass_offline_selection_regions}
-  \caption{%
-    Definition of signal window, in blue, and sidebands, in red, for 
-    \DstToDzpi, with \DzToKpi, candidates.
-    The signal window is $\pm\SI{3}{\MeVcc}$ either side of the nominal 
-    $\deltam = m(\PDstarp) - m(\PDzero)$ mass of 
-    \SI{145.43}{\MeVcc}~\cite{PDG2014}.
-    The upper sideband is \SI{4.5}{\MeVcc} wide, beginning \SI{4.5}{\MeVcc} 
-    above the nominal \deltam\ value.
-    The full dataset within the \PDzero signal region, given in 
-    \cref{fig:prod:fitting:regions:D0ToKpi},is shown.
-  }
-  \label{fig:prod:fitting:regions:DstToD0pi_D0ToKpi}
+  \label{fig:prod:fitting:regions_B}
 \end{figure}
 
 \begin{figure}
