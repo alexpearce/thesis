@@ -397,25 +397,32 @@ the \ac{AUC} was smallest.
 
 Weighting can increase the statistical contribution of individual entries 
 within a dataset, but it should not increase the overall statistical power.
-To prevent this, each per-entry weight $w_{i}$ can be assigned a factor $W$, 
-defined as
+The number of entries $N'$ in a weighted dataset can be computed as the sum of 
+the per-entry weights $w_{i}$, and the variance on this quantity is given as 
+the sum of the squares of the weights
 \begin{equation}
-  W = \frac{%
-    \sum_{i}^{N} w_{i}
-  }{%
-    \sum_{i}^{N} w_{i}^{2}
-  }.
+  N' = \sum_{i}^{N} w_{i},\quad (\unc{N'})^{2} = \sum_{i}^{N} w_{i}^{2}
 \end{equation}
-The number of `effective' entries in the dataset is then
+For certain values of $w_{i}$, it can be that $\unc{N'} < \unc{N}$.
+To prevent this, the number of `effective' entries in the weighted dataset is 
+computed, under the relation that the relative variance on the effective 
+entries is equal to the relative variance on the weights
 \begin{equation}
-  \neff = W\sum_{i}^{N} w_{i} = \frac{%
+  \frac{\neff}{\unc{\neff}} =
+    \frac{\sum_{i}^{N} w_{i}}{\sqrt{\sum_{i}^{N} w_{i}^{2}}},
+\end{equation}
+where \neff\ is assumed to be Poisson-distributed, and so $(\unc{\neff})^{2} = 
+\neff$, giving
+\begin{equation}
+  \neff = \frac{%
     {\left(\sum_{i}^{N}{w_{i}}\right)}^{2}
   }{%
     \sum_{i}^{N}{w_{i}^{2}},
   }.
   \label{eqn:cpv:kinematic_weighting:neff}
 \end{equation}
-The uncertainty on \neff\ is computed as $\unc{\neff} = \sqrt{\neff}$.
+This relation can be enforced by redefining the weights $w_{i}$ by a factor $W 
+= \sum_{i} w_{i}/\sum_{i} w_{i}^{2}$.
 For unit weights, $\neff = N$ add $\unc{\neff} = \sqrt{N}$.
 Otherwise, \neff\ is the size of the hypothetical dataset that has the same 
 statistical power as the weighted dataset.
