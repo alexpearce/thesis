@@ -396,35 +396,6 @@ Conservatively, a \SI{0.1}{\percent} systematic uncertainty is assigned to the m
   \input{tables/cpv/systematics/muon_detection_asymmetry}
 \end{table}
 
-\begin{figure}
-  \begin{subfigure}{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cpv/systematics/pion_proton_cross_sections}
-    \caption{\decay{\Ppi\Pproton}{X}}
-    \label{fig:cpv:syst:asym:xsecs:pion}
-  \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cpv/systematics/kaon_proton_cross_sections}
-    \caption{\decay{\PK\Pproton}{X}}
-    \label{fig:cpv:syst:asym:xsecs:kaon}
-  \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cpv/systematics/proton_proton_cross_sections}
-    \caption{\decay{\Pproton\Pproton}{X}}
-    \label{fig:cpv:syst:asym:xsecs:proton}
-  \end{subfigure}
-  \caption{%
-    Cross-sections of $h^{\mp}\Pproton \to \text{anything}$~\cite{PDG2014}.
-    Each curve shows the hadronic cross-section with proton targets as a 
-    function of \sqrts, with the red curve showing the cross-section for the 
-    `matter' hadron (\PKplus, \Ppiplus, \Pproton) and the black curve showing 
-    that for the `antimatter' hadron (\PKminus, \Ppiminus, \APproton).
-  }
-  \label{fig:cpv:syst:asym:xsecs}
-\end{figure}
-
 \begin{table}
   \centering
   \caption{%
@@ -453,6 +424,7 @@ Conservatively, a \SI{0.1}{\percent} systematic uncertainty is assigned to the m
     complete removed during the kinematic weighting.
     The total shift $\Delta{A}$ is the sum of the individual ones, and all 
     shifts are given in \num{e-4}.
+    The kaon detection asymmetries \ADK\ are smaller than \num{e-6}.
   }
   \label{tab:cpv:syst:asym:results}
   \input{tables/cpv/systematics/residual_asymmetries}

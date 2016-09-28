@@ -5,14 +5,15 @@ The \PLambdac\ charm baryon has a lifetime of \SI{0.2}{\pico\second}, half that
 of the \PDzero\ and eight times less than that of the \PBzero.
 Indeed, it is one of the shortest-lived weakly decaying heavy flavour hadrons, 
 and as such presents particular challenges when a clean, efficient selection is 
-desired, as in this analysis, as the secondary decay vertex is not so 
-significantly displaced from the \ac{PV}.
+desired as the secondary decay vertex is not so significantly displaced from 
+the \ac{PV}.
 Although the \bbbar\ cross-section is of the order of 100 times less than the 
-\ccbar\ cross-section, reconstructing the decay chain \LbToLcmuX\ allows for 
-the exploitation of the excellent secondary vertex resolution and high \PB 
-trigger efficiency provided by the \lhcb\ detector.
-This analysis takes that approach, selecting \emph{secondary} \PLambdac\ 
-candidates by association with a muon.
+\ccbar\ cross-section~\cite{LHCb-PAPER-2012-041,LHCb-PAPER-2013-004}, 
+reconstructing the decay chain \LbToLcmuX\ allows for the exploitation of the 
+long \PLambdab\ lifetime and the highly efficiency topological \PB decay 
+triggers.
+This analysis selects secondary \PLambdac\ candidates by association with a 
+high \pT\ muon displaced from the \ac{PV}.
 This \namecref{chap:cpv:selection} shall describe each stage of the selection.
 
 \section{Stripping and trigger}
@@ -22,26 +23,27 @@ The selections in the stripping lines were not tuned specifically for this
 analysis, instead serving as general-purpose requirements suitable for a range 
 of studies that use \LcTophh\ decays originating from semileptonic \PLambdab\ 
 decays.
-As such, they are similar to the selections of other \PB decays made at \lhcb\ 
-in that they exploit the long decay times of \PB hadrons, such that they fly as 
-significant, measurable distance in the \velo, and the high \pT\ of the child 
-vertices and tracks.
-The additional requirements are similar in nature to those made for charm 
-hadrons such as track and vertex fit quality and track \ipchisq, which are 
-described in \cref{chap:prod:sel}.
+As such, they are similar to the selections of other \PB decays made at \lhcb.
+They exploit the long decay times of \PB hadrons, such that they fly as 
+significant, measurable distance in the \velo, and the high \pT\ and large 
+\acl{IP} of the child vertices and tracks.
+Additional requirements are similar in nature to those made for charm hadrons 
+such as track and vertex fit quality and track \ipchisq, which are described in 
+\cref{chap:prod:sel}.
 
-The selection of final state particles in the stripping lines, that is protons, 
+The selection of final state particles by the stripping lines, namely protons, 
 charged kaons and pions, and muons, is given in 
 \cref{tab:cpv:selection:stripping_basic}.
 One variable that has not been discussed previously is \pghost, the ghost 
 probability, which is the response of an \ac{ANN} trained to discriminate 
-between real and fake (ghost) tracks~\cite{Brehmer:1478372}.
+between real and fake~(ghost) tracks~\cite{Brehmer:1478372}.
 The \ac{ANN} response is transformed in such a way as to be within the range 
 $[0, 1]$, and that it is linearly efficient at rejecting ghost tracks in 
 simulated data in that range.
 
-The selected final state particles are combined as \LcTophh\ candidates, which 
-are then combined with muon candidates to form candidate \LbToLcmuX\ decays.
+The selected protons, pions, and kaons are combined as \PLambdac\ candidate 
+vertices, which are then combined with muon candidates to form \PLambdab\ 
+candidates.
 The requirements on the combinations and vertices are given in 
 \cref{tab:cpv:selection:stripping_composite}.
 As in \cref{chap:prod:sel}, the selection of composite particles proceeds in 
@@ -51,11 +53,11 @@ secondly on the vertex formed after the fit.
 Trigger requirements are made after the \PLambdab\ candidate is created and 
 selected in the stripping lines.
 They are driven by the powerful discrimination provided by the muon from the 
-\PLambdab\ which will have a high \pT\ and \ac{IP}.
+\PLambdab.
 The muon candidate is required to have fired the \lzero\ and \hltone\ single 
-muon lines, and at \hlttwo the tracks comprising the \PLambdab\ candidate are 
-required to have fired the topological semileptonic \PB lines, as described in 
-\cref{chap:intro:lhcb:trigger}.
+muon lines, and at \hlttwo the union of the tracks comprising the \PLambdab\ 
+and \PLambdac\ candidates are required to have fired the topological 
+semileptonic \PB lines, as described in \cref{chap:intro:lhcb:trigger}.
 Distributions of the \pKK\ and \ppipi\ mass in the 2012 magnet down dataset 
 after the stripping and trigger requirements are given in 
 \cref{fig:cpv:data:mass}, as an illustration of the signal purity at this 
@@ -92,7 +94,7 @@ specific physics backgrounds; and to process the data such that it is most
 suitable for offline analysis.
 
 A mass window requirement is imposed on the \PLambdac\ candidates, which is 
-equal to the range used in the mass fits (first described in 
+equal to the range used in the mass fits (described in 
 \cref{chap:cpv:prelim_fits})
 \begin{equation}
   2230 < m(\PLambdac) < \SI{2350}{\GeV}.
@@ -199,23 +201,24 @@ signal significance $\sigma$, defined as
   },
   \label{eqn:cpv:selection:signal_significance}
 \end{equation}
-where \nsig\ and \nbkg\ are the signal and background yields in the sample.
+where \nsig\ and \nbkg\ are the signal and background yields in the sample, 
+measured using the fits described in \cref{chap:cpv:prelim_fits}.
 % TODO why? I used to have a good reason for this
 The optimisation showed that the most powerful discriminants between signal and 
 background were the proton \ac{PID} information, as expected, and the \ac{PID} 
 information of the kaon or pion with the same electric charge as the proton.
-Applying the optimisation result would then result in the \ac{PID} requirements 
-being asymmetric in the $\Phm\Php$ meson pair.
+Applying a selection optimised for the signal significance would then result in 
+the \ac{PID} requirements being asymmetric in the $\Phm\Php$ meson pair.
 As it is known that the \ac{PID} efficiency for a given requirement on a given 
 particle is dependent on the particle kinematics, as discussed in 
 \cref{chap:prod:effs:pid}, and that the detection asymmetries also depend on 
-the same kinematics, it was chosen to apply the same \ac{PID} to both mesons in 
-the \PLambdac\ final state so as not to induce any additional detection 
+the same kinematics, the same \ac{PID} cut is applied to both mesons in the 
+\PLambdac\ final state so as not to induce any additional detection 
 asymmetries.
 The optimal value found for the cut on the meson with opposite sign to the 
 proton was chosen as the value for the cut on the same-sign meson.
-The cut values required of the candidate protons, kaons, and pions are given in 
-\cref{tab:cpv:selection:pid_cut_values}.
+The \ac{PID} requirements made offline on the candidate protons, kaons, and 
+pions are given in \cref{tab:cpv:selection:pid_cut_values}.
 
 The \phh\ invariant mass distributions after the weak decay vetoes, \ac{PID} 
 cuts, and \decaytreefitter\ convergence requirements are given in 
@@ -274,13 +277,20 @@ the \PLambdac\ mass spectrum, making the signal yield extraction more
 challenging.
 Such structures may peak near the nominal \PLambdac\ mass and be incorrectly 
 counted as \PLambdac\ signal.
+Additional backgrounds can arise due to the partial reconstruction of 
+\PLambdac\ decays, which would manifest as a `shoulder' at values of the 
+\PLambdac\ mass below the signal peak.
+As this feature is not seen in the \pKK\ or \ppipi\ mass distributions, shown 
+in \cref{fig:cpv:selection:postpid}, it is considered insignificant and is not 
+studied further.
 
 One method of checking for the presence of misidentified decays is by 
 inspecting three-body mass distributions for different mass hypothesis sets.
 For example, by assigning the pion mass to the proton candidate in the \pKK\ 
 sample and inspecting the invariant mass of the $\PKplus\PKminus\Ppiplus$ 
-combination, a peak near the \PDsplus mass would indicate a contamination of 
-\PDsplus candidates in the data.
+combination.
+A peak near the \PDsplus mass would indicate a contamination of \PDsplus 
+candidates in the data.
 
 % TODO reference
 A second way to look for meson backgrounds is to inspect the `momentum 
@@ -298,18 +308,9 @@ As the relationship between $m(\phh)$, $\beta_{\Pproton}$, and the three-body
 mass under the background hypothesis is known, contours of the expected mis-ID 
 shape can be drawn on this plane and compared with the data.
 
-The \PLambdac\ mass is well above any lighter baryons, and so the most likely 
-backgrounds are decays of \PD mesons with misidentified children, and 
-multi-body decays of \PLambdac\ with missing children.
-The latter background would manifest as a `shoulder' at values of the 
-\PLambdac\ mass below the signal peak.
-As this feature is not seen in the \pKK\ or \ppipi\ mass distributions, shown 
-in \cref{fig:cpv:selection:postpid}, it is considered insignificant and is not 
-studied further.
-
 Throughout this \namecref{chap:cpv:selection:background_study}, the variables 
 shown are not computed using any information from the \decaytreefitter\ 
-algorithm described in Section~\ref{chap:cpv:data}.
+algorithm described in \cref{chap:cpv:data}.
 
 \subsection{Exchanging mass hypotheses}
 \label{chap:cpv:selection:background_study:mass_hypo}
@@ -685,28 +686,11 @@ No contributions beyond those given in
 It is possible that two or more true \LcTophh\ decays are reconstructed in a 
 single \ac{LHC} bunch crossing, but it is unlikely.
 It is more likely that such multiple candidates are caused by unphysical means, 
-such as cloned tracks~\cite{LHCb-INT-2011-009}, and so the fully selected data 
-is checked for multiple candidates.
-
-Before the offline selection, that is after the stripping, the \pKK\ sample 
-contains around \SI{8.5}{\percent} of events with more than one candidate, and 
-the \ppipi\ sample contains around \SI{7.5}{\percent}.
-In each case, the fraction of events with duplicate \PLambdac\ candidates, 
-where the same \PLambdac\ candidate is used in multiple \PLambdab\ candidates, 
-is around \SI{0.5}{\percent}.
-Such cases occur when the same \PLambdac\ candidate is combined with multiple 
-muon candidates.
-The number of events with more than one \PLambdab\ candidate passing the full 
-offline selection is found to be no higher than \SI{2}{\percent} for \pKK\ and 
-\ppipi\ across all subsets of the data, and no higher than \SI{0.5}{\percent} 
-within a signal mass window of $2270 < m(\PLambdac) < \SI{2300}{\MeV}$.
-Fractions of multiple candidates, both in the full sample, and within the 
-defined signal windows, for all data sub-samples are given in 
+such as cloned tracks~\cite{LHCb-INT-2011-009}.
+In the case an event has multiple \PLambdac\ candidates, one is selected at 
+random for further analysis and the rest are discarded.
+The fraction of events containing multiple \PLambdac\ candidates in given in 
 \cref{tab:cpv:selection:multiple_candidates:pKK,tab:cpv:selection:multiple_candidates:ppipi}.
-
-To avoid any possible effects on the measurement of \dACP\ due to multiple 
-candidates, one candidate is randomly selected per event for further analysis, 
-and all others are discarded.
 
 \begin{table}
   \caption{%
@@ -720,9 +704,7 @@ and all others are discarded.
     $f_{\text{Multiple, sig.}}$.
   }
   \label{tab:cpv:selection:multiple_candidates:pKK}
-  % \begin{adjustbox}{center}
-    \input{tables/cpv/selection/LcTopKK_multiple_candidates}
-  % \end{adjustbox}
+  \input{tables/cpv/selection/LcTopKK_multiple_candidates}
 \end{table}
 
 \begin{table}
@@ -737,7 +719,5 @@ and all others are discarded.
     $f_{\text{Multiple, sig.}}$.
   }
   \label{tab:cpv:selection:multiple_candidates:ppipi}
-  % \begin{adjustbox}{center}
-    \input{tables/cpv/selection/LcToppipi_multiple_candidates}
-  % \end{adjustbox}
+  \input{tables/cpv/selection/LcToppipi_multiple_candidates}
 \end{table}
