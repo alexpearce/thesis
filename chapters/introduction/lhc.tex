@@ -4,12 +4,12 @@
 As high-energy particle physics has progressed over the last century, the 
 meaning of `high energy' has continuously evolved.
 Today, high energy refers to the \acl{LHC}~\cite{Bruning:2004ej}, a circular 
-collider which begin operating at a proton-proton centre of mass energy of 
+collider which began operating at a proton-proton centre of mass energy of 
 \sqrtseq{7} in 2010, and in 2015 reached \sqrtseq{13}.
-This section shall describe the machine, the experiments which it services, and 
+This section will describe the machine, the experiments which it services, and 
 the changes in operation throughout its lifetime so far.
 
-In order to produce collisions, bunches of 120 billion protons are obtained 
+In order to produce collisions, bunches of \num{1.2e11} protons are obtained 
 through the ionisation of hydrogen gas, and are then accelerated through a 
 chain of progressively larger, more powerful accelerators before being injected 
 into the \ac{LHC}.
@@ -24,18 +24,18 @@ magnets.
 The beams are made to collide at four \acp{LHCIP}, before which they are 
 focused further, from the usual circulating bunch diameter of 
 \SI{0.2}{\milli\metre} to a width on the order of microns, such that they can 
-interact and collide.
+collide.
 
-For a collision experiment, the number of times $N$ a particular process occurs 
-per second is the product of two quantities
+For a collision experiment, rate $N$ at which a particular process occurs is 
+given by
 \begin{equation}
   N = \lumi\xsec,
   \label{eqn:intro:lhc:lumi_xsec}
 \end{equation}
 where \lumi\ is the instantaneous luminosity of the accelerator and \xsec\ is 
-the cross-section of the process in question.
-At $\sqrts = \SI{13}{\TeV}$, the largest cross-section seen at the \ac{LHC} for 
-a visible proton-proton interaction is around $\xsecppvis = 
+the cross-section of the process.
+At $\sqrts = \SI{13}{\TeV}$, the visible proton-proton interaction 
+cross-section is around $\xsecppvis = 
 \SI{70}{\milli\barn}$~\cite{Aaboud:2016mmw,CMS:2016ael}.
 Given that this number is fixed by the beam energy and colliding particle type, 
 the \ac{LHC} is designed to maximise the luminosity \lumi, which can be 
@@ -46,18 +46,13 @@ expressed as
 \end{equation}
 where $N_{\text{p}}$ is the number of particles per bunch; $N_{\text{b}}$ is 
 the number of bunches per beam; \revfreq\ is the bunch revolution frequency; 
-$\gamma$ is the Lorentz term, where $v/c \approx 1$; $\epsilon$ is the beam 
-emittance during circulation, a measure of the beam size transverse to the beam 
-direction; $\beta^{*}$ is a measure of the transverse beam size at a particular 
+$\gamma$ is the Lorentz factor; $\epsilon$ is the beam emittance during 
+circulation, a measure of the beam size transverse to the beam direction; 
+$\beta^{*}$ is a measure of the transverse beam size at a particular 
 \ac{LHCIP}; and $F$ accounts for non-zero crossing angles between the two beams 
 at an \ac{LHCIP}.
 Depending on the experiment, the \betastar\ parameter can be tuned to provide a 
 specific average number $\nu$ of collisions per bunch crossing.
-Maximising the luminosity is limited by the technological and monetary 
-constraints present at the time of construction: increasing the number of 
-bunches or particles per bunch increases the beam current, requiring stronger 
-magnetic fields to steer and focus the beams, and likewise for decreasing the 
-transverse bunch profile.
 The design luminosity at the \atlas\ and \cms\ \acp{LHCIP} is
 \SI{1e34}{\per\square\centi\metre\per\second}, which results in a rate of 
 visible proton-proton interactions of
@@ -67,99 +62,14 @@ visible proton-proton interactions of
   \label{eqn:intro:lhc:nppvis}
 \end{equation}
 
-As the most powerful particle accelerator in the world, the \ac{LHC} is itself 
-an experiment, pushing the boundaries of what is capable with a particle 
-collider.
-The real purpose of the \ac{LHC}, however, is to provide the experiments with 
-collisions, so that they can find the next big discovery.
-
-\section{Interaction points}
-\label{chap:intro:lhc:ips}
-
-A set of eight access points provide entry to the underground tunnel which 
-contains the \ac{LHC}.
-Four of these points lead to large underground caverns that house particle 
-detectors, whilst the others are used for accelerator maintenance.
-
-The \atlas\ detector~\cite{Aad:2008zzm} is at point 1, and point 5 houses the 
-\cms\ detector~\cite{Chatrchyan:2008aa}.
-Each of these are cylindrical detectors centred around the beam-beam 
-interaction region, with \atlas\ being \SI{44}{\metre} long and \SI{25}{\metre} 
-in diameter, and \cms\ being \SI{22}{\metre} long and \SI{15}{\metre} in 
-diameter.
-% TODO: check this statement is true, does the Higgs really do that
-They are designed to discover and study the properties of the Higgs boson 
-\PHiggs, the particle the generates the mass of the fundamental particles, and 
-to study the physics of \ac{QCD} and \ac{EW} interactions.
-The signals they search for are generally high-energy and high-momentum 
-electrons, muons, photons, and jets, collimated clusters of charged and neutral 
-hadrons.
-The high momentum of these signals is due to the large masses of the particles 
-\atlas\ and \cms\ search for, which include \PW, \PZ, and \PHiggs bosons, with 
-masses between 80 and \SI{125}{\GeVcc}, and particles predicted by \ac{BSM} 
-theories, which can be in the order of \SI{1}{\TeV}.
-
-Given the design luminosity at points 1 and 5 of 
-\SI{1e34}{\per\square\centi\metre\per\second}, and that the rate of \PHiggs 
-production in proton-proton collisions is of the order of tens of 
-picobarn~\cite{Khachatryan:2016vau}, $\xsec_{\PHiggs} \sim \SI{10}{\pico\barn} 
-= \SI{1e-35}{\per\square\centi\metre}$, around 0.1 Higgs bosons are produced 
-every second, from \cref{eqn:intro:lhc:lumi_xsec}.
-The cross-section for new particles predicted by \ac{BSM} theories are even 
-lower than that for the Higgs, and so \atlas\ and \cms\ must collect large 
-samples of data to make statistically significant discoveries, requiring high 
-beam luminosities to achieve it.
-As a consequence of the high luminosity, the detectors observe a large number 
-of proton-proton interactions per bunch-bunch crossing, around 20 by 
-\cref{eqn:intro:lhc:nppvis}, and this leads to a large amount of data being 
-produced per crossing, approximately \SI{1}{\mega\byte}.
-This would amount to \SI{40}{\tera\byte} of data per second of \ac{LHC} 
-running, but most of this cannot be saved due to monetary and technological 
-constraints.
-Instead, on order of 100 crossings per second are saved for subsequent 
-analysis.
-This balance of collecting as much data as possible and having the computing 
-resources to analyse it is a problem common to all experiments, and will be 
-explored further in \cref{chap:intro:lhcb:trigger}.
-
-In addition to the nominal \pp\ running, the \ac{LHC} also runs with 
-configurations of ion beams for about one-eighth of its operating time, 
-specifically with two beams of lead~(Pb) ions in the lead-lead configuration, 
-and with one beam of protons and another beam of lead ions in the proton-lead 
-and lead-proton configurations.
-The \alice\ detector~\cite{Aamodt:2008zz}, located at point 2, focuses on 
-studying these lead-lead and proton-lead collisions.
-Specifically, \alice\ measures the properties of the quark-gluon plasma that 
-forms in ion collisions.
-The plasma is a hot, dense, and exotic state of matter that was dominant in the 
-early stages of the universe.
-Such measurements provide important input to the theoretical understanding of 
-macroscopic behaviour driven by the strong force, such as in the quark-gluon 
-plasma, where predictions are complex to compute.
-
-Finally, the \lhcb\ detector~\cite{Alves:2008zz} is located at point 8.
-It will be described in detail in \cref{chap:intro:lhcb}.
-
-\section{Running periods}
+\subsection{Running periods}
 
 The \ac{LHC} first began running in 2010 at a proton-proton centre-of-mass 
 energy of $\sqrts = \SI{7}{\TeV}$, and this continued until the end of 2011.
 In 2012, the centre-of-mass energy was increased to $\sqrts = \SI{8}{\TeV}$, 
 before the machine was shut down at the end of 2012.
-This marked the end of \runone\ and the beginning of \ac{LS1}, during which the 
-accelerator was upgraded in order to prepare the machine for running at $\sqrts 
-= \SI{13}{\TeV}$.
+This marked the end of \runone\ and the beginning of \acf{LS1}, during which 
+the accelerator was upgraded in order to prepare the machine for running at 
+$\sqrts = \SI{13}{\TeV}$.
 This new phase of operation, \runtwo, began in mid-2015, and is expected to 
 continue until the end of 2018.
-
-The trend of increasing beam energies is driving towards reaching the design 
-energy of \SI{7}{\TeV} per beam, giving $\sqrts = \SI{14}{\TeV}$.
-Higher beam energies are generally good for the experiments, as the 
-cross-sections of the physical processes of interest increases with \sqrts.
-It does come with a price, however, as the rates of other physical processes 
-also increases with \sqrts, including those one may not be interested in, which 
-are generally much larger than the rare processes of interest.
-This means that experiments must continually upgrade their own detectors and 
-software in order to suppress to the higher rate of uninteresting events.
-The upgrade of the \lhcb\ detector during \ac{LS1} will be described in 
-\cref{chap:intro:lhcb:offline}.

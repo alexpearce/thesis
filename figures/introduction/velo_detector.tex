@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+  % Use trim and crop to remove some of the white space around the image
+  \node[anchor=south west, inner sep=0] (image) at (0, 0) {\includegraphics[width=\textwidth, trim={0cm 1cm 0cm 1cm}, clip]{introduction/velo_detector}};
+  \begin{scope}[x={(image.south east)}, y={(image.north west)}]
+    % Grid to help find coordinates on the image
+    % \draw[step=0.02, gray, very thin] (0, 0) grid (1, 1);
+    % Box to cover "Side View" label
+    % \path[fill=white] (0.36, 0.78) rectangle (0.46, 0.84);
+  \end{scope}
+\end{tikzpicture}
