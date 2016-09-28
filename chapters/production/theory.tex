@@ -1,22 +1,6 @@
 \chapter{Theory and motivation}
 \label{chap:prod:theory}
 
-Hadrons contain quarks, and these are bound together through gluon exchange.
-As well as the `sea' of gluons binding the constituent quarks of the hadron 
-together, virtual \qqbar\ pairs can be created as the gluons propagate, quickly 
-annihilating internally to the hadrons.
-In high-energy interactions, it is the collection of these \emph{partons} that 
-interact, the quarks and gluons, rather than the composite hadrons.
-Parton behaviour then must be understood in order to predict production rates 
-at hadron colliders.
-This \namecref{chap:prod:theory} shall begin by describing how hadron 
-production rates can be computed using theoretical and experimental inputs, and 
-shall then give an example of how the inputs are used outside of collider 
-physics.
-
-\section{Parton density functions}
-\label{chap:prod:theory:pdfs}
-
 For an observable cross-section \xsec\ of inclusive production of some object 
 $P$, $\decay{h_{A}h_{B}}{PX}$, involving two initial-state hadrons $h_{A}$ and 
 $h_{B}$, the dominant contribution to a prediction can be expressed as the 
@@ -33,44 +17,40 @@ The parton-parton cross-sections $\sigma_{a,b}$, for processes such as heavy
 quark pair production via gluon-gluon fusion shown in 
 \cref{fig:intro:lhcb:hf_production:gg_fusion}, can be computed using 
 perturbative \ac{QCD}.
-The computations of the \acp{QCDPDF} involve low energy processes below the 
+The computations of the \acp{QCDPDF} involve low-energy processes below the 
 \ac{QCD} scale, and so must be evaluated using non-perturbative \ac{QCD} 
-instead, which is intractable with today's theoretical understanding.
+instead.
 Clearly, the computation of any cross-section at the \ac{LHC} relies on being 
 able to evaluate \cref{eqn:prod:theory:factorisation}, including the 
 computation of production rates of the Higgs boson and particles beyond the 
 \ac{SM}, and hence on a knowledge of the \acp{QCDPDF}.
-As they cannot be computed first principles, they must be derived be alternate 
-means, and in practice are constrained using measurements of cross-sections by 
-experiments.
+As the \acp{PDF} cannot be computed from first principles, they must be derived 
+be alternate means, and in practice are constrained using measurements of 
+cross-sections by experiments.
 Additional measurements of cross-sections can constrain the \acp{QCDPDF} 
-further, improving their precision and hence the precision on the 
-cross-sections of interest, and so there is always motivation for making such 
-measurements, until the theoretical understanding improves sufficiently.
+further, improving their precision.
 
-Parton density functions are parameterised by \bjorkenx, the fraction of the 
-total hadron momentum carried by the interacting parton, and \pdfqsquared, a 
-measure of momentum transfer and inversely proportional to the spatial `scale' 
-at which the hadron can be probed, with a larger \pdfqsquared\ corresponding to 
-a finer resolvable structure.
+Parton density functions are parameterised in terms of \bjorkenx, the fraction 
+of the total hadron momentum carried by the interacting parton, and 
+\pdfqsquared, a measure of momentum transfer and inversely proportional to the 
+spatial `scale' at which the hadron can be probed, with a larger \pdfqsquared\ 
+corresponding to a finer resolvable structure.
 The \ac{QCDPDF} $f(\bjorkenx, \pdfqsquared)$ for a particular hadron is an 
 intrinsic property, and so, for example, experimental measurements that can 
 constrain the \ac{QCDPDF} in high-energy proton collisions help not only the 
 experiments at that collider, but also experiments at other proton colliders.
-This is possible, despite \pdfqsquared\ generally being different between 
-colliders, as the evolution of the \acp{QCDPDF} over \pdfqsquared\ for a given 
-value of \bjorkenx\ is described by the \ac{DGLAP} differential 
+This is possible as the evolution of the \acp{QCDPDF} over \pdfqsquared\ for a 
+given value of \bjorkenx\ is described by the \ac{DGLAP} differential 
 equations~\cite{Gribov:1972ri,Dokshitzer:1977sg,Altarelli:1977zs}.
 Measuring a wide range of \bjorkenx\ is important as the individual 
-contributions to the total \ac{QCDPDF}, such as from the gluons and the valance 
+contributions to the total \ac{QCDPDF}, such as from the gluons and the valence 
 quarks, vary strongly as a function of \bjorkenx, as shown in 
 \cref{fig:prod:theory:pdf_sets}.
 The usage of the \ac{DGLAP} equations requires an initial \ac{QCDPDF} from 
 which to evolve to different scales, however, as the dependence on \bjorkenx\ 
 cannot be computed perturbatively.
 Such inputs were first provided by \ac{DIS} experiments, which probe the proton 
-structure by colliding leptons and protons and measuring the angle of the 
-deflection of the lepton due to its interactions with the partons.
+structure by colliding leptons and protons.
 The subsequent evolution of the \acp{PDF} have been driven by additional 
 experimental measurements, and by an improved theoretical understanding of the 
 use of the perturbative expansion that must be employed when solving the 
@@ -89,18 +69,17 @@ For heavy flavour production, additional uncertainties arise from the choice of
 \emph{fragmentation function} models~\cite{Kneesch:2007ey}, which describe how 
 the heavy quarks transition into the observed hadrons, a factor which is not 
 included in the factorisation theorem shown in 
-\cref{eqn:prod:theory:factorisation}.\footnotemark
+\cref{eqn:prod:theory:factorisation}.\footnotemark\
 The different \ac{QCDPDF} sets can be used to compute different cross-section 
 predictions, and so further experimental measurements can help to distinguish 
-between predictions, indicating which ones describe the true \acp{QCDPDF}, and 
-hence which treatments are most appropriate.
+between predictions.
 
 \footnotetext{%
   The fragmentation functions are generally assumed to be process independent, 
   e.g.\ they are the same for heavy flavour hadron production from \qqbar\ 
   production at both $\Pelectron\APelectron$ and $\Pproton\Pproton$ colliders.
   They cannot be computed perturbatively, and are extracted from experimental 
-  measurements like the \acp{QCDPDF} are.
+  measurements.
 }
 
 \begin{figure}
@@ -140,17 +119,15 @@ The most recent and most powerful \ac{DIS} measurements have been made by the
 \hone\ and \zeus\ collaborations at the \hera\ $\Pe\Pproton$ 
 collider~\cite{Abramowicz:1900rp}.
 However, these measurements are largely constrained to measure values of 
-\bjorkenx\ above \num{e-4}, leading to large uncertainties at values of low 
-\bjorkenx.
+\bjorkenx\ above \num{e-4}, leading to large uncertainties at low \bjorkenx.
 This low-\bjorkenx\ region is particularly interesting to study not only 
-because the current \ac{QCDPDF} uncertainties there are large, due to the lack 
-of experimental input, but also because it is where both the gluon and the sea 
-quark contributions to the total \ac{QCDPDF} are large, as shown in 
-\cref{fig:prod:theory:pdf_sets}, and so low-\bjorkenx\ measurements probe 
-phenomenologically different processes.
+because the current \ac{QCDPDF} uncertainties there are large, but also because 
+it is where both the gluon and the sea quark contributions to the total 
+\ac{QCDPDF} are large, as shown in \cref{fig:prod:theory:pdf_sets}, and so 
+low-\bjorkenx\ measurements probe phenomenologically different processes.
 
-In a hard \decay{2}{2} process, such a $\Pgluon\Pgluon$ fusion or \qqbar\ 
-annihilation to a heavy quark pair, the minimum \bjorkenx\ that can be reached 
+In a hard \decay{2}{2} process, such as $\Pgluon\Pgluon$ fusion or \qqbar\ 
+annihilation to a heavy quark pair, the extent in \bjorkenx\ that can be probe 
 with heavy flavour hadron production measurements is given by
 \begin{equation}
   {\bjorkenx}_{\text{min}} = e^{\pm\rapidity}\frac{%
@@ -164,7 +141,7 @@ where \rapidity\ and \pT\ parameterise the hadron kinematics, and $m_{q}$ is
 the mass of the heavy quark in the hadron under study~\cite{Zenaiev:2015rfa}.
 There is then a wide range of \bjorkenx\ values that can be probed at proton 
 colliders, with the highest sensitivity to low \bjorkenx\ provided by charm 
-production measurements.\footnotemark
+production measurements.\footnotemark\
 At the \ac{LHC}, the dominant production mechanism is gluon-gluon fusion, as 
 depicted in \cref{fig:intro:lhcb:hf_production:gg_fusion}, and so measurements 
 at the \ac{LHC} are able to provide particularly strong constraints on the 
@@ -177,7 +154,7 @@ and for pseudorapidity $|\Eta| < 2.1$ in the \pT\ region $3.5 < \pT <
 collaboration~\cite{Aad:2015zix}.
 
 \footnotetext{%
-  The charm quark mass is four times lighter than that of the bottom quark.
+  The charm quark mass is four times less than that of the bottom quark.
 }
 
 Measurements of charm production at \sqrtseq{7}\ were made by the \lhcb\ 
@@ -235,29 +212,14 @@ further reduce the gluon \ac{QCDPDF} uncertainties~\cite{Gauld:2015yia}.
 \section{Atmospheric neutrino fluxes}
 \label{chap:prod:theory:neutrinos}
 
-In addition to the prominent use cases for predictions of hadron 
-cross-sections, those at hadron colliders, the constraints imposed on the 
-proton \acp{QCDPDF} are also useful in atmospheric neutrino experiments.
+The constraints imposed on the proton \acp{QCDPDF} are also useful in 
+atmospheric neutrino experiments.
 The \icecube\ collaboration aims to measure highly energetic neutrinos of 
 astrophysical origin with energies up to the \si{\peta\eV} scale, using the 
 IceCube Neutrino Observatory~\cite{Achterberg:2006md}.
 This is done to shed light on the mystery of ultra-high-energy cosmic rays 
 (protons) whose source is unknown but should also produce similarly energetic
 neutrinos.
-
-The principle neutrino detection mechanism used in the \icecube\ detector is 
-illustrated in \cref{fig:prod:theory:icecube:signal}.
-A cubic kilometre of ice is instrumented with a set of \num{4800} 
-photo-detectors, which detect light produced during neutrino interactions.
-The light is produced via high-energy neutrinos interacting with the protons 
-and neutrons of the ice, creating high-energy charged leptons which then travel 
-through the ice and emit Cherenkov radiation, in an identical manner to that 
-described in \cref{chap:intro:lhcb:detector}.
-The photo-detectors are spatially arranged as an array, which is used to 
-measure the intensity of the light, proportional to the charged lepton energy 
-and hence to the neutrino energy, as well as its direction, which can be used 
-to identify point-like sources for further astronomical observation.
-
 The so-called conventional neutrino flux constitutes one of the backgrounds for 
 astrophysical neutrino experiments.
 This is made by cosmic rays interacting in the atmosphere and producing pions 
@@ -272,15 +234,12 @@ the atmosphere, which, with their comparatively short lifetimes, lose very
 little energy in flight, and so the neutrino spectrum from charm decays is very 
 similar to the cosmic ray energy spectrum.
 The neutrinos produced in the charm decays can interact with the detector in a 
-similar manner to the signal, as shown in 
-\cref{fig:prod:theory:icecube:background}, and exhibit a similar energy 
-spectrum, as shown in \cref{fig:prod:theory:icecube_energy}.
+similar manner to the signal and exhibit a similar energy spectrum.
 It is then of key importance that the amount of expected background from these 
 decays is known, else neutrinos from charm decays may be misinterpreted as 
 neutrinos from astrophysical sources.
 This contamination can be estimated by predicting the proton-proton 
-cross-sections (between the cosmic ray and the nuclei in the atmosphere), which 
-is an identical problem to that in \cref{eqn:prod:theory:factorisation}.
+cross-sections (between the cosmic ray and the nuclei in the atmosphere).
 
 Colliding equal-energy proton-proton beams at a centre-of-mass energy of 
 \SI{13}{\TeV} is equivalent to directing a proton beam of energy 
@@ -293,47 +252,6 @@ produced by extremely high-energy cosmic rays.
 Indeed, the measurements made by \lhcb\ at \sqrtseq{7}\ have already been used 
 to that effect, and additional measurements at \SI{13}{\TeV} can help 
 further~\cite{Gauld:2015yia,Bhattacharya:2015jpa}.
-
-\begin{figure}
-  \begin{subfigure}[b]{0.5\textwidth}
-    \centering
-    \input{figures/production/icecube_signal}
-    \caption{Signal process}
-    \label{fig:prod:theory:icecube:signal}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.5\textwidth}
-    \centering
-    \input{figures/production/icecube_background}
-    \caption{Background process}
-    \label{fig:prod:theory:icecube:background}
-  \end{subfigure}
-  \caption{%
-    The signal (\subref*{fig:prod:theory:icecube:signal}) and background 
-    (\subref*{fig:prod:theory:icecube:background}) processes in the search for 
-    high-energy astrophysical neutrinos with the \icecube\ Neutrino 
-    Observatory.
-    The cubic kilometre of ice that is instrumented is shown as a cylinder, and 
-    the blue cone represents the Cherenkov radiation that can be created when a 
-    neutrino interacts with the ice.
-  }
-  \label{fig:prod:theory:icecube}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{production/icecube_energy_spectrum}
-  \caption{%
-    Energy distribution of neutrinos observed by the \icecube\ 
-    experiment~\cite{Aartsen:2014gkd}.
-    The $x$-axis shows the detected energy, and the $y$-axis shows the number 
-    density.
-    The solid grey line is the total fit to the data assuming contributions 
-    from astrophysical sources, the solid blue area is the contribution from 
-    atmospheric neutrinos from pion and kaon decays, and the solid magenta line 
-    is the contribution from atmospheric neutrinos from charm decays.
-  }
-  \label{fig:prod:theory:icecube_energy}
-\end{figure}
 
 \section{Cross-section comparisons with theory}
 \label{chap:prod:theory:comparisons}
@@ -348,15 +266,14 @@ Additional measurements can help in the understanding of these discrepancies.
 
 For the analysis presented in this \namecref{chap:prod}, a measurement of charm 
 production at \sqrtseq{13}, three theory groups have provided predictions for 
-the double differential cross-sections, as defined by 
-\cref{eqn:prod:introduction:cross_section}.
-Each set of predictions is computed at next-to-leading order in the 
-perturbative \ac{QCD} parameter \alphas\ (that is, up to the first power of 
-$\alphas$), and includes uncertainties from: the \emph{factorisation scale} 
-dependence, which is the scale \pdfqsquared\ at which the perturbative 
-expansion was made; and the \emph{renormalisation scale}, which is the scale at 
-which the expansion is renormalised to remove ultraviolet divergences.
-These affect both the evaluation of the partonic cross-sections and of the 
+the double differential cross-sections.
+Each set of predictions is computed at next-to-leading order in the strong 
+coupling constant \alphas\ (that is, up to the first power of $\alphas$), and 
+includes uncertainties from: the factorisation scale dependence, which is the 
+scale \pdfqsquared\ at which the perturbative expansion was made; and the 
+renormalisation scale, which is the scale at which the expansion is 
+renormalised to remove ultraviolet divergences.
+These affect both the evaluation of the partonic cross-sections and the 
 evolution of the \ac{QCDPDF} sets with the \ac{DGLAP} equations.
 
 The \nnpdfl\ predictions~\cite{Gauld:2015yia} use a \ac{QCDPDF} set that 
@@ -366,8 +283,8 @@ measurement~\cite{LHCb-PAPER-2012-041}, and are provided for all \pTy\ bins for
 The \ac{GMVFNS} predictions~\cite{Kniehl:2012ti} are provided for $\pT > 
 \SI{3}{\GeVc}$ for all mesons under study, and use the CT10 \ac{QCDPDF} set.
 These predictions include a factor to account for the \cToHc\ transition 
-probability, by convolving the \decay{\ccbar}{\PHc} cross-sections with the 
-appropriate fragmentation functions.
+probability, obtained by convolving the \decay{\ccbar}{\PHc} cross-sections 
+with the appropriate fragmentation functions.
 Finally, \ac{FONLL} predicitions~\cite{Cacciari:2015fta} using the \nnpdf\ 
 \ac{QCDPDF} sets are provided for for the full \pTy\ phase space for \PDz, 
 \PDp, and \PDstarp mesons.
@@ -375,8 +292,7 @@ The \fonll\ predictions assume a unit \cToHc\ transition probability, and so
 are multiplied by the fragmentation fractions in 
 \cref{tab:prod:introduction:fragmentation_fractions} for comparison with the 
 measurements.
-
-The comparison of these predictions with the data shall be given in 
+The comparison of these predictions with the data will be given in 
 \cref{chap:prod:results}.
 
 \begin{figure}
