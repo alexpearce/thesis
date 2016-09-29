@@ -424,7 +424,6 @@ Conservatively, a \SI{0.1}{\percent} systematic uncertainty is assigned to the m
     complete removed during the kinematic weighting.
     The total shift $\Delta{A}$ is the sum of the individual ones, and all 
     shifts are given in \num{e-4}.
-    The kaon detection asymmetries \ADK\ are smaller than \num{e-6}.
   }
   \label{tab:cpv:syst:asym:results}
   \input{tables/cpv/systematics/residual_asymmetries}
@@ -441,16 +440,38 @@ These backgrounds will have different asymmetries, contaminating \dACP\@.
 
 To assess the effect of prompt \PLambdac, a requirement on the \ipchisq\ of the 
 \PLambdac\ candidate is made of $\lnipchisq > 3$.
-This should remove almost all prompt decays, given the prompt \lnipchisq\ 
-distributions studied in \cref{chap:prod:fitting}.
+This requirement should remove almost all prompt decays, given the prompt 
+\lnipchisq\ distributions studied in \cref{chap:prod:fitting}.
 Distributions of \lnipchisq\ in the 2012 magnet down sub-samples are shown in 
-\cref{fig:cpv:syst:bkg:ipchisq}
+\cref{fig:cpv:syst:ipchisq}.
 % TODO fill these in with actual values
-This cut reduces the \pKK\ signal yield by SOMEPERCENT the \ppipi\ signal yield 
-by SOMEPERCENT\@.
+The cut reduces the \pKK\ signal yield by \SI{6}{\percent} the \ppipi\ signal 
+yield by \SI{8}{\percent}\@.
 The value of \dACP\ does not change.
 The kinematic weighting in \PLambdac\ $(\pT, \Eta)$ would suppress any 
 asymmetries arising from prompt \PLambdac\ candidates.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/systematics/LcTopKK_2012_MagDown_Lc_IPCHI2_OWNPV.pdf}
+    \caption{\pKK}
+    \label{fig:cpv:syst:ipchisq:pKK}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{cpv/systematics/LcToppipi_2012_MagDown_Lc_IPCHI2_OWNPV.pdf}
+    \caption{\ppipi}
+    \label{fig:cpv:syst:ipchisq:ppipi}
+  \end{subfigure}
+  \caption{%
+    Signal (black) and background (red) \lnipchisq\ distributions for 
+    \pKK~(\subref*{fig:cpv:syst:ipchisq:pKK}) and 
+    \ppipi~(\subref*{fig:cpv:syst:ipchisq:ppipi}) 2012 magnet down data 
+    samples.
+    The \lnipchisq\ requirement made for the systematic studies is $\lnipchisq 
+    > 3$.
+  }
+  \label{fig:cpv:syst:ipchisq}
+\end{figure}
 
 Known alternative sources of \PLambdac\ from beauty decays are considered.
 These include \decay{\PBplus}{\APLambdac\Pproton\Ppiplus} decays and
@@ -462,16 +483,16 @@ the \PBs contribution is negligible~\cite{PDG2014}.
 The combined \PB cross-section is around four times that of the 
 \PLambdab~\cite{LHCb-PAPER-2013-004,Aaij:2015fea}, and the relative rate of 
 \decay{\PB}{\PLambdac X} is around 3 times that of \LbToLcmuX, for a total 
-relative rate of 12 times.
+relative rate of $N(\decay{\PB}{\PLambdac X})/N(\LbToLcmuX) = 12$.
 However, the muon triggers and $\PLambdac\Pmuon$ vertex requirements strongly 
-suppress these alternate sources of \PLambdac\ decays.
+suppress the alternate sources of \PLambdac\ decays.
 Using a simulated sample of one million generated 
-\decay{\PBzero}{\APLambdac\Pproton\Ppiminus\Ppiplus} decays, of the order of 
-100 \PLambdac\ candidates pass the selection requirements defined in 
+\decay{\PBzero}{\APLambdac\Pproton\Ppiminus\Ppiplus} decays, of the order of 10 
+\PLambdac\ candidates pass the selection requirements defined in 
 \cref{chap:cpv:selection}.
 Given this, and that at least the \PBzero production asymmetry is compatible 
-with zero below the percent level~\cite{Aaij:2014bba}, these backgrounds are 
-neglected.
+with zero below the percent level~\cite{Aaij:2014bba}, the contribution from 
+\PB decays is neglected.
 
 \section{Summary and combination}
 \label{chap:cpv:syst:summary}

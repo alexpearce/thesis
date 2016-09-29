@@ -15,19 +15,19 @@ and the measured values of \ARaw\ and \dACP\ are reported.
 \section{Combining measurements}
 \label{chap:cpv:results:combination}
 
-The values of \ARaw\ for a given year and polarity are measured in the fits.
+The values of \ARaw\ for a given decay mode and data-taking year and polarity 
+are measured in the fits.
 Within a given year $\zeta$, $\zeta \in [2011, 2012]$, the average value of the 
-\ARaw\ is defined as the arithmetic mean of the two values of \ARaw\ measured 
-on the magnet up and magnet down data
+\ARaw\ for each mode is defined as the arithmetic mean of the two values of 
+\ARaw\ measured on the magnet up and magnet down data
 \begin{equation}
-  \ARaw(\zeta) = \frac{%
-    \ARaw{}^{\uparrow} + \ARaw{}^{\downarrow}
+  \ARaw(\zeta, f) = \frac{%
+    \ARaw{}^{\uparrow}(\zeta, f) + \ARaw{}^{\downarrow}(\zeta, f)
   }{%
     2
   }.
   \label{eqn:cpv:results:araw_year}
 \end{equation}
-This quantity is defined for both $\ARaw(\pKK)$ and $\ARaw(\ppipi)$.
 The average value of \dACP\ within a year is then defined using the results of 
 \cref{eqn:cpv:results:araw_year}
 \begin{equation}
@@ -45,16 +45,18 @@ statistical uncertainties $\sigma$ on the measurements
     \right)
   \label{eqn:cpv:results:araw_polarity}
 \end{equation}
-Note that this quantity can be computed using the polarity-average \ARaw\ 
-measurements, defined in \cref{eqn:cpv:results:araw_year}, and it can also be 
-computed per polarity, for example to compute the average magnet down result 
-across 2011 and 2012.
+This quantity can be computed using the polarity-average \ARaw\ measurements, 
+defined in \cref{eqn:cpv:results:araw_year}, and it can also be computed per 
+polarity, for example to compute the average magnet down result across 2011 and 
+2012.
 
 The measured values of $\ARaw(\pKK)$, $\ARaw(\ppipi)$, and \dACP\ are given in 
 \cref{tab:cpv:results:asymmetries}.
 Plots of the three measurements for each data sub-sample are given in 
 \cref{fig:cpv:results:asymmetries}, where a \chisq\ fit of a constant function 
 to the measurements is also shown.
+The values are compatible across years and magnet polarities.
+
 The value of \dACP\ averaged across all magnet polarities and years, as 
 computed with \cref{eqn:cpv:results:araw_year,eqn:cpv:results:araw_polarity}, 
 is measured as
@@ -65,16 +67,17 @@ is measured as
 
 \subsection{Unweighted asymmetries}
 
-The results computed without the inclusion of the kinematic weights are given 
-in \cref{tab:cpv:results:asymmetries_unweighted}.
+The results computed without the inclusion of the kinematic weights and phase 
+space efficiency corrections are given in 
+\cref{tab:cpv:results:asymmetries_unweighted}.
 The average value of \dACP\ in these results is measured as
 \begin{equation*}
   \dACP = \deltaACPUnweighted.
 \end{equation*}
-The central value does not change with respect to the weighted measurement.
-Assuming the weighting does correctly equalise the kinematic, this indicates 
-that the differences between the modes were small before the weighting.
-The \SI{3}{\percent} reduction in the statistical uncertainty is due to the 
+Assuming the weighting does correctly equalise the kinematic, the small change 
+in central value from the weighted measurement indicates that the differences 
+between the modes were small before the weighting.
+The \SI{8}{\percent} reduction in the statistical uncertainty is due to the 
 effective increase in the \ppipi\ sample size when unweighted, and illustrates 
 that the uncertainty is dominated by the \pKK\ sample size.
 
@@ -96,7 +99,8 @@ that the uncertainty is dominated by the \pKK\ sample size.
   \centering
   \caption{%
     Measured asymmetries for each data sub-sample and combination of 
-    sub-samples without the inclusion of the kinematic weights.
+    sub-samples without the inclusion of the kinematic weights and phase space 
+    efficiency correction.
     The computation of the combinations, ``2011 + 2012'' and ``Average'', is 
     defined in \cref{chap:cpv:results:combination}.
   }
