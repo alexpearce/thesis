@@ -211,13 +211,13 @@ $\unc{N}$ on each count is taken to be $\unc{N} = \sqrt{N}$.
 The difference \dACP\ between \ARaw\ for \pKK\ and \ppipi\ is then computed 
 using the values obtain with \cref{eqn:cpv:syst:fit:araw_sb}, and the 
 difference is computed between those values and the nominal measurements given 
-in \cref{tab:results:asymmetries}.
+in \cref{tab:cpv:results:asymmetries}.
 The uncertainty on \ARaw\ is found by propagating the uncertainties on the 
 candidate counts using an \ac{MC} error propagation, and the values are assumed 
 to be fully correlated with those from the nominal procedure.
 The differences for the measurements in all data sub-samples, and their 
 averages across years and magnet polarities, are presented in 
-\cref{tab:syst:sbs_differences}.
+\cref{tab:cpv:syst:sbs_differences}.
 Almost all of the deviations from the nominal values are significant, and so 
 they taken as a systematic uncertainties on the measurements of \dACP\@.
 On the nominal result quoted in \cref{eqn:cpv:results:dacp}, the systematic 
@@ -234,7 +234,7 @@ uncertainty is \SI{0.26}{\percent}.
     The computation of the combinations, ``2011 + 2012'' and ``Average'', is 
     defined in \cref{chap:cpv:results:combination}.
   }
-  \label{tab:syst:sbs_differences}
+  \label{tab:cpv:syst:sbs_differences}
   \input{tables/cpv/systematics/delta_acp-sideband_subtraction-diff.tex}
 \end{sidewaystable}
 
@@ -438,18 +438,21 @@ such as baryonic \PB\ decays or promptly produced \PLambdac\ decays associated
 with random muons.
 These backgrounds will have different asymmetries, contaminating \dACP\@.
 
-To assess the effect of prompt \PLambdac, a requirement on the \ipchisq\ of the 
-\PLambdac\ candidate is made of $\lnipchisq > 3$.
-This requirement should remove almost all prompt decays, given the prompt 
-\lnipchisq\ distributions studied in \cref{chap:prod:fitting}.
-Distributions of \lnipchisq\ in the 2012 magnet down sub-samples are shown in 
-\cref{fig:cpv:syst:ipchisq}.
-% TODO fill these in with actual values
-The cut reduces the \pKK\ signal yield by \SI{6}{\percent} the \ppipi\ signal 
-yield by \SI{8}{\percent}\@.
-The value of \dACP\ does not change.
-The kinematic weighting in \PLambdac\ $(\pT, \Eta)$ would suppress any 
-asymmetries arising from prompt \PLambdac\ candidates.
+Selecting \pKK\ and \ppipi\ decays from promptly produced \PLambdac\ baryons 
+will contaminate \dACP\ with the \PLambdac\ production asymmetry.
+\Cref{fig:cpv:syst:ipchisq} shows the signal \lnipchisq\ distributions in the 
+2012 magnet down data sample, in which a peaking structure corresponding to 
+prompt \PLambdac\ is not visible.
+These distributions can be compared to the \lnipchisq\ distributions in samples 
+dominated by prompt charm in \cref{chap:prod:fitting}.
+Even if there is a prompt \PLambdac\ component in the data used for the \dACP\ 
+measurement, the contribution from a \PLambdac\ production asymmetry should 
+cancel as the \PLambdac\ kinematics are weighted to be equal.
+To confirm this hypothesis, the data sample is split in two, defined by the 
+candidates passing or failing the cut $\lnipchisq > 4$.
+The value of \dACP\ is recomputed for each sample, and the difference between 
+the two values is compatible with zero within \SI{1}{\sigma}.
+No corresponding systematic uncertainty is assigned.
 
 \begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
