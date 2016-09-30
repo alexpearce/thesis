@@ -1,0 +1,91 @@
+\chapter{Maximum likelihood estimation}
+\label{chap:mle}
+
+The technique used for the yield extraction is the method of maximum 
+likelihood, where an objective function is defined that assumes some particular 
+model truly generated the data.
+The vector of parameters $\vec{\theta}$ of that model are varied given a vector 
+$\vec{x}$ of $N$ independent, randomly distributed measurements $x_{i}$ until 
+the objective is maximised.
+This objective is the likelihood \likelihood, and is defined as
+\begin{equation}
+  \likelihood(\vec{\theta}|\vec{x}) = \prod_{i}^{N} f(x_{i}|\vec{\theta}),
+\end{equation}
+where $f$ is the \ac{PDF} that the data are assumed to have been sampled 
+from.\footnotemark
+Practically, it is useful to work with the logarithm of the likelihood, as sums 
+are more convenient to work with numerically than products, and to use the 
+negative of this, in order to be able to exploit the available numerical 
+algorithms for minimisation problems such as \minuit~\cite{James:1975dr}
+\begin{equation}
+  -\ln{\likelihood(\vec{\theta}|\vec{x})} =
+  -\sum_{i}^{N} \ln{f(x_{i}|\vec{\theta})}.
+\end{equation}
+This is the \acf{NLL}.
+The practice of minimising the \ac{NLL} is also called \emph{fitting}.
+
+\footnotetext{%
+  The properties of any given \ac{PDF} $f(x)$ that are important here are: 
+  $f(x) \geq 0$ for all $x$; and $\int_{-\infty}^{\infty} f(x)\dif{x} = 1$.
+}
+
+For the purposes of this analysis, the total \ac{PDF} $f$ is the sum of several 
+models $f_{s}$, one for each physical source $s$ under consideration, such as 
+signal and combinatorial background or different \pTy\ bins
+\begin{equation}
+  \ln{\likelihood(\vec{\theta}|\vec{x})} =
+  \sum_{i}^{N} \ln{\sum_{s} f_{s}(x_{i}|\vec{\theta})}.
+\end{equation}
+The notation here that each model $f_{s}$ receives the full parameter vector 
+$\vec{\theta}$ implies that each $f_{s}$ may share parameters with other 
+components.
+In order to not only model the shape of the components but also their absolute 
+size, an \emph{extended} maximum likelihood fit~\cite{Barlow:1990vc} is 
+performed that relaxes the normalisation requirement on the total \acp{PDF} to 
+allow for Poisson fluctuations around the observed number of events 
+$N_{\text{obvs.}}$
+\begin{equation}
+  \ln{\likelihood(\vec{\theta}, \vec{N}|\vec{x})} =
+  \sum_{i}^{N}
+    \ln{\sum_{s} N_{s}f_{s}(x_{i}|\vec{\theta})}
+    - \sum_{s} N_{s}
+  ,
+\end{equation}
+where $N_{s}$ is the \emph{yield} associated to each component model $f_{s}$ 
+and $\vec{N}$ is the vector of those yields.
+
+After defining the full model, the \acl{NLL} is minimised numerically using 
+\minuit.
+Minimising the \ac{NLL} is equivalent to finding the parameter vector 
+$\hat{\theta}$ where the first derivatives of the likelihood with respect to 
+each parameter are all zero
+\begin{equation}
+  \vec{u}(\vec{\theta}) = \frac{%
+    \partial\ln{\likelihood}
+  }{%
+    \partial\vec{\theta}
+  },\quad
+  \vec{u}(\hat{\theta}) = \vec{0},
+\end{equation}
+where for compactness $\vec{\theta}$ includes the $\vec{N}$ parameter vector.
+The uncertainties on the parameters can be found by inspecting the diagonal 
+terms of the covariance matrix, which can be computed numerically by inverting 
+the \emph{observed} Fisher information matrix $I(\hat{\theta})$, defined via
+\begin{equation}
+  I(\vec{\theta}) = \frac{%
+    \partial^{2}\ln{\likelihood}
+  }{%
+    \partial\vec{\theta}\partial\vec{\theta}'
+  }.
+\end{equation}
+The second derivative around the likelihood can be thought of as describing the 
+`peakiness' of the minimum, where a shallower peak corresponds to less 
+certainty in the measurement of the parameter, and conversely a sharper peak 
+corresponds to a greater certainty in the value at the minimum.
+The computation of the set of second derivatives, and the proceeding matrix 
+inversion to obtain the covariance matrix, is performed numerically from the 
+minimised \ac{NLL} by the \hesse\ algorithm, part of \minuit.
+
+To estimate the yields in the data, suitable models must be constructed.
+The following Sections shall describe the construction of these models for the 
+various fits.
