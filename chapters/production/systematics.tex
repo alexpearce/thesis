@@ -4,11 +4,11 @@
 Each experimental measurement of the double-differential cross-section defined 
 in \cref{eqn:prod:introduction:differential_cross_section} is comprised of a 
 central value and a set of uncertainties.
-One uncertainty is \emph{statistical}, and is taken to be the uncertainty on 
-the prompt signal yield $N(\HcTof)$, as measured in the fitting procedure 
-described in \cref{chap:prod:fitting}.
-The second uncertainty is the \emph{systematic} uncertainty, which quantifies 
-all other sources of experimental accuracy.
+One uncertainty is statistical, and is taken to be the uncertainty on the 
+prompt signal yield $N(\HcTof)$, as measured in the fitting procedure described 
+in \cref{chap:prod:fitting}.
+The second uncertainty is the systematic uncertainty, which quantifies all 
+other sources of experimental accuracy.
 This section will describe the individual components of this uncertainty, how 
 they arise and how their values are estimated, and will finish with a summary 
 stating how the components are combined as a single number.
@@ -16,11 +16,10 @@ stating how the components are combined as a single number.
 In the discussion of systematic uncertainties, it is important to consider the 
 correlations of the uncertainties both between \pTy\ bins and between charm 
 hadrons.
-Uncertainties that are fully correlated, with a correlation coefficient $\rho$ 
-equal to 1, cancel in ratios.
+Uncertainties that are fully correlated cancel in ratios.
 In addition, the quantification of the goodness-of-fit of a fit to the 
-cross-section measurements, as done by theorists, can change significantly 
-depending on whether correlations are accounted for.
+cross-section measurements can change significantly depending on whether 
+correlations are accounted for.
 In what follows, the range of correlations of each uncertainty between bins and 
 between charm hadrons will be given, with a summary presented in 
 \cref{chap:prod:syst:correlations}.
@@ -80,17 +79,17 @@ following procedure is performed for each selection variable $x$:
 \begin{enumerate}
   \item Find the cut value $y$ on $x$ which rejects half of the selected 
     simulated data;
-  \item Apply the cut value $y$ on $x$ to the \emph{real data}, counting the 
-    number of signal candidates passing the requirement as the sum of signal 
-    weights divided by the \ac{PID} selection efficiencies
+  \item Apply the cut value $y$ on $x$ to the real data, counting the number of 
+    signal candidates passing the requirement as the sum of signal weights 
+    divided by the \ac{PID} selection efficiencies
     \begin{equation}
-      N_{\text{Passed}} = \sum_{i}^{N} I(i) \frac{%
+      N_{\text{Passed}} = \sum_{i}^{N} I(i, x, y) \frac{%
         w_{i,\text{signal}}
       }{%
         \eff_{i,\text{PID}}
       },
     \end{equation}
-    where $I(i)$ is 1 if the value of $x$ for the $i$th event passes the 
+    where $I(i, x, y)$ is 1 if the value of $x$ for the $i$th event passes the 
     requirement $y$ on $x$, and is zero otherwise;
   \item The efficiency-corrected signal yield corresponding to the requirement 
     on $x$ is $2N_{\text{Passed}}$, which should equal the number of signal 
@@ -111,7 +110,8 @@ in ten thousand pseudo-experiments per selection variable.
 For each trial, each candidate is sampled $n$ times from the real data, with 
 $n$ being sampled from a Poisson distribution of mean 1.
 The total systematic uncertainty on the efficiency-corrected signal yield due 
-to \ac{MC} mis-modelling is the mean of the set of ten thousand values of $\Delta$, as defined in \cref{eqn:prod:syst:mc:eff_diff}.
+to \ac{MC} mis-modelling is the mean of the set of ten thousand values of 
+$\Delta$.
 
 The value of $\Delta$ for a given variable in a single \pTy\ bin is usually not 
 statistically significant, but the integration of the values of $\Delta$ over 
@@ -529,8 +529,8 @@ to the measured cross-section value is given in
 \section{Luminosity}
 \label{chap:prod:syst:lumi}
 
-The \acl{BGI} analysis described in \cref{chap:prod:data:lumi} comes with its 
-own set of systematic uncertainties.
+The \acl{BGI} analysis used to measure the luminosity comes with its own set of 
+systematic uncertainties.
 The dominant components arise from the limited resolution on the measurement of 
 the beam-beam and beam-gas vertices, from the choice of fit model used to 
 parameterise the transverse beam profiles, and the observed variation in 

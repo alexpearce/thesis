@@ -34,11 +34,11 @@ the forward region, at low angles to the beam, as shown in
 To exploit this, the \lhcb\ detector is instrumented in the pseudorapidity 
 region $2 < \Eta < 5$.
 Particles produced in this region are highly boosted in the laboratory frame, 
-and so, given the lifetimes of the weakly decay heavy hadrons, of order of 
-$0.1$--$\SI{1}{\pico\second}$~\cite{PDG2014}, they can fly several millimetres 
-before decaying.
+and so heavy flavour hadrons can fly several millimetres before decaying, given 
+that their lifetimes are of the order of 
+$0.1$--$\SI{1}{\pico\second}$~\cite{PDG2014}.
 With a sufficiently sensitive detector, their decay vertices can be spatially 
-distinguish from the primary proton-proton interaction vertices, providing a 
+distinguished from the primary proton-proton interaction vertices, providing a 
 powerful discriminant between signal and background.
 Good secondary vertex resolution also allows for good decay time resolution, 
 which is necessary for measuring the fast oscillations of \PBds\ and \PDzero 
@@ -51,8 +51,8 @@ A sufficient experimental resolution on the \ac{IP} allows for additional
 discrimination between random tracks in the event and those from heavy flavour 
 decays.
 The precise reconstruction of primary and secondary vertices requires a precise 
-tracking system, particularly close to the \pp\ interaction region, and so the 
-detector design is highly optimised for tracking performance.
+tracking system, particularly so around the \pp\ interaction region, and hence 
+the detector design is highly optimised for tracking performance.
 The tracking system will be described in 
 \cref{chap:intro:lhcb:detector:tracking}.
 
@@ -141,7 +141,7 @@ Within the \lhcb\ experiment, the Cartesian co-ordinate system is defined such
 that the $z$-axis is aligned along the beam direction, increasing in the 
 clockwise direction along the \ac{LHC} ring; the $y$-axis points vertically 
 upwards; and the $x$-axis, defined as $x = y \times z$, is then pointing away 
-from the centre of the accelerator.
+from the centre of the acceleraa.
 The polar co-ordinate system is defined with the polar angle $\theta$ measured 
 with respect to the $z$-axis, and the azimuthal angle $\phi$ measured in the 
 $xy$ plane.
@@ -156,7 +156,7 @@ Charged particle trajectories are recorded by the tracking system.
 This is composed of a vertex detector centred around the proton-proton 
 interaction region, three planes of tracking stations before the magnet, and 
 three planes after.
-Immediately downstream of the vertex detector (increasing is $z$) is the first 
+Immediately downstream of the vertex detector (increasing in $z$) is the first 
 of two \ac{RICH} detectors, each used for particle identification, the second 
 of which is after the tracking stations downstream of the magnet.
 After this, a calorimetry system is in place to identify neutral particles such 
@@ -164,7 +164,7 @@ as the \Ppizero\ and the photon, as well as to measure their energy and that of
 the charged particles.
 Finally, a muon identification system is installed after the calorimeters.
 
-The data recorded are selected in real time by a hardware trigger, after which 
+The data produced are selected in real time by a hardware trigger, after which 
 a two-stage software trigger performs an event reconstruction.
 There are not enough computing resources available to the experiment to record 
 and analyse every proton-proton bunching crossing, and so the trigger is 
@@ -203,7 +203,7 @@ from around \SI{70}{\micro\metre} for tracks with a low \pT\ to
 \SI{20}{\micro\metre} at high \pT.
 
 The \velo\ is an extremely precise silicon strip detector, whose active 
-elements come as close as \SI{8}{\milli\metre} to from the \ac{LHC} beams.
+elements come as close as \SI{8}{\milli\metre} to the \ac{LHC} beams.
 Two sets of 24 silicon modules are arranged either side of the beam, as shown 
 in \cref{fig:intro:lhcb:velo}, each of which measures particle hits in $r$ and 
 $\phi$ coordinates.
@@ -246,8 +246,8 @@ The \ttracker\ is a silicon strip detector of the same technology as the
 \SI{8}{\metre\squared}.
 
 The tracking efficiency, defined as the fraction of genuine tracks that are 
-formed given that enough hits were deposited to form one, is measured using a 
-tag-and-probe technique with \JpsiTomumu\ decays, which is explained in more 
+reconstructed given that enough hits were deposited to do so, is measured using 
+a tag-and-probe technique with \JpsiTomumu\ decays, which is explained in more 
 detail in \cref{chap:prod:effs:tracking}.
 The average tracking efficiency is measured to be above 
 \SI{95}{\percent}~\cite{Aaij:2014pwa}.
@@ -256,10 +256,9 @@ aligned, but the positions of the various stations can change with time.
 To compensate for this effect, alignment constants are computed periodically 
 and used in the reconstruction software.
 The effect of an improved alignment is illustrated in 
-\cref{fig:intro:lhcb:alignment}, where the $\Pmuon\APmuon$ mass resolution 
+\cref{fig:intro:lhcb:alignment}, where the $\APmuon\Pmuon$ mass resolution 
 improves from \SI{92}{\MeVcc} with an initial alignment to \SI{49}{\MeVcc} with 
-an improved one, which more accurately reflects the state of the 
-detector~\cite{Dujany:082010}.
+an improved one~\cite{Dujany:082010}.
 
 \begin{figure}
   \centering
@@ -306,10 +305,11 @@ detector~\cite{Dujany:082010}.
 
 Through the momentum-velocity relation, the mass of a particle can be 
 determined by combining the momentum measurement from the tracking system with 
-a velocity measurement, which is performed by the \rich\ detectors.
+a velocity measurement.
+Velocities measurements are made using the \ac{RICH} detectors.
 
 Tracks created by pions, kaons, and protons are identified using the response 
-of two \acl{RICH} detectors: \richone\ located upstream of the magnet and 
+of two \ac{RICH} detectors: \richone\ located upstream of the magnet and 
 \richtwo\ located downstream.
 The \acp{RICH} also provide electron and muon discrimination, albeit at a 
 weaker level.
@@ -317,8 +317,9 @@ weaker level.
 acceptance, being designed to efficiently identify tracks with momenta in the 
 range \SIrange{15}{100}{\GeVc} which largely occupy the low-$\theta$ region.
 \richone\ is effective in the momentum range \SIrange{3}{60}{\GeVc}.
-During \runone, \richone\ contained both aerogel and \ce{C4F10} gas, of which 
-the former was removed before the start of \runtwo.
+% TODO citation for aerogel removal? RICH performance paper maybe
+During \runone, \richone\ contained both \ce{C4F10} gas and aerogel, of which 
+the latter was removed before the start of \runtwo.
 \richtwo\ contains \ce{CF4} gas mixed with a small amount of \ce{CO2} to quench 
 scintillation light.
 
@@ -393,7 +394,7 @@ The pion \dll\ value is then zero by definition.
 Given the momentum measurements from the tracking system and the velocity 
 measurements from the \ac{RICH} detectors, the particle energy is already 
 determined.
-For hadrons then, a precise calorimetry system is not necessary.
+For charged hadrons then, a precise calorimetry system is not necessary.
 However, the momentum and mass measurements are complex and require a 
 significant amount of time to compute, and so cannot be used in the first stage 
 of the trigger where the proton-proton collision rate must be reduced from 
@@ -558,9 +559,9 @@ momentum vector, the \ac{DOCA} and the sum of the \pT\ of the input tracks, and
 the vertex mass and corrected mass, the latter of which accounts for decay 
 products not explicitly included in the vertex such as long-lived charm 
 hadrons.
-The \ac{DOCA} requirements are loose enough to accommodate \PB decays involving 
-a long-lived charm hadron, where a tertiary vertex would be defined in the 
-offline reconstruction.
+The \ac{DOCA} requirements are loose enough to accommodate \PB decays that 
+include long-lived charm hadrons, where a tertiary vertex would be defined in 
+the offline reconstruction.
 The vertex quantities are used as input to a \ac{BDT}, and the single output 
 value is used to make the trigger 
 decision~\cite{Gligorov:2011qxa,Gligorov:1384380}.

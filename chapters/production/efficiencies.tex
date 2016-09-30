@@ -1,13 +1,12 @@
 \chapter{Efficiency evaluation}
 \label{chap:prod:effs}
 
-The efficiency chain defines the fraction of produced prompt signal candidates 
-that survive the full reconstruction and selection procedure.
+The efficiency chain defines the fraction of prompt charm mesons that survive 
+the full reconstruction and selection procedure.
 The chain is defined in steps grouped by physical requirements and those 
 imposed by software, with each step being relative to the previous one.
-In the order of steps by which candidates are lost, this starts with the 
-efficiency of a signal charm hadron to decay within the \lhcb\ acceptance 
-having been produced in a \pp\ collision, \effacc.
+This starts with the efficiency of a signal charm hadron to decay within the 
+\lhcb\ acceptance having been produced in a \pp\ collision, \effacc.
 The efficiency of such a decay to be fully reconstructed is the reconstruction 
 efficiency is \effreco, and then the efficiency of the reconstructed decay to 
 be triggered through \lzero, \hltone, and \hlttwo\ is the trigger efficiency 
@@ -19,14 +18,10 @@ fit.
 The total efficiency, \eff, is the product of these, and is what enters in 
 \cref{eqn:prod:introduction:differential_cross_section}.
 
-For most steps in the efficiency chain, the candidates not passing each step 
-are lost and cannot be processed further, and so methods are needed to assess the 
-efficiency without having access to the original candidates.
-There are two methods that shall be used in this \namecref{chap:prod:effs}: 
-efficiency estimation from simulated \acf{MC} data, described in 
-\cref{chap:prod:data:mc}, where true information is available before and after 
-all steps; and methods of calibration, where proxy data selected without the 
-use of particular information can be used to assess the effects of using that information in the 
+Two methods are used for efficiency estimation: using the \acf{MC} data, where 
+true information is available before and after all steps; and methods of 
+calibration, where proxy data selected without the use of particular 
+information can be used to assess the effects of using that information in the 
 analysis data.
 Efficiency evaluation with \ac{MC} can be simple, but differences between the 
 data and the \ac{MC} must be accounted for, which may not be obvious.
@@ -52,7 +47,7 @@ will be discussed in the context of systematic uncertainties in
 
 The matching of true \ac{MC} particles to reconstructed objects, the process of 
 truth-matching as described in \cref{chap:prod:data:mc}, is not \SI{100}{\%} 
-efficient, and so a correction factor \efftruth is be computed to account for 
+efficient, and so a correction factor \efftruth\ is be computed to account for 
 the deficit.
 
 To summarise: the total efficiency $\eff_{i}(\decay{\PHc}{f})$, for charm 
@@ -67,10 +62,10 @@ where each efficiency \eff\ is dependent on the charm hadron \PHc\ and the
 final state $f$, and is conditional on the previous step.
 
 In this \namecref{chap:prod:effs} the details of the efficiency computation for 
-each step is given, along with example efficiency tables in \pTy\ for the 
-two-body \DzToKpi\ and three-body \DpToKpipi\ decay.
+each step are given, along with example efficiency tables in \pTy\ for the 
+two-body \DzToKpi\ and three-body \DpToKpipi\ decays.
 The notation for conditional yields will be used throughout, where $N_{B|A}$ 
-denotes the prompt signal yields after process $B$ given that process $A$ 
+denotes the prompt signal yield after process $B$ given that process $A$ 
 preceded $B$.
 
 \section{Detector acceptance}
@@ -78,17 +73,14 @@ preceded $B$.
 
 The acceptance efficiency is due to the finite spatial acceptance of the \lhcb\ 
 detector.
-By instrumenting the forward region, in the pseudorapidity range $2 < \Eta < 
-5$, any particles flying outside this region are not detected.
-As there is no way to access these particles in data, it is necessary to use 
-simulated data.
+There is no way to access these particles in data, and so simulated data is 
+used.
 The acceptance is modelled by a set of cuts requiring that all stable charged 
-particles in the final state are within $10 < \theta < 
-\SI{400}{\milli\radian}$, where $\theta$ is the polar angle of the particle 
-momentum vector, and that all the particles in the final state point in the 
-positive $z$ direction, as defined in \cref{chap:prod:data:mc}.
-These requirements are applied at the \emph{generator} level, before the 
-detector simulation, on the true kinematics of the particles.
+particles in the final state have a momentum direction satisfying $10 < \theta 
+< \SI{400}{\milli\radian}$, and that all the particles in the final state point 
+in the positive $z$ direction.
+These requirements are applied at the generator level, before the detector 
+simulation, on the true kinematics of the particles.
 
 By counting the number of prompt charm hadrons passing and failing the cut, the 
 acceptance efficiency is defined as
@@ -116,11 +108,11 @@ charm mesons.
 This folds in several effects: whether the final state particles have a large 
 enough momentum not to be bent out of the detector acceptance by the magnetic 
 field; whether the final state particles leave enough hits in the tracking 
-system to be \emph{reconstructible} (that is, above the minimum threshold at 
-which the tracking system \emph{could} reconstruct a track); whether, given 
-that enough hits were deposited by a final state particle, a track was actually 
-\emph{reconstructed}; and whether a vertex can be formed, given that all final 
-state particles have associated tracks.
+system to be reconstructible (that is, above the minimum threshold at which the 
+tracking system \emph{could} reconstruct a track); whether, given that enough 
+hits were deposited by a final state particle, a track was actually 
+reconstructed; and whether a vertex can be formed, given that all final state 
+particles have associated tracks.
 
 The reconstruction efficiency is defined as the ratio of fully reconstructed 
 decays to those passing the acceptance requirements
@@ -150,17 +142,15 @@ efficiency computation, such as \cref{eqn:prod:effs:reco}.
 However, the requirement that a track is matched to \SI{70}{\percent} of the 
 hits created by an \ac{MC} particle is not \SI{100}{\percent} efficient at 
 accepting signal.
-This results in an underestimation of the number of signal particles, and hence 
-an overestimation of the cross-section.
 The magnitude of the size of the inefficiency can be determined by counting the 
 number of signal decays that fail the truth matching requirement.
 \cref{fig:prod:effs:truth:categories} shows the \PDzero and \PDplus mass 
 distributions for the various background categories.
 The `ghost' category exhibits a peak identical in nature to that seen in the 
 `signal' category.
-As not all signal decays that are truly reconstructed are counted as such when 
-only the `signal' category is considered, associated efficiencies are 
-underestimated.
+As not all signal decays that are truly reconstructed will be counted as such 
+when only the `signal' category is considered, associated efficiencies are 
+underestimated, leading to an overestimation of the cross-section.
 
 Given that the number of correctly matched signal decays is $N$, and the number 
 of incorrectly labelled signal decays is $U$, the selection efficiency defined 
@@ -170,17 +160,18 @@ in \cref{eqn:prod:effs:reco} is incorrect by a factor
   \label{eqn:prod:effs:truth}
 \end{equation}
 The number of decays passing the signal requirement is used for $N$, and $U$ is 
-measured with a maximum likelihood fit to mass or \deltam\ distribution of the 
-decays not passing that requirement.
+measured with a maximum likelihood fit to the mass or \deltam\ distribution of 
+the decays not passing the requirement.
 As shown in \cref{fig:prod:effs:truth:categories}, the fraction of incorrectly 
 identified signal decays is small, and so a single fit is performed with the 
-data integrated across all \pTy\ bins.
+data integrated across all \pTy\ bins, and a single correction factor is 
+measured.
 The details of the fit are identical to those for the mass fits used in the 
 prompt charm yield extraction with real data, described in 
 \cref{chap:prod:fitting:mass}.
 The result of the fits to the \DzToKpi\ and the \DpToKpipi\ simulated datasets 
 are shown in \cref{fig:prod:effs:truth:fit}.
-Table~\ref{tab:prod:effs:truth_matching} lists the obtained efficiencies.
+Table~\ref{tab:prod:effs:truth_matching} lists the obtained correction factors.
 
 \begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
@@ -240,19 +231,18 @@ Table~\ref{tab:prod:effs:truth_matching} lists the obtained efficiencies.
 \subsection{Tracking efficiency correction}
 \label{chap:prod:effs:tracking}
 
-The track reconstruction efficiency, or \emph{tracking efficiency}, measures 
-the efficiency for a charged particle to be reconstructed as a track, and is 
-part of the definition of the reconstruction efficiency in 
+The track reconstruction efficiency, or tracking efficiency, measures the 
+efficiency for a charged particle to be reconstructed as a track, and is part 
+of the definition of the reconstruction efficiency in 
 \cref{eqn:prod:effs:reco}.
 The \ac{MC} may not accurately model the tracking efficiency, and so a 
 data-driven technique is used to compute correction factors based on the 
 observed differences between the data and the \ac{MC}.
 
-Only \emph{long} tracks are used in this analysis, which requires that the 
-particles create hits in the \velo\ and in the T stations.
-Hits in the \ttracker\ are not required to form long tracks, though the any 
-matching hits that are found added to the track in order to improve the 
-momentum resolution.
+Only long tracks are used in this analysis, which requires that the particles 
+create hits in the \velo\ and in the T stations.
+Hits in the \ttracker\ are not required to form long tracks, although matching 
+hits are added to tracks to improve their momentum resolution.
 To measure the efficiency of long track creation, \JpsiTomumu\ decays are 
 reconstructed using a `tag-and-probe' technique, where one particle is fully 
 reconstructed as a long track, as usual, and the other track is created using 
@@ -265,7 +255,7 @@ By assuming the muon track segment was made by a particle originating from the
 the $yz$ plane where the kick is modelled, and then the difference in slopes 
 between the \ac{PV}-plane line and the probe track gives the probe momentum.
 The invariant mass of the dimuon system can then be computed, the distribution 
-of which for many tag-and-probe candidates can be used to distinguish between 
+for many tag-and-probe candidates can be used to distinguish between 
 backgrounds and true \PJpsi decays.
 The mass resolution of \JpsiTomumu\ decays reconstructed using long+muon tracks 
 is about \SI{200}{\MeVcc}, to be compared with a resolution of about 
@@ -301,7 +291,7 @@ is formed
 This ratio is evaluated in bins of probe track momentum \ptot\ and 
 pseudorapidity \Eta, as the tracking efficiency is found to vary as a function 
 of these variables, and is shown in \cref{fig:prod:effs:tracking_table}.
-As it is also found to vary as a function of the total number of reconstructed 
+As it is found to also vary as a function of the total number of reconstructed 
 long tracks in the event, the input tracks in the \ac{MC} are weighted such 
 that the event multiplicity distributions match those in the data.
 
@@ -371,13 +361,13 @@ the total number, or equivalently
 where $R_{\nobias}$ is the rate at which the \lzero\ trigger was programmed to 
 accept crossings; \ncollbunches\ is the number of bunches in the \ac{LHC} which 
 collided at the \lhcb\ \acl{LHCIP}; and \revfreq\ is the bunch revolution 
-frequency of \SI{11.246}{\kilo\hertz}.
+frequency of \SI{11.246}{\kilo\hertz}~\cite{Bruning:2004ej}.
 Both $R_{\nobias}$ and \ncollbunches\ can vary as a function of the \ac{LHC} 
 fill, and hence so can $\eff_{\nobias}$.
 The corresponding values are tabulated in 
 \cref{tab:prod:sel:online:l0_nobias_rateeff}.
 
-The remaining \hltone, \hlttwo, and offline selection efficiency is computed as 
+The combined \hltone, \hlttwo, and offline selection efficiency is computed as 
 the ratio of the number of truth-matched decays passing the full selection (but 
 without \ac{PID} requirements) to the number of truth-matched, reconstructed 
 decays, giving
@@ -402,8 +392,8 @@ in \cref{chap:intro:lhcb:detector:pid}.
 This analysis uses the \dllkpi\ variable to discriminate between kaon and pion 
 tracks, with the exception of the soft pion in the \DstToDzpi\ decay on which 
 no \ac{PID} requirement is made.
-This \namecref{chap:prod:effs:pid} shall describe how \effpid\ is computed 
-using a calibration technique.
+This \namecref{chap:prod:effs:pid} will describe how \effpid\ is computed using 
+a calibration technique.
 
 It is assumed that the efficiency of a \ac{PID} cut for a given particle type 
 can be parameterised as a function of three variables: the track momentum 
@@ -427,20 +417,19 @@ Mis-identifications of other true \PDzero decays, such as
 \decay{\PDzero}{\Ppiplus\Ppiminus} and \decay{\PDzero}{\PKplus\PKminus}, can be 
 resolved in the \PDzero invariant mass spectrum due to the high momentum 
 resolution of the detector, and true \PDstarp\ decays can be separated from 
-combinatorial background in the delta mass distribution, defined in 
-\cref{eqn:prod:fitting:delta_mass}.
+combinatorial background in the \deltam\ distribution.
 
-The sample of \PDstarp-tagged \PDzero decays will be referred to here as the 
-\emph{calibration} sample, and has a \SI{20}{\percent} overlap with the sample 
-used for the cross-section measurement.
+The sample of \PDstarp-tagged \PDzero decays is referred to here as the 
+calibration sample, and has a \SI{20}{\percent} overlap with the sample used 
+for the cross-section measurement.
 This is partly due to the different selection strategy that is necessary when 
 \ac{PID} information is ignored, and also due to inclusive trigger requirements 
-used.
+imposed on the calibration sample.
 To compute the efficiency of a given \ac{PID} requirement on either a kaon or a 
 pion track, kaons or pions from the calibration sample are partitioned in 
 \ptot, \Eta, and \nspd\ as a three-dimensional histogram.
-The number of signal tracks $C_{i}$ in the $i$th bin is computed, and then the 
-number of signal tracks after the \ac{PID} requirement $C_{i}'$ is computed, 
+The number $C_{i}$ of signal tracks in the $i$th bin is computed, and then the 
+number $C_{i}'$  of signal tracks after the \ac{PID} requirement is computed, 
 such that the efficiency in the $i$th bin is
 \begin{equation}
   \eff_{i} = \frac{C_{i}'}{C_{i}}.
@@ -458,24 +447,16 @@ performed and checked.
 Instead, a single two-dimensional fit is run on the entire calibration sample, 
 and weights are computed that can be used to statistically remove the 
 background contribution in variable distributions that are uncorrelated with 
-the invariant mass.\footnotemark
+the invariant mass~\cite{Pivk:2004ty}.
 As \ptot, \Eta, and \nspd\ are found to be uncorrelated with the fit variables, 
-these weights can be used to compute $C_{i}$ by summing the weights of the 
+these weights are be used to compute $C_{i}$ by summing the weights of the 
 tracks that fall in the $i$th bin.
-They can also be used to compute $C_{i}'$ in the same way, as the \dll\ 
-variables are also found to be uncorrelated with the fit variables, and a cut 
-on a variable is the same as partitioning data into bins.
+The weights are also used to compute $C_{i}'$ in the same way, as the \dll\ 
+variables are found to be uncorrelated with the fit variables.
 Once the efficiency in each \ptotetanspd\ bin is known, the \ac{PID}\ 
 efficiency for the same cut on \emph{any} track can be evaluated by looking up 
 which bin the track falls into, and assigning the corresponding efficiency to 
 it.
-
-\footnotetext{%
-  These weights are called \emph{sWeights}~\cite{Pivk:2004ty}.
-  % TODO should reference a specific chapter where sWeights are described
-  A more complete description of their computation, properties, and use cases 
-  will be given in \cref{chap:cpv}.
-}
 
 For the calibration sample, the average efficiency across the parameterisation 
 space can be expressed as
@@ -486,7 +467,7 @@ space can be expressed as
     \displaystyle\sum_{i \in \textnormal{bins}} C_{i}
     }
 \end{equation}
-For some other sample of tracks, referred to here as the \emph{reference} 
+For some other sample of tracks, referred to here as the reference 
 sample,\footnotemark\ the contents of each bin can be scaled by a weight 
 $w_{i}$ based on the fraction of the total reference sample size in the $i$th 
 bin relative to that of the calibration sample
@@ -578,51 +559,14 @@ zero~\cite{Anderlini:2202412}.
 The benefit is that one does not rely on a proxy or \ac{MC} dataset modelling 
 the track kinematics, and the inter-track correlations, correctly.
 
-\subsection{\ac{PID} calibration uncertainties}
-\label{chap:prod:effs:pid:uncertainties}
-
-The uncertainty $\unc{\effpidtrack}$ on the per-track efficiency \effpidtrack\ 
-is the binomial uncertainty of $C_{i}'$ tracks passing the \ac{PID} selection 
-out of the initial $C_{i}$ tracks in the calibration sample.
-For the multi-track case, the uncertainty $\unc{\effpiddecay}$ on the \ac{PID} 
-efficiency \effpiddecay\ can be derived using Gaussian error propagation
-\begin{equation}
-  \unc{\effpiddecay} = \sqrt{%
-    \sum_{t\phantom{'}\in\text{tracks}}\sum_{t'\in\text{tracks}}
-      \rho_{tt'}
-      \frac{%
-        \unc{\effpidtrack}
-      }{%
-        \effpidtrack
-      }
-      \frac{%
-        % Bit gross as this assumes we know what the \effpidtrack macro is
-        \unc{\eff_{t'}}
-      }{%
-        \eff_{t'}
-      }
-  }.
-  \label{eqn:prod:effs:pid:decay_uncertainty}
-\end{equation}
-The correlation term $\rho_{tt'}$ accounts for cases where pairs of tracks in 
-the reference decay are of the same species and fall in the same \ptotetanspd\ 
-bin, in which case it is equal to one otherwise it is zero.
-In this analysis, each efficiency \effpidtrack\ is modelled as a normal 
-distribution with mean equal to the value found in the calibration procedure, 
-and width equal to the statistical uncertainty on that value due to the finite 
-size of the calibration sample.
-The correlations are taken into account through a series of pseudo-experiments, 
-which will be described in \cref{chap:prod:syst:pid:stat}.
-
-As the reference sample is of a finite size, there is an additional, associated 
-uncertainty on the per-decay \ac{PID} efficiency.
+The statistical component of the uncertainty on the \ac{PID} efficiency due to 
+the finite size of the calibration sample is computed via a series of 
+pseudo-experiments, which will be described in \cref{chap:prod:syst:pid:stat}.
+As the reference sample is also of a finite size, there is an additional, 
+associated uncertainty on the per-decay \ac{PID} efficiency.
 However, the reference sample is identical to the sample entering the fits 
 described in \cref{chap:prod:fitting}, and so this uncertainty is already 
 accounted for in the uncertainty on the fitted signal yields.
-The uncertainty due to the finite calibration sample size, given in 
-\cref{eqn:prod:effs:pid:decay_uncertainty}, is treated as a systematic 
-uncertainty on the cross-section measurement, and is discussed further in 
-\cref{chap:prod:syst:pid}.
 
 \subsection{Optimisation of \texorpdfstring{\ptotetanspd}{(p, eta, Nspd)} binning scheme}
 \label{chap:prod:effs:pid:binning}
@@ -632,18 +576,17 @@ that the \ac{PID} efficiency within a \ptotetanspd\ bin is single-valued.
 This can be guaranteed by employing an infinitely fine binning.
 In reality, this cannot be used due to the finite size of the calibration 
 sample.
-There is then a balance between decreasing the bin size such that the 
-single-value assumption is satisfied, and increasing the bin size so as to 
-minimise the uncertainty on the \ac{PID} efficiency computed within that bin.
 This Section will discuss how the binning for the \ac{PID} calibration was 
 chosen for this analysis.
 
 \Cref{fig:prod:effs:pid:binning:kaon_no_optimisation} illustrates the 
-dependence of the efficiency of the kaon \ac{PID} requirement on kaon momentum.
-It is noted firstly that the efficiency does strongly vary with track momentum, 
+dependence of the efficiency of the kaon \ac{PID} requirement on kaon momentum, 
+as computed in equal-probability bins based on the calibration sample 
+populations.
+It is noted firstly that the efficiency varies strongly with track momentum, 
 and secondly that the equal-probability binning can lead to neighbouring bins 
 where the efficiency is near-constant, as in the 14--\SI{25}{\GeVc} region, 
-where a single bin would be sufficient.
+such that a single bin would be a sufficient model.
 In addition, the relative softness of the reference sample distribution 
 (black), compared to that of the calibration sample (red), leads to a large 
 fraction of the reference data being covered by a single bin ($p < 

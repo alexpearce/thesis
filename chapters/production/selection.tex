@@ -17,17 +17,16 @@ backgrounds, whilst retaining as much signal as possible to maximise the
 statistical precision of the measurement.
 
 The selection of fully charged, hadronic decay modes of charm mesons has 
-already been performed by many other analysis at \lhcb,\footnotemark and their 
+already been performed by many other analyses at \lhcb\footnotemark\ and their 
 selections share several common features.
-The first of these is a requirement on the minimum charm candidate \pT, as 
-there are many soft particles produced directly in the proton-proton collision, 
-and such a requirement removes many of them.
+The first of these features is a requirement on the minimum charm candidate 
+\pT, as there are many soft particles produced directly in the proton-proton 
+collision.
 The second is to ask that the charm candidate vertex is significantly displaced 
-from the proton-proton collision vertex, or \ac{PV}, exploiting the long flight 
-distances of charm hadrons in the laboratory frame.
+from the \ac{PV}, exploiting the long lifetimes of charm hadrons in the 
+laboratory frame.
 Finally, it is required that the \ipchisq\ of the charm meson, a measure of the 
-\acf{IP} relative to the uncertainty on the \ac{IP}, does not exceed a certain 
-value.
+\acf{IP} significance, does not exceed a certain value.
 This suppresses the background of charm candidates whose three-momentum does 
 not point back to the \ac{PV}, which the momentum of random combinations of 
 tracks will not, on average.
@@ -42,11 +41,10 @@ background.
 }
 
 For this measurement of prompt charm production it is preferable not to make 
-\pT\ requirements on the charm candidate as they would restrict the \pT\ range 
-available for differential measurements.
+\pT\ requirements on the charm candidate as the \pT\ range available for 
+differential measurements would be restricted.
 Nor is it desirable to make \ipchisq\ cuts, as the \ipchisq\ distribution is 
-used for prompt-secondary discrimination, and having access to only part of the 
-distribution can hinder accurate modelling.
+used for prompt-secondary discrimination.
 The selection used is then informed by previous \lhcb\ studies of fully 
 charged, hadronic charm decays, but with modifications to improve the utility 
 for the measurement in hand.
@@ -55,88 +53,51 @@ background, in addition to those discussed, are given and described below.
 The `parent' is the charm hadron \PHc, and the `children' are the charged 
 hadrons in the final state.
 
-\begin{description}
-  \item[Child track \chisq\ per degree of freedom] \hfill \\
-    The \chisq\ per degree of freedom of the child track returned by the track 
-    fit.
-    This variable discriminates between real and fake~(ghost) tracks.
-  \item[Child transverse momentum] \hfill \\
-    Momentum transverse to the $z$-axis.
-    Children of charm hadrons will have a higher \pT\ on average than prompt 
-    stable particles produced directly from the \pp\ collision.
-  \item[Child momentum] \hfill \\
-    Three-momentum magnitude \ptot.
-    Must be within the range of acceptable particle identification performance 
-    and fall within the kinematic spectrum of the \ac{PID} calibration samples, 
-    discussed in \cref{chap:prod:effs:pid}.
-  \item[Child pseudorapidity] \hfill \\
-    Pseudorapidity $\Eta = \cosh^{-1}{\ptot/\pT}$.
-    Must be within the range of acceptable particle identification performance 
-    and fall within the kinematic spectrum of the \ac{PID} calibration samples.
-  \item[Child \ipchisq] \hfill \\
-    Impact parameter with respect to the \ac{PV}, as shown 
-    in~\cref{fig:intro:lhcb:vertexing}.
-    Prompt stable particles produced directly in the \pp\ collision will have a 
-    low impact parameter, whereas particles produced in long-lived charm decays 
-    will not have trajectories pointing back to the \ac{PV} on average.\\
-    The `\chisq' is computed as $\Delta^{\text{T}}\Sigma^{-1}\Delta$, where 
-    $\Delta$ is the difference in the position vectors of the track and the 
-    vertex, and $\Sigma$ is the sum of the covariance matrices of the track and 
-    vertex fits.
-    This quantity is approximately equal to the ratio of the \ac{IP} and the 
-    uncertainty on that \ac{IP} measurement.
-  \item[Child \ac{PID}] \hfill \\
-    Particle identification information as the combined response of the 
-    calorimeters, muon stations, and \rich\ detectors, as described in 
-    \cref{chap:intro:lhcb:detector:pid}.
-  \item[Pairwise child \ac{DOCA}] \hfill \\
-    For a set of tracks physically originating from a common vertex, the 
-    largest distance between any two tracks, the \ac{DOCA}, should be small.
-  \item[Parent reconstructed mass] \hfill \\
-    Invariant mass, either computed before the vertex fit as the sum of the 
-    child four-momenta, or after as the mass of the fitted vertex.
-    In a signal sample, a peaking structure will be seen around the nominal 
-    charm hadron invariant mass.
-    To be able to model the combinatorial background, the window around the 
-    nominal mass should be many times wider than the resolution on this peak.
-  \item[Parent vertex quality] \hfill \\
-    Quality of the vertex fit.
-    A larger \chisq\ value means a lower probability that the input tracks 
-    originated from the same spatial point, which would be true if the tracks 
-    were the product of a particle decay.
-  \item[Parent vertex displacement] \hfill \\
-    Displacement of the secondary (decay) vertex from the \ac{PV}, assumed to 
-    be the \ac{PV}, as either the reconstructed lifetime $c\lifetime$ or the 
-    vertex displacement \chisq.
-    The `\chisq' is computed as $\Delta^{\text{T}}\Sigma^{-1}\Delta$, where 
-    $\Delta$ is the difference in the spatial positions of the two vertices, and 
-    $\Sigma$ is the sum of the covariance matrices of the two vertex fits.
-  \item[Parent \ac{DIRA}] \hfill \\
-    If the child tracks are from a true decay, all of the child tracks have 
-    been reconstructed, and the decay vertex position is correctly 
-    reconstructed, then the momentum vector of the parent should point in the 
-    same direction as the displacement vector between the \ac{PV} and the decay 
-    vertex.
-    The angle between the momentum and displacement vectors, the \ac{DIRA}, 
-    should be small for a correctly reconstructed signal decay.
-\end{description}
+The child tracks are firstly selected based on the quality of the track fit, 
+the track fit \chisq\ per degree of freedom.
+For fake~(ghost) tracks, the \chisq\ is higher on average.
+Child \ptot\ and \Eta\ are required to be in the range in which calibration 
+samples are available for \ac{PID} efficiency measurements (described in more 
+detail in \cref{chap:prod:effs:pid}).
+The track \pT\ is required to be above some minimum to reduce the background 
+from random soft tracks originating from the \ac{PV}, and similarly for the 
+track \ipchisq, which will be high on average for tracks produced from a 
+displaced, secondary vertex.
+Finally, \ac{PID} requirements are made on the tracks to reduce 
+misidentification backgrounds, particularly to suppress the large fraction of 
+pions in the event when a kaon candidate is required.
 
-The exact numerical requirements made on these quantities were not tuned to 
-optimise any specific figure of merit.
-Instead, the values were chosen based on those used in previous charm analysis, 
+The combination of tracks used to form an \PHc\ candidate is required to have a 
+maximum pairwise \ac{DOCA} less than some value.
+If a vertex can be fitted using the combination, the \chisq\ of the fit should 
+be low, indicating a good compatibility with the physical vertex hypothesis.
+For long-lived charm hadrons, the vertex can be significantly displaced from 
+the \ac{PV}, and making a minimum requirement on the displacement suppresses 
+much combinatorial background.
+The momentum vector of the vertex should have the same direction as that of the 
+vector that points from the \ac{PV} to the decay vertex, and the angle between 
+these two vectors, the \ac{DIRA}, is required to be less than some value.
+Finally, the reconstructed mass of the parent vertex must be near the nominal 
+mass of the hadron under study.
+Combinations of random tracks will have masses far away from the nominal value, 
+however a suitably large window must be used on order to be able to accurately 
+model the combinatorial background shape in the mass fits.
+
+The exact numerical requirements made on the discriminatory quantities were not 
+tuned to optimise any specific figure of merit.
+Instead, the values were chosen based on those used in previous charm analyses, 
 generally being loosened to account for the higher rate available to charm 
 triggers during the early measurements period, and the desire to have as high 
 an efficiency as possible in the low \pT\ regions of the measurement.
 
-As this analysis uses the Turbo stream, the only selection is `online', in that 
-it is only performed on quantities computed in the trigger.
-Still, the values computed are available `offline', once the data has been made 
-available to analysts.
-The selection is then split in two: the `online' part, which is the selection 
-defined in the trigger and cannot be tuned once the data has been taken, and 
-the `offline' selection, which is any selection made after this.
-The use of the Turbo stream permits only one pass of the full event 
-reconstruction, that done `online' in the trigger.
+As this analysis uses the Turbo stream, the only selection is that defined 
+using `online' quantities computed in the trigger.
+The same quantities are used `offline', with no further reconstruction being 
+performed.
+The selection is split in two for exposition: the `online' part, which is the 
+selection defined in the trigger and cannot be tuned once the data has been 
+taken, and the `offline' selection, which is any selection made after the 
+online.
 The following \namecref{chap:prod:sel:online} shall detail the online selection 
 and reconstruction, and will be followed by a description of the offline 
 selection in \cref{chap:prod:sel:offline}.
@@ -144,11 +105,10 @@ selection in \cref{chap:prod:sel:offline}.
 \section{Online selection and reconstruction}
 \label{chap:prod:sel:online}
 
-The different purpose and hierarchy of the different stages of the \lhcb\ 
+The different purposes and hierarchy of the different stages of the \lhcb\ 
 trigger are described in \cref{chap:intro:lhcb:trigger}.
 For this analysis, at \lzero\ bunch-bunch crossings are accepted randomly by 
-the \nobias\ trigger, so called because it should not bias any distributions of 
-interest.
+the \nobias\ trigger.
 The rate at which the \nobias\ trigger accepts events is programmed into the 
 hardware controller manually, with the exact rate depending on the number of 
 colliding bunches at \lhcb.
@@ -191,16 +151,15 @@ The full set of selection requirements is given in
 
 \hlttwo\ performs the full, offline-quality event reconstruction on events 
 passing \hltone.
-One \hlttwo\ selection, or `\hlttwo\ line', is defined per charm decay 
-topology, corresponding to: one line for \DzToKpi; one line for the charged 
-three-body decays, specifically \DpToKpipi\ and \DspToKKpi; and one line for 
-\DstToDzpi.
+One \hlttwo\ line is defined per charm decay topology, corresponding to: one 
+line for \DzToKpi; one line for the charged three-body decays, specifically 
+\DpToKpipi\ and \DspToKKpi; and one line for \DstToDzpi.
 In the \PDzero, \PDplus, and \PDsplus lines, candidates are made by combining 
 long tracks whose particle hypotheses are consistent with the final state under 
 consideration.
 In the \PDstarp\ line, \PDzero\ candidates passing the \PDzero\ \hlttwo\ line 
 are combined with pion candidates, referred to here as `soft pions', 
-\Ppiplussoft, due to their soft momentum distribution.
+\Ppiplussoft.
 There are three stages to the particle combination: when cuts are applied to 
 the input tracks; when cuts are applied to the four-vector sum of these tracks; 
 and when cuts are applied to the fitted vertex.
@@ -212,7 +171,7 @@ An event is saved for offline analysis if at least one \hlttwo\ line `fired',
 that is if a charm candidate is made that passes all cuts.
 The \DzToKpi, \DTohhh, and \DstToDzpi\ requirements are given in 
 \cref{tab:prod:sel:online:hlt2_dztokpi_selection,tab:prod:sel:online:hlt2_dtohhh_selection,tab:prod:sel:online:hlt2_dsttodzpi_selection}.
-Distributions of the charm candidate invariant mass after the full trigger 
+Distributions of the invariant masses of the charm candidates after the trigger 
 selection are given in 
 \cref{fig:prod:sel:D0ToKpi:online,fig:prod:sel:DpToKpipi:online,fig:prod:sel:DsToKKpi:online,fig:prod:sel:DstToD0pi_D0ToKpi:online}.
 
@@ -283,9 +242,8 @@ To improve the purity of the samples, the pion \ac{PID} requirement is
 tightened to $\dllkpi < 3$.
 Furthermore, kinematic requirements are made on all \PDzero, \PDplus, and 
 \PDsplus children such that they are within the fiducial region of phase space 
-available for \ac{PID} efficiency calibration, which will be described in 
-\cref{chap:prod:effs:pid}, specifically $3 < \ptot < \SI{100}{\GeVc}$ and $2 < 
-\Eta < 5$.
+available for \ac{PID} efficiency calibration, specifically ${3 < \ptot < 
+  \SI{100}{\GeVc}}$ and ${2 < \Eta < 5}$.
 As the three-body samples contain a large fraction of combinatorial background 
 even after these additional cuts, the vertex fit \chisq\ and the direction 
 angle cuts are tightened to $\chisq < 6$ and $\ac{DIRA} < 

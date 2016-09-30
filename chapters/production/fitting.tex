@@ -8,18 +8,16 @@ However, the generating \acf{PDF} in this distribution is the same for both
 prompt and secondary charm, and so another distribution must be used to 
 distinguish between these two sources of charm decays.
 
-This analysis uses the natural logarithm of the \chisq\ of the \acf{IP}, 
-\lnipchisq, to obtain the prompt charm yields.
-The momentum vector of prompt charm should point back to the \acf{PV}, and so 
+This analysis uses the logarithm of the \chisq\ of the \acl{IP}, \lnipchisq, to 
+obtain the prompt charm yields.
+The momentum vector of prompt charm should point back to the \ac{PV}, and so 
 the \lnipchisq\ distribution is expected be centred around zero.
 For secondary charm, the momentum vector will in general not point back to the 
 \ac{PV}, and so the \lnipchisq\ distribution is expected to peak at higher 
 values.
 This separation is exploited to distinguish between prompt and secondary charm, 
-where the prompt signal yield in each \pTy\ bin is measured by a binned 
-\emph{maximum likelihood fit} to the \lnipchisq\ distribution, the general 
-% Can't use \namecref here as it inserts 'Chapter' for some reason
-formalism of which will be presented in the following Section.
+where the prompt signal yield in each \pTy\ bin is measured by a binned, 
+extended maximum likelihood fit to the \lnipchisq\ distribution.
 The prompt and secondary models in this fit are described analytically as 
 peaking functions.
 The combinatorial background is described by a non-parametric model taken from 
@@ -30,9 +28,9 @@ distribution, measured in a fit to the charm hadron mass spectrum.
 
 For all cases but the \PDstarp\ measurement, it is the mass of the charm hadron 
 that is used to discriminate all signal from combinatorial background.
-For the \PDstarp\ measurement, the delta mass distribution, the difference 
-\deltam\ between the reconstructed \PDstarp mass and the reconstructed \PDzero 
-mass
+For the \PDstarp\ measurement, the delta mass distribution, defined as the 
+difference \deltam\ between the reconstructed \PDstarp\ mass and the 
+reconstructed \PDzero mass
 \begin{equation}
   \deltam = m(\PKminus\Ppiplus\Ppiplussoft) - m(\PKminus\Ppiplus),
   \label{eqn:prod:fitting:delta_mass}
@@ -41,106 +39,13 @@ is used instead.
 This has a nominal value of \SI{145.4}{\MeVcc}~\cite{PDG2014}.
 The narrower signal peak allows for a better signal-to-background ratio.
 
-After an overview of the technique of maximum likelihood estimation is given, 
-the two-step fit is described.
-Firstly, a description of the parameterisation of the signal and combinatorial 
-components in the mass and \deltam\ fits is given.
-Secondly, the parameterisation of the prompt signal, secondary signal, and 
-combinatorial background models in the \lnipchisq\ fit is given.
-Specific details on the models used for each charm meson then follow, after 
-which the fit results are presented.
-
-\subsection{Maximum likelihood estimation}
-\label{chap:prod:fitting:mle}
-
-The technique used for the yield extraction is the method of maximum 
-likelihood, where an objective function is defined that assumes some particular 
-model truly generated the data.
-The vector of parameters $\vec{\theta}$ of that model are varied given a vector 
-$\vec{x}$ of $N$ independent, randomly distributed measurements $x_{i}$ until 
-the objective is maximised.
-This objective is the likelihood \likelihood, and is defined as
-\begin{equation}
-  \likelihood(\vec{\theta}|\vec{x}) = \prod_{i}^{N} f(x_{i}|\vec{\theta}),
-\end{equation}
-where $f$ is the \ac{PDF} that the data are assumed to have been sampled 
-from.\footnotemark
-Practically, it is useful to work with the logarithm of the likelihood, as sums 
-are more convenient to work with numerically than products, and to use the 
-negative of this, in order to be able to exploit the available numerical 
-algorithms for minimisation problems such as \minuit~\cite{James:1975dr}
-\begin{equation}
-  -\ln{\likelihood(\vec{\theta}|\vec{x})} =
-  -\sum_{i}^{N} \ln{f(x_{i}|\vec{\theta})}.
-\end{equation}
-This is the \acf{NLL}.
-The practice of minimising the \ac{NLL} is also called \emph{fitting}.
-
-\footnotetext{%
-  The properties of any given \ac{PDF} $f(x)$ that are important here are: 
-  $f(x) \geq 0$ for all $x$; and $\int_{-\infty}^{\infty} f(x)\dif{x} = 1$.
-}
-
-For the purposes of this analysis, the total \ac{PDF} $f$ is the sum of several 
-models $f_{s}$, one for each physical source $s$ under consideration, such as 
-signal and combinatorial background or different \pTy\ bins
-\begin{equation}
-  \ln{\likelihood(\vec{\theta}|\vec{x})} =
-  \sum_{i}^{N} \ln{\sum_{s} f_{s}(x_{i}|\vec{\theta})}.
-\end{equation}
-The notation here that each model $f_{s}$ receives the full parameter vector 
-$\vec{\theta}$ implies that each $f_{s}$ may share parameters with other 
-components.
-In order to not only model the shape of the components but also their absolute 
-size, an \emph{extended} maximum likelihood fit~\cite{Barlow:1990vc} is 
-performed that relaxes the normalisation requirement on the total \acp{PDF} to 
-allow for Poisson fluctuations around the observed number of events 
-$N_{\text{obvs.}}$
-\begin{equation}
-  \ln{\likelihood(\vec{\theta}, \vec{N}|\vec{x})} =
-  \sum_{i}^{N}
-    \ln{\sum_{s} N_{s}f_{s}(x_{i}|\vec{\theta})}
-    - \sum_{s} N_{s}
-  ,
-\end{equation}
-where $N_{s}$ is the \emph{yield} associated to each component model $f_{s}$ 
-and $\vec{N}$ is the vector of those yields.
-
-After defining the full model, the \acl{NLL} is minimised numerically using 
-\minuit.
-Minimising the \ac{NLL} is equivalent to finding the parameter vector 
-$\hat{\theta}$ where the first derivatives of the likelihood with respect to 
-each parameter are all zero
-\begin{equation}
-  \vec{u}(\vec{\theta}) = \frac{%
-    \partial\ln{\likelihood}
-  }{%
-    \partial\vec{\theta}
-  },\quad
-  \vec{u}(\hat{\theta}) = \vec{0},
-\end{equation}
-where for compactness $\vec{\theta}$ includes the $\vec{N}$ parameter vector.
-The uncertainties on the parameters can be found by inspecting the diagonal 
-terms of the covariance matrix, which can be computed numerically by inverting 
-the \emph{observed} Fisher information matrix $I(\hat{\theta})$, defined via
-\begin{equation}
-  I(\vec{\theta}) = \frac{%
-    \partial^{2}\ln{\likelihood}
-  }{%
-    \partial\vec{\theta}\partial\vec{\theta}'
-  }.
-\end{equation}
-The second derivative around the likelihood can be thought of as describing the 
-`peakiness' of the minimum, where a shallower peak corresponds to less 
-certainty in the measurement of the parameter, and conversely a sharper peak 
-corresponds to a greater certainty in the value at the minimum.
-The computation of the set of second derivatives, and the proceeding matrix 
-inversion to obtain the covariance matrix, is performed numerically from the 
-minimised \ac{NLL} by the \hesse\ algorithm, part of \minuit.
-
-To estimate the yields in the data, suitable models must be constructed.
-The following Sections shall describe the construction of these models for the 
-various fits.
+The two-step fit in mass, or \deltam, and then \lnipchisq\ is first described.
+A description of the parameterisation of the signal and combinatorial 
+components in the mass and \deltam\ fits is given, followed by the 
+parameterisation of the prompt signal, secondary signal, and combinatorial 
+background models in the \lnipchisq\ fit.
+Specific details on the models used for each charm meson are given, after which 
+the fit results are presented.
 
 \section{Signal-background discrimination}
 \label{chap:prod:fitting:mass}
@@ -149,7 +54,7 @@ For each one-dimensional mass and \deltam\ fit, one PDF is defined per
 discriminatory species: signal and combinatorial background.
 In both the mass and \deltam\ distributions, the prompt and secondary signal 
 shapes are assumed to be identical, and for the \deltam\ fits the combinatorial 
-background is assumed to be indistinguishable from \emph{random soft pion} 
+background is assumed to be indistinguishable from random soft pion 
 backgrounds, where a true \PDzero is combined with a random track in the event.
 The total \ac{PDF} is constructed as the sum of the per-species \acp{PDF}, each $f_{s}$, 
 each weighted by the respective yield $N_{s}$
@@ -166,7 +71,6 @@ For every mass fit, the background PDF $f_{\textnormal{Bkg.}}(m)$ is taken to
 be a first-order polynomial, and the signal PDF $f_{\textnormal{Sig.}}(m)$ is 
 dependent on the charm hadron candidate, given in 
 Section~\ref{chap:prod:fitting:details}.
-
 The combinatorial and random soft pion background in the \deltam\ fits is 
 modelled as an empirical threshold function of the (un-normalised) form
 \begin{equation}
@@ -202,8 +106,9 @@ uncorrelated in the background sample.
 
 The signal region in each long-lived charm hadron mass distribution is defined 
 as a \SI{40}{\MeVcc}-wide window centred on the nominal rest mass of the given 
-charm hadron, taken to be $m_{\PDzero} = \SI{1864.84}{\MeVcc}$, $m_{\PDplus} = 
-\SI{1869.61}{MeV}$, and $m_{\PDsplus} = \SI{1968.30}{\MeVcc}$~\cite{PDG2014}.
+charm hadron, taken to be ${m_{\PDzero} = \SI{1864.84}{\MeVcc}}$, ${m_{\PDplus} 
+  = \SI{1869.61}{\MeVcc}}$, and ${m_{\PDsplus} = 
+  \SI{1968.30}{\MeVcc}}$~\cite{PDG2014}.
 The lower sideband is a \SI{20}{\MeVcc}-wide window centred \SI{50}{\MeVcc} 
 below the centre of the signal window, and the upper sideband is a 
 \SI{20}{\MeVcc}-wide window centred \SI{50}{\MeVcc} above the centre of the 
@@ -226,9 +131,9 @@ To avoid any complications due to correlations between the background template
 For the \PDstarp\ measurements, this signal region requirement is made in both 
 the \PDzero mass and the \deltam\ distributions.
 
-For each one-dimensional \lnipchisq\ fit, we assign one \ac{PDF} $f_{s}$ per 
-discriminatory species: prompt signal, secondary signal, and combinatorial 
-background.
+For each one-dimensional \lnipchisq\ fit, one \ac{PDF} $f_{s}$ per 
+discriminatory species is assigned: prompt signal, secondary signal, and 
+combinatorial background.
 The total \acp{PDF} are constructed as the sum of per-species \acp{PDF}, 
 each weighted by the respective yield $N_{s}$
 \begin{equation}
@@ -238,19 +143,20 @@ each weighted by the respective yield $N_{s}$
 \end{equation}
 The constraint on the background yield \nbkg\ is applied by multiplying the 
 likelihood by a normal distribution in \nbkg, whose mean is the number of 
-background candidates $N_{\text{Bkg}}$ measured by the mass fit and whose width 
-is the uncertainty on $N_{\text{Bkg}}$ returned by the fitter.
+background candidates measured by the mass fit and whose width is the 
+uncertainty on that value.
 This penalises the likelihood by reducing its value when the fitted \nbkg\ 
 parameter is far away from the value found in the mass fit.
 
-One \lnipchisq\ \ac{PDF}, $f(\lnipchisq)$, and background constraint is 
-constructed per \pTy\ bin, and the likelihood is formed as the product of these 
-such that each \ac{PDF} is fitted simultaneously when the negative 
-log-likelihood is minimised.
+One \lnipchisq\ \ac{PDF} and background constraint is constructed per \pTy\ 
+bin, and the likelihood is formed as the product of these such that each 
+\ac{PDF} is fitted simultaneously when the negative log-likelihood is 
+minimised.
 The benefit of this construction is that some shape parameters can be shared 
 across bins, reducing the uncertainty on the fit parameters.
 Which parameters are shared across bins and which are fitted independently is 
-dependent on the charm meson, and are enumerated in 
+dependent on the charm meson.
+The list of shared and independent parameters are enumerated in 
 \cref{chap:prod:fitting:details}.
 
 The prompt signal model $H$ in the \lnipchisq\ distribution is a modified 
@@ -274,9 +180,9 @@ to the mean and the tails are described by exponential functions
   \end{cases}
   \label{eqn:prod:fitting:ipchisq:signal_model}
 \end{equation}
-where the parameter $\mu$ is the mode of the distribution, $\sigma$ is the 
-average of the left and right widths, $\epsilon$ is the asymmetry between the 
-left and right widths, and $\rho_{L(R)}$ is the exponent for the left (right) 
+where the parameter $\mu$ is the mode of the distribution; $\sigma$ is the 
+average of the left and right widths; $\epsilon$ is the asymmetry between the 
+left and right widths; and $\rho_{L(R)}$ is the exponent for the left (right) 
 tail.
 The secondary signal distribution is modelled by a normal distribution $G$ with 
 mean $\mu$ and width $\sigma$
@@ -288,7 +194,7 @@ These shapes are motivated by the \lnipchisq\ distributions for prompt and
 secondary signal decays observed in the \ac{MC} samples.
 
 Given the large number of parameters to be fitted, some shape parameters in the 
-prompt and secondary singal \lnipchisq\ \acp{PDF} are fixed to values obtained 
+prompt and secondary signal \lnipchisq\ \acp{PDF} are fixed to values obtained 
 from `prefits' to the pure samples of prompt and secondary signal \ac{MC} 
 described in \cref{chap:prod:data:mc}.
 The set of parameters that is fixed is dependent on the charm meson, given in 
@@ -346,8 +252,8 @@ of the secondary signal \lnipchisq\ \ac{PDF} are floated in the fit to data,
 and all other \lnipchisq\ shape parameters are fixed to the values from 
 \ac{MC}.
 
-Prefits to the prompt signal and secondary signal data samples in \lnipchisq\ 
-are given in \cref{fig:prod:fitting:prefits:D0ToKpi}.
+Prefits to the prompt signal and secondary signal \ac{MC} samples are given in 
+\cref{fig:prod:fitting:prefits:D0ToKpi}.
 
 \subsubsection*{Fit details for \PDplus}
 \label{chap:prod:fitting:details:DpToKpipi}
@@ -387,8 +293,9 @@ are given in \cref{fig:prod:fitting:prefits:DsToKKpi}.
 \label{chap:prod:fitting:details:DstToD0pi}
 
 For the \PDstarp-tagged \DzToKpi\ mode, the width of the widest component of 
-the signal model, described in \cref{chap:prod:fitting:mass}, is split across 
-\pTy\ bins, along with the mean of the prompt signal \lnipchisq\ \ac{PDF}.
+the \deltam\ signal model, described in \cref{chap:prod:fitting:mass}, is split 
+across \pTy\ bins, along with the mean of the prompt signal \lnipchisq\ 
+\ac{PDF}.
 The mean of the prompt signal \lnipchisq\ \ac{PDF} and all parameters of the 
 secondary \ac{PDF} are floated during the fit to data, with all other shape 
 parameters fixed to the values from \ac{MC}.
@@ -426,7 +333,7 @@ These show that, in the individual \pTy\ bins, the fits model the data
 significantly better than the integrated plots would suggest, and also that the 
 fit is flexible enough to model both high prompt signal and high combinatorial 
 background datasets.
-The effect of the cross-section measurements of mis-modelling will be discussed 
+The effect on the cross-section measurements of mis-modelling will be discussed 
 further in \cref{chap:prod:syst:fitting}.
 
 In some \pTy\ bins, it is not possible to make a prompt signal yield 
