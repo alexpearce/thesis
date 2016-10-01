@@ -25,20 +25,16 @@ $w_{j}$ is per-candidate kinematic weight for the $j$th candidate in the $i$th
 bin, and $\eff_{j}$ is the efficiency.
 Each weight is scaled by a factor $B = \sum_{i} b_{i}/\sum_{i} b_{i}^{2}$ for 
 the reasons given in \cref{chap:cpv:kinematic_weighting:stats}.
-The uncertainty on the bin contents $\unc{b_{i}}$ is given by the effective 
-number of entries, as in \cref{eqn:cpv:kinematic_weighting:neff}
+The variance on the bin contents $\unc{b_{i}}$ is given by the effective number 
+of entries, as in \cref{eqn:cpv:kinematic_weighting:neff}
 \begin{equation}
-  \unc{b_{i}}^{2} = \neff = \frac{%
-    {\left(\sum_{i}^{N}{b_{i}}\right)}^{2}
-  }{%
-    \sum_{i}^{N}{b_{i}^{2}}
-  }.
+  \unc{b_{i}}^{2} = \neff = B\sum_{i}^{N} b_{i}.
 \end{equation}
 For \ppipi\ the kinematic weights are those described in 
-\cref{chap:cpv:kinematic_weighting}, where for \pKK\ there are unity.
+\cref{chap:cpv:kinematic_weighting}, whilst for \pKK\ there are unity.
 
-To try to reduce the effects of experimenter bias, the fitted central values of 
-\ARaw\ are blinded, and cannot be inspected until they are unblinded.
+In an attempt reduce the effects of experimenter bias, the fitted central 
+values of \ARaw\ are blinded, and cannot be inspected until they are unblinded.
 To be able to assess the quality of the fit results without inadvertently 
 unblinding the result, only the fit to \PLambdac\ data is inspected.
 For the \APLambdac data, only the pull distribution of the fit with respect to 
@@ -107,14 +103,8 @@ directly from in fit.
 
 The fully selected data are used, with one simultaneous fit performed for each 
 year and magnet polarity sub-sample.
-The data are weighted by the kinematic weights as described in 
-\cref{chap:cpv:kinematic_weighting}.
 The loss function is defined as a \chisq, which is minimised with \minuit\ and 
 a covariance matrix is computed with \hesse.
-A \chisq\ fit is chosen over a binned maximum likelihood fit as a \chisq\ fit 
-handles weights more naturally, in particular the evaluation of the covariance 
-matrix is considerably simpler, as discussed in 
-\cref{chap:cpv:prelim_fits:least_squares}.
 
 \section{Blinding}
 \label{chap:cpv:araw:blinding}
@@ -301,9 +291,9 @@ uncertainty on those parameters is not under- or overestimated.
 \label{chap:cpv:araw:validation:null}
 
 Fits as described in this \namecref{chap:cpv:araw} are performed on real data 
-where the charge of the \PLambdac\ candidate is randomly assigned, with an 
-there being an equal probability of any one decay being assigned a positive or 
-a negative charge.
+where the charge of the \PLambdac\ candidate is randomly assigned, with there 
+being an equal probability of any one decay being assigned a positive or a 
+negative charge.
 One thousand permutations of the charge assignments are tested for each mode 
 and data sub-sample, the fit is performed for each permutation and the value of 
 \ARaw is recorded.

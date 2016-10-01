@@ -10,54 +10,6 @@ estimates, and the like.
 This \namecref{chap:cpv:prelim_fits} describes the binned \chisq\ fit to the 
 \phh\ invariant mass spectrum that is used for such studies.
 
-\subsection{Least-squares parameter estimation}
-\label{chap:cpv:prelim_fits:least_squares}
-
-The least-squares method of parameter estimation is similar to the method of 
-maximum likelihood, described in \cref{chap:prod:fitting:mle}, in that the 
-parameter values are determined by those which optimise the value of a 
-function.
-For least-squares, that function is the \chisq, defined as
-\begin{equation}
-  \chisq(\vec{x}; \vec{\theta}) = \sum_{i = 1}^{N} \frac{%
-    {(f(x_{i}, \vec{\theta}) - x_{i})}^{2}
-  }{%
-    \sigma_{i}^{2}
-  },
-\end{equation}
-where, as before, $\vec{x}$ is the vector of observations, $\vec{\theta}$ is 
-the parameter vector, and $f$ is the \ac{PDF} under study.
-In this analysis, the data are binned in the \phh\ invariant mass, and so 
-$x_{i}$ is the number of candidates in the $i$th mass bin, of which there are 
-$N$, and $f$ is the integral of the \ac{PDF} over the $i$th bin.\footnotemark
-
-\footnotetext{%
-  The value of the fitted \ac{PDF} at the bin centre can be used instead, 
-  assuming the bin width is small enough such that the function can be 
-  considered to be varying linearly across the bin.
-}
-
-The method of least-squares is equivalent to maximum likelihood fitting in the 
-case of independent, normally distributed measurements $x_{i}$, but it handles 
-weighted events more naturally.
-In this case, $x_{i}$ changes from the number $n$ of events in the $i$th bin to 
-the sum of weights $w_{j}$ in the bin $x_{i} = \sum_{j}^{n} w_{j}$.
-The variance on this `count' is taken to be the sum of the squares of the 
-weights $\sigma_{i}^{2} = \sum_{j} w_{j}^{2}$.
-An `unweighted' \chisq\ fit is that in which $w_{j} = 1$.
-
-The inclusion of per-event weights in the fit is necessary when equalising the 
-\pKK\ and \ppipi\ kinematics.
-The computation of the weights will be discussed in 
-\cref{chap:cpv:kinematic_weighting}, whilst the weighted fit to the 
-charge-separated datasets (that is with non-unit weights) is presented in 
-\cref{chap:cpv:araw}.
-
-After the definition of the input data and the functional form of the \ac{PDF} 
-to be fitted, the \chisq\ is minimised with \minuit\ and the parameter 
-uncertainties are estimated with \hesse\ as in the maximum likelihood fit in 
-\cref{chap:prod:fitting:mle}.
-
 \section{Input data and shape parameterisation}
 \label{chap:cpv:prelim_fits:data_pdfs}
 
@@ -118,19 +70,20 @@ $h$ in the range
 \begin{equation}
   2230 < m(\PLambdac) < \SI{2350}{\GeV},
 \end{equation}
-with bins of width \SI{1}{\MeV}, for 120 bins in total.
+with bins of width \SI{1}{\MeV}.
 
 Once a fit has converged and the associated covariance matrix is confirmed to 
 be positive-definite, sWeights~\cite{Pivk:2004ty} are computed and are attached 
 to each candidate that entered the fit.
 This allows for the statistical subtraction of either the signal or the 
-background component in bins of some other variable that is not correlated with 
-the \PLambdac\ mass.
+background component in bins of some variable that is not correlated with the 
+\PLambdac\ mass.
 
 Fits to the fully selected 2012 magnet down dataset for the \pKK\ and \ppipi\ 
 modes are given in \cref{fig:cpv:prelim_fits:full}.
 The corresponding correlation matrices are given in 
-\cref{fig:cpv:prelim_fits:full_correlation}.
+\cref{fig:cpv:prelim_fits:full_correlation}, and the parameter values are given 
+in \cref{tab:cpv:prelim_fits:params:pKK,tab:cpv:prelim_fits:params:ppipi}.
 A good description of the data is seen, and this is representative of the fit 
 quality in all data sub-samples.
 
@@ -141,14 +94,12 @@ given for each fully selected subset of the data for \pKK\ in
 Also given are the number of signal candidates per unit of integrated 
 luminosity $\nsig/\intlumi$, where the integrated luminosity is given for each 
 data subset in \cref{tab:cpv:data:luminosity}.
-The parameter values for the fits shown are given in 
-\cref{tab:cpv:prelim_fits:params:pKK,tab:cpv:prelim_fits:params:ppipi}.
 
 \section{Validation}
 \label{chap:cpv:prelim_fits:validation}
 
-To evaluate the bias and variance of the fitter, pseudo-experiments are 
-performed by generating \ac{MC} data from the fitted \ac{PDF}.
+To evaluate the bias and uncertainty coverage of the fitter, pseudo-experiments 
+are performed by generating \ac{MC} data from the fitted \ac{PDF}.
 One thousand pseudo-experiments are run for each mode and for each data 
 sub-sample.
 The parameter values of the generating \acp{PDF}, from which data points are 
@@ -156,7 +107,7 @@ drawn, are the same as those found in the fits to the fully selected data,
 except for the values of yield parameters.
 Each yield parameter value for each pseudo-experiment is drawn from a Poisson 
 distribution whose mean is set to the value of the yield found in the fits to 
-the data.
+the data~\cite{Karbach:2012vg}.
 
 For each pseudo-experiment, the fitted parameter value and the uncertainty on 
 that fit are recorded, and a pull value $p$ is computed as the difference 
@@ -167,8 +118,8 @@ parameter value uncertainty $\unc{v}$
 \end{equation}
 The true value for each yield parameter is taken to be the mean value of the 
 Poisson distribution from which the generating value is drawn.
-An unbiased fitter should have a distribution of pull values drawn from a unit 
-Gaussian.
+An unbiased fitter with correct uncertainty coverage should have a distribution 
+of pull values drawn from a unit Gaussian.
 
 The results of the pseudo-experiments are shown in 
 \cref{fig:cpv:prelim_fits:validation:pKK} and 
