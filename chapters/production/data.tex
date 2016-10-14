@@ -1,8 +1,8 @@
 \chapter{Datasets and running conditions}
 \label{chap:prod:data}
 
-The data used for this measurement were collected at the very beginning of 
-\runtwo\ of the \ac{LHC}, during a special 15-day `early measurements' period.
+The data used for this measurement were collected at the beginning of \runtwo\ 
+of the \ac{LHC}, during a special 15-day `early measurements' period.
 The number of bunches in the accelerator was gradually increased from 50 at the 
 beginning to 482 bunches at the end of the period, with the number colliding at 
 IP8 increasing from 36 to 397 bunches.
@@ -33,28 +33,21 @@ will be described in \cref{chap:prod:sel}.
 \section{Simulated data samples}
 \label{chap:prod:data:mc}
 
-If an event is not selected by the trigger, it lost for analysis.
-In order to have access to information before this stage, simulated \acf{MC} 
-samples are generated.
-The general procedure for the generation of \ac{MC} is described in 
-\cref{chap:intro:lhcb:simulation}.
-
 This analysis uses simulated samples of \DstToDzpi\ with \DzToKpi, \DpToKpipi, 
 and \DspToKKpi\ decays.
 The \DstToDzpi\ sample is sufficient for studying both \DstToDzpi\ and 
 (untagged) \DzToKpi efficiencies, as the effect of the soft pion is 
-parameterised in \PDzero\ \pT\ and \rapidity, which this measurement is also 
-parameterised in.
+parameterised in \PDzero\ \pT\ and \rapidity.
 In addition, the \DspToKKpi\ sample is sufficient for studying \DspTophipi\ 
 decays, given that the kaon pair is required to be within the same mass window 
-applied to the data.
+as applied to the data.
 For each decay mode, samples of \num{2.5} millions events are generated, with 
 an additional \num{1} million events generated where the decay head is required 
 to have $\pT > \SI{10}{\GeVc}$.
 To save computing resources, the decays are required to be within the \lhcb\ 
 geometric acceptance after \evtgen\ has run.
-This requirement imposes all charged final state particles have a positive $z$ 
-component of their three-momentum and that they satisfy
+This requirement requires all charged final-state particles to have a positive 
+$z$ component of their three-momentum and to satisfy
 \begin{equation}
   10 < \theta < \SI{400}{\milli\radian},
   \label{eqn:prod:data:lhcb_acceptance}
@@ -70,8 +63,8 @@ In addition to the usual truth-matching procedure discussed in
 each vertex.
 A vertex is classified as secondary if any particle in the ancestry of the 
 associated \ac{MC} particle has a lifetime greater than 
-\SI{0.1}{\femto\second}.\footnotemark
-In what follows, the \ac{MC} data has been filtered such that only 
+\SI{0.1}{\femto\second}.\footnotemark\
+In what follows, the \ac{MC} data have been filtered such that only 
 truth-matched, prompt charm hadron candidates remain, unless stated otherwise.
 
 \footnotetext{%
@@ -82,12 +75,11 @@ truth-matched, prompt charm hadron candidates remain, unless stated otherwise.
 \section{Crossing angle correction}
 \label{chap:prod:data:crossing_angle}
 
-Due to the non-zero crossing angles of the two proton beams provided by the 
-\ac{LHC}, the \pp\ collision frame is boosted with respect to the laboratory 
-frame.
+Due to the non-zero crossing angles of the proton beams, the \pp\ collision 
+frame is boosted with respect to the laboratory frame.
 As this measurement is made in bins of charm hadron transverse momentum and 
-rapidity measured in the \pp\ collision rest frame, a correction is be applied 
-to the \pT\ and \rapidity\ measured in the laboratory frame.
+rapidity measured in the \pp\ collision rest frame, a correction is applied to 
+the \pT\ and \rapidity\ measured in the laboratory frame.
 Example \pT\ and \rapidity\ distributions as measured in the laboratory and 
 \pp\ centre-of-mass frames are given for the simulated \DstToDzpi\ dataset in 
 \cref{fig:prod:data:com_boost}.

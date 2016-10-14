@@ -1,0 +1,182 @@
+\chapter{Charm production yield and efficiency tables}
+\label{chap:app:production_tables}
+
+Prompt signal yields measured in charm hadron \pTy\ bins are given in 
+\cref{tab:prod:fitting:D0ToKpi,tab:prod:fitting:DpToKpipi,tab:prod:fitting:DsToKKpi,tab:prod:fitting:DstToD0pi_D0ToKpi} 
+for \PDzero, \PDplus, \PDsplus, and \PDstarp mesons, measured using the fit 
+procedure described in \cref{chap:prod:fitting}.
+The following efficiencies are given for \PDzero and \PDplus: acceptance 
+efficiencies in \cref{tab:prod:effs:acc:dztokpi,tab:prod:effs:acc:dptokpipi}; 
+reconstruction efficiencies in 
+\cref{tab:prod:effs:reco:dztokpi,tab:prod:effs:reco:dptokpipi}; tracking 
+efficiency correction factors in 
+\cref{tab:prod:effs:tracking:dztokpi,tab:prod:effs:tracking:dptokpipi}; 
+selection efficiencies in 
+\cref{tab:prod:effs:sel:dztokpi,tab:prod:effs:sel:dptokpipi}; \acl{PID} 
+efficiencies in \cref{tab:prod:effs:pid:dztokpi,tab:prod:effs:pid:dptokpipi}; 
+and signal window efficiencies in 
+\cref{tab:prod:effs:sigwin:dztokpi,tab:prod:effs:sigwin:dptokpipi}.
+The computation of the efficiencies is described in \cref{chap:prod:effs}.
+
+\begin{sidewaystable}
+  \caption{%
+    Prompt signal yields for \DzToKpi\ measured in \PDzero \pTy\ bins.
+    Cells marked with a dash `-' indicate bins where insufficient data were 
+    available for a statistically significant prompt signal yield measurement.
+  }
+  \label{tab:prod:fitting:D0ToKpi}
+  \centering
+  \input{tables/production/fitting/D0ToKpi_signal_yields}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+  \caption{%
+    Prompt signal yields for \DpToKpipi\ measured in \PDplus \pTy\ bins.
+    Cells marked with a dash `-' indicate bins where insufficient data were 
+    available for a statistically significant prompt signal yield measurement.
+  }
+  \label{tab:prod:fitting:DpToKpipi}
+  \centering
+  \input{tables/production/fitting/DpToKpipi_signal_yields}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+  \caption{%
+    Prompt signal yields for \DspTophipi\ measured in \PDsplus \pTy\ bins.
+    Cells marked with a dash `-' indicate bins where insufficient data were 
+    available for a statistically significant prompt signal yield measurement.
+  }
+  \label{tab:prod:fitting:DsToKKpi}
+  \centering
+  \input{tables/production/fitting/DsTophipi_signal_yields}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+  \caption{%
+    Prompt signal yields for \DstToDzpi, with \DzToKpi, measured in \PDstarp\ 
+    \pTy\ bins.
+    Cells marked with a dash `-' indicate bins where insufficient data were 
+    available for a statistically significant prompt signal yield measurement.
+  }
+  \label{tab:prod:fitting:DstToD0pi_D0ToKpi}
+  \centering
+  \input{tables/production/fitting/DstToD0pi_D0ToKpi_signal_yields}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+  \caption{%
+    Acceptance efficiencies \effacc\ for \DzToKpi\ measured in \PDzero \pTy\ 
+    bins.
+  }
+  \label{tab:prod:effs:acc:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_acceptance.tex}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+  \caption{%
+    Acceptance efficiencies \effacc\ for \DpToKpipi\ measured in \PDplus \pTy\ 
+    bins.
+  }
+  \label{tab:prod:effs:acc:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_acceptance.tex}
+\end{sidewaystable}
+
+\begin{table}
+  \caption{%
+    Reconstruction efficiencies \effreco\ for \DzToKpi\ measured in \PDzero 
+    \pTy\ bins.
+  }
+  \label{tab:prod:effs:reco:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_reconstruction.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Reconstruction efficiencies \effreco\ for \DpToKpipi\ measured in \PDplus 
+    \pTy\ bins.
+  }
+  \label{tab:prod:effs:reco:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_reconstruction.tex}
+\end{table}
+
+\begin{sidewaystable}
+  \caption{%
+    Tracking efficiency correction factors \efftracking\ for \DzToKpi\ measured 
+    in \PDzero in \pTy\ bins.
+  }
+  \label{tab:prod:effs:tracking:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_tracking.tex}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+  \caption{%
+    Tracking efficiency correction factors \efftracking\ for \DpToKpipi\ 
+    measured in \PDplus in \pTy\ bins.
+  }
+  \label{tab:prod:effs:tracking:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_tracking.tex}
+\end{sidewaystable}
+
+\begin{table}
+  \caption{%
+    Selection efficiencies $\effselection/\efflzero$ for \DzToKpi, excluding 
+    \ac{PID} requirements, measured in \PDzero \pTy\ bins.
+  }
+  \label{tab:prod:effs:sel:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_selection.tex}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Selection efficiencies $\effselection/\efflzero$ for \DpToKpipi, excluding 
+    \ac{PID} requirements, measured in \PDplus \pTy\ bins.
+  }
+  \label{tab:prod:effs:sel:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_selection.tex}
+\end{table}
+
+\begin{sidewaystable}
+  \caption{%
+    Particle identification selection efficiencies \effpid\ for \DzToKpi, 
+    measured in \PDzero \pTy\ bins.
+  }
+  \label{tab:prod:effs:pid:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_pid.tex}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+  \caption{%
+    Particle identification selection efficiencies \effpid\ for \DpToKpipi, 
+    measured in \PDzero \pTy\ bins.
+  }
+  \label{tab:prod:effs:pid:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_pid.tex}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+  \caption{%
+    Signal window efficiencies \effsigwin\ for \DzToKpi, measured in \PDzero \pTy\ bins.
+  }
+  \label{tab:prod:effs:sigwin:dztokpi}
+  \centering
+  \input{tables/production/efficiencies/D0ToKpi_signal_window.tex}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+  \caption{%
+    Signal window efficiencies \effsigwin\ for \DpToKpipi, measured in \PDplus \pTy\ bins.
+  }
+  \label{tab:prod:effs:sigwin:dptokpipi}
+  \centering
+  \input{tables/production/efficiencies/DpToKpipi_signal_window.tex}
+\end{sidewaystable}

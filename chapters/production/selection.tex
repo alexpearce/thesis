@@ -1,10 +1,11 @@
 \chapter{Event and candidate selection}
 \label{chap:prod:sel}
 
+% TODO is this paragraph needed?
 The decay modes chosen for this analysis,
 \DzToKpi, \DpToKpipi, \DspTophipi\ with \phiToKK, and \DstToDzpi\ with 
 \DzToKpi, including their charge conjugates, are the amongst the most probable 
-fully charged, hadronic final states for each meson.
+fully charged, hadronic final states for each charm meson.
 The advantage of choosing such final states is that it allows the invariant 
 mass of the charm hadrons to be computed unambiguously, so that a yield 
 determination can be performed by modelling the peaking signal structure in the 
@@ -16,9 +17,16 @@ It is then advantageous to optimise the selection of the data to reduce
 backgrounds, whilst retaining as much signal as possible to maximise the 
 statistical precision of the measurement.
 
+% TODO make footnotes appear on the same page as the footnotemark
 The selection of fully charged, hadronic decay modes of charm mesons has 
 already been performed by many other analyses at \lhcb\footnotemark\ and their 
 selections share several common features.
+\footnotetext{%
+  Representative examples include selections of 
+  \decay{\PDzero}{\PKmp\Ppipm}~\cite{Aaij:2012nva}, 
+  \decay{\PDp}{\PKminus\PKplus\Ppiplus}~\cite{Aaij:2011cw}, and 
+  \DspTophipi~\cite{Aaij:2012cy} decays.
+}
 The first of these features is a requirement on the minimum charm candidate 
 \pT, as there are many soft particles produced directly in the proton-proton 
 collision.
@@ -28,17 +36,9 @@ laboratory frame.
 Finally, it is required that the \ipchisq\ of the charm meson, a measure of the 
 \acf{IP} significance, does not exceed a certain value.
 This suppresses the background of charm candidates whose three-momentum does 
-not point back to the \ac{PV}, which the momentum of random combinations of 
-tracks will not, on average.
+not point back to the \ac{PV}.
 Each of these three features are powerful discriminators between signal and 
 background.
-
-\footnotetext{%
-  Representative examples include selections of 
-  \decay{\PDzero}{\PKmp\Ppipm}~\cite{Aaij:2012nva}, 
-  \decay{\PDp}{\PKminus\PKplus\Ppiplus}~\cite{Aaij:2011cw}, and 
-  \DspTophipi~\cite{Aaij:2012cy} decays.
-}
 
 For this measurement of prompt charm production it is preferable not to make 
 \pT\ requirements on the charm candidate as the \pT\ range available for 
@@ -74,17 +74,17 @@ be low, indicating a good compatibility with the physical vertex hypothesis.
 For long-lived charm hadrons, the vertex can be significantly displaced from 
 the \ac{PV}, and making a minimum requirement on the displacement suppresses 
 much combinatorial background.
-The momentum vector of the vertex should have the same direction as that of the 
-vector that points from the \ac{PV} to the decay vertex, and the angle between 
-these two vectors, the \ac{DIRA}, is required to be less than some value.
+The momentum vector of the \PHc\ candidate should have the same direction as 
+that of the vector that points from the \ac{PV} to the decay vertex, and the 
+angle between these two vectors, the \ac{DIRA}, is required to be less than 
+some value.
 Finally, the reconstructed mass of the parent vertex must be near the nominal 
 mass of the hadron under study.
-Combinations of random tracks will have masses far away from the nominal value, 
-however a suitably large window must be used on order to be able to accurately 
-model the combinatorial background shape in the mass fits.
+A suitably large window must be used on order to be able to accurately model 
+the combinatorial background shape in the mass fits.
 
-The exact numerical requirements made on the discriminatory quantities were not 
-tuned to optimise any specific figure of merit.
+The numerical requirements made on the discriminatory quantities were not tuned 
+to optimise any specific figure of merit.
 Instead, the values were chosen based on those used in previous charm analyses, 
 generally being loosened to account for the higher rate available to charm 
 triggers during the early measurements period, and the desire to have as high 
@@ -94,13 +94,10 @@ As this analysis uses the Turbo stream, the only selection is that defined
 using `online' quantities computed in the trigger.
 The same quantities are used `offline', with no further reconstruction being 
 performed.
-The selection is split in two for exposition: the `online' part, which is the 
-selection defined in the trigger and cannot be tuned once the data has been 
-taken, and the `offline' selection, which is any selection made after the 
+The description of the selection is split in two: the `online' part, which is 
+the selection defined in the trigger and cannot be tuned once the data have 
+been taken, and the `offline' selection, which is any selection made after the 
 online.
-The following \lcnamecref{chap:prod:sel:online} will detail the online 
-selection and reconstruction, and will be followed by a description of the 
-offline selection in \cref{chap:prod:sel:offline}.
 
 \section{Online selection and reconstruction}
 \label{chap:prod:sel:online}
@@ -116,7 +113,6 @@ The rates were tuned throughout the early measurements period so as to keep the
 detector `dead time' to a minimum.\footnotemark\
 The \lzero\ rate is given for each fill in 
 \cref{tab:prod:sel:online:l0_nobias_rateeff}.
-
 \footnotetext{%
   The detector dead time is the period during which triggers by the \lzero\ are 
   `lost' due to the read-out buffer being full.
@@ -249,8 +245,8 @@ even after these additional cuts, the vertex fit \chisq\ and the direction
 angle cuts are tightened to $\chisq < 6$ and $\ac{DIRA} < 
 \SI{14}{\milli\radian}$.
 
-To reduce the combinatorial further in the \DspToKKpi\ data, a requirement is 
-made on the kaon pair as
+To reduce the combinatorial background further in the \DspToKKpi\ data, a 
+requirement is made on the kaon pair as
 \begin{equation}
   999.46 < m(\PKminus\PKplus) < \SI{1039.46}{\MeVcc}.
   \label{eqn:prod:sel:phi_cut}
@@ -273,26 +269,9 @@ The \DspTophipi\ branching fraction used is that given by the \cleo\
 collaboration, where the same $\PKm\PKp$ mass window definition is 
 used~\cite{Alexander:2008aa}, and hence includes the branching fraction of the 
 \phiToKK\ decay.
-The $\PKminus\PKplus$ mass spectrum from the \cleo\ measurement is shown in 
-Figure~\ref{fig:sel:offline:cleo_phi}, along with the various mass windows with 
-which they make several `\DspTophipi' branching fraction measurements.
-The window corresponding to the measurement used in this analysis is delimited 
-by solid red lines.
-
-\begin{figure}
-  \includegraphics[width=\textwidth]{production/selection/cleo_phi_definition}
-  \caption{%
-    Definition of the $\PKminus\PKplus$ mass windows used by the \cleo\ 
-    collaboration to measure \DspTophipi branching 
-    fractions~\cite{Alexander:2008aa}.
-    The $\PKminus\PKplus$ mass window used in the charm production measurement 
-    corresponds to the window delimited by the solid red lines in the figure.
-  }
-  \label{fig:sel:offline:cleo_phi}
-\end{figure}
 
 The charm candidate invariant mass distributions after the full offline 
-selection after given in 
+selection are given in 
 \cref{fig:prod:sel:D0ToKpi:offline,fig:prod:sel:DpToKpipi:offline,fig:prod:sel:DsToKKpi:offline,fig:prod:sel:DstToD0pi_D0ToKpi:offline}.
 The number of charm candidates before and after the offline requirements are 
 given in \cref{tab:prod:sel:candidates}.

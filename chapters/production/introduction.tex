@@ -26,21 +26,20 @@ of hadron \pT\ and rapidity \rapidity, defined as
 and so experimental measurements can be compared with both the shape of 
 theoretical predictions as a function of \pTy\ as well as to the total 
 integrated rate.
-Measurements can also be used as inputs to constrain future predictions.
-Heavy flavour production rates are also used to estimate sensitivities for experimental searches 
-for rare decays, and also as inputs to 
-atmospheric neutrino experiments, where charm production enters as a background 
-process.
+Measurements can also be used as inputs to constrain predictions.
+Heavy flavour production rates are also used to estimate sensitivities of 
+experimental searches for rare decays, and also as inputs to atmospheric 
+neutrino experiments, where charm production enters as a background process.
 
 Measuring \ccbar\ and \bbbar\ cross-sections at \lhcb\ is complementary to such 
-efforts made using the \acp{GPD}, due to the unique rapidity range the detector 
-instruments, as well as its ability to cleanly reconstruct low \pT\ hadrons.
+efforts made using the \acp{GPD}, due to the unique rapidity range of the 
+detector, as well as its ability to cleanly reconstruct low \pT\ hadrons.
 
 \section{Analysis overview}
 \label{chap:prod:introduction:analysis_overview}
 
-The cross-section for the inclusive production of an open charm hadron \PHc\ 
-from proton-proton collisions can be expressed as
+The measured cross-section for the inclusive production of an open charm hadron 
+\PHc\ from proton-proton collisions can be expressed as
 \begin{equation}
   \xsec(\PHc) = \frac{%
     N(\HcTof)
@@ -69,7 +68,7 @@ of the bin in rapidity in which the yield and efficiency measurements were made
       },
   \label{eqn:prod:introduction:differential_cross_section}
 \end{equation}
-where the $i$ is the index of the \pTy\ bin.
+where $i$ is the index of the \pTy\ bin.
 
 The analysis presented in this \lcnamecref{chap:prod} measures the double 
 differential cross-sections of \PDzero, \PDp, \PDsplus, and \PDstarp open charm 
@@ -110,7 +109,7 @@ charm mesons, open charm hadron cross-sections integrated across the \pTy\
 space, and integrated \ccbar\ cross-sections.
 Each integrated per-meson cross-section is the sum over all \pTy\ bins of the 
 respective double differential measurements.
-The total \ccbar\ cross-sections can be computed using fragmentation fractions; 
+The total \ccbar\ cross-sections can be computed using fragmentation fractions, 
 each a measurement of the transition probability $f(\cToHc)$ that a charm quark 
 will hadronise to a particular open charm hadron.
 Given the fragmentation fraction and the integrated cross-section, the 
@@ -154,16 +153,18 @@ This technique is used as an analytical error analysis of the measurement is
 complex: what enters into the cross-section is the inverse of the efficiency, 
 for example, the corresponding \acl{PDF} of which may not be obvious, in 
 particular whether the uncertainties can be treated as Gaussian.
-The use of \acl{MC} error propagation simplifies such analysis.
+The use of \acl{MC} error propagation simplifies such analyses.
 
-An example cross-section, measured in the region \pTyrange{12}{13}{2.5}{3}, is 
-given in \cref{fig::prod:introduction:uncertainties:posterior}.
+% Don't use pTyrange here as it causes a long, unbroken line
+An example cross-section, measured in the region \pTrange{12}{13}, 
+\yrange{2.5}{3}, is given in 
+\cref{fig::prod:introduction:uncertainties:posterior}.
 The blue curve shows the \ac{PDF} of the cross-section, as modelled by the 
 \ac{MC} error propagation technique, when only the statistical uncertainty is 
 considered, whilst the green curve also includes the contributions from the 
 systematic uncertainties.
-The green curve is not symmetric, and the mode is shifted with respect to the 
-blue.
+The green curve is not symmetric, and the mode is shifted with respect to that 
+of the blue.
 
 Unless stated otherwise, each quantity that is measured directly is assumed to 
 follow a normal distribution, whose mean is equal to the measured value and 

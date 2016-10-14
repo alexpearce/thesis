@@ -2,8 +2,7 @@
 \label{chap:intro:lhcb}
 
 The \lhcb\ detector~\cite{Alves:2008zz,Aaij:2014jba} is situated at point 8 of 
-the \ac{LHC}, serving a collaboration of around one thousand scientists and 
-engineers.
+the \ac{LHC}.
 The general goal of the experiment is to explore the area of heavy flavour 
 physics, that is the interactions of charm and beauty quarks and the hadrons 
 that contain them.
@@ -45,8 +44,8 @@ which is necessary for measuring the fast oscillations of \PBds\ and \PDzero
 mesons, and for measuring any possible decay time asymmetries.
 In addition, the large displacement of the decay vertices with respect to the 
 \ac{PV} causes the particles produced at the secondary vertex to have a high 
-\ac{IP}, defined in \cref{fig:intro:lhcb:vertexing} as the smallest transverse 
-distance from the particle trajectory to the \ac{PV}.
+\ac{IP}, defined in \cref{fig:intro:lhcb:vertexing} as the smallest distance 
+from the particle trajectory to the \ac{PV}.
 A sufficient experimental resolution on the \ac{IP} allows for additional 
 discrimination between random tracks in the event and those from heavy flavour 
 decays.
@@ -112,6 +111,20 @@ motivated by the physics goals of the collaboration.
 \end{figure}
 
 \begin{figure}
+  \centering
+  \input{figures/introduction/vertexing}
+  \caption{%
+    Illustration of vertex reconstruction, showing a \PDz meson decaying in 
+    flight to a kaon and a pion.
+    The kaon and pion are reconstructed as tracks, and then the \PDzero decay 
+    vertex is inferred from the point of closest approach of the two tracks.
+    The minimum transverse distance the tracks make when extrapolated back 
+    towards the primary proton-proton vertex, the \acf{IP}, is shown.
+  }
+  \label{fig:intro:lhcb:vertexing}
+\end{figure}
+
+\begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{introduction/B2pipi_pre_pid}
@@ -141,14 +154,14 @@ Within the \lhcb\ experiment, the Cartesian co-ordinate system is defined such
 that the $z$-axis is aligned along the beam direction, increasing in the 
 clockwise direction along the \ac{LHC} ring; the $y$-axis points vertically 
 upwards; and the $x$-axis, defined as $x = y \times z$, is then pointing away 
-from the centre of the acceleraa.
+from the centre of the accelerator.
 The polar co-ordinate system is defined with the polar angle $\theta$ measured 
 with respect to the $z$-axis, and the azimuthal angle $\phi$ measured in the 
 $xy$ plane.
 
 A schematic of the detector is given in \cref{fig:intro:lhcb:detector}.
-Its forward geometry is evident, with the detector instrumenting the region $2 
-< \Eta < 5$.
+Its forward geometry is evident, with the detector instrumenting the 
+pseudorapidity region $2 < \Eta < 5$.
 A dipole magnet with an integrated field strength of \SI{4}{\tesla\metre} bends 
 charged particle trajectories in the $xz$ plane, with its polarity being 
 switched periodically during data-taking.
@@ -164,8 +177,8 @@ as the \Ppizero\ and the photon, as well as to measure their energy and that of
 the charged particles.
 Finally, a muon identification system is installed after the calorimeters.
 
-The data produced are selected in real time by a hardware trigger, after which 
-a two-stage software trigger performs an event reconstruction.
+The data are selected in real time by a hardware trigger, after which a 
+two-stage software trigger performs an event reconstruction.
 There are not enough computing resources available to the experiment to record 
 and analyse every proton-proton bunching crossing, and so the trigger is 
 essential to achieve the physics goals.
@@ -261,20 +274,6 @@ improves from \SI{92}{\MeVcc} with an initial alignment to \SI{49}{\MeVcc} with
 an improved one~\cite{Dujany:082010}.
 
 \begin{figure}
-  \centering
-  \input{figures/introduction/vertexing}
-  \caption{%
-    Illustration of vertexing, showing a \PDz meson decaying in flight to a 
-    kaon and a pion.
-    The kaon and pion are reconstructed as tracks, and then the \PDzero decay 
-    vertex is inferred from the point of closest approach of the two tracks.
-    The minimum transverse distance the tracks make when extrapolated back 
-    towards the primary proton-proton vertex, the \acf{IP}, is shown.
-  }
-  \label{fig:intro:lhcb:vertexing}
-\end{figure}
-
-\begin{figure}
   \begin{subfigure}{0.5\textwidth}
     \centering
     \input{figures/introduction/mumu_pre_alignment}
@@ -326,7 +325,7 @@ As charged particles travel through one of the radiators, each of refractive
 index $n$, the particles emit Cherenkov radiation if they are travelling faster 
 than the phase velocity of light of the radiator.
 This light is emitted at an angle $\thetac$ to the particle trajectory, and is 
-related to the speed of the particle as
+related to the velocity $v$ of the particle as
 \begin{equation}
   \cos{\thetac} = \frac{1}{n\beta},
 \end{equation}
@@ -341,7 +340,7 @@ acceptance by spherical and plane mirrors onto planes of photon detector
 arrays.
 The angle \thetac\ is related to the radius of the rings, and, for a given 
 momentum, particles of different masses will produced smaller or larger rings.
-\Cref{fig:intro:lhcb:cherenkov_angles} illustrates the Cherenkov angles for by 
+\Cref{fig:intro:lhcb:cherenkov_angles} illustrates the Cherenkov angles for 
 different particle species as a function of particle momentum.
 Separation between mass hypotheses is given by the difference between the 
 angles, denoted on the $y$-axis.
@@ -361,7 +360,7 @@ For each track, the mass hypothesis is then changed to each of (\Pe, \Pmu,
 \Ppi, \PK, \Pproton), the rings assuming the new global hypothesis set are 
 projected, and the log-likelihood is re-computed.
 The hypothesis giving the largest increase in the log-likelihood is recorded, 
-and the track hypothesis is returned back to its original value.
+and the track hypothesis is returned to its original value.
 After all individual track hypotheses have been trialled, the single hypothesis 
 change that gave the largest increase in the log-likelihood is applied to the 
 respective track.
@@ -417,8 +416,8 @@ regions, decreasing in granularity to account for the lower particle
 multiplicities.
 In the first-level trigger, the total transverse energy \ET\ in all clusters of 
 $2\times2$ cells is computed, and a positive trigger decision is made if the 
-maximum \ET\ is above some threshold, typically between 
-\SIrange{3.5}{3.7}{\GeV}.
+maximum \ET\ is above some threshold, typically between $3.5$ and 
+\SI{3.7}{\GeV}.
 The \hcal\ provides the highest rate of positive trigger decisions out of those 
 at the first trigger level, giving a signal efficiency of around 
 \SI{40}{\percent} for two-body \PB decays, and \SI{20}{\percent} for four-body 
@@ -435,7 +434,7 @@ The \ecal\ is partitioned more finely than the \hcal\ due to the smaller
 transverse scale at which electromagnetic showers occur in comparison to 
 hadronic showers.
 The energy measurements it makes are used in the first trigger level to accept 
-high \ET\ electrons and photons, and in the reconstruction of \Ppizero and 
+high-\ET\ electrons and photons, and in the reconstruction of \Ppizero and 
 \Peta mesons offline.
 The ability to discriminate between electrons and photons in the trigger 
 decision is provided by the scintillating pad/preshower detector~(\spd/\ps) 
@@ -443,7 +442,7 @@ which consists of two layers of near-identical scintillator either side of a
 \SI{15}{\milli\metre}-thick layer of lead~(\ce{Pb}) converter, transversely 
 segmented in the same manner as the \ecal.
 A positive electron trigger decision requires an \ET\ measurement of between 
-\SIrange{2.5}{3.0}{\GeV} in a cluster of $2\times2$ cells in the \ecal, along 
+$2.5$ and \SI{3.0}{\GeV} in a cluster of $2\times2$ cells in the \ecal, along 
 with hits in both the \spd\ and the \ps\ pads in front of the corresponding 
 \ecal\ cluster.  A positive photon trigger decision is near-identical to this, 
 except that no hits must be present in the corresponding \spd\ cells.
@@ -454,11 +453,9 @@ The resolution on \ecal\ energy measurements is $\unc{E}/E = \SI{9 \pm
 \subsection{Muon reconstruction and identification}
 \label{chap:intro:lhcb:muon}
 
-Most charged particles not absorbed by the calorimeters are muons, and to 
-confirm this hypothesis a series of five muon stations, M1--5, are used.
+A series of five muon stations, M1--5, are used to identify muons.
 M1 is positioned before the \spd/\ps, and M2--5 are after the \hcal, 
-interleaved with \SI{80}{\centi\metre}-thick layers of iron in order to isolate 
-high-momentum muons.
+interleaved with \SI{80}{\centi\metre}-thick layers of iron.
 For almost all regions across the stations, multi-wire proportional chambers 
 are used to collect hits, with the exception being the very inner 
 $20\times\SI{24}{\centi\metre\squared}$ region of M1 which uses triple-layered 
@@ -472,14 +469,15 @@ Hits recorded in the muon stations are used to provide \pT\ measurements used
 in the first trigger stage, where a track segment must be formed using hits in 
 all stations.
 The single muon decision requires a minimum segment \pT\ from 
-\SIrange{1.48}{1.76}{\GeVc}, and the di-muon requires a minimum $\pT^{2}$ from 
+\SIrange{1.48}{1.76}{\GeVc}, and the di-muon requires the product of the \pT\ 
+of the two muons to have a minimum $\pT^{2}$ from 
 \SIrange{1.69}{2.56}{(\GeVc)\squared}.
 
 \section{Online event reconstruction and selection}
 \label{chap:intro:lhcb:trigger}
 
 There are three stages to the \lhcb\ trigger system, run sequentially.
-Within each stage there are a set of parallel trigger \emph{lines}, and each 
+Within each stage there is a set of parallel trigger \emph{lines}, and each 
 stage runs only if at least one line in the previous stage gave a positive 
 decision.
 
@@ -497,8 +495,8 @@ requires two.
 The hadron, electron, and photon triggers require high \ET\ signatures in the 
 \hcal\ or \ecal, as appropriate.
 On a positive \lzero\ decision, when one or more line has `fired', the entire 
-detector is read out and sent to the \ac{HLT} computing farm for processing in 
-software.
+detector is read out and the data are sent to the \ac{HLT} computing farm for 
+processing in software.
 Since 2012, around \SI{20}{\percent} of events sent to the farm are deferred to 
 disk, to be processed during the inter-fill periods when the detector is 
 idle~\cite{1742-6596-513-1-012006}.
@@ -506,9 +504,9 @@ This technique increases the average CPU time available for processing each
 event, allowing for looser momentum requirements in the reconstruction and 
 hence more efficient triggers.
 
-The first stage of the software trigger, \hltone, and performs a simplified 
-track reconstruction in order to confirm the \lzero\ decisions and improve 
-their discriminatory power.
+The first stage of the software trigger, \hltone, performs a simplified track 
+reconstruction in order to confirm the \lzero\ decisions and improve their 
+discriminatory power.
 Segments in the \velo\ detector are first reconstructed, and \pp\ vertices are 
 formed.
 Segments that do not have a significant \ac{IP} with respect to all \acp{PV} or 
@@ -533,7 +531,7 @@ This line dominates the \hltone\ output rate, contributing over
 \SI{70}{\percent} of all triggers.
 Similar lines exist for muon and di-muon candidates, where the corresponding 
 \ac{IP} thresholds are not required if the candidate has a very high \pT\ (or a 
-high $\Pmuon\APmuon$ invariant mass in the case of the di-muon line).
+high $\APmuon\Pmuon$ invariant mass in the case of the di-muon line).
 The muon triggers have efficiencies upwards of \SI{70}{\percent} for \PB\ 
 decays containing muons.
 
@@ -541,8 +539,9 @@ Events passing \hltone\ are sent to the second software stage, \hlttwo, at a
 rate of \SI{80}{\kilo\hertz}, where a full event reconstruction is performed, 
 including the tracks, vertices, and \ac{PID} information.
 As more processing time is now available per event, all \velo\ segments are 
-reconstructed as long tracks, with looser search window requirements of $\ptot 
-> \SI{3}{\GeVc}$ and $\pT > \SI{0.3}{\GeVc}$, in comparison with \hltone.
+used in the long-track reconstruction, with looser search window requirements 
+of $\ptot > \SI{3}{\GeVc}$ and $\pT > \SI{0.3}{\GeVc}$, in comparison with 
+\hltone.
 A relative loss in efficiency of \SIrange{1}{2}{\percent} per track is seen 
 compared to the offline reconstruction.
 In \hlttwo, tracks are combined into vertex candidates, and \hlttwo\ lines are 
@@ -599,7 +598,7 @@ during \ac{LS1}, which will be discussed in the following
 \section{Offline data flow and the upgrades for \runtwo}
 \label{chap:intro:lhcb:offline}
 
-During \runone, all data passing \hlttwo\ was saved to disk and was 
+During \runone, all data passing \hlttwo\ were saved to disk and were 
 reconstructed offline by a separate software application.
 The output of this reconstruction comprises tracks and the information 
 associated to them such as the \ac{DLL} \ac{PID} responses.
@@ -609,8 +608,6 @@ run called the `stripping', which defines stripping lines that reconstruct
 inclusive and exclusive decays in a similar manner to those defined in \hlttwo.
 The lines are grouped into `streams' which group together stripping lines with 
 similar selections, such as those of semileptonic \PB decays or di-muon decays.
-This is simpler for analysts as they do not need to analyse the entire dataset, 
-but only the particular stream that contains the decay of interest.
 In general, any one stripping line contains events which could have been saved 
 due to the decision of any trigger line, and so analysts were able to choose 
 which triggers to include in their analysis dataset offline.
@@ -637,24 +634,23 @@ The third effort was the introduction of the Turbo stream processing
 model~\cite{Benson:2019752}.
 Given that the additional offline processing was no longer necessary to improve 
 the resolution of the various physics quantities, and that the best possible 
-detector alignment and calibration is already applied, physics analyses could 
+detector alignment and calibration are already applied, physics analyses could 
 be performed directly on the output of the trigger.
 
 There are several benefits due to \ac{LS1} efforts.
 The improvement of the online reconstruction allows for parity between the 
-online and offline selections, increasing the trigger efficiency, the possible 
-number of signal candidates available for analysis, and the total processing 
-time required.
+online and offline selections, increasing the trigger efficiency and the 
+possible number of signal candidates available for analysis, and decreasing the 
+total processing time required.
 This in turn allowed for the inclusion of a new two-track trigger in \hltone, 
-which is able to build and select two-prong vertices, further increasing 
-efficiency.
+which is able to build and select two-prong vertices.
 In addition, these efforts negate the need for an additional, offline 
 reconstruction, saving computing resources,
  allowing analyses and data quality reports to progress more quickly as the 
  data are made available almost immediately, within hours rather than the days 
  or weeks with the \runone\ processing model.
  Analyses have already been performed that exploited this 
- model~\cite{LHCb-PAPER-2015-037,Aaij:2015bpa}.
+ model~\cite{LHCb-PAPER-2015-037,Aaij:2015bpa,Aaij:2016jht}.
 
  The Turbo stream currently has some limitations, however.
  The most restrictive of these is that the candidates available to analysts are 
@@ -674,10 +670,11 @@ Simulated data are used to model effects that cannot be modelled using the real
 data, such as acceptance efficiencies, and to perform detector performance 
 studies during design phases.
 
-Proton-proton collisions are generated by the \pythia\ 8 program using a tune 
-specific to \lhcb.
+Proton-proton collisions are generated by the \pythia\ 8 
+program~\cite{Sjostrand:2007gs} using a tune specific to 
+\lhcb~\cite{Belyaev:1322400}.
 \pythia\ simulates the parton interactions, quark and gluon fragmentation, and 
-resulting hadronisation and creation of other particles, such as leptons.
+resulting hadronisation and creation of other particles.
 The decays of the hadrons are simulated by the \evtgen\ program, which models 
 phenomena such as branching fractions, neutral meson mixing, \CP\ violation, 
 decay amplitude models, and decay times.
@@ -689,8 +686,6 @@ through the decay chain under study.
 The behaviour of the other particles generated in the event is also controlled 
 by \evtgen, but is not forced to any particular state.
 
-The total simulation is configured to model the beam parameters relating to the 
-corresponding real data samples~\cite{Belyaev:1322400}.
 After \evtgen, the particles are propagated through a simulation of the entire 
 detector using the \geant\ 4 program, where interactions with the detector are 
 recorded as `\ac{MC} hits'.
@@ -700,7 +695,7 @@ response is processed through the trigger and reconstruction software in an
 near-identical manner to real data.
 The \lzero\ trigger decisions are emulated in software, and the trigger 
 configuration used for a given data-taking year, such as 2011, is chosen to be 
-the one that is most representative.
+the one that was used for the majority of the data-taking.
 
 The simulated data are processed in such a way that reconstructed objects can 
 be associated to the \ac{MC} objects that created them.
@@ -734,7 +729,7 @@ For consistency of terminology, signal vertices are referred to as having a
 In general, separate samples of simulated data are produced on a per-analysis 
 basis, with independent samples generated for different beam energies and 
 dipole magnet polarities (usually only `up' and `down').
-The generation of \ac{MC} is done centrally by the experiment using a globally 
-distributed network of computers, and the resulting data files are then made 
-available to analysts in the same way as for real data, with the additional 
-inclusion of the truth-matching information.
+The generation of \ac{MC} is done using a globally distributed network of 
+computers, and the resulting data files are then made available to analysts in 
+the same way as for real data, with the additional inclusion of the 
+truth-matching information.

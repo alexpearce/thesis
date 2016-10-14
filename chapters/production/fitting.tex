@@ -2,18 +2,17 @@
 \label{chap:prod:fitting}
 
 Signal charm mesons can be distinguished from combinatorial background in the 
-invariant mass distribution of the vertex, as shown in 
-\cref{fig:prod:sel:D0ToKpi:offline} for example.
-However, the generating \acf{PDF} in this distribution is the same for both 
-prompt and secondary charm, and so another distribution must be used to 
-distinguish between these two sources of charm decays.
+invariant mass distribution, as shown in \cref{fig:prod:sel:D0ToKpi:offline} 
+for example.
+However, the contributions from prompt and secondary charm are identical in 
+this distribution, and so another distribution must be used to distinguish 
+between the two sources of charm decays.
 
 This analysis uses the logarithm of the \chisq\ of the \acl{IP}, \lnipchisq, to 
 obtain the prompt charm yields.
 The momentum vector of prompt charm should point back to the \ac{PV}, and so 
 the \lnipchisq\ distribution is expected be centred around zero.
-For secondary charm, the momentum vector will in general not point back to the 
-\ac{PV}, and so the \lnipchisq\ distribution is expected to peak at higher 
+For secondary charm the \lnipchisq\ distribution is expected to peak at higher 
 values.
 This separation is exploited to distinguish between prompt and secondary charm, 
 where the prompt signal yield in each \pTy\ bin is measured by a binned, 
@@ -38,14 +37,6 @@ reconstructed \PDzero mass
 is used instead.
 This has a nominal value of \SI{145.4}{\MeVcc}~\cite{PDG2014}.
 The narrower signal peak allows for a better signal-to-background ratio.
-
-The two-step fit in mass, or \deltam, and then \lnipchisq\ is first described.
-A description of the parameterisation of the signal and combinatorial 
-components in the mass and \deltam\ fits is given, followed by the 
-parameterisation of the prompt signal, secondary signal, and combinatorial 
-background models in the \lnipchisq\ fit.
-Specific details on the models used for each charm meson are given, after which 
-the fit results are presented.
 
 \section{Signal-background discrimination}
 \label{chap:prod:fitting:mass}
@@ -98,16 +89,15 @@ distribution, a \acf{KDE} \ac{PDF}~\cite{Poluektov:2014rxa}, or `template', is
 created from a histogram of the \lnipchisq\ distribution in the lower and upper 
 sidebands of the reconstructed charm hadron mass.
 In the case of the \PDstarp measurements, the data in the upper sideband of the 
-\deltam\ distribution is used instead.
+\deltam\ distribution are used instead.
 This approach assumes that the \lnipchisq\ shape in the signal region is the 
 same as that in the sidebands, that is that the mass and \lnipchisq\ are 
 uncorrelated in the background sample.
 
 The signal region in each long-lived charm hadron mass distribution is defined 
 as a \SI{40}{\MeVcc}-wide window centred on the nominal rest mass of the given 
-charm hadron, taken to be ${m_{\PDzero} = \SI{1864.84}{\MeVcc}}$, ${m_{\PDplus} 
-  = \SI{1869.61}{\MeVcc}}$, and ${m_{\PDsplus} = 
-  \SI{1968.30}{\MeVcc}}$~\cite{PDG2014}.
+charm hadron, taken to be \SI{1864.84}{\MeVcc}, \SI{1869.61}{\MeVcc}, and 
+\SI{1968.30}{\MeVcc} for \PDzero, \PDplus, and \PDsplus~\cite{PDG2014}.
 The lower sideband is a \SI{20}{\MeVcc}-wide window centred \SI{50}{\MeVcc} 
 below the centre of the signal window, and the upper sideband is a 
 \SI{20}{\MeVcc}-wide window centred \SI{50}{\MeVcc} above the centre of the 
@@ -125,7 +115,7 @@ The integral of the \lnipchisq\ background template \ac{PDF} is constrained to
 be near the number of background candidates in the mass or \deltam\ signal 
 region.
 To avoid any complications due to correlations between the background template 
-\ac{PDF} and the fitted data, only the data in signal region is used in the 
+\ac{PDF} and the fitted data, only the data in signal region are used in the 
 \lnipchisq\ fit.
 For the \PDstarp\ measurements, this signal region requirement is made in both 
 the \PDzero mass and the \deltam\ distributions.
@@ -154,13 +144,13 @@ minimised.
 The benefit of this construction is that some shape parameters can be shared 
 across bins, reducing the uncertainty on the fit parameters.
 Which parameters are shared across bins and which are fitted independently is 
-dependent on the charm meson.
-The list of shared and independent parameters are enumerated in 
+dependent on the type of charm meson.
+The shared and independent parameters are enumerated in 
 \cref{chap:prod:fitting:details}.
 
 The prompt signal model $H$ in the \lnipchisq\ distribution is a modified 
 normal distribution, where the width is allowed to be asymmetric with respect 
-to the mean and the tails are described by exponential functions
+to the mean, and the tails are described by exponential functions,
 \begin{equation}
   H(x; \mu, \sigma, \epsilon, \rho_{L}, \rho_{R}) =
   \begin{cases}
@@ -183,12 +173,7 @@ where the parameter $\mu$ is the mode of the distribution; $\sigma$ is the
 average of the left and right widths; $\epsilon$ is the asymmetry between the 
 left and right widths; and $\rho_{L(R)}$ is the exponent for the left (right) 
 tail.
-The secondary signal distribution is modelled by a normal distribution $G$ with 
-mean $\mu$ and width $\sigma$
-\begin{equation}
-  G(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi}\sigma}
-                      e^{-\frac{{(x - \mu)}^{2}}{2\sigma^{2}}}.
-\end{equation}
+The secondary signal distribution is modelled by a normal distribution.
 These shapes are motivated by the \lnipchisq\ distributions for prompt and 
 secondary signal decays observed in the \ac{MC} samples.
 
@@ -196,8 +181,7 @@ Given the large number of parameters to be fitted, some shape parameters in the
 prompt and secondary signal \lnipchisq\ \acp{PDF} are fixed to values obtained 
 from `prefits' to the pure samples of prompt and secondary signal \ac{MC} 
 described in \cref{chap:prod:data:mc}.
-The set of parameters that is fixed is dependent on the charm meson, given in 
-\cref{chap:prod:fitting:details}.
+The set of parameters that is fixed is dependent on the charm meson species.
 
 \section{Mode-specific details}
 \label{chap:prod:fitting:details}
@@ -239,11 +223,10 @@ tail on one side, defined (un-normalised) as
   \end{cases}
   \label{eqn:prod:fitting:crystal_ball}
 \end{equation}
-where $\alpha$ defines how far away from the mode $\mu$ the power-law tail 
-begins, in units of the width of the core Gaussian $\sigma$, and $n$ is the 
-power law exponent.
-The mode and width of the total signal mass \ac{PDF} are split across \pTy\ 
-bins, as is the slope of the background mass \ac{PDF}.
+where $\alpha$ defines where the power-law tail begins, in units of the width 
+of the core Gaussian $\sigma$, and $n$ is the power law exponent.
+The mode and width of the total signal \ac{PDF} are split across \pTy\ bins, as 
+is the slope of the background \ac{PDF}.
 The mode of the \lnipchisq\ prompt signal \ac{PDF} and the width of the 
 secondary signal \ac{PDF} are also split across \pTy\ bins.
 The mode and width of the prompt signal \lnipchisq\ \ac{PDF} and all parameters 
@@ -338,7 +321,7 @@ further in \cref{chap:prod:syst:fitting}.
 In some \pTy\ bins, it is not possible to make a prompt signal yield 
 measurement due to insufficient data in those bins.
 At this stage in the analysis, a cross-section measurement in a bin is 
-considered infeasible if there is either no data (zero candidates), or if the 
+considered unfeasible if there is either no data (zero candidates), or if the 
 prompt signal yield $N_{i} \pm \sigma_{N_{i}}$ in that bin as determined in the 
 fit does not satisfy $N_{i} > 3\sigma_{N_{i}}$.
 
@@ -584,51 +567,6 @@ fit does not satisfy $N_{i} > 3\sigma_{N_{i}}$.
   }
   \label{fig:prod:fitting:DstToD0pi_D0ToKpi}
 \end{figure}
-
-\begin{sidewaystable}
-  \caption{%
-    Prompt signal yields for \DzToKpi\ measured in \PDzero \pTy\ bins.
-    Cells marked with a dash `-' indicate bins where insufficient data were 
-    available for a statistically significant prompt signal yield measurement.
-  }
-  \label{tab:prod:fitting:D0ToKpi}
-  \centering
-  \input{tables/production/fitting/D0ToKpi_signal_yields}
-\end{sidewaystable}
-
-\begin{sidewaystable}
-  \caption{%
-    Prompt signal yields for \DpToKpipi\ measured in \PDplus \pTy\ bins.
-    Cells marked with a dash `-' indicate bins where insufficient data were 
-    available for a statistically significant prompt signal yield measurement.
-  }
-  \label{tab:prod:fitting:DpToKpipi}
-  \centering
-  \input{tables/production/fitting/DpToKpipi_signal_yields}
-\end{sidewaystable}
-
-\begin{sidewaystable}
-  \caption{%
-    Prompt signal yields for \DspTophipi\ measured in \PDsplus \pTy\ bins.
-    Cells marked with a dash `-' indicate bins where insufficient data were 
-    available for a statistically significant prompt signal yield measurement.
-  }
-  \label{tab:prod:fitting:DsToKKpi}
-  \centering
-  \input{tables/production/fitting/DsTophipi_signal_yields}
-\end{sidewaystable}
-
-\begin{sidewaystable}
-  \caption{%
-    Prompt signal yields for \DstToDzpi, with \DzToKpi, measured in \PDstarp\ 
-    \pTy\ bins.
-    Cells marked with a dash `-' indicate bins where insufficient data were 
-    available for a statistically significant prompt signal yield measurement.
-  }
-  \label{tab:prod:fitting:DstToD0pi_D0ToKpi}
-  \centering
-  \input{tables/production/fitting/DstToD0pi_D0ToKpi_signal_yields}
-\end{sidewaystable}
 
 \begin{table}
   \caption{%

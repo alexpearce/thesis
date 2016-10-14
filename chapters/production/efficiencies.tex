@@ -24,7 +24,7 @@ calibration, where proxy data selected without the use of particular
 information can be used to assess the effects of using that information in the 
 analysis data.
 Efficiency evaluation with \ac{MC} can be simple, but differences between the 
-data and the \ac{MC} must be accounted for, which may not be obvious.
+data and the \ac{MC} must be accounted for.
 Calibration techniques use real data, and so can be more robust than \ac{MC}, 
 but obtaining clean calibration samples can be challenging.
 
@@ -33,7 +33,7 @@ well-modelled in the \ac{MC} due to an under-estimation of the detector
 occupancies.
 The same is true, albeit to a lesser extent, for the reconstruction 
 efficiencies.
-Kinematic variables, such as charm hadron and final state momenta, are 
+Kinematic variables, such as charm hadron and final-state momenta, are 
 comparatively well-modelled.
 This motivates a two-step procedure for evaluating the \emph{selection} 
 efficiency, whereby the \ac{PID} efficiency is computed using calibration 
@@ -71,10 +71,8 @@ preceded $B$.
 \section{Detector acceptance}
 \label{chap:prod:effs:acc}
 
-The acceptance efficiency is due to the finite spatial acceptance of the \lhcb\ 
-detector.
-There is no way to access these particles in data, and so simulated data is 
-used.
+The acceptance efficiency, evaluated using simulation, is due to the finite 
+spatial acceptance of the \lhcb\ detector.
 The acceptance is modelled by a set of cuts requiring that all stable charged 
 particles in the final state have a momentum direction satisfying $10 < \theta 
 < \SI{400}{\milli\radian}$, and that all the particles in the final state point 
@@ -82,8 +80,8 @@ in the positive $z$ direction.
 These requirements are applied at the generator level, before the detector 
 simulation, on the true kinematics of the particles.
 
-By counting the number of prompt charm hadrons passing and failing the cut, the 
-acceptance efficiency is defined as
+By counting the number of prompt charm hadrons passing the cut, the acceptance 
+efficiency is defined as
 \begin{equation}
   \effacc = \frac{%
     N_{\text{Accepted}|\text{Generated}}
@@ -103,15 +101,15 @@ given in \cref{tab:prod:effs:acc:dztokpi,tab:prod:effs:acc:dptokpipi}.
 
 The reconstruction efficiency \effreco\ parameterises the fraction of charm 
 meson decays passing the acceptance requirements that are also fully 
-reconstructed as tracks, for the final state particles, and vertices, for the 
+reconstructed as tracks, for the final-state particles, and vertices, for the 
 charm mesons.
-This folds in several effects: whether the final state particles have a large 
+This folds in several effects: whether the final-state particles have a large 
 enough momentum not to be bent out of the detector acceptance by the magnetic 
-field; whether the final state particles leave enough hits in the tracking 
+field; whether the final-state particles leave enough hits in the tracking 
 system to be reconstructible (that is, above the minimum threshold at which the 
 tracking system \emph{could} reconstruct a track); whether, given that enough 
-hits were deposited by a final state particle, a track was actually 
-reconstructed; and whether a vertex can be formed, given that all final state 
+hits were deposited by a final-state particle, a track was actually 
+reconstructed; and whether a vertex can be formed, given that all final-state 
 particles have associated tracks.
 
 The reconstruction efficiency is defined as the ratio of fully reconstructed 
@@ -150,7 +148,7 @@ The `ghost' category exhibits a peak identical in nature to that seen in the
 `signal' category.
 As not all signal decays that are truly reconstructed will be counted as such 
 when only the `signal' category is considered, associated efficiencies are 
-underestimated, leading to an overestimation of the cross-section.
+underestimated.
 
 Given that the number of correctly matched signal decays is $N$, and the number 
 of incorrectly labelled signal decays is $U$, the selection efficiency defined 
@@ -171,7 +169,7 @@ prompt charm yield extraction with real data, described in
 \cref{chap:prod:fitting:mass}.
 The result of the fits to the \DzToKpi\ and the \DpToKpipi\ simulated datasets 
 are shown in \cref{fig:prod:effs:truth:fit}.
-Table~\ref{tab:prod:effs:truth_matching} lists the obtained correction factors.
+Table~\ref{tab:prod:effs:truth_matching} lists the correction factors obtained.
 
 \begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
@@ -231,12 +229,10 @@ Table~\ref{tab:prod:effs:truth_matching} lists the obtained correction factors.
 \subsection{Tracking efficiency correction}
 \label{chap:prod:effs:tracking}
 
-The track reconstruction efficiency, or tracking efficiency, measures the 
-efficiency for a charged particle to be reconstructed as a track, and is part 
-of the definition of the reconstruction efficiency in 
-\cref{eqn:prod:effs:reco}.
-The \ac{MC} may not accurately model the tracking efficiency, and so a 
-data-driven technique is used to compute correction factors based on the 
+The tracking efficiency measures the efficiency for a charged particle to be 
+reconstructed as a track, and is part of the definition of the reconstruction 
+efficiency in \cref{eqn:prod:effs:reco}.
+A data-driven technique is used to compute correction factors based on the 
 observed differences between the data and the \ac{MC}.
 
 Only long tracks are used in this analysis, which requires that the particles 
@@ -245,8 +241,8 @@ Hits in the \ttracker\ are not required to form long tracks, although matching
 hits are added to tracks to improve their momentum resolution.
 To measure the efficiency of long track creation, \JpsiTomumu\ decays are 
 reconstructed using a `tag-and-probe' technique, where one particle is fully 
-reconstructed as a long track, as usual, and the other track is created using 
-track segments made only using information from the muon stations.
+reconstructed as a long track and the other track is created using track 
+segments made only using information from the muon stations.
 The momentum of the latter track, the `probe', can be inferred by treating the 
 magnetic field as an optical system that imparts a momentum `kick' in the $x$ 
 direction.
@@ -254,9 +250,9 @@ By assuming the muon track segment was made by a particle originating from the
 \ac{PV}, the probe segment can be extrapolated back from the muon stations to 
 the $yz$ plane where the kick is modelled, and then the difference in slopes 
 between the \ac{PV}-plane line and the probe track gives the probe momentum.
-The invariant mass of the dimuon system can then be computed, the distribution 
-for many tag-and-probe candidates can be used to distinguish between 
-backgrounds and true \PJpsi decays.
+The invariant mass of the dimuon system can then be computed and the 
+distribution for many tag-and-probe candidates can be used to distinguish 
+between backgrounds and true \PJpsi decays.
 The mass resolution of \JpsiTomumu\ decays reconstructed using long+muon tracks 
 is about \SI{200}{\MeVcc}, to be compared with a resolution of about 
 \SI{16}{\MeVcc} using long+long tracks.
@@ -337,8 +333,8 @@ considered to be
 \label{chap:prod:effs:sel}
 
 At this stage, the efficiency chain includes the effects of the detector 
-acceptance, of the reconstruction, of the truth-matching used to evaluate the 
-reconstruction efficiency, and of the data-\ac{MC} differences in the tracking 
+acceptance, the reconstruction, the truth-matching used to evaluate the 
+reconstruction efficiency, and the data-\ac{MC} differences in the tracking 
 efficiency.
 What it left is the selection efficiencies due to the online and offline 
 selections, as described in \cref{chap:prod:sel}.
@@ -385,15 +381,13 @@ Selection efficiencies for \DzToKpi\ and \DpToKpipi\ are given in
 \section{Particle identification}
 \label{chap:prod:effs:pid}
 
-The efficiency of a decay to pass all requirements on the variables that are 
-discriminatory between particle species is the \ac{PID} efficiency \effpid.
+The \ac{PID} efficiency \effpid is the efficiency of a decay to pass all 
+requirements on the variables that are discriminatory between particle species.
 The variables are those in the \acf{DLL} family, whose computation is described 
 in \cref{chap:intro:lhcb:detector:pid}.
 This analysis uses the \dllkpi\ variable to discriminate between kaon and pion 
 tracks, with the exception of the soft pion in the \DstToDzpi\ decay on which 
 no \ac{PID} requirement is made.
-This \lcnamecref{chap:prod:effs:pid} will describe how \effpid\ is computed 
-using a calibration technique.
 
 It is assumed that the efficiency of a \ac{PID} cut for a given particle type 
 can be parameterised as a function of three variables: the track momentum 
@@ -402,10 +396,6 @@ These particular variables are chosen as the performance of the \rich\
 detectors is known to depend them~\cite{Adinolfi:2012qfa}.
 As a measure of the detector occupancy, the number \nspd\ of hits in the \spd\ 
 detector is used.
-If a model can be constructed of the efficiency for a particular \ac{PID} 
-requirement as a function of \ptot, \Eta, and \nspd, the model can then be used 
-to determine the \ac{PID} efficiency of that requirement on any sample.
-The purpose of the calibration technique is to construct such a model.
 
 A clean sample of \DzToKpi\ decays can be obtained without the use of \ac{PID} 
 information.
@@ -439,24 +429,19 @@ It is assumed that the \ptotetanspd\ partitions are sufficiently small that the
 The three-dimensional histogram of efficiencies is an estimate of the 
 efficiency model for the given \ac{PID} requirement on the given particle.
 
-One method to obtain the track counts $C_{i}$ and $C_{i}'$ is to perform two 
-two-dimensional maximum likelihood fits to the \PDzero mass and delta mass 
-distributions, one before and one after the \ac{PID} requirement.
-This can take a substantial amount of time, however, as many fits must be 
-performed and checked.
-Instead, a single two-dimensional fit is run on the entire calibration sample, 
-and weights are computed that can be used to statistically remove the 
-background contribution in variable distributions that are uncorrelated with 
-the invariant mass~\cite{Pivk:2004ty}.
+The track counts $C_{i}$ and $C_{i}'$ are obtained with a single 
+two-dimensional fit to the \PDzero mass and the \deltam\ distributions.
+Weights are computed that can be used to statistically remove the background 
+contribution in variable distributions that are uncorrelated with the invariant 
+mass~\cite{Pivk:2004ty}.
 As \ptot, \Eta, and \nspd\ are found to be uncorrelated with the fit variables, 
-these weights are be used to compute $C_{i}$ by summing the weights of the 
-tracks that fall in the $i$th bin.
+these weights are used to compute $C_{i}$ by summing the weights of the tracks 
+that fall in the $i$th bin.
 The weights are also used to compute $C_{i}'$ in the same way, as the \dll\ 
 variables are found to be uncorrelated with the fit variables.
 Once the efficiency in each \ptotetanspd\ bin is known, the \ac{PID}\ 
 efficiency for the same cut on \emph{any} track can be evaluated by looking up 
-which bin the track falls into, and assigning the corresponding efficiency to 
-it.
+which bin the track falls into, and assigning the corresponding efficiency.
 
 For the calibration sample, the average efficiency across the parameterisation 
 space can be expressed as
@@ -465,7 +450,7 @@ space can be expressed as
     \displaystyle\sum_{i \in \textnormal{bins}} C_{i}\eff_{i}
     }{%
     \displaystyle\sum_{i \in \textnormal{bins}} C_{i}
-    }
+    }.
 \end{equation}
 For some other sample of tracks, referred to here as the reference 
 sample,\footnotemark\ the contents of each bin can be scaled by a weight 
@@ -556,8 +541,8 @@ offline.
 The use of a reference sample that includes \ac{PID} cuts is a valid approach 
 under the assumption that no efficiency bins have a reference sample size of 
 zero~\cite{Anderlini:2202412}.
-The benefit is that one does not rely on a proxy or \ac{MC} dataset modelling 
-the track kinematics, and the inter-track correlations, correctly.
+The benefit is that one does not rely on a proxy or \ac{MC} dataset correctly 
+modelling the track kinematics, and the inter-track correlations.
 
 The statistical component of the uncertainty on the \ac{PID} efficiency due to 
 the finite size of the calibration sample is computed via a series of 
@@ -576,17 +561,15 @@ that the \ac{PID} efficiency within a \ptotetanspd\ bin is single-valued.
 This can be guaranteed by employing an infinitely fine binning.
 In reality, this cannot be used due to the finite size of the calibration 
 sample.
-This Section will discuss how the binning for the \ac{PID} calibration was 
-chosen for this analysis.
 
 \Cref{fig:prod:effs:pid:binning:kaon_no_optimisation} illustrates the 
 dependence of the efficiency of the kaon \ac{PID} requirement on kaon momentum, 
 as computed in equal-probability bins based on the calibration sample 
 populations.
-It is noted firstly that the efficiency varies strongly with track momentum, 
-and secondly that the equal-probability binning can lead to neighbouring bins 
-where the efficiency is near-constant, as in the 14--\SI{25}{\GeVc} region, 
-such that a single bin would be a sufficient model.
+The efficiency varies strongly with track momentum, and the equal-probability 
+binning can lead to neighbouring bins where the efficiency is near-constant, as 
+in the 14--\SI{25}{\GeVc} region, such that a single bin would be a sufficient 
+model.
 In addition, the relative softness of the reference sample distribution 
 (black), compared to that of the calibration sample (red), leads to a large 
 fraction of the reference data being covered by a single bin ($p < 
@@ -597,9 +580,9 @@ calibration samples, and so estimating the reference efficiency with that
 obtained from the calibration samples will give a biased result.
 
 In an attempt to minimise potential biases in the evaluation of the \ac{PID} 
-efficiency on the reference sample, for each dimension of \ptotetanspd\ the 
-following iterative procedure is used, assuming each dimension is initially 
-partitioned as a single bin:
+efficiency on the reference sample, for each one-dimensional projection of the 
+\ptotetanspd\ distribution the following iterative procedure is used, assuming 
+each projection is initially partitioned as a single bin:
 \begin{enumerate}
   \item Divide each bin into ten equal-probability sub-bins.
   \item For each bin:
@@ -643,9 +626,9 @@ large variation in the efficiency.
 The effect of this on the cross-section measurement is considered as a 
 systematic uncertainty in \cref{chap:prod:syst:pid}.
 
-The \acl{PID} efficiencies computed using the discussed calibration procedure 
-are given in \cref{tab:prod:effs:pid:dztokpi,tab:prod:effs:pid:dptokpipi} for 
-\DzToKpi\ and \DpToKpipi.
+The \acl{PID} efficiencies computed using the calibration procedure are given 
+in \cref{tab:prod:effs:pid:dztokpi,tab:prod:effs:pid:dptokpipi} for \DzToKpi\ 
+and \DpToKpipi.
 The uncertainties given are those due to the finite size of the calibration 
 sample.
 
@@ -669,18 +652,7 @@ a signal window defined in the mass distribution.
 This mass window requirement removes some signal candidates.
 The efficiency of the requirement is evaluated by computing the fractional 
 integral of the signal component of the model $f_{\text{Sig.}}(m)$ fitted to 
-the mass distribution
-\begin{equation}
-  \effsigwin = \frac{%
-    \int_{M - \delta_{M}}^{M +\delta_{M}} f_{\text{Sig.}}(m) \dif{m}
-  }{%
-    \int_{-\infty}^{\infty} f_{\text{Sig.}}(m) \dif{m}
-  }
-  = \int_{M - \delta_{M}}^{M +\delta_{M}} f_{\text{Sig.}}(m) \dif{m},
-    \label{eqn:prod:effs:signal_window}
-\end{equation}
-where $M$ is the nominal charm meson mass, on which the signal window is 
-centred, and $\delta_{M}$ is half the width of the signal window.
+the mass distribution.
 In the case of the \PDstarp measurement, there is an additional requirement 
 that the candidates used in the \lnipchisq\ fit fall in a signal window defined 
 in the \deltam\ distribution.
@@ -688,18 +660,9 @@ The efficiency of the \deltam\ signal window requirement is computed in the
 same way as for the mass signal window requirement, except the signal component 
 of the model fitted to the \deltam\ distribution $g_{\text{Sig}}(\deltam)$ is 
 used.
-The total signal window for the \PDstarp\ measurement is then
-\begin{equation}
-  \effsigwin^{\PDstarp} =
-    \int_{\deltam_{0} - \delta_{\deltam}}^{\deltam_{0} +\delta_{\deltam}} g_{\text{Sig.}}(\deltam) \dif{\deltam}
-    \int_{M - \delta_{M}}^{M +\delta_{M}} f_{\text{Sig.}}(m) \dif{m},
-    \label{eqn:prod:effs:signal_window:dst}
-\end{equation}
-where $\deltam_{0}$ is the nominal \PDstarp-\PDzero mass difference, and $\delta_{\deltam}$ is half the width of the \deltam\ window.
 
-The integral of a probability density function, as in \cref{eqn:prod:effs:signal_window,eqn:prod:effs:signal_window:dst}, is a number.
-To assign an uncertainty to this number, the fractional integral is recomputed 
-in a series of 500 pseudo-experiments.
+To assign an uncertainty to the integrals, the fractional integral is 
+recomputed in a series of 500 pseudo-experiments.
 Within each one, each shape parameter is assigned a value sampled from a 
 normal distribution with a mean as the `nominal' value of that parameter, the 
 value found by the fit, and with a width equal to the uncertainty on that 
@@ -761,47 +724,6 @@ Instead, asymmetric \SI{68.2}{\percent} confidence intervals are computed using
 the Agresti-Coull method~\cite{Agresti:2685469}, and are given as uncertainties 
 on all efficiencies computed as ratios of counts.
 
-% These tables are big and ugly, so stick them all at the end of the Chapter
-\begin{sidewaystable}
-  \caption{%
-    Acceptance efficiencies \effacc\ for \DzToKpi\ measured in \PDzero \pTy\ 
-    bins.
-  }
-  \label{tab:prod:effs:acc:dztokpi}
-  \centering
-  \input{tables/production/efficiencies/D0ToKpi_acceptance.tex}
-\end{sidewaystable}
-
-\begin{sidewaystable}
-  \caption{%
-    Acceptance efficiencies \effacc\ for \DpToKpipi\ measured in \PDplus \pTy\ 
-    bins.
-  }
-  \label{tab:prod:effs:acc:dptokpipi}
-  \centering
-  \input{tables/production/efficiencies/DpToKpipi_acceptance.tex}
-\end{sidewaystable}
-
-\begin{table}
-  \caption{%
-    Reconstruction efficiencies \effreco\ for \DzToKpi\ measured in \PDzero 
-    \pTy\ bins.
-  }
-  \label{tab:prod:effs:reco:dztokpi}
-  \centering
-  \input{tables/production/efficiencies/D0ToKpi_reconstruction.tex}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Reconstruction efficiencies \effreco\ for \DpToKpipi\ measured in \PDplus 
-    \pTy\ bins.
-  }
-  \label{tab:prod:effs:reco:dptokpipi}
-  \centering
-  \input{tables/production/efficiencies/DpToKpipi_reconstruction.tex}
-\end{table}
-
 \begin{table}
   \centering
   \caption{%
@@ -810,46 +732,6 @@ on all efficiencies computed as ratios of counts.
   }
   \label{tab:prod:effs:truth_matching}
   \input{tables/production/efficiencies/truth_matching.tex}
-\end{table}
-
-\begin{sidewaystable}
-  \caption{%
-    Tracking efficiency correction factors \efftracking\ for \DzToKpi\ measured 
-    in \PDzero in \pTy\ bins.
-  }
-  \label{tab:prod:effs:tracking:dztokpi}
-  \centering
-  \input{tables/production/efficiencies/D0ToKpi_tracking.tex}
-\end{sidewaystable}
-
-\begin{sidewaystable}
-  \caption{%
-    Tracking efficiency correction factors \efftracking\ for \DpToKpipi\ 
-    measured in \PDplus in \pTy\ bins.
-  }
-  \label{tab:prod:effs:tracking:dptokpipi}
-  \centering
-  \input{tables/production/efficiencies/DpToKpipi_tracking.tex}
-\end{sidewaystable}
-
-\begin{table}
-  \caption{%
-    Selection efficiencies $\effselection/\efflzero$ for \DzToKpi, excluding 
-    \ac{PID} requirements, measured in \PDzero \pTy\ bins.
-  }
-  \label{tab:prod:effs:sel:dztokpi}
-  \centering
-  \input{tables/production/efficiencies/D0ToKpi_selection.tex}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Selection efficiencies $\effselection/\efflzero$ for \DpToKpipi, excluding 
-    \ac{PID} requirements, measured in \PDplus \pTy\ bins.
-  }
-  \label{tab:prod:effs:sel:dptokpipi}
-  \centering
-  \input{tables/production/efficiencies/DpToKpipi_selection.tex}
 \end{table}
 
 \begin{figure}
@@ -865,6 +747,8 @@ on all efficiencies computed as ratios of counts.
     \caption{Track \Eta}
     \label{fig:prod:effs:pid:binning:kaon:eta}
   \end{subfigure}
+  % Increase spacing between rows so labels aren't too close to lower figures
+  \\[0.5cm]
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{production/efficiencies/PID_binning_kaon_nspd}
@@ -898,6 +782,8 @@ on all efficiencies computed as ratios of counts.
     \caption{Track \Eta}
     \label{fig:prod:effs:pid:binning:pion:eta}
   \end{subfigure}
+  % Increase spacing between rows so labels aren't too close to lower figures
+  \\[0.5cm]
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{production/efficiencies/PID_binning_pion_nspd}
@@ -917,41 +803,3 @@ on all efficiencies computed as ratios of counts.
   }
   \label{fig:prod:pid:binning:pion}
 \end{figure}
-
-\begin{sidewaystable}
-  \caption{%
-    Particle identification selection efficiencies \effpid\ for \DzToKpi, 
-    measured in \PDzero \pTy\ bins.
-  }
-  \label{tab:prod:effs:pid:dztokpi}
-  \centering
-  \input{tables/production/efficiencies/D0ToKpi_pid.tex}
-\end{sidewaystable}
-
-\begin{sidewaystable}
-  \caption{%
-    Particle identification selection efficiencies \effpid\ for \DpToKpipi, 
-    measured in \PDzero \pTy\ bins.
-  }
-  \label{tab:prod:effs:pid:dptokpipi}
-  \centering
-  \input{tables/production/efficiencies/DpToKpipi_pid.tex}
-\end{sidewaystable}
-
-\begin{sidewaystable}
-  \caption{%
-    Signal window efficiencies \effsigwin\ for \DzToKpi, measured in \PDzero \pTy\ bins.
-  }
-  \label{tab:prod:effs:sigwin:dztokpi}
-  \centering
-  \input{tables/production/efficiencies/D0ToKpi_signal_window.tex}
-\end{sidewaystable}
-
-\begin{sidewaystable}
-  \caption{%
-    Signal window efficiencies \effsigwin\ for \DpToKpipi, measured in \PDplus \pTy\ bins.
-  }
-  \label{tab:prod:effs:sigwin:dptokpipi}
-  \centering
-  \input{tables/production/efficiencies/DpToKpipi_signal_window.tex}
-\end{sidewaystable}

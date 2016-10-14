@@ -20,10 +20,6 @@ perturbative \ac{QCD}.
 The computations of the \acp{QCDPDF} involve low-energy processes below the 
 \ac{QCD} scale, and so must be evaluated using non-perturbative \ac{QCD} 
 instead.
-Clearly, the computation of any cross-section at the \ac{LHC} relies on being 
-able to evaluate \cref{eqn:prod:theory:factorisation}, including the 
-computation of production rates of the Higgs boson and particles beyond the 
-\ac{SM}, and hence on a knowledge of the \acp{QCDPDF}.
 As the \acp{PDF} cannot be computed from first principles, they must be derived 
 be alternate means, and in practice are constrained using measurements of 
 cross-sections by experiments.
@@ -82,6 +78,7 @@ between predictions.
   measurements.
 }
 
+% TODO add y-axis labels, change labels to uses Q^2 instead of mu^2
 \begin{figure}
   \begin{subfigure}[b]{0.5\textwidth}
     \centering
@@ -119,7 +116,8 @@ The most recent and most powerful \ac{DIS} measurements have been made by the
 \hone\ and \zeus\ collaborations at the \hera\ $\Pe\Pproton$ 
 collider~\cite{Abramowicz:1900rp}.
 However, these measurements are largely constrained to measure values of 
-\bjorkenx\ above \num{e-4}, leading to large uncertainties at low \bjorkenx.
+\bjorkenx\ above \num{e-4}, leading to large uncertainties at very low 
+\bjorkenx.
 This low-\bjorkenx\ region is particularly interesting to study not only 
 because the current \ac{QCDPDF} uncertainties there are large, but also because 
 it is where both the gluon and the sea quark contributions to the total 
@@ -130,7 +128,11 @@ In a hard \decay{2}{2} process, such as $\Pgluon\Pgluon$ fusion or \qqbar\
 annihilation producing a heavy quark pair, the extent in \bjorkenx\ that can be 
 probed with heavy flavour hadron production measurements is given by
 \begin{equation}
-  {\bjorkenx}_{\text{min}} = e^{\pm\rapidity}\frac{%
+  e^{-\rapidity}\frac{%
+    \sqrt{\pT^{2} + m_{\Pquark}^{2}}
+  }{%
+    \sqrts
+  } < x < e^{\rapidity}\frac{%
     \sqrt{\pT^{2} + m_{\Pquark}^{2}}
   }{%
     \sqrts
@@ -141,7 +143,7 @@ where \rapidity\ and \pT\ parameterise the hadron kinematics, and $m_{q}$ is
 the mass of the heavy quark in the hadron under study~\cite{Zenaiev:2015rfa}.
 There is then a wide range of \bjorkenx\ values that can be probed at proton 
 colliders, with the highest sensitivity to low \bjorkenx\ provided by 
-measurement s of charm production at high rapidity.\footnotemark\
+measurements of charm production at high rapidity.\footnotemark\
 At the \ac{LHC}, the dominant production mechanism is gluon-gluon fusion, as 
 depicted in \cref{fig:intro:lhcb:hf_production:gg_fusion}, and so measurements 
 at the \ac{LHC} are able to provide particularly strong constraints on the 
@@ -152,10 +154,6 @@ collaboration~\cite{Abelev:2012sx,ALICE:2012ik,ALICE:2011aa},
 and for pseudorapidity $|\Eta| < 2.1$ in the \pT\ region $3.5 < \pT < 
 \SI{100}{\GeVc}$ at \sqrtseq{7} by the \atlas\ 
 collaboration~\cite{Aad:2015zix}.
-
-\footnotetext{%
-  The charm quark mass is four times less than that of the bottom quark.
-}
 
 Measurements of charm production at \sqrtseq{7}\ were made by the \lhcb\ 
 collaboration~\cite{LHCb-PAPER-2012-041}.
@@ -240,11 +238,11 @@ neutrinos from astrophysical sources.
 This contamination can be estimated by predicting the proton-proton 
 cross-sections (between the cosmic ray and the nuclei in the atmosphere).
 
-Colliding equal-energy proton-proton beams at a centre-of-mass energy of 
-\SI{13}{\TeV} is equivalent to colliding a proton beam of energy 
-\SI{100}{\peta\eV} into a fixed target, as $\sqrts \approx 
-\sqrt{2E_{\Pproton}m_{\Pproton}}$, where $E_{\Pproton}$ is the energy of the 
-proton beam and $m_{\Pproton}$ is the proton mass.
+Colliding equal-energy proton beams at a centre-of-mass energy of \SI{13}{\TeV} 
+is equivalent to colliding a proton beam of energy \SI{100}{\peta\eV} into a 
+fixed target.
+% as $\sqrts \approx \sqrt{2E_{\Pproton}m_{\Pproton}}$, where $E_{\Pproton}$ 
+% is the energy of the proton beam and $m_{\Pproton}$ is the proton mass.
 Hence, measuring charm cross-sections at \sqrtseq{13}\ at the \ac{LHC} can 
 provide constraints on the expected rate of charm production in the atmosphere 
 produced by extremely high-energy cosmic rays.
@@ -263,9 +261,9 @@ in \cref{fig:prod:theory:comparisons:7tev}, where at low \pT\ the data
 generally lie above the theory prediction.
 Additional measurements can help in the understanding of these discrepancies.
 
-For the analysis presented in this \lcnamecref{chap:prod}, a measurement of 
-charm production at \sqrtseq{13}, three theory groups have provided predictions 
-for the double differential cross-sections.
+For the analysis presented here, a measurement of charm production at 
+\sqrtseq{13}, three theory groups have provided predictions for the double 
+differential cross-sections.
 Each set of predictions is computed at next-to-leading order in the strong 
 coupling constant \alphas\ (that is, up to the first power of $\alphas$), and 
 includes uncertainties from: the factorisation scale dependence, which is the 
@@ -284,11 +282,11 @@ The \ac{GMVFNS} predictions~\cite{Kniehl:2012ti} are provided for $\pT >
 These predictions include a factor to account for the \cToHc\ transition 
 probability, obtained by convolving the \decay{\ccbar}{\PHc} cross-sections 
 with the appropriate fragmentation functions.
-Finally, \ac{FONLL} predicitions~\cite{Cacciari:2015fta} using the \nnpdf\ 
+Finally, \ac{FONLL} predictions~\cite{Cacciari:2015fta} using the \nnpdf\ 
 \ac{QCDPDF} sets are provided for for the full \pTy\ phase space for \PDz, 
 \PDp, and \PDstarp mesons.
-The \fonll\ predictions assume a unit \cToHc\ transition probability, and so 
-are multiplied by the fragmentation fractions in 
+The \fonll\ predictions assume unit \cToHc\ transition probability, and so are 
+multiplied by the fragmentation fractions in 
 \cref{tab:prod:introduction:fragmentation_fractions} for comparison with the 
 measurements.
 The comparison of these predictions with the data will be given in 
