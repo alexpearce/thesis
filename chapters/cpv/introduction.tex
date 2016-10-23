@@ -1,6 +1,8 @@
 \chapter{Introduction}
 \label{chap:cpv:introduction}
 
+% TODO this isn't a good introduction
+% Shouldn't discuss superseeded results
 In 2011, the \lhcb\ collaboration announced the first evidence of \CP\ 
 violation in charm decays, claiming a deviation from the \CP\ symmetry 
 hypothesis at the
@@ -24,19 +26,19 @@ For \decay{\PDzero}{\hmhp} decays, this is expected to be of the order of
 contributions from physics \acl{BSM}.
 % TODO should make sure I know what this actually is
 Using arguments of $U$-spin symmetry between the \KmKp\ and \pimpip\ final 
-states, the sign of $\ACP(\KmKp)$ is predicted to be opposite that of 
-$\ACP(\pimpip)$~\cite{Grossman:2006jg}, and so the difference between the two 
-is particular sensitive to direct \CP\ violation
+states, the sign of $\ACP(\decay{\PDzero}{\KmKp})$ is predicted to be opposite 
+that of $\ACP(\decay{\PDzero}{\pimpip})$~\cite{Grossman:2006jg}, and so the 
+difference between the two is particular sensitive to direct \CP\ violation
 \begin{equation}
-  \dACP = \ACP(\pKK) - \ACP(\ppipi).
+  \dACP = \ACP\decay({\PDzero}{\KmKp}) - \ACP(\decay{\PDzero}{\pimpip}).
   \label{eqn:cpv:introduction:dacp_pure}
 \end{equation}
 It was the value of \dACP\ that was measured to deviate significantly from 
 zero.
 
 The observation generated much interest in the theory 
-community~\cite{Lenz:2013pwa}, creating a push for a better mathematical 
-understanding of \CP\ violation in charm decays.
+community~\cite{Lenz:2013pwa}, creating a push for a better understanding of 
+\CP\ violation in charm decays.
 However, subsequent measurements of \dACP, made using larger data samples and 
 using \PDzero mesons from \PB\ decays, did not confirm the initial 
 evidence~\cite{Aaij:2014gsa,Aaij:2016cfh}, and the current world average is 
@@ -71,10 +73,10 @@ and \babar, collected small samples of \PLambdac~\cite{Seuster:2005tr}, whereas
 the large charm cross-section at \lhcb\ enables \CP\ violations measurements at 
 the percent level or lower.
 
-The large sample of \PB decays collected by \lhcb\ can also be used to study 
-\CP\ violation in \PLambdac\ decays.
-The \PLambdab\ has a lifetime around seven times greater than that of the 
-\PLambdac, and can be exploited to provide efficient background rejection.
+The large sample of \Pbottom hadron decays collected by \lhcb\ can also be used 
+to study \CP\ violation in \PLambdac\ decays.
+The long \PLambdab\ lifetime, around seven times greater than that of the 
+\PLambdac, can be exploited to provide efficient background rejection.
 The semileptonic decay chain \LbToLcmuX\ enables the usage of the \lhcb\ muon 
 triggers, described in \cref{chap:intro:lhcb:trigger}, requiring a single, high 
 \pT\ muon whose trajectory is significantly displaced from the \ac{PV}.
@@ -91,7 +93,7 @@ by the \pKK\ sample size, having a precision on the order of
 This analysis measures \dACP\ using \LcTopKK\ and \LcToppipi decays, 
 reconstructed in association with a high \pT\ muon assumed to originate from 
 the decay of a \PLambdab.
-The data used was collected with the \lhcb\ detector in 2011 and 2012, 
+The data were collected with the \lhcb\ detector in 2011 and 2012, 
 corresponding to an integrated luminosity of \SI{3}{\per\femto\barn}.
 An overview of the analysis will be given in the remainder of this 
 \lcnamecref{chap:cpv:introduction}.
@@ -107,7 +109,7 @@ observed yields $N$
   \label{eqn:cpv:introduction:araw}
 \end{equation}
 where here, and throughout this \lcnamecref{chap:cpv}, the origin of the final 
-state $f$ from a \PLambdac\ decay is implicit.\footnotemark
+state $f$ from a \PLambdac\ decay is implicit.\footnotemark\
 This is not necessarily equal to the decay asymmetry in 
 \cref{eqn:cpv:introduction:acp} as it may contain contributions from associated 
 production and detection asymmetries.
@@ -144,13 +146,13 @@ uncertainties on the measurement.
 \subsection{Document structure}
 \label{chap:cpv:introduction:overview:structure}
 
-The exact contributions of the various production and detection asymmetries to 
-\ARaw will be derived and enumerated in \cref{chap:cpv:theory}.
+The contributions of the various production and detection asymmetries to \ARaw 
+will be derived and enumerated in \cref{chap:cpv:theory}.
 The parameterisation of the five-dimensional phase space will also be given, 
 which is used when constructing the phase space efficiency model.
-The collision data and simulated \ac{MC} data used in the analysis is described 
-in \cref{chap:cpv:data}, and the reconstruction and selection of the real data 
-will be presented in \cref{chap:cpv:selection}.
+The collision data and simulated \ac{MC} data used in the analysis are 
+described in \cref{chap:cpv:data}, and the reconstruction and selection of the 
+real data will be presented in \cref{chap:cpv:selection}.
 The extraction of the signal yields and of the kinematic distributions of the 
 signal from the fully selected data is presented in 
 \cref{chap:cpv:prelim_fits}, and then those signal distributions are equalised 
@@ -163,7 +165,7 @@ enter the blinded \chisq\ fits that are used to measure \ARaw, described in
 \cref{chap:cpv:araw}.
 The combination of $\ARaw(\pKK)$ and $\ARaw(\ppipi)$ to measure \dACP\ is in 
 \cref{chap:cpv:results}.
-Methods for and the results of various systematic studies are given in 
+Methods for, and the results of, various systematic studies are given in 
 \cref{chap:cpv:syst}.
 Finally, \cref{chap:cpv:summary} gives the combination of the measurements of 
 \dACP\ and the systematic studies, and concludes with a brief discussion on 

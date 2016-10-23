@@ -29,20 +29,15 @@ the variable $x$ represents the \PLambdac\ mass.
 
 For both the \pKK\ and \ppipi\ samples, the signal model $f$ is the linear sum 
 of two normal distributions $G$ sharing a common mean $\mu$ but with different 
-widths $\sigma_{1}$ and $\sigma_{2}$.
-A `single Gaussian' is defined as
-\begin{equation}
-  G(x; \mu, \sigma) = \exp\left(-\frac{{(x - \mu)}^{2}}{2\sigma^{2}}\right),
-\end{equation}
-and then the `double Gaussian' is defined as
+widths $\sigma_{1}$ and $\sigma_{2}$, defined as
 \begin{equation}
   f(x; \mu, w, \alpha) = \alpha{}G(x; \mu, \alpha{w}) +
-    (1 - \alpha)G(x; \mu, \frac{w}{\alpha}),
+    (1 - \alpha)G(x; \mu, \frac{w}{\alpha}).
   \label{eqn:cpv:prelim_fits:sig_model}
 \end{equation}
-where $\alpha$ describes the `relative strength' of each normal distribution 
-and is bounded in the range $[0, 1]$, and the widths $\sigma_{1}$ and 
-$\sigma_{2}$ have been parameterised as
+The parameter $\alpha$ describes the `relative strength' of each normal 
+distribution and is bounded in the range $[0, 1]$, and the widths $\sigma_{1}$ 
+  and $\sigma_{2}$ have been parameterised as
 \begin{equation}
   \sigma_{1} = \alpha{w},\ \text{and}\ \sigma_{2} = \frac{w}{\alpha}.
   \label{eqn:cpv:prelim_fits:sigma_def}
@@ -51,49 +46,38 @@ This enforces the relation $\sigma_{1} \leq \sigma_{2}$, which is useful to
 know when trying to reason about the fitted values of $\alpha$, and was 
 observed to increase the stability of the fit compared to having free, 
 independent widths $\sigma_{1}$ and $\sigma_{2}$.
-
 For both modes, the background model $g$ is a first-order polynomial with 
 coefficient $a_{0}$
 \begin{equation}
   g(x) = 1 + a_{0}x.
-  \label{eqn:cpv:prelim_fits:bkg_model}
+  \label{eqn:cpv:prelim_fits:bkg_model}.
 \end{equation}
-
 The signal and background models are combined as a linear sum to form a total 
 function $h$, where each component is weighted by their respective yields 
-\nsig\ and \nbkg
-\begin{equation}
-  h(x) = \nsig f(x) + \nbkg g(x).
-\end{equation}
-The \chisq\ fit is performed on the data by minimising a normalised version of 
-$h$ in the range
+\nsig\ and \nbkg.
+The \chisq\ fit is performed on the data in the range
 \begin{equation}
   2230 < m(\PLambdac) < \SI{2350}{\GeV},
 \end{equation}
 with bins of width \SI{1}{\MeV}.
 
-Once a fit has converged and the associated covariance matrix is confirmed to 
-be positive-definite, sWeights~\cite{Pivk:2004ty} are computed and are attached 
-to each candidate that entered the fit.
+Once a fit has converged and the associated covariance matrix is 
+positive-definite, sWeights~\cite{Pivk:2004ty} are computed and are attached to 
+each candidate.
 This allows for the statistical subtraction of either the signal or the 
 background component in bins of some variable that is not correlated with the 
 \PLambdac\ mass.
 
 Fits to the fully selected 2012 magnet down dataset for the \pKK\ and \ppipi\ 
 modes are given in \cref{fig:cpv:prelim_fits:full}.
-The corresponding correlation matrices are given in 
-\cref{fig:cpv:prelim_fits:full_correlation}, and the parameter values are given 
-in \cref{tab:cpv:prelim_fits:params:pKK,tab:cpv:prelim_fits:params:ppipi}.
 A good description of the data is seen, and this is representative of the fit 
 quality in all data sub-samples.
-
 Tables of signal and background yields measured in the preliminary fit are 
 given for each fully selected subset of the data for \pKK\ in 
 \cref{tab:cpv:prelim_fits:yields:pKK} and for \ppipi\ in 
 \cref{tab:cpv:prelim_fits:yields:ppipi}.
 Also given are the number of signal candidates per unit of integrated 
-luminosity $\nsig/\intlumi$, where the integrated luminosity is given for each 
-data subset in \cref{tab:cpv:data:luminosity}.
+luminosity $\nsig/\intlumi$.
 
 \section{Validation}
 \label{chap:cpv:prelim_fits:validation}
@@ -152,47 +136,6 @@ It is seen that the signal yield parameter is unbiased.
   }
   \label{fig:cpv:prelim_fits:full}
 \end{figure}
-
-\begin{figure}
-  \begin{subfigure}[b]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{cpv/preliminary_fits/fits-unweighted_no-simultaneous/LcTopKK_2012_MagDown_correlation_matrix.pdf}
-    \caption{\pKK}
-    \label{fig:cpv:prelim_fits:full_correlation:pKK}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{cpv/preliminary_fits/fits-unweighted_no-simultaneous/LcToppipi_2012_MagDown_correlation_matrix.pdf}
-    \caption{\ppipi}
-    \label{fig:cpv:prelim_fits:full_correlation:ppipi}
-  \end{subfigure}
-  \caption{%
-    Correlation matrices for the fit parameters used in the fit to the 
-    \PLambdac\ mass spectrum in the fully selected 2012 magnet down dataset for 
-    \pKK~(\subref*{fig:cpv:prelim_fits:full_correlation:pKK}) and 
-    \ppipi~(\subref*{fig:cpv:prelim_fits:full_correlation:ppipi}).
-    The corresponding fits are shown in \cref{fig:cpv:prelim_fits:full}.
-  }
-  \label{fig:cpv:prelim_fits:full_correlation}
-\end{figure}
-
-\begin{table}
-  \centering
-  \caption{%
-    Model parameters as determined in the preliminary fit to the 2012 magnet 
-    down subset of the \pKK\ data.
-  }
-  \label{tab:cpv:prelim_fits:params:pKK}
-  \input{tables/cpv/preliminary_fits/LcTopKK_2012_MagDown_fit-parameters}
-\end{table}
-
-\begin{table}
-  \centering
-  \caption{%
-    Model parameters as determined in the preliminary fit to the 2012 magnet 
-    down subset of the \ppipi\ data.
-  }
-  \label{tab:cpv:prelim_fits:params:ppipi}
-  \input{tables/cpv/preliminary_fits/LcToppipi_2012_MagDown_fit-parameters}
-\end{table}
 
 \begin{table}
   \centering

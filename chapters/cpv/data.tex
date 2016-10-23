@@ -1,18 +1,16 @@
-\chapter{Data}
+\chapter{Datasets}
 \label{chap:cpv:data}
 
 This analysis uses all data collected in 2011 and 2012.
-As the beam conditions changed significantly between the two years, from 
-\sqrtseq{7} to \SI{8}{\TeV}, the analysis is performed separately on the two 
-sub-samples.
+As the beam conditions changed between the two years, from \sqrtseq{7} to 
+\SI{8}{\TeV}, the analysis is performed separately on the two sub-samples.
 The sub-samples are further split into magnet up and magnet down datasets, as 
 the particle detection asymmetries change with the magnet 
 polarity~\cite{Vesterinen:1642153}.
-The individual measurements made using these sub-samples is later combined in 
+The individual measurements made using these sub-samples are later combined in 
 an average.
-The total integrated luminosity corresponding to the dataset is \totlumi, the 
-breakdown of which for the different running conditions is given in 
-\cref{tab:cpv:data:luminosity}.
+The total integrated luminosity is \totlumi, the breakdown of which for the 
+different running conditions is given in \cref{tab:cpv:data:luminosity}.
 This \lcnamecref{chap:cpv:data} will describe the generalities of the data, 
 such as the processing workflow and application of calibrations, as well as the 
 simulated \ac{MC} data that will be used.
@@ -52,15 +50,12 @@ Details of the trigger, stripping, and offline selection will be given in
 \end{figure}
 
 To improve the \PLambdac\ mass resolution in the datasets, and the consistency 
-of that between them, two algorithms are run on the data offline.
+between them, two algorithms are run on the data offline.
 The first of these is the momentum scale calibration.
-This corrects track momentum by a linear factor $\alpha$, which is found by 
-comparing mass measurements made with \JpsiTomumu\ and 
-\decay{\PBplus}{\PJpsi\PKplus} decays to the corresponding world 
-averages~\cite{Aaij:2014jba}.
-The momentum resolution of the detector varies with the running conditions.
-As $\alpha$ varies accordingly, correcting the track momentum creates a more 
-uniform dataset.
+This corrects track momentum by a linear factor $\alpha$, which varies with 
+running conditions and is found by comparing mass measurements made with 
+\JpsiTomumu\ and \decay{\PBplus}{\PJpsi\PKplus} decays to the corresponding 
+world averages~\cite{Aaij:2014jba}.
 The second algorithm is \decaytreefitter~\cite{Hulsbergen:2005pu}.
 This fits the entire \LbToLcmuX-with-\LcTophh\ decay chain in a single step, 
 rather than the back-to-front (or leaf-by-leaf) reconstruction used in the 
@@ -69,8 +64,9 @@ The advantage of such a method is that all the information known about the
 decay can influence the fit parameters, whereas the stripping reconstruction 
 can only propagate information in one direction.
 Such a global treatment of information is particularly useful when applying 
-constraints in the fit, such as requiring the mass of a vertex is exactly some 
-value, or that the head of the decay originated from the \ac{PV}.
+constraints in the fit, such as requiring the mass of a vertex combination to 
+be exactly some value, or that the head of the decay originated from the 
+\ac{PV}.
 In this analysis, \decaytreefitter\ is applied to the \PLambdab\ decay with the 
 constraint that the \phh\ vertex has the nominal \PLambdac\ mass of 
 \SI{2286}{\MeVcc}~\cite{PDG2014}.
@@ -86,7 +82,7 @@ invariant mass entering the mass fit.
 
 The only information made available for offline analysis is that passing the 
 stripping.
-Simulated data is used to infer properties of the data before that stage.
+Simulated data are used to infer properties of the data before that stage.
 There are three different sets of Monte Carlo~(MC) data that are used in this 
 analysis.
 
@@ -109,8 +105,8 @@ configuration representative of the average trigger conditions used in 2012.
 Each \PLambdab\ is forced to decay to the $\PLambdac\Pmuon\APnum$ final state, 
 and the \PLambdac\ is forced to decay to the appropriate \phh\ final state with 
 no intermediate resonances.
-The simulated data is reconstructed with the same reconstruction software as 
-the real data, and is then passed through a near-identical version of the 
+The simulated data are reconstructed with the same reconstruction software as 
+the real data, and are then passed through a near-identical version of the 
 stripping, with the only difference being the omission of any \ac{PID} 
 selection, as the related variables are known to be poorly modelled in the 
 \ac{MC}.

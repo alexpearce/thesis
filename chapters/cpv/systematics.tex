@@ -1,11 +1,9 @@
 \chapter{Systematic uncertainties}
 \label{chap:cpv:syst}
 
-The measurement of \dACP\ in \cref{chap:cpv:results} carries a statistical 
-uncertainty due to finite \pKK\ and \ppipi\ sample sizes.
 Three sources of systematic uncertainty are considered in this analysis: the 
-arbitrary choice of model used to extract the \PLambdac\ and \APLambdac\ signal 
-yields; the failure of the kinematic weighting procedure to fully equalise the 
+choice of model used to extract the \PLambdac\ and \APLambdac\ signal yields; 
+the failure of the kinematic weighting procedure to fully equalise the 
 \PLambdab, muon, and proton kinematics between the modes; and the breaking of 
 the assumption that the \PLambdac\ candidates originate from the \LbToLcmuX\ 
 decay.
@@ -19,121 +17,15 @@ will be computed and assigned.
 The models used for the signal and combinatorial background components in the 
 mass fits, presented in \cref{chap:cpv:prelim_fits,chap:cpv:araw}, do describe 
 the data well.
-However, the choice of functional forms is somewhat arbitrary, and other forms 
-may also describe the data well but give different yields, which may change the 
-value of \dACP\@.
+However, other functional forms may also describe the data well but give 
+different yields, which may change the value of \dACP\@.
 To assess the extent to which different models can affect the measurement, the 
-yields are extracted using the method of \emph{sideband subtraction}.
-In this \lcnamecref{chap:cpv:syst:fit}, this method will first be defined and 
-described, and then employed on the data.
-
-\subsection{Sideband subtraction}
-\label{chap:cpv:syst:fit:sb}
-
-The sideband subtraction is used to measure the signal yield within some 
-\emph{signal window} in some distribution, say of $x$.
-The signal window is defined as being centred at $x = X$, and has a width $S$.
-The upper and lower bounds of the signal window are then at $x = X \pm S/2$.
-The fraction $f_{\text{S}}$ of the data in this region is given by
-\begin{equation}
-  f_{\text{S}} = \int_{X - \frac{S}{2}}^{X + \frac{S}{2}} h(x) \dif{x},
-  \label{eqn:cpv:syst:fit:sig_win_frac}
-\end{equation}
-where $h(x)$ is the normalised, true \ac{PDF} that generates the observed 
-distribution.
-It is the sum of the normalised signal and background \acp{PDF} $f(x)$ and 
-$g(x)$, having respective yields \nsig\ and \nbkg
-\begin{equation}
-  h(x) = \frac{1}{\nsig + \nbkg}(\nsig f(x) + \nbkg g(x)).
-\end{equation}
-Substituting this into \cref{eqn:cpv:syst:fit:sig_win_frac}
-\begin{equation}
-  f_{\text{S}} = \frac{1}{\nsig + \nbkg}
-    \int_{X - \frac{S}{2}}^{X + \frac{S}{2}}
-    \nsig f(x) + \nbkg g(x)
-    \dif{x}.
-  \label{eqn:cpv:syst:fit:sig_win_frac_full}
-\end{equation}
-Two additional regions are further defined called the lower and upper 
-sidebands, collectively the sidebands.
-These are centred $D$ either side of the centre $X$ of the signal window, and 
-each have a width half of that of the signal window.
-The fraction $f_{\text{SB}}$ of the total \ac{PDF} in these regions is
-\begin{equation}
-  f_{\text{SB}} = \int_{X - D - \frac{S}{4}}^{X - D + \frac{S}{4}} h(x) \dif{x}
-    + \int_{X + D - \frac{S}{4}}^{X + D + \frac{S}{4}} h(x) \dif{x}.
-  \label{eqn:cpv:syst:fit:sb_frac}
-\end{equation}
-The sideband subtraction method assumes that the contribution of the signal 
-model $f(x)$ within the sidebands is negligible, such that it's contribution to 
-the integrals in \cref{eqn:cpv:syst:fit:sb_frac} can be ignored, giving
-\begin{equation}
-  f_{\text{SB}} = \frac{\nbkg}{\nsig + \nbkg}\left(
-    \int_{X - D - \frac{S}{4}}^{X - D + \frac{S}{4}} g(x) \dif{x} +
-    \int_{X + D - \frac{S}{4}}^{X + D + \frac{S}{4}} g(x) \dif{x}
-  \right).
-  \label{eqn:cpv:syst:fit:sb_frac_full}
-\end{equation}
-It is then desired to subtract \cref{eqn:cpv:syst:fit:sb_frac_full} from
-\cref{eqn:cpv:syst:fit:sig_win_frac_full} such that only the signal component 
-remains in $f_{\text{S}}$.
-This is equivalent to requiring
-\begin{equation}
-    \int_{X - \frac{S}{2}}^{X + \frac{S}{2}} g(x) \dif{x}
-    =
-    \int_{X - D - \frac{S}{4}}^{X - D + \frac{S}{4}} g(x) \dif{x} +
-    \int_{X + D - \frac{S}{4}}^{X + D + \frac{S}{4}} g(x) \dif{x},
-  \label{eqn:cpv:syst:fit:bkg_frac_equiv}
-\end{equation}
-and is satisfied when $g(x)$ is a linear function
-\begin{equation*}
-  g(x) = 1 + a_{0}x,
-\end{equation*}
-in which case the integrals either side of 
-\cref{eqn:cpv:syst:fit:bkg_frac_equiv} are equal to
-\begin{equation}
-    \int_{X - \frac{S}{2}}^{X + \frac{S}{2}} g(x) \dif{x} =
-      S(1 + a_{0}X),
-\end{equation}
-where, as before, $X$ is the centre of the signal window and $S$ is its width.
-With a linear form for $g(x)$, it is then the case that
-\begin{equation}
-  f_{\text{S}} - f_{\text{SB}} = \frac{\nsig}{\nsig + \nbkg}
-    \int_{X - \frac{S}{2}}^{X + \frac{S}{2}} f(x) \dif{x}.
-  \label{eqn:cpv:syst:fit:frac_diff}
-\end{equation}
-
-The quantities $f_{\text{S}}$ and $f_{\text{SB}}$ are the fractions of the 
-total yield, in the extent of $h(x)$, in the signal window and sidebands, 
-respectively.
-In the data, the sum of the signal and background yields is taken to be the 
-observed candidate count $N = \nsig + \nbkg$, and so the yield fractions can be 
-converted into yields by multiplying them by $N$
-\begin{equation}
-  N_{\text{S}} = f_{\text{S}}N,\quad
-  N_{\text{SB}} = f_{\text{SB}}N.
-\end{equation}
-Multiplying \cref{eqn:cpv:syst:fit:frac_diff} by $N$ gives
-\begin{equation}
-  f_{\text{S}}N - f_{\text{SB}}N =
-    N_{\text{S}} - N_{\text{SB}} =
-    \nsig
-    \int_{X - \frac{S}{2}}^{X + \frac{S}{2}} f(x) \dif{x}
-  \label{eqn:cpv:syst:fit:yield_diff}
-\end{equation}
-That is, the difference between the \emph{observed number} of candidates in the 
-signal window and the sidebands gives the number of signal candidate in the 
-signal window.
-The assumptions entering this result are that the contribution of the signal 
-model in the sideband regions is small enough to be neglected, that the 
-background \ac{PDF} is linear, and, implicitly, that there are no contributions 
-to the data in the signal and sideband regions other than signal and 
-combinatorial background.
+yields are extracted using the method of sideband subtraction.
 
 \subsection{Region definitions and method validity}
 \label{chap:cpv:syst:fit:defs}
 
-The sideband subtraction is applied to the data as a alternative method to 
+A sideband subtraction is applied to the data as a alternative method to 
 measure the \pKK\ and \ppipi\ signal yields in the charge-separated samples.
 
 The signal region is defined as a window \SI{20}{\MeVcc} wide for the \pKK\ 
@@ -143,8 +35,7 @@ The wider \ppipi\ window accounts for the wider signal shape, which is itself
 due to the larger energy release, or $Q$ value, of the \ppipi\ decay.
 The two sideband regions, each \SI{10}{\MeVcc} wide for \pKK\ and 
 \SI{15}{\MeVcc} wide for \ppipi, are chosen such that the centres are 
-$\pm\sfrac{3}{2}$ signal window widths away from the signal window centre, $D = 
-3S/2$.
+$\pm\sfrac{3}{2}$ signal window widths away from the signal window centre.
 The signal and sideband regions are shown in \cref{fig:cpv:syst:mass_windows}, 
 with the 2012 magnet down data overlaid for reference.
 
@@ -157,7 +48,7 @@ combinatorial, and that no peaking structures are present in the signal region
 other than the that of the signal.
 Finally, the assumption that the signal contribution to the data in the 
 sidebands is negligible is checked using \ac{MC}, where \SI{0.7}{\percent} of 
-the \ppipi\ truth-matched signal data is in the sidebands, and for \pKK the 
+the \ppipi\ truth-matched signal data are in the sidebands, and for \pKK the 
 fraction of \SI{0.3}{\percent}.
 These fractions are much smaller than the relative statistical uncertainties on 
 the signal yields shown in 
@@ -179,7 +70,7 @@ the level of contamination is considered to be negligible.
     Definitions of the signal and sideband regions in the \PLambdac\ mass 
     spectrum for \pKK~(\subref*{fig:cpv:syst:mass_windows:pKK}) and 
     \ppipi~(\subref*{fig:cpv:syst:mass_windows:ppipi}).
-    The 2012 magnet down data is overlaid for reference.
+    The 2012 magnet down data are overlaid for reference.
   }
   \label{fig:cpv:syst:mass_windows}
 \end{figure}
@@ -220,8 +111,8 @@ averages across years and magnet polarities, are presented in
 \cref{tab:cpv:syst:sbs_differences}.
 Almost all of the deviations from the nominal values are significant, and so 
 they taken as a systematic uncertainties on the measurements of \dACP\@.
-On the nominal result quoted in \cref{eqn:cpv:results:dacp}, the systematic 
-uncertainty is \SI{0.26}{\percent}.
+The systematic uncertainty is \SI{0.26}{\percent} on the nominal result quoted 
+in \cref{eqn:cpv:results:dacp}.
 
 \begin{sidewaystable}
   \centering
@@ -242,7 +133,7 @@ uncertainty is \SI{0.26}{\percent}.
 \label{chap:cpv:syst:asym}
 
 The kinematic weighting discussed in \cref{chap:cpv:kinematic_weighting} does 
-completely remove all differences between the \PLambdab, muon, and proton 
+not completely remove all differences between the \PLambdab, muon, and proton 
 kinematics between the \pKK\ and \ppipi\ datasets, nor does it remove all 
 \PKminus/\PKplus and \Ppiminus/\Ppiplus differences within the decay modes.
 Therefore, contributions from the respective background asymmetries will still 
@@ -254,7 +145,7 @@ are enumerated, and then their application to this analysis is described.
 The asymmetries considered are those that arise from the differences in the 
 matter and antimatter cross-sections with the detector, called detection 
 asymmetries.
-The trigger asymmetry for muons from \PB decays is known to be 
+The trigger asymmetry for muons from \Pbottom decays is known to be 
 small~\cite{Aaij:2016yze}, and is neglected here.
 
 The pion detection asymmetry is measured using \sqrtseq{7} 
@@ -281,16 +172,16 @@ The kaon detection asymmetry is measured using the full \runone\ dataset with
 The raw asymmetries between the two decays are subtracted, as is the 
 contribution from the $\APKzero$ interaction asymmetry, to measure \ADKpi.
 The kaon material cross-section asymmetry is known to be much larger than that 
-for pions~\cite{PDG2014}, as shown in \cref{fig:cpv:syst:asym:xsecs}, and so 
-\ADKpi\ is assumed to be dominated by the kaon detection asymmetry.
+for pions~\cite{PDG2014}, and so \ADKpi\ is assumed to be dominated by the kaon 
+detection asymmetry.
 The asymmetry as a function of kaon momentum, averaged across magnet 
-polarities, is shown in \cref{fig:cpv:syst:asym:kaon} and tabulated in 
-\cref{tab:cpv:syst:asym:kaon}, where it is seen to be significant larger in 
-magnitude than the pion asymmetry in \cref{fig:cpv:syst:asym:pion} and 
-significantly different from zero.
+polarities, is shown in \cref{fig:cpv:syst:asym:kaon}, where it is seen to be 
+significant larger in magnitude than the pion asymmetry in 
+\cref{fig:cpv:syst:asym:pion} and significantly different from zero.
 
 The muon detection asymmetry is measured using the tag-and-probe technique described in \cref{chap:prod:effs:tracking} with \JpsiTomumu~\cite{Stahl:2010261}.
-The track reconstruction efficiency is computed separately for \Pmuon and \APmuon and an asymmetry is formed, shown in \cref{fig:cpv:syst:asym:muon} and tabulated in \cref{tab:cpv:syst:asym:muon}.
+The track reconstruction efficiency is computed separately for \Pmuon and 
+\APmuon and an asymmetry is formed, shown in \cref{fig:cpv:syst:asym:muon}.
 The asymmetries are small, of the order of \SI{0.1}{\percent}.
 
 Measurements of the production asymmetry from unequal \PLambdab\ and 
@@ -315,14 +206,18 @@ Simulations using both the \pKK\ and the \ppipi\ samples defined in
 \subsection{Evaluation}
 \label{chap:cpv:syst:asym:eval}
 
-The effect of the residual background asymmetry for a single asymmetry $A$ due to some particle $X$ on the value of \dACP\ is given by a shift $\Delta{A}$, defined as
+The effect on the value of \dACP\ of the residual background asymmetry for a 
+single asymmetry $A$ due to some particle $X$ is given by a shift $\Delta{A}$, 
+defined as
 \begin{equation}
   \Delta{A}^{X} = \frac{1}{\nsig^{\pKK}}\sum_{i} \nsig^{\pKK,i} A_{i} -
     \frac{1}{\nsig^{\ppipi}}\sum_{i} \nsig^{\ppipi,i} A_{i},
 \end{equation}
 where $\nsig^{f}$ is the total number of signal candidates in the \LcTof\ sample; $i$ is the bin index of the asymmetry parameter, such as \PLambdab\ rapidity; and $\nsig^{f,i}$ is the number of signal candidates in the \LcTof\ sample that fall in the $i$th asymmetry bin.
 The number of signal candidates is computed as the sum of signal sWeights, weighted by kinematic weights and phase space efficiency corrections as in \cref{eqn:cpv:araw:total_weights}.
-One such shift is defined for the muon and proton detection asymmetries and the \PLambdab\ production asymmetry, $\Delta\APLb$, $\Delta\ADp$, and $\Delta\ADmu$.
+One such shift is defined for each of the muon and proton detection asymmetries 
+and the \PLambdab\ production asymmetry, $\Delta\APLb$, $\Delta\ADp$, and 
+$\Delta\ADmu$.
 The shift due to the residual kaon detection asymmetry is similarly defined
 \begin{equation}
   \Delta{\ADK} = \frac{1}{\nsig^{\pKK}}\left(%
@@ -364,16 +259,6 @@ Conservatively, a \SI{0.1}{\percent} systematic uncertainty is assigned to the m
   \label{fig:cpv:syst:asym:kaon}
 \end{figure}
 
-\begin{table}
-  \centering
-  \caption{%
-    Kaon detection asymmetries \ADKpi\ in bins of kaon 
-    momentum~\cite{Aaij:2014gsa}.
-  }
-  \label{tab:cpv:syst:asym:kaon}
-  \input{tables/cpv/systematics/kaon_detection_asymmetry}
-\end{table}
-
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{cpv/systematics/muon_detection_asymmetry_pt}
@@ -389,16 +274,6 @@ Conservatively, a \SI{0.1}{\percent} systematic uncertainty is assigned to the m
 \begin{table}
   \centering
   \caption{%
-    Muon detection asymmetries in bins of muon \pT measured using \sqrtseq{7} 
-    (2011) and \SI{8}{\TeV} (2012)~\cite{Stahl:2010261}.
-  }
-  \label{tab:cpv:syst:asym:muon}
-  \input{tables/cpv/systematics/muon_detection_asymmetry}
-\end{table}
-
-\begin{table}
-  \centering
-  \caption{%
     Proton detection asymmetries measured using simulated data in bins of 
     proton momentum~\cite{Aaij:2015fea}.
   }
@@ -410,8 +285,8 @@ Conservatively, a \SI{0.1}{\percent} systematic uncertainty is assigned to the m
   \centering
   \includegraphics[width=0.75\textwidth]{cpv/systematics/proton_detection_asymmetry_p_this}
   \caption{%
-    Asymmetry of proton detection asymmetries as a function of proton momentum 
-    in \si{\GeVc}.
+    Asymmetry of the proton detection efficiency as a function of proton 
+    momentum in \si{\GeVc}.
     The uncertainties on the data points are statistical.
   }
   \label{fig:cpv:syst:asym:proton_this}
@@ -434,8 +309,8 @@ Conservatively, a \SI{0.1}{\percent} systematic uncertainty is assigned to the m
 
 The mass fits count the number of real \PLambdac\ decays in the samples.
 However, backgrounds to \LbToLcmuX\ can peak in the \PLambdac\ mass spectrum, 
-such as baryonic \PB\ decays or promptly produced \PLambdac\ decays associated 
-with random muons.
+such as baryonic decays of \PB\ mesons or promptly produced \PLambdac\ decays 
+associated with random muons.
 These backgrounds will have different asymmetries, contaminating \dACP\@.
 
 Selecting \pKK\ and \ppipi\ decays from promptly produced \PLambdac\ baryons 
@@ -444,7 +319,7 @@ will contaminate \dACP\ with the \PLambdac\ production asymmetry.
 2012 magnet down data sample, in which a peaking structure corresponding to 
 prompt \PLambdac\ is not visible.
 These distributions can be compared to the \lnipchisq\ distributions in samples 
-dominated by prompt charm in \cref{chap:prod:fitting}.
+dominated by prompt charm, given in \cref{chap:prod:fitting}.
 Even if there is a prompt \PLambdac\ component in the data used for the \dACP\ 
 measurement, the contribution from a \PLambdac\ production asymmetry should 
 cancel as the \PLambdac\ kinematics are weighted to be equal.
@@ -489,7 +364,7 @@ The combined \PB cross-section is around four times that of the
 relative rate of $N(\decay{\PB}{\PLambdac X})/N(\LbToLcmuX) = 12$.
 However, the muon triggers and $\PLambdac\Pmuon$ vertex requirements strongly 
 suppress the alternate sources of \PLambdac\ decays.
-Using a simulated sample of one million generated 
+In a simulated sample of one million generated 
 \decay{\PBzero}{\APLambdac\Pproton\Ppiminus\Ppiplus} decays, of the order of 10 
 \PLambdac\ candidates pass the selection requirements defined in 
 \cref{chap:cpv:selection}.

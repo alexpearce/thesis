@@ -20,8 +20,8 @@ two-dimensional projections of \msqphp-\msqhh, \msqphm-\msqphp, and
 \msqphp-\msqhh, and illustrate the complex resonant dynamics in the decays.
 The child-pair squared mass \msqphp\ is not used as part of the phase space 
 parameterisation, but it is shown for completeness.
-In all cases, the phase space variables are computed using the momentum vectors 
-computed using the \decaytreefitter\ algorithm, where the \phh\ mass is 
+In all cases, the phase space variables are evaluated using the momentum 
+vectors computed using the \decaytreefitter\ algorithm, where the \phh\ mass is 
 constrained to be the nominal \PLambdac\ mass, as described in 
 \cref{chap:cpv:data}.
 
@@ -46,10 +46,7 @@ distribution $D(\vec{x})$ to the observed one $D'(\vec{x})$
   D'(\vec{x}) = \eff(\vec{x})D(\vec{x}).
 \end{equation}
 If the distributions $D$ and $D'$ were known, the efficiency could be computed 
-as the ratio of the two distributions
-\begin{equation}
-  \eff(\vec{x}) = \frac{D'(\vec{x})}{D(\vec{x})}.
-\end{equation}
+as the ratio of the two distributions.
 Taking these distributions from the \ac{MC}, an efficiency \emph{map} could be 
 approximated by partitioning the distributions as a five-dimensional histogram 
 and taking the ratio between them.
@@ -60,8 +57,8 @@ In this particular case, it is hard to reduce the dimensionality of the
 problem, which would make a histogram method more tractable, as it is not clear 
 which dimensions would be near-constant in the efficiency, if any.
 Indeed, this could be checked by inspecting one-dimensional projections of the 
-efficiency, but this neglects correlations between variables which could alter 
-the total efficiencies significantly.
+efficiency, but this neglects correlations between variables which could 
+significantly alter the total efficiencies.
 To avoid such difficulties, this analysis employs the gradient boosting 
 decision tree algorithm, as described in 
 \cref{chap:cpv:kinematic_weighting:bdt_method}, in order to estimate the 

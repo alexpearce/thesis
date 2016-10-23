@@ -1,12 +1,6 @@
 \chapter{Formalism}
 \label{chap:cpv:theory}
 
-The origin of direct \CP\ violation in weak interactions is described in 
-\cref{chap:intro:sm:cp}.
-This \lcnamecref{chap:cpv:theory} will present the formalism of the measurement 
-of \dACP, and will enumerate the production and detection asymmetries that may 
-enter.
-
 The measurement of \ARaw, as defined in \cref{eqn:cpv:introduction:araw}, can 
 be contaminated by production and detection asymmetries.
 By reconstructing \LcTopKK\ and \LcToppipi\ decays from 
@@ -16,59 +10,18 @@ asymmetry, and the detection asymmetry of the \PLambdac\ final state
 $f$/$\bar{f}$.
 
 The \PLambdab\ production asymmetry is predicted to be non-zero due to the \pp\ 
-collision environment~\cite{PhysRevD.90.014023}.
-\lhcb\ has found evidence of such an asymmetry as a function of \PLambdab\ 
-rapidity~\cite{Aaij:2015fea}, shown in \cref{fig:cpv:syst:asym:lambdab}.
+collision environment~\cite{PhysRevD.90.014023}, and indeed \lhcb\ has found 
+evidence of such an asymmetry as a function of \PLambdab\ 
+rapidity~\cite{Aaij:2015fea}.
 The two detection asymmetries are also expected to be non-zero, due to the 
 known differences between the hadron/anti-hadron and muon/anti-muon 
-cross-sections with matter~\cite{PDG2014}, as shown in 
-\cref{fig:cpv:syst:asym:xsecs}.
+cross-sections with matter~\cite{PDG2014}.
 The final state detection asymmetry can be broken down into two terms: one due 
 to the detection asymmetry of the proton; and another due to the detection 
 asymmetry of the \KmKp pair and the \pimpip\ pair.
 If the meson kinematics are equal within a given mode, for example if the 
 \PKminus kinematics are identical to those of the \PKplus\ in the \pKK\ data, 
 then the final state asymmetry reduces to the proton detection asymmetry.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.75\textwidth]{cpv/systematics/lambdab_production_asymmetry_y}
-  \caption{%
-    Asymmetry of \PLambdab\ production as a function of \PLambdab\ rapidity.
-    The uncertainties on the data points are statistical, whilst the hatched 
-    bands include both the statistical and systematic uncertainties.
-  }
-  \label{fig:cpv:syst:asym:lambdab}
-\end{figure}
-
-\begin{figure}
-  \begin{subfigure}{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cpv/systematics/pion_proton_cross_sections}
-    \caption{\decay{\Ppi\Pproton}{X}}
-    \label{fig:cpv:syst:asym:xsecs:pion}
-  \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cpv/systematics/kaon_proton_cross_sections}
-    \caption{\decay{\PK\Pproton}{X}}
-    \label{fig:cpv:syst:asym:xsecs:kaon}
-  \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cpv/systematics/proton_proton_cross_sections}
-    \caption{\decay{\Pproton\Pproton}{X}}
-    \label{fig:cpv:syst:asym:xsecs:proton}
-  \end{subfigure}
-  \caption{%
-    Cross-sections of $h^{\mp}\Pproton \to \text{anything}$~\cite{PDG2014}.
-    Each curve shows the hadronic cross-section with proton targets as a 
-    function of \sqrts, with the red curve showing the cross-section for the 
-    `matter' hadron (\PKplus, \Ppiplus, \Pproton) and the black curve showing 
-    that for the `antimatter' hadron (\PKminus, \Ppiminus, \APproton).
-  }
-  \label{fig:cpv:syst:asym:xsecs}
-\end{figure}
 
 Both the \PLambdab\ production and the muon detection asymmetries should be 
 independent of the \PLambdac\ final state, given the same \PLambdac\ 
@@ -92,7 +45,7 @@ several effective probabilities
 where $\prob(\PLambdab)$ is the probability of producing a $\PLambdab$ baryon 
 given a \pp\ collision, and $\eff(\Pmuon)$ and $\eff(f)$ are the muon and 
 $\PLambdac$ final-state detection efficiencies.
-A similar expression exists for $N(\bar{f})$, where are parameters are replaced 
+A similar expression exists for $N(\bar{f})$, where are particles are replaced 
 by their charge conjugates.
 % TODO can we back up this assumption?
 It is assumed that the \LbToLcmuX decay is \CP-symmetric, but that all other 
@@ -193,15 +146,15 @@ The assumption that the background asymmetries depend only on particle
 kinematics is not unreasonable.
 The production asymmetry, for example, is a difference in cross-sections, which 
 are usually parameterised by the kinematics of the produced particle (\pT\ and 
-either \Eta or rapidity).
+either \Eta\ or rapidity).
 Similarly, a detection asymmetry describes the differences of material 
 interactions between matter and antimatter, and these are dependent on the 
 momentum of the particle in question and, assuming a non-uniform material 
 distribution, its flight path.
 
-As it is not given that the \PLambdac\ kinematics are equal between \LcTopKK\ 
-and \LcToppipi\ decays in the data, the data can be weighted to equalise the 
-\PLambdac\ kinematics.
+As it is not given that the \PLambdac\ kinematics are the same between 
+\LcTopKK\ and \LcToppipi\ decays in the data, the data can be weighted to 
+equalise the \PLambdac\ kinematics.
 The background asymmetries \AP\ and \ADmu\ will then cancel in the difference 
 \dACP\@.
 The proton kinematics will not necessarily agree after such a weighting, as the 
@@ -218,9 +171,11 @@ Additional weighting may be required to equalise the proton kinematics.
 The phase space of a decay is the set of variables which fully parameterises 
 all possible dynamics.
 For the decay of a pseudo-scalar to three pseudo-scalars, such as 
+% TODO 'spin symmetry' is vague and I don't really get it; what do I really 
+% mean?
 \decay{\PDzero}{\PKshort\Ppiplus\Ppiminus}, the spin symmetry of the final 
-allows for the phase space to be fully parameterised by two variables.
-These are usually taken to be two child-pair squared masses, which can 
+state allows for the phase space to be fully parameterised by two variables.
+These are usually taken to be two child-pair squared masses, which can be 
 visualised as a Dalitz plot.
 In the case of \LcTophh, the spin \sfrac{1}{2} of the proton means that 
 three-body system is no longer rotationally symmetric, and three additional 
@@ -235,13 +190,13 @@ The efficiency model can either be provided to theorists so that they can apply
 the same efficiencies to their phase space models, or it can be used to correct 
 the data before the \dACP\ measurement is made.
 
-The five dimensions of the phase space is defined here in a similar way to the 
+The five dimensions of the phase space are defined here in a similar way to the 
 \LcTopKpi\ amplitude analysis performed by the \esno\ 
 collaboration~\cite{Aitala:1999uq}.
-This defines two child-pair square masses, of the proton and oppositely-charged 
-child \msqphm\ and of the two opposite-sign pseudo-scalars \msqhh, and three 
-decay angles.
-The child-pair square masses are invariant under Lorentz transformations, but 
+This defines two child-pair squared masses, of the proton and 
+oppositely-charged child \msqphm\ and of the two opposite-sign pseudo-scalars 
+\msqhh, and three decay angles.
+The child-pair squared masses are invariant under Lorentz transformations, but 
 the decay angles are not and so a definition of the frame in which they are 
 computed is required.
 

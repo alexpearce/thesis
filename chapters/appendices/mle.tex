@@ -16,7 +16,8 @@ from.\footnotemark
 Practically, it is useful to work with the logarithm of the likelihood, as sums 
 are more convenient to work with numerically than products, and to use the 
 negative of this, in order to be able to exploit the available numerical 
-algorithms for minimisation problems such as \minuit~\cite{James:1975dr}
+algorithms for minimisation problems such as the \migrad\ algorithm in the 
+\minuit\ package~\cite{James:1975dr,James:1994vla}
 \begin{equation}
   -\ln{\likelihood(\vec{\theta}|\vec{x})} =
   -\sum_{i}^{N} \ln{f(x_{i}|\vec{\theta})}.
