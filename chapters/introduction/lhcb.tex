@@ -563,12 +563,14 @@ the offline reconstruction.
 The vertex quantities are used as input to a \ac{BDT}, and the single output 
 value is used to make the trigger 
 decision~\cite{Gligorov:2011qxa,Gligorov:1384380}.
-Decision trees will be discussed in more detail in 
-\cref{chap:cpv:kinematic_weighting:bdt_theory}.
 A similar set of topological lines exists that are optimised for \PB decays 
 that include a high \pT\ muon, and an inclusive \PDstarp\ line exists for 
 selecting \DstToDzpi\ with $\decay{\PDzero}{hhX}$ decays, where $hh$ are two 
-charged hadrons.
+charged hadrons.\footnotemark\
+\footnotetext{%
+  Throughout this thesis, charge conjugation is implied unless stated 
+  otherwise.
+}
 The topological \PB triggers are around \SI{75}{\percent} efficient on average 
 at selecting fully charged \PB decays, and the inclusive \PDstarp\ trigger is 
 between $25$ and \SI{90}{\percent} efficient.
@@ -666,7 +668,7 @@ reconstruction, saving computing resources,
 \section{Simulation}
 \label{chap:intro:lhcb:simulation}
 
-Simulated data are used to model effects that cannot be modelled using the real 
+The simulation is used to model effects that cannot be modelled using the real 
 data, such as acceptance efficiencies, and to perform detector performance 
 studies during design phases.
 
@@ -697,8 +699,8 @@ The \lzero\ trigger decisions are emulated in software, and the trigger
 configuration used for a given data-taking year, such as 2011, is chosen to be 
 the one that was used for the majority of the data-taking.
 
-The simulated data are processed in such a way that reconstructed objects can 
-be associated to the \ac{MC} objects that created them.
+The simulation is processed in such a way that reconstructed objects can be 
+associated to the \ac{MC} objects that created them.
 For charged, stable particles reconstructed via tracks, a particle is 
 associated to an \ac{MC} particle if at least \SI{70}{\percent} of the hits 
 comprising the associated track were deposited by the \ac{MC} particle in 

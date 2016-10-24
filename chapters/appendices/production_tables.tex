@@ -1,10 +1,11 @@
-\chapter{Charm production yield and efficiency tables}
+\chapter{Charm production yield, efficiency, and systematic tables}
 \label{chap:app:production_tables}
 
 Prompt signal yields measured in charm hadron \pTy\ bins are given in 
 \cref{tab:prod:fitting:D0ToKpi,tab:prod:fitting:DpToKpipi,tab:prod:fitting:DsToKKpi,tab:prod:fitting:DstToD0pi_D0ToKpi} 
 for \PDzero, \PDplus, \PDsplus, and \PDstarp mesons, measured using the fit 
 procedure described in \cref{chap:prod:fitting}.
+
 The following efficiencies are given for \PDzero and \PDplus: acceptance 
 efficiencies in \cref{tab:prod:effs:acc:dztokpi,tab:prod:effs:acc:dptokpipi}; 
 reconstruction efficiencies in 
@@ -17,6 +18,23 @@ efficiencies in \cref{tab:prod:effs:pid:dztokpi,tab:prod:effs:pid:dptokpipi};
 and signal window efficiencies in 
 \cref{tab:prod:effs:sigwin:dztokpi,tab:prod:effs:sigwin:dptokpipi}.
 The computation of the efficiencies is described in \cref{chap:prod:effs}.
+
+The following systematic uncertainties for \PDzero and \PDplus are presented:
+due to the size of the finite \ac{MC} samples in 
+\cref{tab:prod:syst:mc:stat:D0ToKpi,tab:prod:syst:mc:stat:DpToKpipi}; due to 
+the finite size of the \ac{PID} calibration samples in 
+\cref{tab:prod:syst:pid:stat:D0ToKpi,tab:prod:syst:pid:stat:DpToKpipi}; due to 
+the choice of binning shecme in the \ac{PID} calibration procedure in 
+\cref{tab:prod:syst:pid:binning:D0ToKpi,tab:prod:syst:pid:binning:DpToKpipi}; 
+due to the tracking efficiency correction methods in 
+\cref{tab:prod:syst:tracking:D0ToKpi,tab:prod:syst:tracking:DpToKpipi}; due to 
+the choice of fit model in 
+\cref{tab:prod:syst:fitting:D0ToKpi,tab:prod:syst:fitting:DpToKpipi}; and due 
+to the statistical uncertainty on the model parameters used to evaluate the 
+signal window efficiency in 
+\cref{tab:prod:syst:signal_window:D0ToKpi,tab:prod:syst:signal_window:DpToKpipi}.
+The computation of the systematic uncertainties is described in 
+\cref{chap:prod:syst}.
 
 \begin{sidewaystable}
   \caption{%
@@ -180,3 +198,131 @@ The computation of the efficiencies is described in \cref{chap:prod:effs}.
   \centering
   \input{tables/production/efficiencies/DpToKpipi_signal_window.tex}
 \end{sidewaystable}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the finite size of the Monte Carlo sample used to assess the 
+    selection efficiency.
+  }
+  \label{tab:prod:syst:mc:stat:D0ToKpi}
+  \centering
+  \input{tables/production/systematics/D0ToKpi_mc_stat}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
+    due to the finite size of the Monte Carlo sample used to assess the 
+    selection efficiency.
+  }
+  \label{tab:prod:syst:mc:stat:DpToKpipi}
+  \centering
+  \input{tables/production/systematics/DpToKpipi_mc_stat}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the finite size of the \ac{PID} calibration sample.
+  }
+  \label{tab:prod:syst:pid:stat:D0ToKpi}
+  \centering
+  \input{tables/production/systematics/D0ToKpi_pid_stat}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
+    due to the finite size of the \ac{PID} calibration sample.
+  }
+  \label{tab:prod:syst:pid:stat:DpToKpipi}
+  \centering
+  \input{tables/production/systematics/DpToKpipi_pid_stat}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the choice of \ac{PID} calibration binning.
+  }
+  \label{tab:prod:syst:pid:binning:D0ToKpi}
+  \centering
+  \input{tables/production/systematics/D0ToKpi_pid_binning}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
+    due to the choice of \ac{PID} calibration binning.
+  }
+  \label{tab:prod:syst:pid:binning:DpToKpipi}
+  \centering
+  \input{tables/production/systematics/DpToKpipi_pid_binning}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the finite calibration sample size, hadronic interaction 
+    uncertainty, and event multiplicity weighting in the tracking efficiency 
+    correction factor analysis.
+  }
+  \label{tab:prod:syst:tracking:D0ToKpi}
+  \centering
+  \input{tables/production/systematics/D0ToKpi_tracking}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
+    due to the finite calibration sample size, hadronic interaction 
+    uncertainty, and event multiplicity weighting in the tracking efficiency 
+    correction factor analysis.
+  }
+  \label{tab:prod:syst:tracking:DpToKpipi}
+  \centering
+  \input{tables/production/systematics/DpToKpipi_tracking}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the arbitrary choice of fit model.
+  }
+  \label{tab:prod:syst:fitting:D0ToKpi}
+  \centering
+  \input{tables/production/systematics/D0ToKpi_fit}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
+    due to the arbitrary choice of fit model.
+  }
+  \label{tab:prod:syst:fitting:DpToKpipi}
+  \centering
+  \input{tables/production/systematics/DpToKpipi_fit}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
+    due to the statistical uncertainty parameters of the fit model used to 
+    compute the signal window fraction.
+  }
+  \label{tab:prod:syst:signal_window:D0ToKpi}
+  \centering
+  \input{tables/production/systematics/D0ToKpi_signal_window}
+\end{table}
+
+\begin{table}
+  \caption{%
+    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
+    due to the statistical uncertainty parameters of the fit model used to 
+    compute the signal window fraction.
+  }
+  \label{tab:prod:syst:signal_window:DpToKpipi}
+  \centering
+  \input{tables/production/systematics/DpToKpipi_signal_window}
+\end{table}

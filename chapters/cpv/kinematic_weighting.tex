@@ -82,8 +82,7 @@ distributions.
 To overcome the limitations of histogram-based weighting, this analysis defers 
 the computation of the per-event weights $w_{i}$ to a decision tree with 
 gradient boosting~\cite{Rogozhnikov:2016bdp}.
-The classifier is trained as in the gradient boosting method described in 
-\cref{chap:cpv:kinematic_weighting:bdt_theory}, with the loss function
+The classifier is trained with the loss function
 \begin{equation}
   L = \sum_{l \in \text{Leaves}} \frac{%
     {(w_{l,o} - w_{l,t})}^{2}

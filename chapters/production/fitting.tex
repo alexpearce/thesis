@@ -66,12 +66,11 @@ The combinatorial and random soft pion background in the \deltam\ fits is
 modelled as an empirical threshold function of the (un-normalised) form
 \begin{equation}
   % (dm - dm0)^A * exp(B*dm)
-  R(x; \deltam_{0}, A, B) = e^{B\deltam}
-    {(x - \deltam_{0})}^A,
+  % The exponential factor has been omitted, as we just set B = 0
+  R(x; \deltam_{0}, A, B) = {(x - \deltam_{0})}^A,
 \end{equation}
 where $\deltam_{0}$ is the threshold value, fixed to the charged pion rest mass 
-$m_{\Ppipm} = \SI{139.57}{\MeVcc}$~\cite{PDG2014}, and the parameter $B$ is 
-fixed to zero.
+$m_{\Ppipm} = \SI{139.57}{\MeVcc}$~\cite{PDG2014}.
 The signal PDF in \deltam\ is the sum of three normal distributions, sharing a 
 common mean but allowed to have different widths.
 
@@ -111,9 +110,9 @@ defined in \deltam, is defined as the region from \SI{4.5}{\MeVcc} to
 \Cref{fig:prod:fitting:regions_A,fig:prod:fitting:regions_B}
 show the signal and sideband regions for each mode.
 
-The integral of the \lnipchisq\ background template \ac{PDF} is constrained to 
-be near the number of background candidates in the mass or \deltam\ signal 
-region.
+The integral of the \lnipchisq\ background template \ac{PDF} is 
+Gaussian-constrained to the number of background candidates in the mass or 
+\deltam\ signal region.
 To avoid any complications due to correlations between the background template 
 \ac{PDF} and the fitted data, only the data in signal region are used in the 
 \lnipchisq\ fit.

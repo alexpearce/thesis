@@ -43,7 +43,7 @@ cross-section measurement, are given in
 \section{\acl{MC} modelling}
 \label{chap:prod:syst:mc}
 
-If the simulated data does not correctly model the selection variables, the 
+If the simulation does not correctly model the selection variables, the 
 selection efficiencies that are evaluated with \ac{MC}, described in 
 \cref{chap:prod:effs:sel}, will be incorrect.
 To assess the accuracy of the \acl{MC} modelling, signal distributions are 
@@ -53,8 +53,8 @@ As the definition of the selection efficiency does not include the effects of
 the \ac{PID} selection, the distributions of the real data are corrected for 
 the \ac{PID} efficiency by a per-decay weighting.
 The signal distributions in data are only available after the selection has 
-been applied, and so the same selection is also applied to the simulated data 
-(with the exception of the \ac{PID} requirements).
+been applied, and so the same selection is also applied to the simulation (with 
+the exception of the \ac{PID} requirements).
 Comparisons of an example set of variables used in the \DzToKpi\ and 
 \DpToKpipi\ selections are shown in 
 \cref{fig:prod:syst:mc:D0ToKpi,fig:prod:syst:mc:DpToKpipi}, integrated across 
@@ -281,7 +281,7 @@ within a decay mode only for neighbouring \pTy\ bins, and negligible between
 different modes.
 
 The relative uncertainty $\unc_{C}{\effpid}/\effpid$ is given in 
-\cref{tab:syst:pid:binning:D0ToKpi,tab:syst:pid:binning:DpToKpipi} for 
+\cref{tab:prod:syst:pid:binning:D0ToKpi,tab:prod:syst:pid:binning:DpToKpipi} for 
 \DzToKpi\ and \DpToKpipi.
 The distribution in $\effpid'$ is taken as the posterior \ac{PDF} for this 
 uncertainty in the \ac{MC} error propagation, translated such that the most 
@@ -345,7 +345,7 @@ and so the uncertainty is assumed to be fully correlated across them.
 
 The systematic uncertainty due to the choice of \ptotetanspd\ binning relative 
 to the measured cross-section value is given in 
-\cref{tab:syst:pid:binning:D0ToKpi,tab:syst:pid:binning:DpToKpipi} for 
+\cref{tab:prod:syst:pid:binning:D0ToKpi,tab:prod:syst:pid:binning:DpToKpipi} for 
 \DzToKpi\ and \DpToKpipi.
 
 \begin{figure}
@@ -609,7 +609,7 @@ prompt signal model.
 No alternative models for the background component are tested.
 
 The resulting relative systematic uncertainties are given in 
-\cref{tab:syst:fitting:D0ToKpi,tab:syst:fitting:DpToKpipi} for \DzToKpi\ and 
+\cref{tab:prod:syst:fitting:D0ToKpi,tab:prod:syst:fitting:DpToKpipi} for \DzToKpi\ and 
 \DpToKpipi.
 
 \section{Signal window}
@@ -626,7 +626,7 @@ The computation of the uncertainty on the signal window efficiency is given in
 \cref{chap:prod:effs:signal_window}.
 This is is propagated the cross-sections as the systematic uncertainty, 
 modelled as a normal distribution, and is given in 
-\cref{tab:syst:signal_window:D0ToKpi,tab:syst:signal_window:DpToKpipi} relative 
+\cref{tab:prod:syst:signal_window:D0ToKpi,tab:prod:syst:signal_window:DpToKpipi} relative 
 to the cross-section values for \DzToKpi\ and \DpToKpipi.
 
 \section{Correlations and summary}
@@ -655,7 +655,6 @@ measurements by multiplying or dividing the measurement sample vector by the
 sample vectors generated from the aforementioned \acp{PDF} assumed for each 
 uncertainty.
 
-% TODO most of these tables can be moved to appendices
 \begin{sidewaystable}
   \caption{%
     Systematic uncertainties expressed as fractions of the cross-section 
@@ -669,28 +668,6 @@ uncertainty.
   \centering
   \input{tables/production/systematics/summary}
 \end{sidewaystable}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
-    due to the finite size of the Monte Carlo sample used to assess the 
-    selection efficiency.
-  }
-  \label{tab:prod:syst:mc:stat:D0ToKpi}
-  \centering
-  \input{tables/production/systematics/D0ToKpi_mc_stat}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
-    due to the finite size of the Monte Carlo sample used to assess the 
-    selection efficiency.
-  }
-  \label{tab:prod:syst:mc:stat:DpToKpipi}
-  \centering
-  \input{tables/production/systematics/DpToKpipi_mc_stat}
-\end{table}
 
 \begin{table}
   \caption{%
@@ -711,110 +688,4 @@ uncertainty.
   \label{tab:prod:syst:mc:truth_matching}
   \centering
   \input{tables/production/systematics/All_mc_truth_stat}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
-    due to the finite size of the \ac{PID} calibration sample.
-  }
-  \label{tab:syst:pid:stat:D0ToKpi}
-  \centering
-  \input{tables/production/systematics/D0ToKpi_pid_stat}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
-    due to the finite size of the \ac{PID} calibration sample.
-  }
-  \label{tab:syst:pid:stat:DpToKpipi}
-  \centering
-  \input{tables/production/systematics/DpToKpipi_pid_stat}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
-    due to the choice of \ac{PID} calibration binning.
-  }
-  \label{tab:syst:pid:binning:D0ToKpi}
-  \centering
-  \input{tables/production/systematics/D0ToKpi_pid_binning}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
-    due to the choice of \ac{PID} calibration binning.
-  }
-  \label{tab:syst:pid:binning:DpToKpipi}
-  \centering
-  \input{tables/production/systematics/DpToKpipi_pid_binning}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
-    due to the finite calibration sample size, hadronic interaction 
-    uncertainty, and event multiplicity weighting in the tracking efficiency 
-    correction factor analysis.
-  }
-  \label{tab:prod:syst:tracking:D0ToKpi}
-  \centering
-  \input{tables/production/systematics/D0ToKpi_tracking}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
-    due to the finite calibration sample size, hadronic interaction 
-    uncertainty, and event multiplicity weighting in the tracking efficiency 
-    correction factor analysis.
-  }
-  \label{tab:prod:syst:tracking:DpToKpipi}
-  \centering
-  \input{tables/production/systematics/DpToKpipi_tracking}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
-    due to the arbitrary choice of fit model.
-  }
-  \label{tab:syst:fitting:D0ToKpi}
-  \centering
-  \input{tables/production/systematics/D0ToKpi_fit}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
-    due to the arbitrary choice of fit model.
-  }
-  \label{tab:syst:fitting:DpToKpipi}
-  \centering
-  \input{tables/production/systematics/DpToKpipi_fit}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDzero cross-section, in \PDzero \pTy\ bins, 
-    due to the statistical uncertainty parameters of the fit model used to 
-    compute the signal window fraction.
-  }
-  \label{tab:syst:signal_window:D0ToKpi}
-  \centering
-  \input{tables/production/systematics/D0ToKpi_signal_window}
-\end{table}
-
-\begin{table}
-  \caption{%
-    Relative uncertainty on the \PDplus cross-section, in \PDplus \pTy\ bins, 
-    due to the statistical uncertainty parameters of the fit model used to 
-    compute the signal window fraction.
-  }
-  \label{tab:syst:signal_window:DpToKpipi}
-  \centering
-  \input{tables/production/systematics/DpToKpipi_signal_window}
 \end{table}
