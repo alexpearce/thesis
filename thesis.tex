@@ -219,7 +219,10 @@ Word count: 0
 
 \backmatter
 
-\include{chapters/acronyms}
+% For some reason, acronyms don't work if this is an `include` and I use the
+% acronym package with `nolist` option
+% http://tex.stackexchange.com/a/172117/45857
+\input{chapters/acronyms}
 
 \bibliographystyle{thesis}
 \renewcommand{\bibname}{References}
