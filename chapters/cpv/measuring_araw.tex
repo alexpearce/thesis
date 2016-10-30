@@ -1,16 +1,16 @@
 \chapter{Measuring \texorpdfstring{\ARaw}{ARaw}}
 \label{chap:cpv:araw}
 
-In order to calculate \dACP, \ARaw must first be measured for each mode.
-This is the asymmetry in the positively- and negatively-charged \PLambdac\ 
-yields, as in \cref{eqn:cpv:introduction:araw}.
-The yields are measured with \chisq\ fits to the \PLambdac\ and \APLambdac\ 
-mass spectra, in a similar manner to the fit to the charge-combined sample 
+In order to calculate \dACP, \ARaw\ must first be measured for each mode.
+This is the asymmetry in the \PLambdac\ and \APLambdac\ yields, as in
+\cref{eqn:cpv:introduction:araw}.
+The yields are measured with \chisq\ fits to the \PLambdac\ and \APLambdac\
+mass spectra, in a similar manner to the fit to the charge-combined sample
 discussed in \cref{chap:cpv:prelim_fits}.
-The weights from the kinematic weighting, from 
-\cref{chap:cpv:kinematic_weighting}, and the phase space efficiency correction, 
-from \cref{chap:cpv:phsp}, are used in the fits such that the bin contents 
-$b_{i}$, to which to fit model is compared, are
+The weights from the kinematic weighting, from
+\cref{chap:cpv:kinematic_weighting}, and the phase space efficiency correction,
+from \cref{chap:cpv:phsp}, are used in the fits such that the bin contents
+$b_{i}$, to which to fit model is compared, is
 \begin{equation}
   b_{i} = \sum_{j = 1}^{N_{i}} \frac{%
     w_{j}(\pT^{\PLambdac}, \Eta^{\PLambdac},
@@ -20,49 +20,49 @@ $b_{i}$, to which to fit model is compared, are
   },
   \label{eqn:cpv:araw:total_weights}
 \end{equation}
-where $N_{i}$ is the number of candidate decays in the $i$th \phh\ mass bin, 
-$w_{j}$ is per-candidate kinematic weight for the $j$th candidate in the $i$th 
+where $N_{i}$ is the number of candidate decays in the $i$th \phh\ mass bin,
+$w_{j}$ is per-candidate kinematic weight for the $j$th candidate in the $i$th
 bin, and $\eff_{j}$ is the efficiency.
-Each weight is scaled by a factor $B = \sum_{i} b_{i}/\sum_{i} b_{i}^{2}$ for 
+Each weight is scaled by a factor $B = \sum_{i} b_{i}/\sum_{i} b_{i}^{2}$ for
 the reasons given in \cref{chap:cpv:kinematic_weighting:stats}.
-The variance on the bin contents $\unc{b_{i}}$ is given by the effective number 
+The variance on the bin contents $\unc{b_{i}}$ is given by the effective number
 of entries, as in \cref{eqn:cpv:kinematic_weighting:neff}
 \begin{equation}
   \unc{b_{i}}^{2} = \neff = B\sum_{i}^{N} b_{i}.
 \end{equation}
-For \ppipi\ the kinematic weights are those described in 
+For \ppipi\ the kinematic weights are those described in
 \cref{chap:cpv:kinematic_weighting}, whilst for \pKK\ they are unity.
 
-In an attempt reduce the effects of experimenter bias, the fitted central 
+In an attempt reduce the effects of experimenter bias, the fitted central
 values of \ARaw\ are blinded.
-To be able to assess the quality of the fit results without unblinding the 
+To be able to assess the quality of the fit results without unblinding the
 result, only the fit to \PLambdac\ data is inspected.
-For the \APLambdac data, only the pull distribution of the fit with respect to 
+For the \APLambdac\ data, only the pull distribution of the fit with respect to
 the data is inspected, to indicate the fit quality.
-The specific method used to blind the central value is discussed in 
+The specific method used to blind the central value is discussed in
 \cref{chap:cpv:araw:blinding}.
 
 \section{Simultaneous fit}
 \label{chap:cpv:araw:simultaneous_fit}
 
-Fits are performed simultaneously on the charge-separated \PLambdac\ and 
-\APLambdac\ samples, measuring \ARaw\ by including it as a parameter in the 
+Fits are performed simultaneously on the charge-separated \PLambdac\ and
+\APLambdac\ samples, measuring \ARaw\ by including it as a parameter in the
 fit.
-This is advantageous as it increases the statistical sensitivity of the 
-measurement, as all the data are considered at once, and the error analysis is 
+This is advantageous as it increases the statistical sensitivity of the
+measurement, as all the data are considered at once, and the error analysis is
 taken care of by the fitter.
 
-The fit model for each charge is created as a clone of a `master' \ac{PDF}, 
-whose signal and background components are identical to those described in 
+The fit model for each charge is created as a clone of a `master' \ac{PDF},
+whose signal and background components are identical to those described in
 \cref{chap:cpv:prelim_fits}.
-Before creating the two models, one per charge, it is specified which 
+Before creating the two models, one per charge, it is specified which
 parameters of the master \ac{PDF} are to become charge-specific.
-As each \PLambdac\ decay mode may interact differently with the detector than 
-those of the \APLambdac, the matter and antimatter states may have different 
+As each \PLambdac\ decay mode may interact differently with the detector than
+those of the \APLambdac, the matter and antimatter states may have different
 mass resolutions.
 This motivates the splitting of all of the signal model parameters.
-Likewise, the background composition can be different for the positively- and 
-negatively-charged final states, and so the background model parameter $a_{0}$ 
+Likewise, the background composition can be different for the positively- and
+negatively-charged final states, and so the background model parameter $a_{0}$
 is also split.
 The signal \ac{PDF}, $f_{+}$ for \PLambdac\ and $f_{-}$ for \APLambdac, is then
 \begin{equation}
@@ -74,9 +74,9 @@ and the corresponding background \ac{PDF} is
 \begin{equation}
   g_{\pm}(x) = 1 + a_{\pm,0}x,
 \end{equation}
-as in \cref{eqn:cpv:prelim_fits:sig_model} 
+as in \cref{eqn:cpv:prelim_fits:sig_model}
 and~\cref{eqn:cpv:prelim_fits:bkg_model}.
-The width parameters $\sigma_{\pm, 1}$ and  $\sigma_{\pm, 2}$ of the signal 
+The width parameters $\sigma_{\pm, 1}$ and  $\sigma_{\pm, 2}$ of the signal
 model are defined as in \cref{eqn:cpv:prelim_fits:sigma_def}.
 
 The total \ac{PDF} for each charge is
@@ -88,67 +88,67 @@ where the signal and background yields are parameterised as
   \nsigpm &= \frac{1}{2}\nsig(1 \pm \ARaw),\\
   \nbkgpm &= \frac{1}{2}\nbkg(1 \pm \ARawBg).
 \end{align}
-Here, \nsig\ and \nbkg\ are the signal and background yields for the 
+Here, \nsig\ and \nbkg\ are the signal and background yields for the
 \emph{combined} \PLambdac\ and \APLambdac\ sample.
-This parameterisation of the charge-specific yields permits $\ARaw$ to measured 
+This parameterisation of the charge-specific yields permits $\ARaw$ to measured
 directly from the fit.
 
-The fully selected data are used, with one simultaneous fit performed for each 
+The fully selected data are used, with one simultaneous fit performed for each
 year and magnet polarity sub-sample.
-The loss function is defined as a \chisq, which is minimised with \migrad\ and 
+The loss function is defined as a \chisq, which is minimised with \migrad\ and
 a covariance matrix is computed with \hesse~\cite{James:1975dr,James:1994vla}.
 
 \section{Blinding}
 \label{chap:cpv:araw:blinding}
 
 The blinding is done by fitting a variable as the \emph{transform} of \ARaw.
-The transformation itself can be adding some random offset to the central 
-value, or changing its order of magnitude, but it is applied in such a way as 
+The transformation itself can be adding some random offset to the central
+value, or changing its order of magnitude, but it is applied in such a way as
 to leave the uncertainty on the parameter estimate unchanged.
 Only the transformed value is reported, leaving the unblinded value hidden.
 
-This analysis applies a linear blinding offset, transforming the unblinded 
+This analysis applies a linear blinding offset, transforming the unblinded
 central value $x$ as
 \begin{equation}
   x' = x + \beta\xi,
 \end{equation}
-where $\xi$ is a number sampled from a normal distribution with mean zero and 
-unit width, and $\beta$ is a known scaling parameter, which is chosen to be 
+where $\xi$ is a number sampled from a normal distribution with mean zero and
+unit width, and $\beta$ is a known scaling parameter, which is chosen to be
 $0.25$.
-The number $\xi$ is chosen deterministically from a string in the fitting 
-program, such that the same input string always gives the same $\xi$, but in a 
+The number $\xi$ is chosen deterministically from a string in the fitting
+program, such that the same input string always gives the same $\xi$, but in a
 way that the smallest changes in the input change the output unpredictably.
-In this way, the string is effectively the seed for a random number generator, 
+In this way, the string is effectively the seed for a random number generator,
 and $\xi$ is the first number returned by the generator.
-Different strings are used for different modes, but are the same for the fits 
+Different strings are used for different modes, but are the same for the fits
 to the different data sub-samples.
-% The string used for the \pKK mode is \texttt{2ONNiFZLqk4yvv6ovBeg} and the 
+% The string used for the \pKK mode is \texttt{2ONNiFZLqk4yvv6ovBeg} and the
 % string used for the \ppipi mode is \texttt{4VjezpHK0wzlZ6qbeolq}.
 
-As the blinding offsets are different for each mode, the difference between 
+As the blinding offsets are different for each mode, the difference between
 $\ARaw(\pKK)$ and $\ARaw(\ppipi)$, that is \dACP, is also blinded.
-However, the difference between two blinded values of \dACP\ is equal to the 
+However, the difference between two blinded values of \dACP\ is equal to the
 difference between the unblinded values.
-This is useful for systematic studies, which will be described in 
+This is useful for systematic studies, which will be described in
 \cref{chap:cpv:syst}.
-Similarly, as the blinding parameters are the same for all data sub-samples, it 
-is still meaningful to compare blinded values of \ARaw\ and \dACP\ between them 
+Similarly, as the blinding parameters are the same for all data sub-samples, it
+is still meaningful to compare blinded values of \ARaw\ and \dACP\ between them
 to check for consistency, as the differences are not blinded.
 
-In addition to blinding the values of \ARaw\ and \dACP, the plots of the fits 
-to the \APLambdac\ data are blind (as comparing \PLambdac\ and \APLambdac\ fits 
-side-by-side would allow one to infer the size of the asymmetry), as are plots 
+In addition to blinding the values of \ARaw\ and \dACP, the plots of the fits
+to the \APLambdac\ data are blind (as comparing \PLambdac\ and \APLambdac\ fits
+side-by-side would allow one to infer the size of the asymmetry), as are plots
 of the data and model asymmetry in bins of \PLambdac\ mass.
-The pull plots and \chisq\ values are not blinded it the fit presentations as 
+The pull plots and \chisq\ values are not blinded it the fit presentations as
 they do not indicate the asymmetry value.
 
 \section{Fit results}
 \label{chap:cpv:araw:results}
 
-Fits to the \pKK\ and \ppipi\ 2012 magnet down data are shown in 
+Fits to the \pKK\ and \ppipi\ 2012 magnet down data are shown in
 \cref{fig:cpv:araw:fits:pKK,fig:cpv:araw:fits:ppipi}.
-The corresponding correlation matrices for the fits are given in 
-\cref{fig:cpv:araw:correlation}, and the parameter values are given in 
+The corresponding correlation matrices for the fits are given in
+\cref{fig:cpv:araw:correlation}, and the parameter values are given in
 \cref{tab:cpv:araw:params:pKK,tab:cpv:araw:params:ppipi}.
 
 \begin{figure}
@@ -169,16 +169,16 @@ The corresponding correlation matrices for the fits are given in
   \end{subfigure}
   \caption{%
     Results of the simultaneous fit to the \pKK\ 2012 magnet down dataset.
-    The difference between the \PLambdac\ data and model 
-    (\subref*{fig:cpv:araw:fits:pKK:Lcp}) and the \APLambdac\ data and model 
-    (\subref*{fig:cpv:araw:fits:pKK:Lcm}) is shown in the bottom 
+    The difference between the \PLambdac\ data and model
+    (\subref*{fig:cpv:araw:fits:pKK:Lcp}) and the \APLambdac\ data and model
+    (\subref*{fig:cpv:araw:fits:pKK:Lcm}) is shown in the bottom
     plot~(\subref*{fig:cpv:araw:fits:pKK:ARaw}).
     The full offline selection is applied.
-    The solid blue line is the total fit to the data in black points, and the 
-    dotted red and dashed blue lines are the background and signal components, 
+    The solid blue line is the total fit to the data in black points, and the
+    dotted red and dashed blue lines are the background and signal components,
     respectively.
-    Below each fit is a pull plot, showing the difference between the total fit 
-    model and the data in each bin, normalised by the Poisson uncertainty on 
+    Below each fit is a pull plot, showing the difference between the total fit
+    model and the data in each bin, normalised by the Poisson uncertainty on
     the number of entries in that bin.
   }
   \label{fig:cpv:araw:fits:pKK}
@@ -202,16 +202,16 @@ The corresponding correlation matrices for the fits are given in
   \end{subfigure}
   \caption{%
     Results of the simultaneous fit to the \ppipi\ 2012 magnet down dataset.
-    The difference between the \PLambdac\ data and model 
-    (\subref*{fig:cpv:araw:fits:ppipi:Lcp}) and the \APLambdac\ data and model 
-    (\subref*{fig:cpv:araw:fits:ppipi:Lcm}) is shown in the bottom 
+    The difference between the \PLambdac\ data and model
+    (\subref*{fig:cpv:araw:fits:ppipi:Lcp}) and the \APLambdac\ data and model
+    (\subref*{fig:cpv:araw:fits:ppipi:Lcm}) is shown in the bottom
     plot~(\subref*{fig:cpv:araw:fits:ppipi:ARaw}).
     The full offline selection is applied.
-    The solid blue line is the total fit to the data in black points, and the 
-    dotted red and dashed blue lines are the background and signal components, 
+    The solid blue line is the total fit to the data in black points, and the
+    dotted red and dashed blue lines are the background and signal components,
     respectively.
-    Below each fit is a pull plot, showing the difference between the total fit 
-    model and the data in each bin, normalised by the Poisson uncertainty on 
+    Below each fit is a pull plot, showing the difference between the total fit
+    model and the data in each bin, normalised by the Poisson uncertainty on
     the number of entries in that bin.
   }
   \label{fig:cpv:araw:fits:ppipi}
@@ -231,11 +231,11 @@ The corresponding correlation matrices for the fits are given in
     \end{subfigure}
   \end{center}
   \caption{%
-    Correlation matrices for the fit parameters used in the simultaneous fit to 
-    the \PLambdac\ and \APLambdac\ mass spectra in the fully selected 2012 
-    magnet down dataset for \pKK~(\subref*{fig:cpv:araw:correlation:pKK}) and 
+    Correlation matrices for the fit parameters used in the simultaneous fit to
+    the \PLambdac\ and \APLambdac\ mass spectra in the fully selected 2012
+    magnet down dataset for \pKK~(\subref*{fig:cpv:araw:correlation:pKK}) and
     \ppipi~(\subref*{fig:cpv:araw:correlation:ppipi}).
-    The corresponding fits are shown in 
+    The corresponding fits are shown in
     \cref{fig:cpv:araw:fits:pKK,fig:cpv:araw:fits:ppipi}.
   }
   \label{fig:cpv:araw:correlation}
@@ -244,7 +244,7 @@ The corresponding correlation matrices for the fits are given in
 \begin{table}
   \centering
   \caption{%
-    Model parameters as determined in the preliminary fit to the 2012 magnet 
+    Model parameters as determined in the preliminary fit to the 2012 magnet
     down subset of the \pKK\ data.
   }
   \label{tab:cpv:araw:params:pKK}
@@ -254,7 +254,7 @@ The corresponding correlation matrices for the fits are given in
 \begin{table}
   \centering
   \caption{%
-    Model parameters as determined in the preliminary fit to the 2012 magnet 
+    Model parameters as determined in the preliminary fit to the 2012 magnet
     down subset of the \ppipi\ data.
   }
   \label{tab:cpv:araw:params:ppipi}
@@ -264,44 +264,44 @@ The corresponding correlation matrices for the fits are given in
 \section{Validation}
 \label{chap:cpv:araw:validation}
 
-It has been shown in \cref{chap:cpv:prelim_fits:validation} that the 
-measurements of the signal and background yields in the fits to the 
+It has been shown in \cref{chap:cpv:prelim_fits:validation} that the
+measurements of the signal and background yields in the fits to the
 charge-combined data samples are not biased.
-It remains to validate the simultaneous fit that has been described in this 
+It remains to validate the simultaneous fit that has been described in this
 \lcnamecref{chap:cpv:araw}.
 This is done in using real data.
-Using real data, the fits are performed with the charge of the \PLambdac\ 
+Using real data, the fits are performed with the charge of the \PLambdac\
 candidate being randomly assigned.
 The true values of \ARaw\ and \ARawBg\ should then be zero.
-This checks for mistakes in the implementation of the fitter, and that the 
+This checks for mistakes in the implementation of the fitter, and that the
 uncertainty on those parameters is not under- or overestimated.
 
 \subsection{Null test}
 \label{chap:cpv:araw:validation:null}
 
-Fits as described in this \lcnamecref{chap:cpv:araw} are performed on real data 
-where the charge of the \PLambdac\ candidate is randomly assigned, with there 
-being an equal probability of any one decay being assigned a positive or a 
+Fits as described in this \lcnamecref{chap:cpv:araw} are performed on real data
+where the charge of the \PLambdac\ candidate is randomly assigned, with there
+being an equal probability of any one decay being assigned a positive or a
 negative charge.
-One thousand permutations of the charge assignments are tested for each mode 
-and data sub-sample, the fit is performed for each permutation and the value of 
+One thousand permutations of the charge assignments are tested for each mode
+and data sub-sample, the fit is performed for each permutation and the value of
 \ARaw\ is recorded.
-As with the studies described in \cref{chap:cpv:prelim_fits:validation}, the 
-pull distributions of \ARaw\ should have a width of one, and the unblinded 
+As with the studies described in \cref{chap:cpv:prelim_fits:validation}, the
+pull distributions of \ARaw\ should have a width of one, and the unblinded
 value should have a mean of zero.
 
-% As the true value of \ARaw\ is known when a set of random chosen signs is used, 
-% being zero, such a study could unblind the value of \ARaw, as an unbiased 
+% As the true value of \ARaw\ is known when a set of random chosen signs is used,
+% being zero, such a study could unblind the value of \ARaw, as an unbiased
 % fitter should measure \ARaw\ to be the value of the blinding offset.
-% To prevent this, the blinding string for each mode is changed, such that the 
+% To prevent this, the blinding string for each mode is changed, such that the
 % blinding offset for this study is different to that used in the nominal fits.
 
-The true charge of the \PLambdac\ candidates do not enter the fit, and so the 
+The true charge of the \PLambdac\ candidates do not enter the fit, and so the
 charge permutation experiments are performed without blinding.
-The results are shown in 
-\cref{fig:cpv:araw:validation:null:pKK,fig:cpv:araw:validation:null:ppipi} for 
+The results are shown in
+\cref{fig:cpv:araw:validation:null:pKK,fig:cpv:araw:validation:null:ppipi} for
 the 2012 magnet down \pKK\ and \ppipi\ data.
-The width of the pull distribution of \ARaw\ for both is consistent with unity, 
+The width of the pull distribution of \ARaw\ for both is consistent with unity,
 and the means are consistent with zero, indicating that the fit is unbiased.
 
 \begin{figure}
@@ -321,15 +321,15 @@ and the means are consistent with zero, indicating that the fit is unbiased.
     \label{fig:cpv:araw:validation:null:pKK:pulls}
   \end{subfigure}
   \caption{%
-    Validation of the simultaneous fits to the \PLambdac\ and \APLambdac\ mass 
-    spectra in the 2012 magnet down \pKK\ dataset, using randomly assigned 
+    Validation of the simultaneous fits to the \PLambdac\ and \APLambdac\ mass
+    spectra in the 2012 magnet down \pKK\ dataset, using randomly assigned
     \PLambdac\ charges.
-    The plots shows the distribution of the central values 
-    (\subref*{fig:cpv:araw:validation:null:pKK:values}), uncertainties 
-    (\subref*{fig:cpv:araw:validation:null:pKK:errors}), and pulls 
-    (\subref*{fig:cpv:araw:validation:null:pKK:pulls}) of the \ARaw\ parameter, 
+    The plots shows the distribution of the central values
+    (\subref*{fig:cpv:araw:validation:null:pKK:values}), uncertainties
+    (\subref*{fig:cpv:araw:validation:null:pKK:errors}), and pulls
+    (\subref*{fig:cpv:araw:validation:null:pKK:pulls}) of the \ARaw\ parameter,
     assuming that the true value is zero.
-    The pull distribution is overlaid with a fit of a Gaussian distribution 
+    The pull distribution is overlaid with a fit of a Gaussian distribution
     with mean $\mu$ and width $\sigma$.
   }
   \label{fig:cpv:araw:validation:null:pKK}
@@ -352,15 +352,15 @@ and the means are consistent with zero, indicating that the fit is unbiased.
     \label{fig:cpv:araw:validation:null:ppipi:pulls}
   \end{subfigure}
   \caption{%
-    Validation of the simultaneous fits to the \PLambdac\ and \APLambdac\ mass 
-    spectra in the 2012 magnet down \ppipi\ dataset, using randomly assigned 
+    Validation of the simultaneous fits to the \PLambdac\ and \APLambdac\ mass
+    spectra in the 2012 magnet down \ppipi\ dataset, using randomly assigned
     \PLambdac\ charges.
-    The plots shows the distribution of the central values 
-    (\subref*{fig:cpv:araw:validation:null:pKK:values}), uncertainties 
-    (\subref*{fig:cpv:araw:validation:null:pKK:errors}), and pulls 
-    (\subref*{fig:cpv:araw:validation:null:pKK:pulls}) of the \ARaw\ parameter, 
+    The plots shows the distribution of the central values
+    (\subref*{fig:cpv:araw:validation:null:pKK:values}), uncertainties
+    (\subref*{fig:cpv:araw:validation:null:pKK:errors}), and pulls
+    (\subref*{fig:cpv:araw:validation:null:pKK:pulls}) of the \ARaw\ parameter,
     assuming that the true value is zero.
-    The pull distribution is overlaid with a fit of a Gaussian distribution 
+    The pull distribution is overlaid with a fit of a Gaussian distribution
     with mean $\mu$ and width $\sigma$.
   }
   \label{fig:cpv:araw:validation:null:ppipi}

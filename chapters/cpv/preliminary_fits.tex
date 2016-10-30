@@ -1,114 +1,114 @@
 \chapter{Preliminary fits}
 \label{chap:cpv:prelim_fits}
 
-The yield extraction technique used to measure the signal yields entering the 
-computation of \ARaw, shown in \cref{eqn:cpv:introduction:araw}, is described 
+The yield extraction technique used to measure the signal yields entering the
+computation of \ARaw, shown in \cref{eqn:cpv:introduction:araw}, is described
 in \cref{chap:cpv:araw}.
-Before then, it is useful to fit to the charge-combined data in order to 
-perform studies that require background subtraction, selection efficiency 
+Before then, it is useful to fit to the charge-combined data in order to
+perform studies that require background subtraction, selection efficiency
 estimates, and the like.
-This \lcnamecref{chap:cpv:prelim_fits} describes the binned \chisq\ fit to the 
+This \lcnamecref{chap:cpv:prelim_fits} describes the binned \chisq\ fit to the
 \phh\ invariant mass spectrum that is used for such studies.
 
 \section{Input data and shape parameterisation}
 \label{chap:cpv:prelim_fits:data_pdfs}
 
-The data entering the fit depends on the study that the information is needed 
+The data entering the fit depends on the study that the information is needed
 for.
-For example, the study of the optimal \ac{PID} requirements described in 
-\cref{chap:cpv:selection:offline} requires a mass fit before the offline 
+For example, the study of the optimal \ac{PID} requirements described in
+\cref{chap:cpv:selection:offline} requires a mass fit before the offline
 \ac{PID} requirements are applied.
 In all cases, the models and general fit procedure are the same.
 
-The mass spectrum of the three-body \phh\ system is used to discriminate 
+The mass spectrum of the three-body \phh\ system is used to discriminate
 between signal and background.
-The following will list the functional forms used in the fit to describe the 
+The following will list the functional forms used in the fit to describe the
 these components of the data.
-In all cases, the normalisation factors are omitted from the definitions, and 
+In all cases, the normalisation factors are omitted from the definitions, and
 the variable $x$ represents the \PLambdac\ mass.
 
-For both the \pKK\ and \ppipi\ samples, the signal model $f$ is the linear sum 
-of two normal distributions $G$ sharing a common mean $\mu$ but with different 
+For both the \pKK\ and \ppipi\ samples, the signal model $f$ is the linear sum
+of two normal distributions $G$ sharing a common mean $\mu$ but with different
 widths $\sigma_{1}$ and $\sigma_{2}$, defined as
 \begin{equation}
   f(x; \mu, w, \alpha) = \alpha{}G(x; \mu, \alpha{w}) +
     (1 - \alpha)G(x; \mu, \frac{w}{\alpha}).
   \label{eqn:cpv:prelim_fits:sig_model}
 \end{equation}
-The parameter $\alpha$ describes the `relative strength' of each normal 
-distribution and is bounded in the range $[0, 1]$, and the widths $\sigma_{1}$ 
+The parameter $\alpha$ describes the `relative strength' of each normal
+distribution and is bounded in the range $[0, 1]$, and the widths $\sigma_{1}$
   and $\sigma_{2}$ have been parameterised as
 \begin{equation}
   \sigma_{1} = \alpha{w},\ \text{and}\ \sigma_{2} = \frac{w}{\alpha}.
   \label{eqn:cpv:prelim_fits:sigma_def}
 \end{equation}
-This enforces the relation $\sigma_{1} \leq \sigma_{2}$, which is useful to 
-know when trying to reason about the fitted values of $\alpha$, and was 
-observed to increase the stability of the fit compared to having free, 
+This enforces the relation $\sigma_{1} \leq \sigma_{2}$, which is useful to
+know when trying to reason about the fitted values of $\alpha$, and was
+observed to increase the stability of the fit compared to having free,
 independent widths $\sigma_{1}$ and $\sigma_{2}$.
-For both modes, the background model $g$ is a first-order polynomial with 
+For both modes, the background model $g$ is a first-order polynomial with
 coefficient $a_{0}$
 \begin{equation}
   g(x) = 1 + a_{0}x.
-  \label{eqn:cpv:prelim_fits:bkg_model}.
+  \label{eqn:cpv:prelim_fits:bkg_model}
 \end{equation}
-The signal and background models are combined as a linear sum to form a total 
-function $h$, where each component is weighted by their respective yields 
+The signal and background models are combined as a linear sum to form a total
+function $h$, where each component is weighted by their respective yields
 \nsig\ and \nbkg.
 The \chisq\ fit is performed on the data in the range
 \begin{equation}
-  2230 < m(\PLambdac) < \SI{2350}{\GeV},
+  2230 < m(\PLambdac) < \SI{2350}{\GeVcc},
 \end{equation}
-with bins of width \SI{1}{\MeV}.
+with bins of width \SI{1}{\MeVcc}.
 
-Once a fit has converged and the associated covariance matrix is 
-positive-definite, sWeights~\cite{Pivk:2004ty} are computed and are attached to 
+Once a fit has converged and the associated covariance matrix is
+positive-definite, sWeights~\cite{Pivk:2004ty} are computed and are attached to
 each candidate.
-This allows for the statistical subtraction of either the signal or the 
-background component in bins of some variable that is not correlated with the 
+This allows for the statistical subtraction of either the signal or the
+background component in bins of some variable that is not correlated with the
 \PLambdac\ mass.
 
-Fits to the fully selected 2012 magnet down dataset for the \pKK\ and \ppipi\ 
+Fits to the fully selected 2012 magnet down dataset for the \pKK\ and \ppipi\
 modes are given in \cref{fig:cpv:prelim_fits:full}.
-A good description of the data is seen, and this is representative of the fit 
+A good description of the data is seen, and this is representative of the fit
 quality in all data sub-samples.
-Tables of signal and background yields measured in the preliminary fit are 
-given for each fully selected subset of the data for \pKK\ in 
-\cref{tab:cpv:prelim_fits:yields:pKK} and for \ppipi\ in 
+Tables of signal and background yields measured in the preliminary fit are
+given for each fully selected subset of the data for \pKK\ in
+\cref{tab:cpv:prelim_fits:yields:pKK} and for \ppipi\ in
 \cref{tab:cpv:prelim_fits:yields:ppipi}.
-Also given are the number of signal candidates per unit of integrated 
+Also given are the number of signal candidates per unit of integrated
 luminosity $\nsig/\intlumi$.
 
 \section{Validation}
 \label{chap:cpv:prelim_fits:validation}
 
-To evaluate the bias of the fitter and reliability of the uncertainties, 
-pseudo-experiments are performed by generating \ac{MC} data from the fitted 
+To evaluate the bias of the fitter and reliability of the uncertainties,
+pseudo-experiments are performed by generating \ac{MC} data from the fitted
 \ac{PDF}.
-One thousand pseudo-experiments are run for each mode and for each data 
+One thousand pseudo-experiments are run for each mode and for each data
 sub-sample.
-The parameter values of the generating \acp{PDF}, from which data points are 
-drawn, are the same as those found in the fits to the fully selected data, 
+The parameter values of the generating \acp{PDF}, from which data points are
+drawn, are the same as those found in the fits to the fully selected data,
 except for the values of yield parameters.
-Each yield parameter value for each pseudo-experiment is drawn from a Poisson 
-distribution whose mean is set to the value of the yield found in the fits to 
+Each yield parameter value for each pseudo-experiment is drawn from a Poisson
+distribution whose mean is set to the value of the yield found in the fits to
 the data~\cite{Karbach:2012vg}.
 
-For each pseudo-experiment, the fitted parameter value and the uncertainty on 
-that fit are recorded, and a pull value $p$ is computed as the difference 
-between the fitted value $v'$ and the true generating value $v$, divided by the 
+For each pseudo-experiment, the fitted parameter value and the uncertainty on
+that fit are recorded, and a pull value $p$ is computed as the difference
+between the fitted value $v'$ and the true generating value $v$, divided by the
 parameter value uncertainty $\unc{v}$
 \begin{equation}
   p = \frac{v - v'}{\unc{v}}.
 \end{equation}
-The true value for each yield parameter is taken to be the mean value of the 
+The true value for each yield parameter is taken to be the mean value of the
 Poisson distribution from which the generating value is drawn.
-An unbiased fitter with correct uncertainty coverage should have a distribution 
+An unbiased fitter with correct uncertainty coverage should have a distribution
 of pull values drawn from a unit Gaussian.
 
-The results of the pseudo-experiments are shown in 
-\cref{fig:cpv:prelim_fits:validation:pKK} and 
-\cref{fig:cpv:prelim_fits:validation:ppipi} for the 2012 magnet down \pKK\ and 
+The results of the pseudo-experiments are shown in
+\cref{fig:cpv:prelim_fits:validation:pKK} and
+\cref{fig:cpv:prelim_fits:validation:ppipi} for the 2012 magnet down \pKK\ and
 \ppipi\ data.
 It is seen that the signal yield parameter is unbiased.
 
@@ -124,15 +124,15 @@ It is seen that the signal yield parameter is unbiased.
     \label{fig:cpv:prelim_fits:full:ppipi}
   \end{subfigure}
   \caption{%
-    Fits to the \PLambdac\ mass spectrum in the 2012 magnet down dataset for 
-    \pKK~(\subref*{fig:cpv:prelim_fits:full:pKK}) and 
+    Fits to the \PLambdac\ mass spectrum in the 2012 magnet down dataset for
+    \pKK~(\subref*{fig:cpv:prelim_fits:full:pKK}) and
     \ppipi~(\subref*{fig:cpv:prelim_fits:full:ppipi}).
     The full offline selection is applied.
-    The solid blue line is the total fit to the data in black points, and the 
-    dotted red and dashed blue lines are the background and signal components, 
+    The solid blue line is the total fit to the data in black points, and the
+    dotted red and dashed blue lines are the background and signal components,
     respectively.
-    Below each fit is a pull plot, showing the difference between the total fit 
-    model and the data in each bin, normalised by the Poisson uncertainty on 
+    Below each fit is a pull plot, showing the difference between the total fit
+    model and the data in each bin, normalised by the Poisson uncertainty on
     the number of entries in that bin.
   }
   \label{fig:cpv:prelim_fits:full}
@@ -141,7 +141,7 @@ It is seen that the signal yield parameter is unbiased.
 \begin{table}
   \centering
   \caption{%
-    Signal and background yields measured in the preliminary fit for each fully 
+    Signal and background yields measured in the preliminary fit for each fully
     selected subset of the \pKK\ data.
   }
   \label{tab:cpv:prelim_fits:yields:pKK}
@@ -151,7 +151,7 @@ It is seen that the signal yield parameter is unbiased.
 \begin{table}
   \centering
   \caption{%
-    Signal and background yields measured in the preliminary fit for each fully 
+    Signal and background yields measured in the preliminary fit for each fully
     selected subset of the \ppipi\ data.
   }
   \label{tab:cpv:prelim_fits:yields:ppipi}
@@ -161,10 +161,10 @@ It is seen that the signal yield parameter is unbiased.
 \begin{figure}
   \includegraphics[width=\textwidth]{cpv/preliminary_fits/fits-unweighted_no-simultaneous/LcTopKK_2012_MagDown_pulls.pdf}
   \caption{%
-    Validation of the fits to the \PLambdac\ mass spectrum in the 
+    Validation of the fits to the \PLambdac\ mass spectrum in the
     charge-combined 2012 magnet down \pKK\ dataset.
-    Each plot shows the distribution of the pull values for a single fit 
-    parameter, indicated in the legend, along with a fit of a Gaussian 
+    Each plot shows the distribution of the pull values for a single fit
+    parameter, indicated in the legend, along with a fit of a Gaussian
     distribution with mean $\mu$ and width $\sigma$.
   }
   \label{fig:cpv:prelim_fits:validation:pKK}
@@ -173,10 +173,10 @@ It is seen that the signal yield parameter is unbiased.
 \begin{figure}
   \includegraphics[width=\textwidth]{cpv/preliminary_fits/fits-unweighted_no-simultaneous/LcToppipi_2012_MagDown_pulls.pdf}
   \caption{%
-    Validation of the fits to the \PLambdac\ mass spectrum in the 
+    Validation of the fits to the \PLambdac\ mass spectrum in the
     charge-combined 2012 magnet down \ppipi\ dataset.
-    Each plot shows the distribution of the pull values for a single fit 
-    parameter, indicated in the legend, along with a fit of a Gaussian 
+    Each plot shows the distribution of the pull values for a single fit
+    parameter, indicated in the legend, along with a fit of a Gaussian
     distribution with mean $\mu$ and width $\sigma$.
   }
   \label{fig:cpv:prelim_fits:validation:ppipi}

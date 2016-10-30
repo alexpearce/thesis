@@ -4,9 +4,9 @@
 Signal charm mesons can be distinguished from combinatorial background in the 
 invariant mass distribution, as shown in \cref{fig:prod:sel:D0ToKpi:offline} 
 for example.
-However, the contributions from prompt and secondary charm are identical in 
-this distribution, and so another distribution must be used to distinguish 
-between the two sources of charm decays.
+However, the contributions from prompt and secondary charm are identical in the 
+invariant mass, and so another distribution must be used to distinguish between 
+the two sources of charm decays.
 
 This analysis uses the logarithm of the \chisq\ of the \acl{IP}, \lnipchisq, to 
 obtain the prompt charm yields.
@@ -20,21 +20,20 @@ extended maximum likelihood fit to the \lnipchisq\ distribution.
 The prompt and secondary models in this fit are described analytically as 
 peaking functions.
 The combinatorial background is described by a non-parametric model taken from 
-the data outside the signal peak in the \emph{mass} distribution.
+the data outside the signal peak in the mass distribution.
 This background model is normalised in the \lnipchisq\ fit to the number of 
 combinatorial background candidates in a signal window defined in the mass 
 distribution, measured in a fit to the charm hadron mass spectrum.
 
 For all cases but the \PDstarp\ measurement, it is the mass of the charm hadron 
 that is used to discriminate all signal from combinatorial background.
-For the \PDstarp\ measurement, the delta mass distribution, defined as the 
-difference \deltam\ between the reconstructed \PDstarp\ mass and the 
-reconstructed \PDzero mass
+For the \PDstarp\ measurement, the delta mass distribution is used instead, 
+defined as the difference \deltam\ between the reconstructed \PDstarp\ mass and 
+the reconstructed \PDzero mass
 \begin{equation}
-  \deltam = m(\PKminus\Ppiplus\Ppiplussoft) - m(\PKminus\Ppiplus),
+  \deltam = m(\PKminus\Ppiplus\Ppiplussoft) - m(\PKminus\Ppiplus).
   \label{eqn:prod:fitting:delta_mass}
 \end{equation}
-is used instead.
 This has a nominal value of \SI{145.4}{\MeVcc}~\cite{PDG2014}.
 The narrower signal peak allows for a better signal-to-background ratio.
 
@@ -60,14 +59,14 @@ each weighted by the respective yield $N_{s}$
 
 For every mass fit, the background PDF $f_{\textnormal{Bkg.}}(m)$ is taken to 
 be a first-order polynomial, and the signal PDF $f_{\textnormal{Sig.}}(m)$ is 
-dependent on the charm hadron candidate, given in 
+dependent on the charm hadron candidate, with details given in 
 Section~\ref{chap:prod:fitting:details}.
-The combinatorial and random soft pion background in the \deltam\ fits is 
-modelled as an empirical threshold function of the (un-normalised) form
+The combinatorial and random soft pion background in the \deltam\ fits are 
+modelled as a single empirical threshold function of the (un-normalised) form
 \begin{equation}
   % (dm - dm0)^A * exp(B*dm)
   % The exponential factor has been omitted, as we just set B = 0
-  R(x; \deltam_{0}, A, B) = {(x - \deltam_{0})}^A,
+  R(x; \deltam_{0}, A) = {(x - \deltam_{0})}^A,
 \end{equation}
 where $\deltam_{0}$ is the threshold value, fixed to the charged pion rest mass 
 $m_{\Ppipm} = \SI{139.57}{\MeVcc}$~\cite{PDG2014}.
@@ -89,9 +88,9 @@ created from a histogram of the \lnipchisq\ distribution in the lower and upper
 sidebands of the reconstructed charm hadron mass.
 In the case of the \PDstarp measurements, the data in the upper sideband of the 
 \deltam\ distribution are used instead.
-This approach assumes that the \lnipchisq\ shape in the signal region is the 
-same as that in the sidebands, that is that the mass and \lnipchisq\ are 
-uncorrelated in the background sample.
+This approach assumes that the mass and \lnipchisq\ are uncorrelated in the 
+background sample, such that the \lnipchisq\ shape in the signal region is the 
+same as that in the sidebands.
 
 The signal region in each long-lived charm hadron mass distribution is defined 
 as a \SI{40}{\MeVcc}-wide window centred on the nominal rest mass of the given 
@@ -217,8 +216,8 @@ tail on one side, defined (un-normalised) as
   C(x; \mu, \sigma, \alpha, n) = \begin{cases}
     e^{-\frac{{(x - \mu)}^{2}}{2\sigma^{2}}}                          & \frac{x - \mu}{\sigma} > -\alpha, \\
     e^{-\frac{|\alpha|^{2}}{2}}
-      {(\frac{n}{|\alpha|})}^{n}
-      {(\frac{n}{|\alpha|} - |\alpha| - \frac{x - \mu}{\sigma})}^{-n} & \frac{x - \mu}{\sigma} \leq -\alpha,
+      {\left(\frac{n}{|\alpha|}\right)}^{n}
+      {\left(\frac{n}{|\alpha|} - |\alpha| - \frac{x - \mu}{\sigma}\right)}^{-n} & \frac{x - \mu}{\sigma} \leq -\alpha,
   \end{cases}
   \label{eqn:prod:fitting:crystal_ball}
 \end{equation}
@@ -476,7 +475,7 @@ fit does not satisfy $N_{i} > 3\sigma_{N_{i}}$.
   \end{subfigure}
   \caption{%
     Distributions for fully selected \DzToKpi\ candidates: \PDzero\ invariant 
-    mass (\subref*{fig:prod:fitting:D0ToKpi:mass}); and \PDzero\ \lnipchisq\ 
+    mass (\subref*{fig:prod:fitting:D0ToKpi:mass}) and \PDzero\ \lnipchisq\ 
     (\subref*{fig:prod:fitting:D0ToKpi:ipchisq}) for a mass window of 
     $\pm\SI{20}{\MeVcc}$ around the nominal \PDzero mass.
     The sum of the simultaneous likelihood fits in each \pTy\ bin is shown, 
@@ -500,7 +499,7 @@ fit does not satisfy $N_{i} > 3\sigma_{N_{i}}$.
   \end{subfigure}
   \caption{%
     Distributions for fully selected \DpToKpipi\ candidates: \PDplus\ invariant 
-    mass (\subref*{fig:prod:fitting:DpToKpipi:mass}); and \PDplus\ \lnipchisq\ 
+    mass (\subref*{fig:prod:fitting:DpToKpipi:mass}) and \PDplus\ \lnipchisq\ 
     (\subref*{fig:prod:fitting:DpToKpipi:ipchisq}) for a mass window of 
     $\pm\SI{20}{\MeVcc}$ around the nominal \PDplus mass.
     The sum of the simultaneous likelihood fits in each \pTy\ bin is shown, 
@@ -524,7 +523,7 @@ fit does not satisfy $N_{i} > 3\sigma_{N_{i}}$.
   \end{subfigure}
   \caption{%
     Distributions for fully selected \DspTophipi\ candidates: \PDsplus\ 
-    invariant mass (\subref*{fig:prod:fitting:DpToKpipi:mass}); and \PDsplus\ 
+    invariant mass (\subref*{fig:prod:fitting:DpToKpipi:mass}) and \PDsplus\ 
     \lnipchisq\ (\subref*{fig:prod:fitting:DpToKpipi:ipchisq}) for a mass 
     window of $\pm\SI{20}{\MeVcc}$ around the nominal \PDsplus mass.
     The sum of the simultaneous likelihood fits in each \pTy\ bin is shown, 
@@ -560,7 +559,7 @@ fit does not satisfy $N_{i} > 3\sigma_{N_{i}}$.
     a mass window of $\pm\SI{20}{\MeVcc}$ around the nominal \PDzero mass; and 
     \PDzero\ \lnipchisq\ (\subref*{fig:prod:fitting:DstToD0pi_D0ToKpi:ipchisq}) 
     with an additional mass window of $\pm\SI{3}{\MeVcc}$ around the nominal 
-    \PDstarp-\PDzero\ mass difference.
+    \deltam\ value.
     The sum of the simultaneous likelihood fits in each \pTy\ bin is shown, 
     with components as indicated in the legends.
   }

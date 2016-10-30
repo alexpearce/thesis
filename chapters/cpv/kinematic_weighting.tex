@@ -2,85 +2,85 @@
 \label{chap:cpv:kinematic_weighting}
 
 For the assumptions in \cref{eqn:cpv:theory:dacp} to hold, the
-kinematics of the particles contributing to the background asymmetries must be 
+kinematics of the particles contributing to the background asymmetries must be
 equal between the \pKK\ and \ppipi\ final states.
-These are the kinematics of the \PLambdab, the muon from the \PLambdab, and the 
+These are the kinematics of the \PLambdab, the muon from the \PLambdab, and the
 proton from the \PLambdac.
-Within a particular \phh\ final state, it must also be the case that the \Php\ 
-and \Phm\ kinematics are equal in order that $\ADf(f)$ only contains 
+Within a particular \phh\ final state, it must also be the case that the \Php\
+and \Phm\ kinematics are equal in order that $\ADf(f)$ only contains
 contributions from the proton detection asymmetry $\AD(\Pproton)$.
-A comparison of these distributions between the 2012 magnet down \pKK\ and 
-\ppipi\ datasets is given in 
+A comparison of these distributions between the 2012 magnet down \pKK\ and
+\ppipi\ datasets is given in
 \cref{fig:cpv:kinematic_weighting:pre:Lb,fig:cpv:kinematic_weighting:pre:Lb_mu,fig:cpv:kinematic_weighting:pre:Lc,fig:cpv:kinematic_weighting:pre:Lc_p,fig:cpv:kinematic_weighting:pre:pKK_h1h2,fig:cpv:kinematic_weighting:pre:ppipi_h1h2}.
-The signal distributions are shown, where the contents of each bin is defined 
-as the sum of signal sWeights within that bin, as computed from the result of 
-the mass fit to the charge-combined samples described in 
+The signal distributions are shown, where the contents of each bin is defined
+as the sum of signal sWeights within that bin, as computed from the result of
+the mass fit to the charge-combined samples described in
 \cref{chap:cpv:prelim_fits}.
-The correlation of the variables with the \PLambdac\ mass is seen to be small, 
+The correlation of the variables with the \PLambdac\ mass is seen to be small,
 with a correlation coefficient less than \SI{2}{\percent} for all variables.
-Only the muon kinematics across the modes and the \hmhp\ kinematics within the 
+Only the muon kinematics across the modes and the \hmhp\ kinematics within the
 modes agree, and so a weighting is necessary.
 
-A \acf{BDT} is used to equalise the relevant particle kinematics between the 
+A \acf{BDT} is used to equalise the relevant particle kinematics between the
 two modes.
-This is an uncommon technique in physics analyses, with ratios of 
-multi-dimensional histograms being used more often, and so it will be briefly 
+This is an uncommon technique in physics analyses, with ratios of
+multi-dimensional histograms being used more often, and so it will be briefly
 summarised in the following.
-(An introduction to decisions trees and boosting is presented in 
+(An introduction to decisions trees and boosting is presented in
 \cref{chap:decision_trees}.)
-The creation of the specific models using for weighting will then be presented, 
+The creation of the specific models using for weighting will then be presented,
 followed by a discussion on weighting validation.
 
 \section{Weighting with decision trees}
 \label{chap:cpv:kinematic_weighting:bdt_method}
 
-It is common in \acl{HEP} to want to be able to bring two distributions into 
-agreement, as is the case in this analysis where particle kinematics should be 
+It is common in \acl{HEP} to want to be able to bring two distributions into
+agreement, as is the case in this analysis where particle kinematics should be
 equal between the \pKK\ and \ppipi\ data.
-Call one possibly multi-dimensional distribution the \emph{target} $f_{t}$ and 
+Call one possibly multi-dimensional distribution the \emph{target} $f_{t}$ and
 the other the \emph{original} distribution $f_{o}$.
-To transform $f_{o}$ to have the same form as $f_{t}$, there is some 
+To transform $f_{o}$ to have the same form as $f_{t}$, there is some
 transformation function $W$
 \begin{equation}
   f_{t}(x) = W(x)f_{o}(x),
 \end{equation}
 where $x$ is a possibly multi-dimensional parameter.
-As the true distributions of $f_{t}$ and $f_{o}$ are not known in the data, 
-they are approximated as histograms, partitioning the data in $x$ and counting 
+As the true distributions of $f_{t}$ and $f_{o}$ are not known in the data,
+they are approximated as histograms, partitioning the data in $x$ and counting
 the number of events that fall in each bin.
 The transformation function is quantised as $w$ in bins, where in the $i$th bin
 \begin{equation}
   f_{t}(x_{i}) = w(x_{i})f_{o}(x_{i}),
 \end{equation}
-and where $f_{t(o)}(x_{i})$ is the count of the target (original) distribution 
+and where $f_{t(o)}(x_{i})$ is the count of the target (original) distribution
 in the $i$th bin.
-The histogram of $f_{o}$ can be transformed to that of $f_{t}$ by computing the 
+The histogram of $f_{o}$ can be transformed to that of $f_{t}$ by computing the
 per-bin \emph{weights}
 \begin{equation}
   w(x_{i}) = \frac{f_{t}(x_{i})}{f_{o}(x_{i})}.
 \end{equation}
 This is valid assuming there are no bins where $f_{o}(x_{i}) = 0$.
 
-To model the true \aclp{PDF} in $x$ as closely as possible, the histogram must 
+To model the true \aclp{PDF} in $x$ as closely as possible, the histogram must
 have a fine enough binning that all structures are resolved.
-Specifically, as in the determination of the \ac{PID} efficiency in 
-\cref{chap:prod:effs:pid}, the binning must be fine enough such that difference 
-between the true \acp{PDF} of the two distribution within any given bin are 
+Specifically, as in the determination of the \ac{PID} efficiency in
+\cref{chap:prod:effs:pid}, the binning must be fine enough such that difference
+between the true \acp{PDF} of the two distribution within any given bin are
 small.
-This must be balanced with the limited statistical precision available in each 
-bin: too fine a binning will result in the original distribution being weighted 
-to match the statistical fluctuations in the target, rather than the physical 
+This must be balanced with the limited statistical precision available in each
+bin: too fine a binning will result in the original distribution being weighted
+to match the statistical fluctuations in the target, rather than the physical
 features.
-Limited sample sizes become particularly problematic for higher-dimensional 
-weighting, when even 10 equally spaced bins per dimension in a 
+Limited sample sizes become particularly problematic for higher-dimensional
+weighting, when even 10 equally spaced bins per dimension in a
 three-dimensional binning requires $1,000$ bins.
-Given physical distributions such as momentum and pseudorapidity, which have 
-long tails, it can be difficult to invent a binning that avoids sparsely 
-populated or empty bins whilst still accounting for differences in the 
+Given physical distributions such as momentum and pseudorapidity, which have
+long tails, it can be difficult to invent a binning that avoids sparsely
+populated or empty bins whilst still accounting for differences in the
 distributions.
 
-To overcome the limitations of histogram-based weighting, this analysis defers 
-the computation of the per-event weights $w_{i}$ to a decision tree with 
+To overcome the limitations of histogram-based weighting, this analysis defers
+the computation of the per-event weights $w_{i}$ to a decision tree with
 gradient boosting~\cite{Rogozhnikov:2016bdp}.
 The classifier is trained with the loss function
 \begin{equation}
@@ -90,162 +90,162 @@ The classifier is trained with the loss function
     w_{l,o} + w_{l,t}
   },
 \end{equation}
-where $w_{l,t(o)}$ is the sum of target (original) weights in the $l$th leaf 
+where $w_{l,t(o)}$ is the sum of target (original) weights in the $l$th leaf
 node of the regression tree.
-For the initial iteration, and an unweighted set of training events, this is 
+For the initial iteration, and an unweighted set of training events, this is
 equal to the number of target (original) events in the leaf node.
-This metric has the tree split the samples into regions where the differences 
-between the sample sizes is maximal, such that the classifier focuses on 
+This metric has the tree split the samples into regions where the differences
+between the sample sizes is maximal, such that the classifier focuses on
 weighting the entries in those regions.
 Predictions $p_{l}$ within a leaf are computed as
 \begin{equation}
   p_{l} = \log{\frac{w_{l,t}}{w_{l,o}}}.
 \end{equation}
-At the end of the $i$th iteration, each event from the `original' sample is 
-weighted by $w_{i} = w_{i - 1}e^{p_{l}}$, where $l$ is the leaf node the event 
+At the end of the $i$th iteration, each event from the `original' sample is
+weighted by $w_{i} = w_{i - 1}e^{p_{l}}$, where $l$ is the leaf node the event
 falls in.
 The target distribution is assigned unit weights $w_{i} = w_{0}$.
-This weighting has the same effect as the weighting in the \adaboost\ 
-algorithm, increasing the importance of events in the original distribution 
+This weighting has the same effect as the weighting in the \adaboost\
+algorithm, increasing the importance of events in the original distribution
 that are in regions with a large original/target difference.
 
-The actual weighting of events is identical to that in the histogram weighting: 
+The actual weighting of events is identical to that in the histogram weighting:
 it is the ratio of target to original events in some region.
-The use of gradient boosting allows for a more intelligent way of finding the 
-`bins' in which the weights are computed, and iteratively improves the weights 
+The use of gradient boosting allows for a more intelligent way of finding the
+`bins' in which the weights are computed, and iteratively improves the weights
 based on that method.
 
 \section{Evaluation}
 \label{chap:cpv:kinematic_weighting:evaluation}
 
-The decision tree with gradient boosting is trained with the \ppipi\ data as 
+The decision tree with gradient boosting is trained with the \ppipi\ data as
 the `original' sample and the \pKK\ data as the `target'.
-The weighting procedure is performed separately for each data sub-sample in 
+The weighting procedure is performed separately for each data sub-sample in
 year and magnet polarity.
-As it is expected that the \PLambdab\ and muon kinematics are correlated with 
-that of the \PLambdac, the \PLambdac\ transverse momentum \pT\ and 
+As it is expected that the \PLambdab\ and muon kinematics are correlated with
+that of the \PLambdac, the \PLambdac\ transverse momentum \pT\ and
 pseudorapidity \Eta\ are included as inputs to the \ac{BDT}.
-Also included are the proton \pT\ and \Eta, as these distributions are seen to 
+Also included are the proton \pT\ and \Eta, as these distributions are seen to
 disagree after weighting when only the \PLambdac\ kinematics are used.
-To avoid biases due to fluctuations in the data, two classifiers $A$ and $B$ 
-are trained, and the \pKK\ and \ppipi\ data are each randomly split into two 
-sub-samples 1 and 2: classifier $A$ is trained using sub-sample 1, and the 
-weights for sub-sample 2 are computed using $A$; likewise, classifier $B$ is 
-trained using sub-sample 2, and the weights for sub-sample 1 are computed using 
+To avoid biases due to fluctuations in the data, two classifiers $A$ and $B$
+are trained, and the \pKK\ and \ppipi\ data are each randomly split into two
+sub-samples 1 and 2: classifier $A$ is trained using sub-sample 1, and the
+weights for sub-sample 2 are computed using $A$; likewise, classifier $B$ is
+trained using sub-sample 2, and the weights for sub-sample 1 are computed using
 $B$.
 Sub-samples 1 and 2 are then combined for the remainder of the analysis.
-The input training data are weighted by signal sWeights, as computed from the 
+The input training data are weighted by signal sWeights, as computed from the
 result of the mass fits described in \cref{chap:cpv:prelim_fits}.
-Each classifier is boosted in 300 iterations, the maximum number of leaf nodes 
-allowed in the regression tree is four, and the criteria for splitting includes 
+Each classifier is boosted in 300 iterations, the maximum number of leaf nodes
+allowed in the regression tree is four, and the criteria for splitting includes
 the requirement that any new nodes must contain at least 200 events.
-The choice of these hyper-parameters will be discussed in 
-\cref{chap:cpv:kinematic_weighting:validation}, as well as the specific choice 
+The choice of these hyper-parameters will be discussed in
+\cref{chap:cpv:kinematic_weighting:validation}, as well as the specific choice
 of original and target samples.
 
-\Cref{fig:cpv:kinematic_weighting:post:Lb,fig:cpv:kinematic_weighting:post:Lb_mu,fig:cpv:kinematic_weighting:post:Lc,fig:cpv:kinematic_weighting:post:Lc_p} 
-show the \PLambdab, muon, \PLambdac, and proton kinematics after weighting with 
+\Cref{fig:cpv:kinematic_weighting:post:Lb,fig:cpv:kinematic_weighting:post:Lb_mu,fig:cpv:kinematic_weighting:post:Lc,fig:cpv:kinematic_weighting:post:Lc_p}
+show the \PLambdab, muon, \PLambdac, and proton kinematics after weighting with
 the product of signal sWeights and the kinematic weights.
-\Cref{fig:cpv:kinematic_weighting:post:pKK_h1h2,fig:cpv:kinematic_weighting:post:ppipi_h1h2} 
-show the $\Phm\Php$ kinematics, \emph{within} the modes, after the same 
+\Cref{fig:cpv:kinematic_weighting:post:pKK_h1h2,fig:cpv:kinematic_weighting:post:ppipi_h1h2}
+show the $\Phm\Php$ kinematics, \emph{within} the modes, after the same
 weighting.
-There is a considerable improvement in the agreement between the \pKK\ and 
+There is a considerable improvement in the agreement between the \pKK\ and
 \ppipi\ data in the \PLambdab\ and proton kinematics.
-The good agreement in the muon kinematics between the datasets and the 
+The good agreement in the muon kinematics between the datasets and the
 $\Phm\Phm$ kinematics within the datasets does not change.
-It is noted that the \PLambdac\ kinematic agreement also improves, although 
-this does not affect the measurement of \dACP\ as there is no associated 
+It is noted that the \PLambdac\ kinematic agreement also improves, although
+this does not affect the measurement of \dACP\ as there is no associated
 asymmetry.
 
 \section{Validation}
 \label{chap:cpv:kinematic_weighting:validation}
 
-The purpose of the kinematic weighting is to make the particle kinematics the 
+The purpose of the kinematic weighting is to make the particle kinematics the
 same between the \pKK\ and \ppipi\ modes.
-\Cref{fig:cpv:kinematic_weighting:post:Lb,fig:cpv:kinematic_weighting:post:Lb_mu,fig:cpv:kinematic_weighting:post:Lc,fig:cpv:kinematic_weighting:post:Lc_p} 
+\Cref{fig:cpv:kinematic_weighting:post:Lb,fig:cpv:kinematic_weighting:post:Lb_mu,fig:cpv:kinematic_weighting:post:Lc,fig:cpv:kinematic_weighting:post:Lc_p}
 show good agreement `by eye', but a quantitative assessment is needed.
-What affects the measurement of \dACP\ is not so much the absolute level of 
-disagreement between the two histograms, for example, but the disagreement in a 
-particular region combined with both the size of the respective asymmetries 
+What affects the measurement of \dACP\ is not so much the absolute level of
+disagreement between the two histograms, for example, but the disagreement in a
+particular region combined with both the size of the respective asymmetries
 involved and the density of the data in that region.
-The effect of the remaining differences on \dACP\ is discussed in the context 
+The effect of the remaining differences on \dACP\ is discussed in the context
 of systematic uncertainties in \cref{chap:cpv:syst}.
 
 To provide some quantitative estimate of the agreement, a \ac{BDT} is employed.
-If the two samples, the target weighted with signal sWeights and the original 
-weighted with the product of signal sWeights and kinematic weights, are truly 
-identical, then a \ac{BDT} designed to \emph{discriminate} between them should 
+If the two samples, the target weighted with signal sWeights and the original
+weighted with the product of signal sWeights and kinematic weights, are truly
+identical, then a \ac{BDT} designed to \emph{discriminate} between them should
 perform no better than random guessing.
-The performance of a \ac{BDT} trained for binary classification can be 
+The performance of a \ac{BDT} trained for binary classification can be
 evaluated by computing the area under the \ac{ROC} curve, or just \ac{AUC}.
-The \ac{ROC} curve compares the \ac{FPR} of the classifier with the \ac{TPR} as 
+The \ac{ROC} curve compares the \ac{FPR} of the classifier with the \ac{TPR} as
 a function of the classifier output probability.
-The \ac{TPR} is defined as the fraction of true signal events that are 
-correctly classified as such, whilst the \ac{FPR} is the fraction of background 
+The \ac{TPR} is defined as the fraction of true signal events that are
+correctly classified as such, whilst the \ac{FPR} is the fraction of background
 events that are classified as signal.
-Plotting the \ac{FPR} increasing along the $x$-axis and the \ac{TPR} increasing 
-along the $y$-axis, the \ac{ROC} curve for an optimal classifier passes through 
-the top-left corner of the plot, where a large fraction of the signal is 
+Plotting the \ac{FPR} increasing along the $x$-axis and the \ac{TPR} increasing
+along the $y$-axis, the \ac{ROC} curve for an optimal classifier passes through
+the top-left corner of the plot, where a large fraction of the signal is
 accepted and a correspondingly large background fraction is rejected.
-A classifier that cannot distinguish between signal and background any better 
+A classifier that cannot distinguish between signal and background any better
 than random guessing will have a \ac{ROC} curve of the form $x = y$.
 In these two extreme cases, the \ac{AUC} is 1 and 0.5, respectively.
 
-A \ac{BDT}, with gradient boosting, is trained to discriminate between the 
-weighted \pKK\ and \ppipi\ data, using three-quarters of the available 2012 
+A \ac{BDT}, with gradient boosting, is trained to discriminate between the
+weighted \pKK\ and \ppipi\ data, using three-quarters of the available 2012
 magnet down data as input.
-The \PLambdab, muon, and proton \ptot, \pT, \Eta, and azimuthal angle $\phi$ 
+The \PLambdab, muon, and proton \ptot, \pT, \Eta, and azimuthal angle $\phi$
 are used as features.
-The \PLambdac\ kinematics are not included as there is no asymmetry associated 
+The \PLambdac\ kinematics are not included as there is no asymmetry associated
 to any residual differences there might be.
-The maximum number of leaf nodes for any one regression tree is 11, the number 
-of boosting iterations performed is 400, and the minimum number of samples 
+The maximum number of leaf nodes for any one regression tree is 11, the number
+of boosting iterations performed is 400, and the minimum number of samples
 allowed in a leaf node is 200.
-The performance of the \ac{BDT} is evaluated using the remaining quarter of the 
-dataset, and the resulting \ac{ROC} curve is shown in 
+The performance of the \ac{BDT} is evaluated using the remaining quarter of the
+dataset, and the resulting \ac{ROC} curve is shown in
 \cref{fig:cpv:kinematic_weighting:post:roc}.
-For comparison, it is shown along with a curve obtained when the same 
-classifier is trained using data with no kinematic weighting, as well as a 
-curve when a rudimentary, two-dimensional, $10\times10$ histogram weighting in 
+For comparison, it is shown along with a curve obtained when the same
+classifier is trained using data with no kinematic weighting, as well as a
+curve when a rudimentary, two-dimensional, $10\times10$ histogram weighting in
 \PLambdac\ \pT\ and \Eta\ is used.
-It is seen that the inclusion of the kinematic weights significantly reduces 
-the \ac{AUC}, from 0.61 with no kinematic weights to 0.52 for the \ac{BDT} 
+It is seen that the inclusion of the kinematic weights significantly reduces
+the \ac{AUC}, from 0.61 with no kinematic weights to 0.52 for the \ac{BDT}
 weighting.
-This shows that the \ac{BDT} weighting does increase the similarity between the 
-kinematic distributions across the modes, and that it can be significantly more 
+This shows that the \ac{BDT} weighting does increase the similarity between the
+kinematic distributions across the modes, and that it can be significantly more
 powerful than a two-dimensional histogram weighting.
 
-It is the \ac{AUC} metric evaluated on the training sample that was maximised 
+It is the \ac{AUC} metric evaluated on the training sample that was maximised
 when choosing the hyper-parameters to use for the weighting.
-A grid search was performed where the following hyper-parameter values were 
-tested in all combinations: 100, 200, 300, and 400 boosting iterations; a 
-minimum of 50, 100, 200, 300, 500, and 1000 events required to create a new 
-node; and a maximum number of allowed leaf nodes per regression tree of 2, 3, 
+A grid search was performed where the following hyper-parameter values were
+tested in all combinations: 100, 200, 300, and 400 boosting iterations; a
+minimum of 50, 100, 200, 300, 500, and 1000 events required to create a new
+node; and a maximum number of allowed leaf nodes per regression tree of 2, 3,
 4, 5, 6, 7, and 8.
-The hyper-parameters used for the weighting (300 iterations, a minimum of 200 
-events per node, and a maximum of 4 leaf nodes per tree) were those for which 
+The hyper-parameters used for the weighting (300 iterations, a minimum of 200
+events per node, and a maximum of 4 leaf nodes per tree) were those for which
 the \ac{AUC} was smallest.
 
 \section{Weight statistics}
 \label{chap:cpv:kinematic_weighting:stats}
 
-Weighting can increase the statistical contribution of individual entries 
+Weighting can increase the statistical contribution of individual entries
 within a dataset, but it should not increase the overall statistical power.
-The number of entries $N'$ in a weighted dataset can be computed as the sum of 
-the per-entry weights $w_{i}$, and the variance on this quantity is given as 
+The number of entries $N'$ in a weighted dataset can be computed as the sum of
+the per-entry weights $w_{i}$, and the variance on this quantity is given as
 the sum of the squares of the weights
 \begin{equation}
   N' = \sum_{i}^{N} w_{i},\quad (\unc{N'})^{2} = \sum_{i}^{N} w_{i}^{2}
 \end{equation}
 For certain values of $w_{i}$, it can be that $\unc{N'} < \unc{N}$.
-To prevent this, the number of `effective' entries in the weighted dataset is 
-computed, under the relation that the relative variance on the effective 
+To prevent this, the number of `effective' entries in the weighted dataset is
+computed, under the relation that the relative variance on the effective
 entries is equal to the relative variance on the weights
 \begin{equation}
   \frac{\neff}{\unc{\neff}} =
     \frac{\sum_{i}^{N} w_{i}}{\sqrt{\sum_{i}^{N} w_{i}^{2}}},
 \end{equation}
-where \neff\ is assumed to be Poisson-distributed, and so $(\unc{\neff})^{2} = 
+where \neff\ is assumed to be Poisson-distributed, and so $(\unc{\neff})^{2} =
 \neff$, giving
 \begin{equation}
   \neff = \frac{%
@@ -255,32 +255,32 @@ where \neff\ is assumed to be Poisson-distributed, and so $(\unc{\neff})^{2} =
   }.
   \label{eqn:cpv:kinematic_weighting:neff}
 \end{equation}
-This relation can be enforced by redefining the weights $w_{i}$ by a factor $W 
+This relation can be enforced by redefining the weights $w_{i}$ by a factor $W
 = \sum_{i} w_{i}/\sum_{i} w_{i}^{2}$.
-For unit weights, $\neff = N$ add $\unc{\neff} = \sqrt{N}$.
-Otherwise, \neff\ is the size of the hypothetical dataset that has the same 
+For unit weights, $\neff = N$ and $\unc{\neff} = \sqrt{N}$.
+Otherwise, \neff\ is the size of the hypothetical dataset that has the same
 statistical power as the weighted dataset.
-For this analysis, it provides a handle on how well the two data samples agree 
-in the weighting variables before the weighting, as, in general, a higher level 
-of disagreement requires a larger fraction of candidates to be `thrown away' by 
+For this analysis, it provides a handle on how well the two data samples agree
+in the weighting variables before the weighting, as, in general, a higher level
+of disagreement requires a larger fraction of candidates to be `thrown away' by
 the weighting, reducing the statistical power.
 
-\Cref{tab:cpv:kinematic_weighting:validation:stats} gives several statistics 
+\Cref{tab:cpv:kinematic_weighting:validation:stats} gives several statistics
 related to the weighting procedure for the \ppipi\ data.
-For all data sub-samples, the effective number of candidates is no less than 
+For all data sub-samples, the effective number of candidates is no less than
 \SI{80}{\percent} the number of candidates entering the weighting procedure.
-As there are around five times more \ppipi\ candidates than \pKK, the 
-statistical uncertainty of the \dACP\ measurement will still be dominated by 
-the \pKK\ sample size, even with an effective \SI{20}{\percent} reduction in 
+As there are around five times more \ppipi\ candidates than \pKK, the
+statistical uncertainty of the \dACP\ measurement will still be dominated by
+the \pKK\ sample size, even with an effective \SI{20}{\percent} reduction in
 the \ppipi\ sample size.
-It is this fact that motivates the choice of the \ppipi\ mode as the source of 
-the `original' distributions in the weighting and the \pKK\ mode as the 
+It is this fact that motivates the choice of the \ppipi\ mode as the source of
+the `original' distributions in the weighting and the \pKK\ mode as the
 `target'.
 
 \begin{sidewaystable}
   \centering
   \caption{%
-    Statistics computed on the weighted \ppipi\ data for all data sub-samples 
+    Statistics computed on the weighted \ppipi\ data for all data sub-samples
     used in the analysis.
     The quantities are defined in \cref{chap:cpv:kinematic_weighting:stats}.
   }
@@ -308,7 +308,7 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:pre:Lb:PHI}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, angle 
+    Clockwise from the top left: total momentum, transverse momentum, angle
     $\phi$, and pseudorapidity of the \PLambdab, weighted by signal sWeights.
     The 2012 magnet down data are shown.
   }
@@ -333,8 +333,8 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:pre:Lb_mu:PHI}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, angle 
-    $\phi$, and pseudorapidity of the muon from the \PLambdab, weighted by 
+    Clockwise from the top left: total momentum, transverse momentum, angle
+    $\phi$, and pseudorapidity of the muon from the \PLambdab, weighted by
     signal sWeights.
     The 2012 magnet down data are shown.
   }
@@ -359,7 +359,7 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:pre:Lc:PHI}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, angle 
+    Clockwise from the top left: total momentum, transverse momentum, angle
     $\phi$, and pseudorapidity of the \PLambdac, weighted by signal sWeights.
     The 2012 magnet down data are shown.
   }
@@ -384,8 +384,8 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:pre:Lc_p:PHI}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, angle 
-    $\phi$, and pseudorapidity of the proton from the \PLambdac, weighted by 
+    Clockwise from the top left: total momentum, transverse momentum, angle
+    $\phi$, and pseudorapidity of the proton from the \PLambdac, weighted by
     signal sWeights.
     The 2012 magnet down data are shown.
   }
@@ -409,8 +409,8 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:pre:pKK_h1h2:ETA}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, and 
-    pseudorapidity of the \PKminus\ and \PKplus\ \PLambdac\ children in the 
+    Clockwise from the top left: total momentum, transverse momentum, and
+    pseudorapidity of the \PKminus\ and \PKplus\ \PLambdac\ children in the
     \pKK\ data, weighted by signal sWeights.
     The 2012 magnet down data are shown.
   }
@@ -434,8 +434,8 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:pre:ppipi_h1h2:ETA}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, and 
-    pseudorapidity of the \Ppiminus\ and \Ppiplus\ \PLambdac\ children in the 
+    Clockwise from the top left: total momentum, transverse momentum, and
+    pseudorapidity of the \Ppiminus\ and \Ppiplus\ \PLambdac\ children in the
     \ppipi\ data, weighted by signal sWeights.
     The 2012 magnet down data are shown.
   }
@@ -460,8 +460,8 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:post:Lb:PHI}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, angle 
-    $\phi$, and pseudorapidity of the \PLambdab, weighted by the product of 
+    Clockwise from the top left: total momentum, transverse momentum, angle
+    $\phi$, and pseudorapidity of the \PLambdab, weighted by the product of
     signal sWeights and kinematic weights.
     The 2012 magnet down data are shown.
   }
@@ -486,8 +486,8 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:post:Lb_mu:PHI}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, angle 
-    $\phi$, and pseudorapidity of the muon from the \PLambdab, weighted by the 
+    Clockwise from the top left: total momentum, transverse momentum, angle
+    $\phi$, and pseudorapidity of the muon from the \PLambdab, weighted by the
     product of signal sWeights and kinematic weights.
     The 2012 magnet down data are shown.
   }
@@ -512,8 +512,8 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:post:Lc:PHI}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, angle 
-    $\phi$, and pseudorapidity of the \PLambdac, weighted by the product of 
+    Clockwise from the top left: total momentum, transverse momentum, angle
+    $\phi$, and pseudorapidity of the \PLambdac, weighted by the product of
     signal sWeights and kinematic weights.
     The 2012 magnet down data are shown.
   }
@@ -538,8 +538,8 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:post:Lc_p:PHI}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, angle 
-    $\phi$, and pseudorapidity of the proton from the \PLambdac, weighted by 
+    Clockwise from the top left: total momentum, transverse momentum, angle
+    $\phi$, and pseudorapidity of the proton from the \PLambdac, weighted by
     the product of signal sWeights and kinematic weights.
     The 2012 magnet down data are shown.
   }
@@ -563,9 +563,9 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:post:pKK_h1h2:ETA}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, and 
-    pseudorapidity of the \PKminus\ and \PKplus\ \PLambdac\ children in the 
-    \pKK\ data, weighted by the product of signal sWeights and kinematic 
+    Clockwise from the top left: total momentum, transverse momentum, and
+    pseudorapidity of the \PKminus\ and \PKplus\ \PLambdac\ children in the
+    \pKK\ data, weighted by the product of signal sWeights and kinematic
     weights.
     The 2012 magnet down data are shown.
   }
@@ -589,9 +589,9 @@ the `original' distributions in the weighting and the \pKK\ mode as the
     \label{fig:cpv:kinematic_weighting:post:ppipi_h1h2:ETA}
   \end{subfigure}
   \caption{%
-    Clockwise from the top left: total momentum, transverse momentum, and 
-    pseudorapidity of the \Ppiminus\ and \Ppiplus\ \PLambdac\ children in the 
-    \ppipi\ data, weighted by the product of signal sWeights and kinematic 
+    Clockwise from the top left: total momentum, transverse momentum, and
+    pseudorapidity of the \Ppiminus\ and \Ppiplus\ \PLambdac\ children in the
+    \ppipi\ data, weighted by the product of signal sWeights and kinematic
     weights.
     The 2012 magnet down data are shown.
   }
@@ -602,9 +602,9 @@ the `original' distributions in the weighting and the \pKK\ mode as the
   \includegraphics[width=\textwidth]{cpv/kinematic_weighting/postweighting_kinematics/LcToppipi_2012_MagDown_roc_curves}
   \caption{%
     ROC curves for different kinematic weighting techniques.
-    The ``no weights'' data has no \emph{kinematic} weights applied, only 
+    The ``no weights'' data has no \emph{kinematic} weights applied, only
     signal sWeights.
-    The ``2D binned'' and ``\ac{BDT}'' data uses the product of the respective 
+    The ``2D binned'' and ``\ac{BDT}'' data uses the product of the respective
     kinematic weights and the signal sWeights for the \ppipi\ data, and uses
     signal sWeights for the \pKK\ data.
     The area under each \ac{ROC} curve, the \acs{AUC}, is given in the legend.

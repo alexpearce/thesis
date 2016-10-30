@@ -1,73 +1,73 @@
 \chapter{Systematic uncertainties}
 \label{chap:prod:syst}
 
-In the discussion of systematic uncertainties, it is important to consider the 
-correlations of the uncertainties both between \pTy\ bins and between charm 
+In the discussion of systematic uncertainties, it is important to consider the
+correlations of the uncertainties both between \pTy\ bins and between charm
 hadrons.
 Uncertainties that are fully correlated cancel in ratios.
-In addition, the quantification of the goodness-of-fit of a fit to the 
-cross-section measurements can change significantly depending on whether 
+In addition, the quantification of the goodness-of-fit of a fit to the
+cross-section measurements can change significantly depending on whether
 correlations are accounted for.
-In what follows, the range of correlations of each uncertainty between bins and 
-between charm hadrons will be given, with a summary presented in 
+In what follows, the range of correlations of each uncertainty between bins and
+between charm hadrons will be given, with a summary presented in
 \cref{chap:prod:syst:correlations}.
 
-The systematic uncertainties are treated as nuisance parameters of the 
-cross-section measurement, being propagated as an additive parameter on the 
+The systematic uncertainties are treated as nuisance parameters of the
+cross-section measurement, being propagated as an additive parameter on the
 respective term they relate to.
-The nuisance parameters are modelled as \aclp{PDF} in the framework of \acl{MC} 
+The nuisance parameters are modelled as \aclp{PDF} in the framework of \acl{MC}
 error propagation, as described in \cref{chap:prod:introduction:uncertainties}.
-Typically, the \ac{PDF} is a normal distribution with a mean of zero and a 
-width corresponding to the size of the systematic variation being assessed, but 
+Typically, the \ac{PDF} is a normal distribution with a mean of zero and a
+width corresponding to the size of the systematic variation being assessed, but
 the exact form will be given alongside the description of the uncertainty.
 
 \section{Finite \acl{MC} sample size}
 \label{chap:prod::syst:mcstat}
 
-The Monte Carlo samples used to estimate the acceptance, reconstruction, and 
-selection efficiencies are of a finite size, and so the computed efficiencies 
+The Monte Carlo samples used to estimate the acceptance, reconstruction, and
+selection efficiencies are of a finite size, and so the computed efficiencies
 carry a statistical uncertainty.
-This is propagated to the cross-section measurements as a systematic 
+This is propagated to the cross-section measurements as a systematic
 uncertainty.
-As the set of \ac{MC} events is unique for each \pTy\ bin and mode, this 
+As the set of \ac{MC} events is unique for each \pTy\ bin and mode, this
 systematic uncertainty is uncorrelated between bins and between decay modes.
-As discussed in \cref{chap:prod:effs:tot}, the a posteriori probability for the 
-estimated efficiency is described by the beta distribution, and so the 
+As discussed in \cref{chap:prod:effs:tot}, the a posteriori probability for the
+estimated efficiency is described by the beta distribution, and so the
 corresponding nuisance parameter is also modelled by this distribution.
 
-The resulting systematic uncertainties, relative to the central value of the 
-cross-section measurement, are given in 
-\cref{tab:prod:syst:mc:stat:D0ToKpi,tab:prod:syst:mc:stat:DpToKpipi} for 
+The resulting systematic uncertainties, relative to the central value of the
+cross-section measurement, are given in
+\cref{tab:prod:syst:mc:stat:D0ToKpi,tab:prod:syst:mc:stat:DpToKpipi} for
 \DzToKpi\ and \DpToKpipi.
 
 \section{\acl{MC} modelling}
 \label{chap:prod:syst:mc}
 
-If the simulation does not correctly model the selection variables, the 
-selection efficiencies that are evaluated with \ac{MC}, described in 
+If the simulation does not correctly model the selection variables, the
+selection efficiencies that are evaluated with \ac{MC}, described in
 \cref{chap:prod:effs:sel}, will be incorrect.
-To assess the accuracy of the \acl{MC} modelling, signal distributions are 
-extracted from the data using the \sPlot\ method~\cite{Pivk:2004ty} and are 
-compared to the \ac{MC}.
-As the definition of the selection efficiency does not include the effects of 
-the \ac{PID} selection, the distributions of the real data are corrected for 
+To assess the accuracy of the \acl{MC} modelling, signal distributions are
+extracted from the data using the \sPlot\ method~\cite{Pivk:2004ty} and are
+compared to the simulation.
+As the definition of the selection efficiency does not include the effects of
+the \ac{PID} selection, the distributions of the real data are corrected for
 the \ac{PID} efficiency by a per-decay weighting.
-The signal distributions in data are only available after the selection has 
-been applied, and so the same selection is also applied to the simulation (with 
+The signal distributions in data are only available after the selection has
+been applied, and so the same selection is also applied to the simulation (with
 the exception of the \ac{PID} requirements).
-Comparisons of an example set of variables used in the \DzToKpi\ and 
-\DpToKpipi\ selections are shown in 
-\cref{fig:prod:syst:mc:D0ToKpi,fig:prod:syst:mc:DpToKpipi}, integrated across 
+Comparisons of an example set of variables used in the \DzToKpi\ and
+\DpToKpipi\ selections are shown in
+\cref{fig:prod:syst:mc:D0ToKpi,fig:prod:syst:mc:DpToKpipi}, integrated across
 all \pTy\ bins for visualisation.
 The agreement is generally good.
 
-To quantify the effect of the mis-modelling on the selection efficiencies, the 
+To quantify the effect of the mis-modelling on the selection efficiencies, the
 following procedure is performed for each selection variable $x$:
 \begin{enumerate}
-  \item Find the cut value $y$ on $x$ which rejects half of the selected 
+  \item Find the cut value $y$ on $x$ which rejects half of the selected
     simulated sample;
-  \item Apply the cut value $y$ on $x$ to the real data, counting the number of 
-    signal candidates passing the requirement as the sum of signal weights 
+  \item Apply the cut value $y$ on $x$ to the real data, counting the number of
+    signal candidates passing the requirement as the sum of signal weights
     divided by the \ac{PID} selection efficiencies
     \begin{equation}
       N_{\text{Passed}} = \sum_{i}^{N} I(i, x, y) \frac{%
@@ -76,35 +76,35 @@ following procedure is performed for each selection variable $x$:
         \eff_{i,\text{PID}}
       },
     \end{equation}
-    where $I(i, x, y)$ is 1 if the value of $x$ for the $i$th event passes the 
+    where $I(i, x, y) = 1$ if the value of $x$ for the $i$th event passes the
     requirement $y$ on $x$, and is zero otherwise;
-  \item The efficiency-corrected signal yield corresponding to the requirement 
-    on $x$ is $2N_{\text{Passed}}$, which should equal the number of signal 
-    candidates before the requirement $y$, if the \ac{MC} describes the data.  
+  \item The efficiency-corrected signal yield corresponding to the requirement
+    on $x$ is $2N_{\text{Passed}}$, which should equal the number of signal
+    candidates before the requirement $y$, if the \ac{MC} describes the data.
     The quantity
     \begin{equation}
       \Delta = 2N_{\text{Passed}} - \sum_{N}^{i} \frac{w_{i,\text{signal}}}{\effpid},
       \label{eqn:prod:syst:mc:eff_diff}
     \end{equation}
-    defines the deviation from the assumption that the data is well-modelled by 
+    defines the deviation from the assumption that the data is well-modelled by
     the \ac{MC}.
 \end{enumerate}
-This procedure is repeated in every \pTy\ bin, for a total of $N_{\pT} \cdot 
+This procedure is repeated in every \pTy\ bin, for a total of $N_{\pT} \cdot
 N_{\rapidity} \cdot N_{\text{variables}}$ values of $\Delta$.
 
-To account for correlations between variables, which, if neglected, may lead to 
-double-counting of the mis-modelling, the procedure is repeated in ten thousand 
+To account for correlations between variables, which, if neglected, may lead to
+double-counting of the mis-modelling, the procedure is repeated in ten thousand
 pseudo-experiments per selection variable.
-For each trial, each candidate is sampled $n$ times from the real data, with 
+For each trial, each candidate is sampled $n$ times from the real data, with
 $n$ being sampled from a Poisson distribution of mean 1.
-The total systematic uncertainty on the efficiency-corrected signal yield due 
-to \ac{MC} mis-modelling is the mean of the set of ten thousand values of 
+The total systematic uncertainty on the efficiency-corrected signal yield due
+to \ac{MC} mis-modelling is the mean of the set of ten thousand values of
 $\Delta$.
 
-The value of $\Delta$ for a given variable in a single \pTy\ bin is usually not 
-statistically significant, but the integration of the values of $\Delta$ over 
+The value of $\Delta$ for a given variable in a single \pTy\ bin is usually not
+statistically significant, but the integration of the values of $\Delta$ over
 all \pTy\ values can be, and so a difference is evaluated for all \pTy\ bins.
-The relative uncertainty on the efficiency-corrected yield $N/\eff$ is the 
+The relative uncertainty on the efficiency-corrected yield $N/\eff$ is the
 difference integrated across all \pTy\ divided by it's uncertainty.
 This is given for all modes in \cref{tab:prod:syst:mc:modelling}.
 
@@ -158,9 +158,9 @@ This is given for all modes in \cref{tab:prod:syst:mc:modelling}.
   \end{subfigure}
 
   \caption{%
-    Comparison of several variables used in the \DzToKpi selection between data 
+    Comparison of several variables used in the \DzToKpi selection between data
     (blue line) and \ac{MC} (green points).
-    Underneath each pair of distributions is a pull plot, showing the 
+    Underneath each pair of distributions is a pull plot, showing the
     significance of the deviation in each histogram bin.
   }
   \label{fig:prod:syst:mc:D0ToKpi}
@@ -216,9 +216,9 @@ This is given for all modes in \cref{tab:prod:syst:mc:modelling}.
   \end{subfigure}
 
   \caption{%
-    Comparison of several variables used in the \DpToKpipi selection between 
+    Comparison of several variables used in the \DpToKpipi selection between
     data (blue line) and \ac{MC} (green points).
-    Underneath each pair of distributions is a pull plot, showing the 
+    Underneath each pair of distributions is a pull plot, showing the
     significance of the deviation in each histogram bin.
   }
   \label{fig:prod:syst:mc:DpToKpipi}
@@ -227,83 +227,83 @@ This is given for all modes in \cref{tab:prod:syst:mc:modelling}.
 \section{Monte Carlo truth matching}
 \label{chap:prod:syst:mc:truth_matching}
 
-The truth matching efficiency described in \cref{chap:prod:effs:truth} is computed using an \ac{MC} 
+The truth matching efficiency described in \cref{chap:prod:effs:truth} is computed using an \ac{MC}
 sample of finite size, and so carries a statistical uncertainty.
-As in \cref{chap:prod::syst:mcstat}, this statistical uncertainty is propagated to the cross-section 
+As in \cref{chap:prod::syst:mcstat}, this statistical uncertainty is propagated to the cross-section
 measurements as a systematic uncertainty.
-The \ac{MC} sample size is too small to compute the truth matching systematic 
+The \ac{MC} sample size is too small to compute the truth matching systematic
 in \pTy\ bins, and so a value is computed using the integrated \ac{MC}.
 The values for each mode are given in \cref{tab:prod:syst:mc:truth_matching}.
 
 \section{Particle identification calibration}
 \label{chap:prod:syst:pid}
 
-As stated in \cref{chap:prod:effs:pid}, a key assumption in the \ac{PID} 
-calibration is that the \ac{PID} efficiency \effpid\ is single-valued in a 
+As stated in \cref{chap:prod:effs:pid}, a key assumption in the \ac{PID}
+calibration is that the \ac{PID} efficiency \effpid\ is single-valued in a
 \ptotetanspd\ bin.
-Generally, this assumption is satisfied by fine binning, but the limited 
-statistics of the calibration sample prohibit this as it would create large 
+Generally, this assumption is satisfied by fine binning, but the limited
+statistics of the calibration sample prohibit this as it would create large
 statistical uncertainties.
-There are two systematic uncertainties associated to this effect: the 
-statistical uncertainty on \effpid\ due to the finite size of the calibration 
-sample; and the breakdown of the assumption that \effpid\ is single-valued in a 
+There are two systematic uncertainties associated to this effect: the
+statistical uncertainty on \effpid\ due to the finite size of the calibration
+sample; and the breakdown of the assumption that \effpid\ is single-valued in a
 \ptotetanspd\ bin.
 
 \subsection{Calibration sample size}
 \label{chap:prod:syst:pid:stat}
 
-The efficiency \effi\ in the $i$th \ptotetanspd\ bin of the efficiency 
-histogram has a statistical uncertainty $\unc{\effi}$ due to the finite size of 
+The efficiency \effi\ in the $i$th \ptotetanspd\ bin of the efficiency
+histogram has a statistical uncertainty $\unc{\effi}$ due to the finite size of
 the calibration sample.
-Each \ptotetanspd\ bin contains a disjoint set of calibration tracks, and hence 
+Each \ptotetanspd\ bin contains a disjoint set of calibration tracks, and hence
 the efficiencies between bins fluctuate independently.
-There will be a non-zero correlation between the \ac{PID} efficiencies of 
-tracks in a single decay if those tracks fall in the same efficiency bin, as 
-well as between different decays if there is an overlap in the efficiency bins 
+There will be a non-zero correlation between the \ac{PID} efficiencies of
+tracks in a single decay if those tracks fall in the same efficiency bin, as
+well as between different decays if there is an overlap in the efficiency bins
 that are used.
-To model these correlations, a series of ten thousand pseudo-experiments are 
-performed to propagate the statistical uncertainty on \effi\ to a corresponding 
+To model these correlations, a series of ten thousand pseudo-experiments are
+performed to propagate the statistical uncertainty on \effi\ to a corresponding
 uncertainty on \effpid.
 
-In each pseudo-experiment, a new set of efficiencies $\effi'$ is drawn from a 
+In each pseudo-experiment, a new set of efficiencies $\effi'$ is drawn from a
 normal distribution of mean \effi\ and width $\unc{\effi}$.
-The full calibration procedure is then repeated using the set of $\effi'$ to 
+The full calibration procedure is then repeated using the set of $\effi'$ to
 obtain an overall efficiency $\effpid'$ for that pseudo-experiment.
-The statistical uncertainty $\unc_{C}{\effpid}$ on the nominal efficiency is 
+The statistical uncertainty $\unc_{C}{\effpid}$ on the nominal efficiency is
 then taken to be the standard deviation of the distribution of $\effpid'$.
 
-A common set of efficiency histograms is generated and is used in all 
-pseudo-experiments for computing the uncertainty in each bin for all charm 
+A common set of efficiency histograms is generated and is used in all
+pseudo-experiments for computing the uncertainty in each bin for all charm
 mesons, allowing the correlations to be determined.
-As different \pTy\ bins and decay modes have different kinematic distributions 
-for their final-state particles, this correlation is found to be significant 
-within a decay mode only for neighbouring \pTy\ bins, and negligible between 
+As different \pTy\ bins and decay modes have different kinematic distributions
+for their final-state particles, this correlation is found to be significant
+within a decay mode only for neighbouring \pTy\ bins, and negligible between
 different modes.
 
-The relative uncertainty $\unc_{C}{\effpid}/\effpid$ is given in 
-\cref{tab:prod:syst:pid:binning:D0ToKpi,tab:prod:syst:pid:binning:DpToKpipi} for 
+The relative uncertainty $\unc_{C}{\effpid}/\effpid$ is given in
+\cref{tab:prod:syst:pid:binning:D0ToKpi,tab:prod:syst:pid:binning:DpToKpipi} for
 \DzToKpi\ and \DpToKpipi.
-The distribution in $\effpid'$ is taken as the posterior \ac{PDF} for this 
-uncertainty in the \ac{MC} error propagation, translated such that the most 
+The distribution in $\effpid'$ is taken as the posterior \ac{PDF} for this
+uncertainty in the \ac{MC} error propagation, translated such that the most
 probable value is coincident with zero.
 
 \subsection{Binning scheme}
 \label{chap:prod:syst:pid:binning}
 
-The iterative procedure to find the binning scheme used for the efficiency 
-histograms, described in \cref{chap:prod:effs:pid:binning}, is limited by the 
+The iterative procedure to find the binning scheme used for the efficiency
+histograms, described in \cref{chap:prod:effs:pid:binning}, is limited by the
 sample size of the calibration data.
-To be able to assess the possible shift in \effpid\ one would see if the 
-calibration sample size was larger, two-dimensional \acp{PDF} in track \ptot\ 
+To be able to assess the possible shift in \effpid\ one would see if the
+calibration sample size was larger, two-dimensional \acp{PDF} in track \ptot\
 and \Eta\ are made using \acp{KDE}~\cite{Poluektov:2014rxa}.
-The event multiplicity is not modelled since the \ac{PID} efficiency variation 
-in this feature is seen to be significantly smaller than that in track \ptot\ 
+The event multiplicity is not modelled since the \ac{PID} efficiency variation
+in this feature is seen to be significantly smaller than that in track \ptot\
 and \Eta, and hence \effpid\ is less sensitive to the binning in that variable.
 
-One two-dimensional \ac{KDE} is constructed for each particle species both 
+One two-dimensional \ac{KDE} is constructed for each particle species both
 before and after the \ac{PID} requirements under study.
 These densities $P_{\PK/\Ppi}(\ptot, \Eta)$ and $P'_{\PK/\Ppi}(\ptot, \Eta)$
-can be used to obtain the efficiency \effi\ in the $(\ptot,\,\Eta)$ bin of 
+can be used to obtain the efficiency \effi\ in the $(\ptot,\,\Eta)$ bin of
 volume $V$ as
 \begin{equation}
   \effi = \frac{C'}{C}\frac{%
@@ -312,40 +312,40 @@ volume $V$ as
     \int_{V} P(\ptot,\Eta)\dif{p}\dif{\Eta}
   },
 \end{equation}
-where $C(')$ is the total signal calibration sample size before (after) the 
+where $C(')$ is the total signal calibration sample size before (after) the
 requirements.
-\Cref{fig:prod:syst:pid:kde_eta} shows example one-dimensional \ac{KDE} 
-projections in kaon \Eta\ in various \ptot\ bins in comparison with the signal 
+\Cref{fig:prod:syst:pid:kde_eta} shows example one-dimensional \ac{KDE}
+projections in kaon \Eta\ in various \ptot\ bins in comparison with the signal
 calibration data.
-\Cref{fig:prod:syst:pid:kde_1d_binning} shows the one-dimensional projections 
-of the efficiencies in comparison with a fine one-dimensional binned 
+\Cref{fig:prod:syst:pid:kde_1d_binning} shows the one-dimensional projections
+of the efficiencies in comparison with a fine one-dimensional binned
 approximation.
-In both cases, a good agreement is seen between the \ac{KDE} estimate and the 
+In both cases, a good agreement is seen between the \ac{KDE} estimate and the
 data.
 
-The \acp{KDE} are used as generative \acp{PDF} to produce pseudo-experimental 
+The \acp{KDE} are used as generative \acp{PDF} to produce pseudo-experimental
 data with which to perform the \ac{PID} calibration.
-\Cref{fig:prod:syst:pid:kde_2d_binning:kaon,fig:prod:syst:pid:kde_2d_binning:pion} 
-compare the two-dimensional efficiency histogram from the real calibration data 
-and the nominal binning with that generated from the \acp{KDE}, and a good 
+\Cref{fig:prod:syst:pid:kde_2d_binning:kaon,fig:prod:syst:pid:kde_2d_binning:pion}
+compare the two-dimensional efficiency histogram from the real calibration data
+and the nominal binning with that generated from the \acp{KDE}, and a good
 agreement is seen between the two.
-Unlike with real calibration data, an effectively infinite amount of data can 
-be generated from the \acp{KDE}, allowing the effects of the binning scheme to 
+Unlike with real calibration data, an effectively infinite amount of data can
+be generated from the \acp{KDE}, allowing the effects of the binning scheme to
 be probed.
-This is done by computing \effpid\ with a progressively finer binning, where it 
-is observed that the value of the difference between the `\ac{KDE} efficiency' 
-and the nominal efficiency converges, as shown in 
+This is done by computing \effpid\ with a progressively finer binning, where it
+is observed that the value of the difference between the `\ac{KDE} efficiency'
+and the nominal efficiency converges, as shown in
 \cref{fig:prod:syst:pid:convergence}.
-The difference $\unc_{B}{\effpid}$ between the value at convergence and that 
-found in the nominal procedure is taken as the systematic uncertainty on 
+The difference $\unc_{B}{\effpid}$ between the value at convergence and that
+found in the nominal procedure is taken as the systematic uncertainty on
 \effpid\ due to the chosen binning.
 A normal distribution is assumed for the corresponding nuisance parameter.
-The same convergence behaviour is seen in all \pTy\ bins and across all modes, 
+The same convergence behaviour is seen in all \pTy\ bins and across all modes,
 and so the uncertainty is assumed to be fully correlated across them.
 
-The systematic uncertainty due to the choice of \ptotetanspd\ binning relative 
-to the measured cross-section value is given in 
-\cref{tab:prod:syst:pid:binning:D0ToKpi,tab:prod:syst:pid:binning:DpToKpipi} for 
+The systematic uncertainty due to the choice of \ptotetanspd\ binning relative
+to the measured cross-section value is given in
+\cref{tab:prod:syst:pid:binning:D0ToKpi,tab:prod:syst:pid:binning:DpToKpipi} for
 \DzToKpi\ and \DpToKpipi.
 
 \begin{figure}
@@ -386,10 +386,10 @@ to the measured cross-section value is given in
     \label{fig:prod:syst:pid:kde_eta:bin5}
   \end{subfigure}
   \caption{%
-    Pseudorapidity distribution in the kaon \ac{PID} signal calibration sample, 
-    integrated across all values of kaon momentum 
-    (\subref*{fig:prod:syst:pid:kde_eta:integrated}) and within a series of 
-    smaller \ptot\ bins 
+    Pseudorapidity distribution in the kaon \ac{PID} signal calibration sample,
+    integrated across all values of kaon momentum
+    (\subref*{fig:prod:syst:pid:kde_eta:integrated}) and within a series of
+    smaller \ptot\ bins
     (\subref*{fig:prod:syst:pid:kde_eta:bin1}--\subref*{fig:prod:syst:pid:kde_eta:bin5}).
   }
   \label{fig:prod:syst:pid:kde_eta}
@@ -424,7 +424,7 @@ to the measured cross-section value is given in
   \end{subfigure}
 
   \caption{%
-    As in \cref{fig:prod:pid:binning:kaon,fig:prod:pid:binning:pion}, but with 
+    As in \cref{fig:prod:pid:binning:kaon,fig:prod:pid:binning:pion}, but with
     an estimate of the efficiency from \aclp{KDE} overlaid (blue curve).
   }
   \label{fig:prod:syst:pid:kde_1d_binning}
@@ -451,11 +451,11 @@ to the measured cross-section value is given in
   \end{subfigure}
 
   \caption{%
-    Efficiency distributions $\eff_{i}(\ptot,\Eta)$ for kaon tracks in the 
-    nominal binning scheme using the real calibration data 
-    (\subref*{fig:prod:syst:pid:kde_2d_binning:kaon:nominal}) and higher 
-    granularities using data generated from \aclp{KDE} 
-    (\subref*{fig:prod:syst:pid:kde_2d_binning:kaon:coarse} and 
+    Efficiency distributions $\eff_{i}(\ptot,\Eta)$ for kaon tracks in the
+    nominal binning scheme using the real calibration data
+    (\subref*{fig:prod:syst:pid:kde_2d_binning:kaon:nominal}) and higher
+    granularities using data generated from \aclp{KDE}
+    (\subref*{fig:prod:syst:pid:kde_2d_binning:kaon:coarse} and
     \subref*{fig:prod:syst:pid:kde_2d_binning:kaon:fine}).
   }
   \label{fig:prod:syst:pid:kde_2d_binning:kaon}
@@ -482,11 +482,11 @@ to the measured cross-section value is given in
   \end{subfigure}
 
   \caption{%
-    Efficiency distributions $\eff_{i}(\ptot,\Eta)$ for pion tracks in the 
-    nominal binning scheme using the real calibration data 
-    (\subref*{fig:prod:syst:pid:kde_2d_binning:pion:nominal}) and higher 
-    granularities using data generated from \aclp{KDE} 
-    (\subref*{fig:prod:syst:pid:kde_2d_binning:pion:coarse} and 
+    Efficiency distributions $\eff_{i}(\ptot,\Eta)$ for pion tracks in the
+    nominal binning scheme using the real calibration data
+    (\subref*{fig:prod:syst:pid:kde_2d_binning:pion:nominal}) and higher
+    granularities using data generated from \aclp{KDE}
+    (\subref*{fig:prod:syst:pid:kde_2d_binning:pion:coarse} and
     \subref*{fig:prod:syst:pid:kde_2d_binning:pion:fine}).
   }
   \label{fig:prod:syst:pid:kde_2d_binning:pion}
@@ -506,9 +506,9 @@ to the measured cross-section value is given in
     \label{fig:prod:syst:pid:convergence:pion}
   \end{subfigure}
   \caption{%
-    Relative change in kaon (\subref*{fig:prod:syst:pid:convergence:kaon}) and 
-    pion (\subref*{fig:prod:syst:pid:convergence:pion}) \ac{PID} efficiency 
-    \effpid, as evaluated using \aclp{KDE}, when evaluated with a progressively 
+    Relative change in kaon (\subref*{fig:prod:syst:pid:convergence:kaon}) and
+    pion (\subref*{fig:prod:syst:pid:convergence:pion}) \ac{PID} efficiency
+    \effpid, as evaluated using \aclp{KDE}, when evaluated with a progressively
     finer histogram binning.
   }
   \label{fig:prod:syst:pid:convergence}
@@ -518,150 +518,146 @@ to the measured cross-section value is given in
 \section{Luminosity}
 \label{chap:prod:syst:lumi}
 
-The \acl{BGI} analysis used to measure the luminosity comes with its own set of 
-systematic uncertainties.
-The dominant components arise from the limited resolution on the measurement of 
-the beam-beam and beam-gas vertices, from the choice of fit model used to 
-parameterise the transverse beam profiles, and the observed variation in 
-measurements of the visible \pp\ cross-section over 
+The \acl{BGI} analysis used to measure the integrated luminosity comes with its
+own set of systematic uncertainties.
+The dominant components arise from the limited resolution on the measurement of
+the beam-beam and beam-gas vertices, from the choice of fit model used to
+parameterise the transverse beam profiles, and the observed variation in
+measurements of the visible \pp\ cross-section over
 time~\cite{LHCb-PAPER-2014-047}.
-The uncertainty on the luminosity measurement of \SI{3.8}{\%} is propagated to 
-the cross-section measurements, and is fully correlated between all charm 
+The uncertainty on the luminosity measurement of \SI{3.8}{\%} is propagated to
+the cross-section measurements, and is fully correlated between all charm
 mesons and all \pTy\ bins.
 
 \section{Tracking efficiency correction}
 \label{chap:prod:syst:tracking}
 
-The tracking efficiency corrections are computed as part of a dedicated 
-analysis~\cite{Aaij:2014pwa}, summarised in \cref{chap:prod:effs:tracking}, and 
+The tracking efficiency corrections are computed as part of a dedicated
+analysis~\cite{Aaij:2014pwa}, summarised in \cref{chap:prod:effs:tracking}, and
 come with their own set of statistical and systematic uncertainties.
 
-The statistical uncertainties on the correction factors, computed in bins of 
+The statistical uncertainties on the correction factors, computed in bins of
 track \ptot\ and \Eta, and shown in \cref{fig:prod:effs:tracking_table}.
-They are propagated to the cross-section measurements with pseudo-experiments 
-in an identical manner to that used to propagate the statistical uncertainty on 
+They are propagated to the cross-section measurements with pseudo-experiments
+in an identical manner to that used to propagate the statistical uncertainty on
 the \ac{PID} efficiency, as presented in \cref{chap:prod:syst:pid:stat}.
-The use of pseudo-experiments encodes the intra- and inter-decay correlations 
-of this uncertainty, and the resulting distribution of uncertainties is used as 
+The use of pseudo-experiments encodes the intra- and inter-decay correlations
+of this uncertainty, and the resulting distribution of uncertainties is used as
 the \ac{PDF} of the corresponding parameter on the cross-sections.
 
-The systematic uncertainty on the tracking efficiency correction factors 
-comprises two components: that due to the difference between muon interactions 
-with the detector (used to probe the efficiency) and those of hadrons (used in 
-the cross-section measurements); and that due to the weighting procedure used 
+The systematic uncertainty on the tracking efficiency correction factors
+comprises two components: that due to the difference between muon interactions
+with the detector (used to probe the efficiency) and those of hadrons (used in
+the cross-section measurements); and that due to the weighting procedure used
 to equalise the event multiplicity between the real data and the \ac{MC}.
-For the former source, a systematic uncertainty of \SI{1.1}{\percent} is 
-assigned per pion track and of \SI{1.4}{\percent} per kaon track, both of which 
-are dominated by an assumed \SI{10}{\percent} uncertainty on the material 
+For the former source, a systematic uncertainty of \SI{1.1}{\percent} is
+assigned per pion track and of \SI{1.4}{\percent} per kaon track, both of which
+are dominated by an assumed \SI{10}{\percent} uncertainty on the material
 budget.
 The latter source contributes \SI{0.4}{\percent}.
-The corresponding nuisance parameters for both sources are modelled as normal 
+The corresponding nuisance parameters for both sources are modelled as normal
 distributions.
 
-Unlike the systematic uncertainties on the \ac{PID} efficiencies, the 
-systematic uncertainties on the correction factors are highly correlated both 
+Unlike the systematic uncertainties on the \ac{PID} efficiencies, the
+systematic uncertainties on the correction factors are highly correlated both
 between \pTy\ bins and between charm mesons.
-This is due to the hadronic interaction and weighting uncertainties being 
+This is due to the hadronic interaction and weighting uncertainties being
 dominant and global.
-The systematic uncertainty on the tracking efficiency correction factor 
-relative to the measured cross-section value is given in 
-\cref{tab:prod:syst:tracking:D0ToKpi,tab:prod:syst:tracking:DpToKpipi} for 
+The systematic uncertainty on the tracking efficiency correction factor
+relative to the measured cross-section value is given in
+\cref{tab:prod:syst:tracking:D0ToKpi,tab:prod:syst:tracking:DpToKpipi} for
 \DzToKpi\ and \DpToKpipi.
 
 \section{Branching fractions}
 \label{chap:prod:syst:bf}
 
-The branching fractions, provided by the Particle Data Group~\cite{PDG2014} and 
-the \cleo\ collaboration~\cite{Alexander:2008aa}, are listed in 
+The branching fractions, provided by the Particle Data Group~\cite{PDG2014} and
+the \cleo\ collaboration~\cite{Alexander:2008aa}, are listed in
 \cref{tab:prod:introduction:branching_ratios}.
-The uncertainties are propagated as a systematic uncertainty on the 
-cross-sections as normal distributions of mean of zero and width equal to the 
+The uncertainties are propagated as a systematic uncertainty on the
+cross-sections as normal distributions of mean of zero and width equal to the
 uncertainty.
-The uncertainties are fully correlated between \pTy\ bin within a mode, and 
-uncorrelated between all modes, except for that on the \DzToKpi\ branching 
-fraction which enters both the \DzToKpi\ and \DstToDzpi\ cross-section 
+The uncertainties are fully correlated between \pTy\ bin within a mode, and
+uncorrelated between all modes, except for that on the \DzToKpi\ branching
+fraction which enters both the \DzToKpi\ and \DstToDzpi\ cross-section
 % Where does 95% come from? It's in the summary table, but why...
 measurements, for which a correlation of \SI{95}{\percent} is assigned.
 
 \section{Fit model}
 \label{chap:prod:syst:fitting}
 
-The choice of \acp{PDF} used to model the data in the fitting procedure 
-described in \cref{chap:prod:fitting} is somewhat arbitrary, in that they are 
+The choice of \acp{PDF} used to model the data in the fitting procedure
+described in \cref{chap:prod:fitting} is somewhat arbitrary, in that they are
 not the only functional forms that fit the data well.
-The magnitude of the difference between the cross-sections computed with other 
-fit models and the nominal model is assigned as a systematic uncertainty on the 
+The magnitude of the difference between the cross-sections computed with other
+fit models and the nominal model is assigned as a systematic uncertainty on the
 result.
-This corresponds to an uncertainty on the true generating \ac{PDF} for the 
+This corresponds to an uncertainty on the true generating \ac{PDF} for the
 observed data.
 
-With respect to the nominal signal model used in the \lnipchisq\ fit, from 
-\cref{eqn:prod:fitting:ipchisq:signal_model}, alternative signal models used in 
-the \lnipchisq\ fits are: \cref{eqn:prod:fitting:ipchisq:signal_model} where 
-the Gaussian core is replaced by a `double Gaussian' core, which is the sum of 
-two Gaussian distributions sharing a common mean but having independent widths; 
-and a `smeared' $\ln{\chisq}$ distribution, obtained by modifying the usual 
-\chisq\ functional form to have a parameterised asymmetry in the widths either 
+With respect to the nominal signal model used in the \lnipchisq\ fit, from
+\cref{eqn:prod:fitting:ipchisq:signal_model}, alternative signal models used in
+the \lnipchisq\ fits are: \cref{eqn:prod:fitting:ipchisq:signal_model} where
+the Gaussian core is replaced by a `double Gaussian' core, which is the sum of
+two Gaussian distributions sharing a common mean but having independent widths,
+and a `smeared' $\ln{\chisq}$ distribution, obtained by modifying the usual
+\chisq\ functional form to have a parameterised asymmetry in the widths either
 side of the mean~\cite{LHCb-CONF-2016-010}.
-Alternative models for the secondary charm component are the \ac{PDF} used for 
-the prompt signal, and the asymmetric \chisq\ function used as an alternative 
+Alternative models for the secondary charm component are the \ac{PDF} used for
+the prompt signal, and the asymmetric \chisq\ function used as an alternative
 prompt signal model.
 No alternative models for the background component are tested.
 
-The resulting relative systematic uncertainties are given in 
-\cref{tab:prod:syst:fitting:D0ToKpi,tab:prod:syst:fitting:DpToKpipi} for \DzToKpi\ and 
+The resulting relative systematic uncertainties are given in
+\cref{tab:prod:syst:fitting:D0ToKpi,tab:prod:syst:fitting:DpToKpipi} for \DzToKpi\ and
 \DpToKpipi.
 
 \section{Signal window}
 \label{chap:prod:syst:signal_window}
 
-The signal window applied to the data entering the \lnipchisq\ fit, as 
-described in \cref{chap:prod:fitting}, has an efficiency, as described in 
+The signal window applied to the data entering the \lnipchisq\ fit, as
+described in \cref{chap:prod:fitting}, has an efficiency, as described in
 \cref{chap:prod:effs:signal_window}.
-The computation of this efficiency assumes the signal model is known, but the 
-parameters of the model are fitted to the data, and so have an uncertainty, 
+The computation of this efficiency assumes the signal model is known, but the
+parameters of the model are fitted to the data, and so have an uncertainty,
 which results in a systematic uncertainty on the signal window efficiency.
 
 The computation of the uncertainty on the signal window efficiency is given in
 \cref{chap:prod:effs:signal_window}.
-This is is propagated the cross-sections as the systematic uncertainty, 
-modelled as a normal distribution, and is given in 
-\cref{tab:prod:syst:signal_window:D0ToKpi,tab:prod:syst:signal_window:DpToKpipi} relative 
+This is is propagated the cross-sections as the systematic uncertainty,
+modelled as a normal distribution, and is given in
+\cref{tab:prod:syst:signal_window:D0ToKpi,tab:prod:syst:signal_window:DpToKpipi} relative
 to the cross-section values for \DzToKpi\ and \DpToKpipi.
 
 \section{Correlations and summary}
 \label{chap:prod:syst:correlations}
 
-The different sources of systematic uncertainty that have been discussed in 
+The different sources of systematic uncertainty that have been discussed in
 this \lcnamecref{chap:prod:syst} can be grouped into three categories:
-global uncertainties, which are correlated between all bins and all modes; 
+global uncertainties, which are correlated between all bins and all modes;
 uncertainties which are are only correlated
-between the \pTy\ bins of a decay mode; and uncertainties which are 
+between the \pTy\ bins of a decay mode; and uncertainties which are
 uncorrelated between bins and modes.
 
-Global uncertainties arise from the luminosity, from the tracking efficiency 
-correction factors, and the \DzToKpi\ branching fraction in between the 
+Global uncertainties arise from the luminosity, from the tracking efficiency
+correction factors, and the \DzToKpi\ branching fraction in between the
 \DzToKpi\ and \DstToDzpi\ with \DzToKpi\ measurements.
-Correlated between bins within a decay mode are the uncertainties from the 
-branching fractions, from the arbitrary choice of fit model, and from the 
+Correlated between bins within a decay mode are the uncertainties from the
+branching fractions, from the arbitrary choice of fit model, and from the
 \ac{PID} calibration sample size and binning scheme.
-The uncertainty due to the finite \ac{MC} sample size is uncorrelated between 
+The uncertainty due to the finite \ac{MC} sample size is uncorrelated between
 bins and between modes.
 
-A summary of the uncertainties entering the cross-section measurements, and 
+A summary of the uncertainties entering the cross-section measurements, and
 their correlations, is given in \cref{tab:prod:syst:summary}.
-The individual systematic uncertainties are combined in the cross-section 
-measurements by multiplying or dividing the measurement sample vector by the 
-sample vectors generated from the aforementioned \acp{PDF} assumed for each 
-uncertainty.
 
 \begin{sidewaystable}
   \caption{%
-    Systematic uncertainties expressed as fractions of the cross-section 
+    Systematic uncertainties expressed as fractions of the cross-section
     measurements, in percent.
-    Uncertainties that are computed bin-by-bin are expressed as ranges giving 
+    Uncertainties that are computed bin-by-bin are expressed as ranges giving
     the minimum to maximum values.
-    Ranges for the correlations between \pTy\ bins and between modes are also 
+    Ranges for the correlations between \pTy\ bins and between modes are also
     given, expressed in percent.
   }
   \label{tab:prod:syst:summary}
@@ -671,7 +667,7 @@ uncertainty.
 
 \begin{table}
   \caption{%
-    Relative uncertainties on the charm cross-sections $\xsec(\PHc)$ due to the 
+    Relative uncertainties on the charm cross-sections $\xsec(\PHc)$ due to the
     mis-modelling of the data in the Monte Carlo sample.
   }
   \label{tab:prod:syst:mc:modelling}
@@ -681,8 +677,8 @@ uncertainty.
 
 \begin{table}
   \caption{%
-    Relative uncertainties on the charm cross-sections $\xsec(\PHc)$ due to the 
-    finite size of the Monte Carlo sample used to assess the truth matching 
+    Relative uncertainties on the charm cross-sections $\xsec(\PHc)$ due to the
+    finite size of the Monte Carlo sample used to assess the truth matching
     efficiency.
   }
   \label{tab:prod:syst:mc:truth_matching}

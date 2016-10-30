@@ -61,7 +61,7 @@ so most analyses at \lhcb\ aim to fully reconstruct the decays of beauty and
 charm hadrons, such as $\decay{\PBz}{\PKplus\PKminus}$, 
 $\decay{\PBs}{\PDspm\PKmp}$ with $\decay{\PDsplus}{\PKminus\PKplus\Ppiplus}$, 
 $\decay{\PLambdab}{\PJpsi\Pproton\PKminus}$ with 
-$\decay{\PJpsi}{\Pmuon\APmuon}$, and $\decay{\PDz}{\PKplus\Ppiminus}$.
+$\decay{\PJpsi}{\Pmuon\APmuon}$, and $\decay{\PDz}{\PKpm\Ppimp}$.
 It is important to note that specific final states offer higher sensitivities 
 to physics observables than others, and so it is crucial for \lhcb\ to be able 
 to distinguish between different particle species.
@@ -252,15 +252,15 @@ Ionising particles liberate electrons from the gas molecules within the tubes,
 which are detected by anode wires and registered as hits.
 The distance of the line of ionisation from the wire is determined by measuring 
 the electron drift time, improving the track momentum resolution.
-This is further improved by adding the hits detected in the \ttracker, upstream 
-of the T-stations.
+The momentum resolution on long tracks is further improved by adding hits 
+detected in the \ttracker, upstream of the T-stations.
 The \ttracker\ is a silicon strip detector of the same technology as the 
 \itracker, with the three stations covering a total area of around 
 \SI{8}{\metre\squared}.
 
 The tracking efficiency, defined as the fraction of genuine tracks that are 
 reconstructed given that enough hits were deposited to do so, is measured using 
-a tag-and-probe technique with \JpsiTomumu\ decays, which is explained in more 
+a tag-and-probe technique with \JpsiTomumu\ decays, and described in more 
 detail in \cref{chap:prod:effs:tracking}.
 The average tracking efficiency is measured to be above 
 \SI{95}{\percent}~\cite{Aaij:2014pwa}.
@@ -305,16 +305,16 @@ an improved one~\cite{Dujany:082010}.
 Through the momentum-velocity relation, the mass of a particle can be 
 determined by combining the momentum measurement from the tracking system with 
 a velocity measurement.
-Velocities measurements are made using the \ac{RICH} detectors.
+Velocity measurements are made using the \ac{RICH} detectors.
 
 Tracks created by pions, kaons, and protons are identified using the response 
 of two \ac{RICH} detectors: \richone\ located upstream of the magnet and 
 \richtwo\ located downstream.
 The \acp{RICH} also provide electron and muon discrimination, albeit at a 
 weaker level.
-\richtwo\ has larger surface area than \richone\ but has a smaller angular 
+\richtwo\ has a larger surface area than \richone\ but a smaller angular 
 acceptance, being designed to efficiently identify tracks with momenta in the 
-range \SIrange{15}{100}{\GeVc} which largely occupy the low-$\theta$ region.
+range \SIrange{15}{100}{\GeVc}, which largely occupy the low-$\theta$ region.
 \richone\ is effective in the momentum range \SIrange{3}{60}{\GeVc}.
 During \runone, \richone\ contained both \ce{C4F10} gas and aerogel, of which 
 the latter was removed before the start of \runtwo.
@@ -335,13 +335,13 @@ monitoring the gas pressure and temperature over time.
 By measuring \thetac\ the \rich\ detectors provide velocity measurements of 
 charged tracks.
 
-The Cherenkov light cones are reflected outside of the \lhcb detector 
-acceptance by spherical and plane mirrors onto planes of photon detector 
-arrays.
+The Cherenkov light cones are reflected outside of the \lhcb\ detector 
+acceptance by spherical and plane mirrors onto planar arrays of photon 
+detectors.
 The angle \thetac\ is related to the radius of the rings, and, for a given 
 momentum, particles of different masses will produced smaller or larger rings.
 \Cref{fig:intro:lhcb:cherenkov_angles} illustrates the Cherenkov angles for 
-different particle species as a function of particle momentum.
+different particle species as a function of momentum.
 Separation between mass hypotheses is given by the difference between the 
 angles, denoted on the $y$-axis.
 Discrimination can also be provided by the lack of Cherenkov light if a track 
@@ -392,7 +392,7 @@ The pion \dll\ value is then zero by definition.
 Given the momentum measurements from the tracking system and the velocity 
 measurements from the \ac{RICH} detectors, the particle energy is already 
 determined.
-For charged hadrons then, a precise calorimetry system is not necessary.
+For charged hadrons then, precise calorimetry is not necessary.
 However, the momentum and mass measurements are complex and require a 
 significant amount of time to compute, and so cannot be used in the first stage 
 of the trigger where the proton-proton collision rate must be reduced from 
@@ -550,23 +550,23 @@ grouped as either \emph{exclusive}, where decays are fully reconstructed, or
 
 For beauty decays, the inclusive `topological' lines select two, three, and 
 four-body vertices of charged tracks that are characteristic of those produced 
-by \PB hadrons.
+by \Pbottom hadrons.
 Input tracks are required to have a high \ac{IP}, and then the resulting vertex 
 is selected based on its distance from the \ac{PV}, the \ac{IP} of the vertex 
 momentum vector, the \ac{DOCA} and the sum of the \pT\ of the input tracks, and 
 the vertex mass and corrected mass, the latter of which accounts for decay 
 products not explicitly included in the vertex such as long-lived charm 
 hadrons.
-The \ac{DOCA} requirements are loose enough to accommodate \PB decays that 
-include long-lived charm hadrons, where a tertiary vertex would be defined in 
-the offline reconstruction.
+The \ac{DOCA} requirements are loose enough to accommodate \Pbottom hadron 
+decays that include long-lived charm hadrons, where a tertiary vertex would be 
+defined in the offline reconstruction.
 The vertex quantities are used as input to a \ac{BDT}, and the single output 
 value is used to make the trigger 
 decision~\cite{Gligorov:2011qxa,Gligorov:1384380}.
-A similar set of topological lines exists that are optimised for \PB decays 
-that include a high \pT\ muon, and an inclusive \PDstarp\ line exists for 
-selecting \DstToDzpi\ with $\decay{\PDzero}{hhX}$ decays, where $hh$ are two 
-charged hadrons.\footnotemark\
+A similar set of topological lines exists that are optimised for \Pbottom 
+hadron decays that include a high \pT\ muon, and an inclusive \PDstarp\ line 
+exists for selecting \DstToDzpi\ with $\decay{\PDzero}{hhX}$ decays, where $hh$ 
+are two charged hadrons.\footnotemark\
 \footnotetext{%
   Throughout this thesis, charge conjugation is implied unless stated 
   otherwise.
@@ -586,8 +586,7 @@ Some of these lines are included to increase the efficiency of the inclusive
 lines for specific final states, whilst others are the only trigger path which 
 would give a high efficiency.
 
-After the \acl{HLT}, events passing at least one \hlttwo\ line are saved to 
-disk.
+Events passing \hlttwo\ are saved to disk.
 The offline processing then begins with the full event reconstruction, which is 
 more precise than that in the trigger due to the longer processing times 
 permitted.
@@ -639,7 +638,7 @@ the resolution of the various physics quantities, and that the best possible
 detector alignment and calibration are already applied, physics analyses could 
 be performed directly on the output of the trigger.
 
-There are several benefits due to \ac{LS1} efforts.
+There are several benefits due to the \ac{LS1} efforts.
 The improvement of the online reconstruction allows for parity between the 
 online and offline selections, increasing the trigger efficiency and the 
 possible number of signal candidates available for analysis, and decreasing the 
@@ -689,8 +688,8 @@ The behaviour of the other particles generated in the event is also controlled
 by \evtgen, but is not forced to any particular state.
 
 After \evtgen, the particles are propagated through a simulation of the entire 
-detector using the \geant\ 4 program, where interactions with the detector are 
-recorded as `\ac{MC} hits'.
+detector using the \geant\ 4 program, where interactions with the active 
+detector elements are recorded as `\ac{MC} hits'.
 These \ac{MC} hits are converted into a format mimicking the electrical 
 response of the real detector through an \lhcb-specific emulation, and the 
 response is processed through the trigger and reconstruction software in an 
@@ -709,8 +708,8 @@ The process of assigning \ac{MC} objects to reconstructed objects is referred
 to as truth matching.
 Tracks are classified as `ghost' tracks if there are no \ac{MC} particles that 
 can be associated to them.
-Vertices can then be assigned categories based on the associations of their 
-input tracks.
+Vertices are assigned categories based on the associations of their input 
+tracks.
 A `signal vertex' is defined as one in which all inputs are associated to 
 \ac{MC} particles, all inputs have been assigned a particle identity the same 
 as that of their associated \ac{MC} particle, all inputs have been associated 

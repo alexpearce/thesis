@@ -1,38 +1,38 @@
 \chapter{Formalism}
 \label{chap:cpv:theory}
 
-The measurement of \ARaw, as defined in \cref{eqn:cpv:introduction:araw}, can 
+The measurement of \ARaw, as defined in \cref{eqn:cpv:introduction:araw}, can
 be contaminated by production and detection asymmetries.
-By reconstructing \LcTopKK\ and \LcToppipi\ decays from 
-\decay{\PLambdab}{\PLambdac\Pmuon X}\ decays, \ARaw\ can include the effects of 
-the \PLambdab/\APLambdab\ production asymmetry, the \Pmuon/\APmuon detection 
-asymmetry, and the detection asymmetry of the \PLambdac\ final state 
+By reconstructing \LcTopKK\ and \LcToppipi\ decays from
+\decay{\PLambdab}{\PLambdac\Pmuon X}\ decays, \ARaw\ can include the effects of
+the \PLambdab/\APLambdab\ production asymmetry, the \Pmuon/\APmuon detection
+asymmetry, and the detection asymmetry of the \PLambdac\ final state
 $f$/$\bar{f}$.
 
-The \PLambdab\ production asymmetry is predicted to be non-zero due to the \pp\ 
-collision environment~\cite{PhysRevD.90.014023}, and indeed \lhcb\ has found 
-evidence of such an asymmetry as a function of \PLambdab\ 
+The \PLambdab\ production asymmetry is predicted to be non-zero due to the \pp\
+collision environment~\cite{PhysRevD.90.014023}, and indeed \lhcb\ has found
+evidence of such an asymmetry as a function of \PLambdab\
 rapidity~\cite{Aaij:2015fea}.
-The two detection asymmetries are also expected to be non-zero, due to the 
-known differences between the hadron/anti-hadron and muon/anti-muon 
+The two detection asymmetries are also expected to be non-zero, due to the
+known differences between the hadron/anti-hadron and muon/anti-muon
 cross-sections with matter~\cite{PDG2014}.
-The final state detection asymmetry can be broken down into two terms: one due 
-to the detection asymmetry of the proton; and another due to the detection 
+The final state detection asymmetry can be broken down into two terms: one due
+to the detection asymmetry of the proton; and another due to the detection
 asymmetry of the \KmKp pair and the \pimpip\ pair.
-If the meson kinematics are equal within a given mode, for example if the 
-\PKminus kinematics are identical to those of the \PKplus\ in the \pKK\ data, 
+If the meson kinematics are equal within a given mode, for example if the
+\PKminus kinematics are identical to those of the \PKplus\ in the \pKK\ data,
 then the final state asymmetry reduces to the proton detection asymmetry.
 
-Both the \PLambdab\ production and the muon detection asymmetries should be 
-independent of the \PLambdac\ final state, given the same \PLambdac\ 
+Both the \PLambdab\ production and the muon detection asymmetries should be
+independent of the \PLambdac\ final state, given the same \PLambdac\
 kinematics.
-Different acceptance efficiencies between \pKK\ and \ppipi\ can create unequal 
-\PLambdac\ kinematics, but the kinematics can be weighted to equalise them 
+Different acceptance efficiencies between \pKK\ and \ppipi\ can create unequal
+\PLambdac\ kinematics, but the kinematics can be weighted to equalise them
 between the modes.
 
-It will now be shown how the background asymmetries entering \ARaw\ can be 
+It will now be shown how the background asymmetries entering \ARaw\ can be
 removed in the difference \dACP\@.
-The number of reconstructed \LcTof\ decays can be expressed as the product of 
+The number of reconstructed \LcTof\ decays can be expressed as the product of
 several effective probabilities
 \begin{equation}
   N(f) = \prob(\PLambdab)\cdot
@@ -42,17 +42,17 @@ several effective probabilities
          \eff(f),
   \label{eqn:cpv:theory:yield}
 \end{equation}
-where $\prob(\PLambdab)$ is the probability of producing a $\PLambdab$ baryon 
-given a \pp\ collision, and $\eff(\Pmuon)$ and $\eff(f)$ are the muon and 
+where $\prob(\PLambdab)$ is the probability of producing a $\PLambdab$ baryon
+given a \pp\ collision, and $\eff(\Pmuon)$ and $\eff(f)$ are the muon and
 $\PLambdac$ final-state detection efficiencies.
-A similar expression exists for $N(\bar{f})$, where are particles are replaced 
+A similar expression exists for $N(\bar{f})$, where are particles are replaced
 by their charge conjugates.
 % TODO can we back up this assumption?
-It is assumed that the \LbToLcmuX decay is \CP-symmetric, but that all other 
+It is assumed that the \LbToLcmuX\ decay is \CP-symmetric, but that all other
 factors may not be, for example $\eff(\Pmuon) \neq \eff(\APmuon)$.
 
-To express \ARaw\ in terms of its component asymmetries, the notation of a 
-general asymmetry parameter $X$ is defined, which describes the asymmetry 
+To express \ARaw\ in terms of its component asymmetries, the notation of a
+general asymmetry parameter $X$ is defined, which describes the asymmetry
 between two quantities $x$ and $\bar{x}$
 \begin{equation}
   X = \frac{x - \bar{x}}{x + \bar{x}}.
@@ -60,10 +60,10 @@ between two quantities $x$ and $\bar{x}$
 \end{equation}
 This can be rearranged as
 \begin{align}
-  x &= \frac{1}{2}(x + \bar{x})(1 + X),\label{eqn:cpv:theory:asym_form_one}\\
+  x &= \frac{1}{2}(x + \bar{x})(1 + X),\ \text{and}\label{eqn:cpv:theory:asym_form_one}\\
   \bar{x} &= \frac{1}{2}(x + \bar{x})(1 - X).\label{eqn:cpv:theory:asym_form_two}
 \end{align}
-An asymmetry parameter like that in \cref{eqn:cpv:theory:generic_asym} can be defined for each of the relevant terms in 
+An asymmetry parameter like that in \cref{eqn:cpv:theory:generic_asym} can be defined for each of the relevant terms in
 \cref{eqn:cpv:theory:yield}
 \begin{align*}
   \APLb(f) &= \frac{%
@@ -75,31 +75,31 @@ An asymmetry parameter like that in \cref{eqn:cpv:theory:generic_asym} can be de
     \eff(\Pmuon) - \eff(\APmuon)
   }{%
     \eff(\Pmuon) + \eff(\APmuon)
-  },\\
+  },\ \text{and}\\
   \ADf(f)  &= \frac{%
     \eff(f) - \eff(\bar{f})
   }{%
     \eff(f) + \eff(\bar{f})
   },
 \end{align*}
-and the asymmetry in $\Gamma(\LcTof)$ is \ACP as in 
+and the asymmetry in $\Gamma(\LcTof)$ is \ACP\ as in
 \cref{eqn:cpv:introduction:acp}.
-Each parameter is, at least implicitly, dependent on the detected \PLambdac\ 
-final state, as each parameter can vary in quantities that may also vary 
+Each parameter is, at least implicitly, dependent on the detected \PLambdac\
+final state, as each parameter can vary in quantities that may also vary
 between \PLambdac\ decay modes.
-Substituting in Equation~\ref{eqn:cpv:theory:yield} to 
+Substituting in Equation~\ref{eqn:cpv:theory:yield} to
 Equation~\ref{eqn:cpv:introduction:araw}
 \begin{equation*}
   \ARaw(f) = \frac{%
-    \prob(\PLambdab)\Gamma(f)\eff(\Pmuon)\eff(f) - 
+    \prob(\PLambdab)\Gamma(f)\eff(\Pmuon)\eff(f) -
     \prob(\APLambdab)\Gamma(\bar{f})\eff(\APmuon)\eff(\bar{f})
   }{%
-    \prob(\PLambdab)\Gamma(f)\eff(\Pmuon)\eff(f) + 
+    \prob(\PLambdab)\Gamma(f)\eff(\Pmuon)\eff(f) +
     \prob(\APLambdab)\Gamma(\bar{f})\eff(\APmuon)\eff(\bar{f})
   },
 \end{equation*}
-and then substituting each quantity for its equivalent form as in 
-\cref{eqn:cpv:theory:asym_form_one,eqn:cpv:theory:asym_form_two}, all factors 
+and then substituting each quantity for its equivalent form as in
+\cref{eqn:cpv:theory:asym_form_one,eqn:cpv:theory:asym_form_two}, all factors
 of $\sfrac{1}{2}$ and all factors of the form $(x - \bar{x})$ cancel, leaving
 \begin{equation}
   \ARaw(f) = \frac{Y}{Z}.
@@ -114,127 +114,127 @@ and
   Z = 1 &+ \APLb\ADmu + \APLb\ADf + \APLb\ACP + \ADmu\ADf + \ADmu\ACP \nonumber\\
         &+ \ADf\ACP + \APLb\ADmu\ADf\ACP.
 \end{align}
-Assuming that the individual asymmetries are small, of the order of 
-\SI{1}{\percent}, the product of two or more asymmetries is negligible with 
+Assuming that the individual asymmetries are small, of the order of
+\SI{1}{\percent}, the product of two or more asymmetries is negligible with
 respect to the leading order, and so
 \begin{equation}
   \ARaw(f) \approx \ACP(f) + \APLb(f) + \ADmu(f) + \ADf(f).
   \label{eqn:cpv:theory:araw_approx}
 \end{equation}
-By assuming that these background asymmetries are mode-independent, that is to 
-say $\AD(f) = \AD(g)$ and $\AP(f) = \AP(g)$, the difference between \ARaw\ for 
+By assuming that these background asymmetries are mode-independent, that is to
+say $\AD(f) = \AD(g)$ and $\AP(f) = \AP(g)$, the difference between \ARaw\ for
 the \pKK\ and \ppipi\ will only have contributions from \ACP
 \begin{align}
   \dACP &= \ARaw(\pKK) - \ARaw(\ppipi),\label{eqn:cpv:theory:dacp}\\
         &\approx \ACP(\pKK) - \ACP(\ppipi)\nonumber.
 \end{align}
 
-The assumption that the production and detection asymmetries in 
+The assumption that the production and detection asymmetries in
 \cref{eqn:cpv:theory:araw_approx} are mode independent is not true in general.
-This can been seen by first making a weaker assumption that the background 
-asymmetries are dependent only on the kinematics of the representative 
+This can been seen by first making a weaker assumption that the background
+asymmetries are dependent only on the kinematics of the representative
 particles.
-Different final states will in general have different acceptance, 
-reconstruction and selection efficiencies as a function of \PLambdac\ 
+Different final states will in general have different acceptance,
+reconstruction and selection efficiencies as a function of \PLambdac\
 kinematics.
-The kinematics of the \PLambdac\ are correlated to those of the muon and the 
-\PLambdab, and so two samples with different \PLambdac\ kinematics will likely 
+The kinematics of the \PLambdac\ are correlated to those of the muon and the
+\PLambdab, and so two samples with different \PLambdac\ kinematics will likely
 also have different \PLambdab\ and muon kinematics.
 Hence, there can still be net production and detection asymmetries in \dACP\@.
 
-The assumption that the background asymmetries depend only on particle 
+The assumption that the background asymmetries depend only on particle
 kinematics is not unreasonable.
-The production asymmetry, for example, is a difference in cross-sections, which 
-are usually parameterised by the kinematics of the produced particle (\pT\ and 
+The production asymmetry, for example, is a difference in cross-sections, which
+are usually parameterised by the kinematics of the produced particle (\pT\ and
 either \Eta\ or rapidity).
-Similarly, a detection asymmetry describes the differences of material 
-interactions between matter and antimatter, and these are dependent on the 
-momentum of the particle in question and, assuming a non-uniform material 
+Similarly, a detection asymmetry describes the differences of material
+interactions between matter and antimatter, and these are dependent on the
+momentum of the particle in question and, assuming a non-uniform material
 distribution, its flight path.
 
-As it is not given that the \PLambdac\ kinematics are the same between 
-\LcTopKK\ and \LcToppipi\ decays in the data, the data can be weighted to 
+As it is not given that the \PLambdac\ kinematics are the same between
+\LcTopKK\ and \LcToppipi\ decays in the data, the data can be weighted to
 equalise the \PLambdac\ kinematics.
-The background asymmetries \AP\ and \ADmu\ will then cancel in the difference 
+The background asymmetries \AP\ and \ADmu\ will then cancel in the difference
 \dACP\@.
-The proton kinematics will not necessarily agree after such a weighting, as the 
+The proton kinematics will not necessarily agree after such a weighting, as the
 energy release in the \pKK\ and \ppipi\ decays is different.
-These considerations govern the analysis strategy: measure the number of 
-\PLambdac\ candidates in the \pKK\ and \ppipi\ samples after weighting them 
-such that the \PLambdac\ kinematics look alike, such that the \PLambdab\ and 
+These considerations govern the analysis strategy: measure the number of
+\PLambdac\ candidates in the \pKK\ and \ppipi\ samples after weighting them
+such that the \PLambdac\ kinematics look alike, such that the \PLambdab\ and
 \Pmuon kinematics also agree.
 Additional weighting may be required to equalise the proton kinematics.
 
 \section{Decay phase space}
 \label{chap:cpv:theory:phsp}
 
-The phase space of a decay is the set of variables which fully parameterises 
+The phase space of a decay is the set of variables which fully parameterises
 all possible dynamics.
-Although a three-body decay requires 12 parameters to describe the kinematics, 
-under the assumptions of four-momentum conservation and that the masses of the 
+Although a three-body decay requires 12 parameters to describe the kinematics,
+under the assumptions of four-momentum conservation and that the masses of the
 three decay products are known, the number of free parameters is only five.
-When all particles involved have zero spin, the distribution of the momenta of 
+When all particles involved have zero spin, the distribution of the momenta of
 the decay products is isotropic, such that there are only 2 degrees of freedom.
-These are usually taken to be two child-pair squared masses, which can be 
+These are usually taken to be two child-pair squared masses, which can be
 visualised as a Dalitz plot.
-In the case of \LcTophh, the spin \sfrac{1}{2} of the proton means that the 
-three-body system is no longer rotationally symmetric, and the full five 
+In the case of \LcTophh, the spin \sfrac{1}{2} of the proton means that the
+three-body system is no longer rotationally symmetric, and the full five
 degrees of freedom are required to describe the phase space.
 
-For a meaningful comparison of the measurement of \dACP\ with theoretical 
-predictions, which are not presently available, the efficiency of the 
+For a meaningful comparison of the measurement of \dACP\ with theoretical
+predictions, which are not presently available, the efficiency of the
 \PLambdac\ selection across the five-dimensional phase space must be known.
-The definition of ``selection'' includes the effects of the \lhcb\ acceptance 
+The definition of ``selection'' includes the effects of the \lhcb\ acceptance
 and the trigger, stripping, and offline requirements.
-The efficiency model can either be provided to theorists so that they can apply 
-the same efficiencies to their phase space models, or it can be used to correct 
+The efficiency model can either be provided to theorists so that they can apply
+the same efficiencies to their phase space models, or it can be used to correct
 the data before the \dACP\ measurement is made.
 
-The five dimensions of the phase space are defined here in a similar way to the 
-\LcTopKpi\ amplitude analysis performed by the \esno\ 
+The five dimensions of the phase space are defined here in a similar way to the
+\LcTopKpi\ amplitude analysis performed by the \esno\
 collaboration~\cite{Aitala:1999uq}.
-This defines two child-pair squared masses, of the proton and 
-oppositely-charged child \msqphm\ and of the two opposite-sign pseudo-scalars 
+This defines two child-pair squared masses, of the proton and
+oppositely-charged child \msqphm\ and of the two opposite-sign pseudo-scalars
 \msqhh, and three decay angles.
-The child-pair squared masses are invariant under Lorentz transformations, but 
-the decay angles are not and so a definition of the frame in which they are 
+The child-pair squared masses are invariant under Lorentz transformations, but
+the decay angles are not and so a definition of the frame in which they are
 computed is required.
 
 The \esno\ analysis defines a coordinate system in the \PLambdac\ rest frame.
-The $z$-axis, also called the quantisation axis or polarisation axis \polzlcp, 
+The $z$-axis, also called the quantisation axis or polarisation axis \polzlcp,
 is perpendicular to the plane of production
 \begin{equation}
   z = \polzlcp = \phatbeam \times \phatlcp,
 \end{equation}
-where \phatbeam\ is the direction of the beam\footnotemark\ and \phatlcp\ is 
+where \phatbeam\ is the direction of the beam\footnotemark\ and \phatlcp\ is
 the direction of the \PLambdac\ measured in the laboratory frame.
 \footnotetext{%
-  E791 was a fixed-target experiment, colliding a \SI{500}{\GeVc} pion beam 
+  E791 was a fixed-target experiment, colliding a \SI{500}{\GeVc} pion beam
   with metal foils.
 }
 The $x$-axis of the \PLambdac\ rest frame is \phatlcp.
-As the \PLambdac\ candidates in this analysis are not produced directly from 
-the \pp\ collision but in the decays of \PLambdab\ baryons, here the `beam 
-direction' is defined as the direction of the \PLambdab\ momentum vector, which 
-is equal to the direction vector pointing from the \pp\ primary vertex 
+As the \PLambdac\ candidates in this analysis are not produced directly from
+the \pp\ collision but in the decays of \PLambdab\ baryons, here the `beam
+direction' is defined as the direction of the \PLambdab\ momentum vector, which
+is equal to the direction vector pointing from the \pp\ primary vertex
 $v_{\pp}$ to the $\PLambdac\Pmuon$ vertex $v_{\PLambdac\Pmuon}$
 \begin{equation}
   \phatbeam = \phatlbz = v_{\PLambdac\Pmuon} - v_{\pp}.
 \end{equation}
-With this coordinate system and inertial frame, the three decay angles are 
+With this coordinate system and inertial frame, the three decay angles are
 defined as:
 \begin{enumerate}
   \item The angle \thetap\ between the proton momentum vector and the $z$-axis;
-  \item The angle \phip\ between the proton momentum vector and the $x$-axis; 
+  \item The angle \phip\ between the proton momentum vector and the $x$-axis;
     and
-  \item The angle \phihh\ between the plane containing the proton momentum 
-    vector and the $z$-axis and the plane containing the two pseudo-scalar 
+  \item The angle \phihh\ between the plane containing the proton momentum
+    vector and the $z$-axis and the plane containing the two pseudo-scalar
     meson momentum vectors.
 \end{enumerate}
-These definition are illustrated in \cref{fig:cpv:theory:phsp:angles}
+These definitions are illustrated in \cref{fig:cpv:theory:phsp:angles}
 
-The distributions of the five phase space variables will be presented in 
-\cref{chap:cpv:phsp}, along with the evaluation of the efficiency as a function 
+The distributions of the five phase space variables will be presented in
+\cref{chap:cpv:phsp}, along with the evaluation of the efficiency as a function
 of the position in phase space.
 
 \begin{figure}
@@ -249,9 +249,9 @@ of the position in phase space.
     }
   \end{subfigure}
   \caption{%
-    Definition of inertial reference frame axes and \LcTophh\ phase space decay 
+    Definition of inertial reference frame axes and \LcTophh\ phase space decay
     angles.
-    Adapted from Figure~1 in the \esno\ \LcTopKpi\ amplitude analysis 
+    Adapted from Figure~1 in the \esno\ \LcTopKpi\ amplitude analysis
     paper~\cite{Aitala:1999uq}.
   }
   \label{fig:cpv:theory:phsp:angles}
