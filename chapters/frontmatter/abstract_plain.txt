@@ -1,0 +1,16 @@
+This thesis presents two measurements made using data collected by the LHCb
+detector, operating at the Large Hadron Collider accelerator at the CERN particle physics
+laboratory.
+The first is a measurement of the production rates of promptly produced
+D0, D+, Ds+, and D*+ open charm mesons, using data
+collected in 2015 at a proton-proton centre-of-mass energy of sqrt(s) = 13 TeV.
+The second is a search for direct CP violation in two three-body decays of
+the Lambda_c charm baryon, pKK and ppipi, using data collected in 2011 at
+sqrt(s) = 7 TeV and in 2012 at sqrt(s) = 8 TeV.
+For each measurement, motivation and context are given from the standpoint of
+improving the theoretical understanding of the Standard Model and searching for signs
+of physics that cannot be explained by it, and then the various statistical
+analysis techniques used to extract physical quantities from the data are
+explained.
+The systematic limitations of the method are explored and quantified, and then
+the results are presented.
