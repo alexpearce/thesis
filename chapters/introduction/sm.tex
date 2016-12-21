@@ -183,6 +183,18 @@ where $V_{ij}$ is the coupling of the $i$ to $j$ transition, e.g.\ $|\Vud|^{2}$
 is the relative probability of the transition \decay{\Pdown}{\Pup}.
 The values of the \ac{CKM} matrix elements are not predicted by the \ac{SM} and 
 so must be determined experimentally.
+There are several methods for determining the coupling constants, depending on 
+the quarks involved, but each generally involves the measurement of one or more 
+decay rates involving a particular quark transition, and require some 
+theoretical input to disentangle the contributions from the strong and weak 
+forces.
+One example measurement is $\beta$ decay, used as input to compute \Vud.
+Given that the up and down quarks are the most abundant, \Vud\ is particularly 
+well known, with a fractional uncertainty of the order of \num{e-5}.
+The element \Vub\ is the least well known, with a fractional uncertainty around 
+\SI{2}{\percent}, measured using the decays of beauty 
+hadrons~\cite{Charles:2004jd}.
+
 By exploiting the predicated unitarity of the \ac{CKM} matrix, it can be 
 represented using only three mixing angles and a complex phase $\delta$
 \begin{equation}
@@ -197,12 +209,26 @@ represented using only three mixing angles and a complex phase $\delta$
 \end{equation}
 where $s_{ij} = \sin{\theta_{ij}}$ and $c_{ij} = \cos{\theta_{ij}}$.
 In alternative formulations~\cite{Wolfenstein:1983yz}, the three angles are 
-parameterised as $\alpha$, $\beta$ and $\gamma$.
+parameterised as $\alpha$, $\beta$ and $\gamma$ and can be visualised as a 
+triangle on the complex plane.
 One of the key measurements of \lhcb\ is that of the angle $\gamma$, which is 
 the least well-measured of the three angles, with the precision on the world 
-average around \SI{9}{\percent}~\cite{LHCb-CONF-2016-001}; in comparison the 
-\ac{SM} precision is estimated to be up to \SI{4}{\degree}, depending on the 
-assumptions~\cite{Brod:2013sga,Brod:2014bfa}.
+average around \SI{9}{\percent}~\cite{LHCb-CONF-2016-001}.
+This is to be compared with the ultimate precision that could be obtained given
+the finite uncertainty of some of the theoretical inputs, required to translate
+the measurements into estimates of the CKM elements, estimated to be up to 
+\SI{4}{\degree}, depending on the assumptions~\cite{Brod:2013sga,Brod:2014bfa}.
+
+The closure of the $(\alpha, \beta, \gamma)$ triangle is equivalent to the 
+prediction of the unitarity of the CKM matrix, and hence measuring a value of 
+$\gamma$ which does not form a triangle would be a sign of physics beyond the 
+\ac{SM}.
+The current world averages of the various measurements are presented in the 
+complex plane in \cref{fig:intro:sm:ckm_angles}, where some of experimental 
+inputs and their associated uncertainties are shown as bands.
+The \lhcb\ experiment has performed measurements of most of the inputs shown, 
+with the exception of $\varepsilon_{\PK}$ which is related to neutral kaon 
+oscillations.
 
 It is the phase in the \ac{CKM} matrix that permits \CP\ violation.
 Consider a decay \decay{P}{f} and the \CP\ conjugate process
@@ -272,4 +298,19 @@ mystery.
     Two possible Feynman diagrams for the decay \decay{\PBzero}{\PKplus\Ppiminus}.
   }
   \label{fig:intro:sm:weak_feynman}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{introduction/ckmfitter_rho_eta_plane}
+  \caption{%
+    A representation of the three angles, parameterised as $\alpha$, $\beta$, 
+    and $\gamma$, of the CKM matrix shown the complex plane.
+    The various bands show the experimental inputs to the determination of the 
+    angles, with the width of the bands corresponding to the uncertainties on 
+    the measurements.
+    The angles and the measurements correspond to the world averages as of 
+    mid-2016~\cite{Charles:2004jd}.
+  }
+  \label{fig:intro:sm:ckm_angles}
 \end{figure}
