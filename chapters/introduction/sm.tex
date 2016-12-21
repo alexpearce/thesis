@@ -35,10 +35,25 @@ all interactions conserve the total charge of the system.
 
 Interactions with fields are mediated via the exchange of bosons, particles 
 with integer spin, such as the photon, the force carrier of the electromagnetic 
-field, and the Higgs, the particle responsible for giving the fundamental 
-particles mass.
+field.
 Fermions are particles with half-integer spins; the quarks, leptons, and 
 neutrinos constitute the fundamental fermions.
+The projection of a particle's spin vector along its momentum vector defines 
+the particle's helicity, and is not invariant under Lorentz transformations.
+The chirality of a particle can be considered as a Lorentz invariant helicity, 
+as such encoding the intrinsic `handedness' of a particle.
+The known fundamental particles of the \ac{SM}, along with their measured 
+electric charges and spins, are shown in \cref{tab:intro:sm:particles}.
+
+\begin{table}
+  \centering
+  \caption{%
+    Properties of the fundamental particles of the \acl{SM}~\cite{PDG2014}. The
+    electric charge is given in units of the electron charge.
+  }
+  \label{tab:intro:sm:particles}
+  \input{tables/introduction/fundamental_particles}
+\end{table}
 
 The strong force acts on particles with colour charge, quarks and gluons, via 
 the exchange of gluons.
@@ -69,29 +84,77 @@ One such example of a non-perturbative problem is the prediction of \pp\
 cross-sections at the \ac{LHC}, which will be discussed in more detail in 
 \cref{chap:prod:theory}.
 
-The six quarks (\Pup, \Pdown, \Pcharm, \Pstrange, \Ptop, and \Pbottom) are only 
-observed experimentally in colourless bound states of two or more quarks, 
-called hadrons.
+The six quarks (\Pup, \Pdown, \Pcharm, \Pstrange, \Ptop, and \Pbottom) cannot 
+be observed as free states.
+The five lightest quarks bind together to form hadrons, colourless bound states 
+of two or more quarks, whereas the top quark decays too quickly to form such 
+states.
+Mesons are hadrons comprising a quark-anti-quark pair, and baryons contain 
+three quarks or three anti-quarks.
+More exotic states, such as tetra- or penta-quarks, also 
+exist~\cite{Choi:2007wga,Aaij:2014jqa,Aaij:2015tga}, but have not been observed 
+outside of particle collider experiments.
 The behaviour of hadrons can be studied with a particle detector to infer the 
 behaviour of the quarks and gluons.
 In particular, the \lhcb\ detector is optimised to select and reconstruct the 
-decays of mesons and baryons in order to probe the nature of the weak force.
+decays of mesons and baryons containing \Pcharm and \Pbottom quarks, in order 
+to probe the nature of the weak force.
+These include the charm mesons \PDzero~($\Pcharm\APup$) and 
+\PDp~($\Pcharm\APdown$), beauty mesons \PBzero~($\Pdown\APbottom$) and 
+\PBp~($\Pup\APbottom$), and the charm and beauty baryons 
+\PLambdac~($\Pup\Pdown\Pcharm$) and \PLambdab~($\Pup\Pdown\Pbottom$).
+The decays of these hadrons to sets of comparatively long-lived particles, such 
+as charged pions~($\Pup\APdown$) and kaons~($\Pup\APstrange$), 
+protons~($\Pup\Pup\Pdown$), and leptons, allow the properties of the heavy 
+flavour hadrons to be inferred through the interactions of the decay products 
+with the detector.\footnotemark\
+\footnotetext{%
+  Throughout this thesis, charge conjugation is implied unless stated 
+  otherwise.
+}
 
-The weak force interacts with particles with a non-zero weak isospin \wisospin, 
-and the carriers are the two charged \PWpm bosons and the neutral \PZ boson.
-It is particularly interesting to study because it violates several symmetries 
-that were historically considered to be exact, and is the only force to have 
-been observed to do so.
-One example is symmetry under the parity transformation \Ptransform, which 
-changes the sign of the spatial coordinates.
-The weak force violates this symmetry in the largest possible way by only 
-coupling to particles with left-handed chirality and anti-particles with 
-right-handed chirality.
+% and the carriers are the two charged \PWpm bosons and the neutral \PZ boson.
+
+The weak force interacts with particles with a left-handed chirality and with a 
+non-zero weak isospin \wisospin.
+The symmetry under the parity transformation \Ptransform, which changes the 
+sign of the spatial coordinates, is maximally violated by the weak force only 
+coupling to left-handed particles.
 The discovery of \Ptransform\ violation~\cite{Wu:1957my} was soon followed by 
 the discovery of \CP\ violation~\cite{Christenson:1964fg}, the breaking of the 
 symmetry of the \CP\ transformation which simultaneously changes the handedness 
 of particles (\Ptransform) and transforms particles into their anti-particles.  
 (\Ctransform).
+
+The weak force is particularly interesting to study because it is the only 
+force to have been observed to break the \Ptransform\ and \CP\ symmetries.
+In addition, at high energies the weak field unifies with the electromagnetic 
+field to form the electroweak field.
+Prior to the process of electroweak symmetry breaking, where the two component 
+fields become physically distinguishable, the electroweak field has four 
+massless degrees of freedom.
+After this, two degrees of freedom are observed experimentally as the massive 
+\PWp and \PWm bosons, whereas the other two degrees of freedom, $\PW^{0}$ and 
+$\PB^{0}$, mix to form the observed massive \PZ boson and the massless photon.
+The `spontaneous' breaking of the electroweak unification at low energies is 
+caused by the so-called Higgs mechanism, wherein an additional field, the Higgs
+field, contributes four additional degrees of freedom to the theory.
+Three degrees of freedom of the Higgs field mix with three degrees of freedom 
+of the electroweak field to give masses to the \PWpm and \PZ bosons, whilst the 
+fourth degree of freedom can be interpreted a new boson \PH, the Higgs 
+particle.
+
+The study of the Higgs particle has only become possible with the \ac{LHC}, at 
+which the Higgs boson was discovered by the \atlas\ and \cms\ 
+collaborations~\cite{Aad:2012tfa,Chatrchyan:2012xdj}.
+Studies continue to measure the properties of the 
+Higgs~\cite{Khachatryan:2016vau}, to see whether it behaves in a way predicted 
+by the \ac{SM}.
+Deviations in the behaviour of this particle can indicate the presence of 
+particles not predicted by the \ac{SM}, observations of which would be 
+considered a major breakthrough in high energy physics.
+Observations of large \CP-violating effects would be of similar interest, but 
+can relate to different phenomena.
 
 \section{\texorpdfstring{\CP}{CP} violation}
 \label{chap:intro:sm:cp}
