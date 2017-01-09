@@ -4,3 +4,7 @@ latex.out
 thesis.pdf
 # Output of plotting scripts
 scripts/output/*.pdf
+# Comments I received
+comments/*
+# Things I used as reference material
+references/*
