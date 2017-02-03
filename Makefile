@@ -1,7 +1,7 @@
 # Stolen directly from the latexrun README
 .PHONY: FORCE
-paper.pdf: FORCE
-	@./latexrun thesis.tex
+thesis.pdf: FORCE
+	@./latexrun --latex-cmd=lualatex thesis.tex
 
 .PHONY: check
 check:
