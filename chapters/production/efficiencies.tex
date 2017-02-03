@@ -135,13 +135,13 @@ The evaluation of \cref{eqn:prod:effs:reco} requires that the reconstructed
 objects, tracks and vertices, be correctly associated back to the `truth-level'
 information, that is the \ac{MC} objects which were generated and then
 propagated through the detector simulation.
-The truth-matching procedure is described in \cref{chap:prod:data:mc}.
+The truth-matching procedure is described in \cref{chap:intro:lhcb:simulation}.
 The background category information is used to filter the \ac{MC} such that the
 number of remaining candidates are simply counted to obtain the input to some
 efficiency computation, such as \cref{eqn:prod:effs:reco}.
-However, the requirement that a track is matched to \SI{70}{\percent} of the
-hits created by an \ac{MC} particle is not \SI{100}{\percent} efficient at
-accepting signal.
+However, the requirement that at least \SI{70}{\percent} of a track's hits are 
+matched to hits created by a single \ac{MC} particle is not \SI{100}{\percent} 
+efficient at accepting signal.
 The magnitude of the size of the inefficiency can be determined by counting the
 number of signal decays that fail the truth matching requirement.
 \cref{fig:prod:effs:truth:categories} shows the \PDzero and \PDplus mass
@@ -606,7 +606,9 @@ each projection is initially partitioned as a single bin:
       \item For each of the 19 new boundaries, compute the \chisq\ statistic in
         the union of the sub-bins below the boundary and in the union of the
         sub-bins above the boundary using \cref{eqn:prod:effs:pid:bin_chisq},
-        and record the sum of the two \chisq\ values.
+        and record the sum of the two \chisq\ values. The \chisq\ computation 
+        made under the hypothesis that the efficiency within each union is 
+        constant.
       \item Record the boundary with the smallest \chisq\ sum.
       \item If the two sub-bin unions either side of the recorded boundary do
         not each contain at least 2000 tracks, the original bin is not split.

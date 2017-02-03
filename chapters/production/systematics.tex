@@ -49,6 +49,15 @@ selection efficiencies that are evaluated with \ac{MC}, described in
 To assess the accuracy of the \acl{MC} modelling, signal distributions are
 extracted from the data using the \sPlot\ method~\cite{Pivk:2004ty} and are
 compared to the simulation.
+With the \sPlot\ method, per-candidate signal weights are computed based on the 
+ratio of the signal and background \acp{PDF} used in the \lnipchisq\ fits 
+described in \cref{chap:prod:fitting:ipchisq}.
+The weights are defined in such a way that the sum of the weights in a 
+subsample of the data, selected in a way that is uncorrelated with \lnipchisq, 
+is equal to the signal yields in that subsample.
+For variables that are uncorrelated with \lnipchisq, this then allows signal 
+distributions to be estimated by binning the data as a histogram.
+
 As the definition of the selection efficiency does not include the effects of
 the \ac{PID} selection, the distributions of the real data are corrected for
 the \ac{PID} efficiency by a per-decay weighting.
