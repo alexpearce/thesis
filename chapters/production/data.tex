@@ -59,11 +59,12 @@ dedicated, generator-only datasets are also produced.
 These data are not processed beyond the \evtgen\ step.
 
 In addition to the usual truth-matching procedure discussed in 
-\cref{chap:intro:lhcb:simulation}, prompt/secondary information is computed for 
-each vertex.
-A vertex is classified as secondary if any particle in the ancestry of the 
-associated \ac{MC} particle has a lifetime greater than 
-\SI{0.1}{\femto\second}.\footnotemark\
+\cref{chap:intro:lhcb:simulation}, a prompt/secondary flag is computed for each 
+candidate charm vertex, based on the true lifetime of each particle preceding 
+it in the true decay chain.
+If the lifetime of any particle in the true ancestry of the charm candidate 
+exceeds a threshold of \SI{0.1}{\femto\second}, the candidate is flagged as 
+secondary.\footnotemark\
 In what follows, the \ac{MC} data have been filtered such that only 
 truth-matched, prompt charm hadron candidates remain, unless stated otherwise.
 

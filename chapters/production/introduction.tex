@@ -143,11 +143,13 @@ includes contributions from \DstToDzpi\ decays.
 Throughout the analysis, the method of \acl{MC} error propagation is used.
 With this, each quantity entering 
 \cref{eqn:prod:introduction:differential_cross_section} is assumed to be drawn 
-from some \acf{PDF} with a known set of parameters, and then ten thousand 
-numbers are sampled from that \ac{PDF}.
-When performing operations using such quantities, the operations are performed 
-on the sample vectors, and then statistics on the result can be computed on the 
-new, resulting sample vector.
+from some \acf{PDF} with a known set of parameters.
+Each quantity is then modelled as a vector of ten thousand ‘observations’, with 
+each observation sampled from the corresponding \ac{PDF}.
+Computations on scalar quantities then becoming element-wise operations on the 
+sample vectors.
+Statistics on the resulting sample vector, such as the estimated mean and 
+standard deviation, can then be computed.
 This technique is used as an analytical error analysis of the measurement is 
 complex: what enters into the cross-section is the inverse of the efficiency, 
 for example, the corresponding \acl{PDF} of which may not be obvious, in 

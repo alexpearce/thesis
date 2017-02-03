@@ -425,7 +425,7 @@ maximum \ET\ is above some threshold, typically between $3.5$ and
 The \hcal\ provides the highest rate of positive trigger decisions out of those 
 at the first trigger level, giving a signal efficiency of around 
 \SI{40}{\percent} for two-body \PB decays, and \SI{20}{\percent} for four-body 
-\PD decays.
+\PD decays, with respect to the offline selection.
 The resolution on the energy measured by the \hcal\ has been measured to be 
 $\unc{E}/E = \SI{69 \pm 5}{\percent}/\sqrt{E}$ plus a constant term of \SI{9 
   \pm 2}{\percent}~\cite{Perret:2015pla}.
@@ -626,7 +626,7 @@ software, resulting in a large decrease in the execution time required per
 event in the offline reconstruction, such that the online reconstruction was 
 made to be identical to that offline.
 The second effort was the development and deployment of a real-time alignment 
-and calibration of the full detector for each fill.
+and calibration of the full detector for each \acs{LHC} fill.
 The full output of \hltone\ is buffered to a \SI{10}{\peta\byte} disk farm, the 
 detector alignment and calibration constants are computed, and are then applied 
 during the reconstruction performed in \hlttwo~\cite{Dujany:082010}.
@@ -644,7 +644,11 @@ online and offline selections, increasing the trigger efficiency and the
 possible number of signal candidates available for analysis, and decreasing the 
 total processing time required.
 This in turn allowed for the inclusion of a new two-track trigger in \hltone, 
-which is able to build and select two-prong vertices.
+which is able to build and select two-prong vertices, and a set of so-called 
+`lifetime unbiased' HLT1 lines, which create two-body vertices from tracks 
+reconstructed without an \ac{IP} requirement, allowing for lifetime 
+measurements without the need to model a complex acceptance efficiency as a 
+function of particle lifetime.
 In addition, these efforts negate the need for an additional, offline 
 reconstruction, saving computing resources,
  allowing analyses and data quality reports to progress more quickly as the 
@@ -653,7 +657,11 @@ reconstruction, saving computing resources,
  Analyses have already been performed that exploited this 
  model~\cite{LHCb-PAPER-2015-037,Aaij:2015bpa,Aaij:2016jht}.
 
- The Turbo stream currently has some limitations, however.
+ The Turbo stream contains the signal candidates reconstructed in \hlttwo, and 
+ the data are not centrally processed further offline.
+ The time taken from data-taking to analysable data being available is then 
+ considerably reduced with respect to the usual data flow, however the Turbo 
+ processing model does have some limitations at present.
  The most restrictive of these is that the candidates available to analysts are 
  only those explicitly used in the trigger decision.
  For example, if a trigger line reconstructs \DzToKpi\ and the candidate passes 
