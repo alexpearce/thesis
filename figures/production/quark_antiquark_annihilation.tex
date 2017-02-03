@@ -1,5 +1,24 @@
-\feynmandiagram [large, horizontal=a to b] {%
-  i1 [particle=\(\Pquark\)] -- [fermion] a -- [fermion] i2 [particle=\(\APquark\)],
-  a -- [gluon, edge label=\(\Pgluon\)] b,
-  f1 [particle=\(\APquark\)] -- [fermion] b -- [fermion] f2 [particle=\(\Pquark\)],
-};
+\begin{tikzpicture}
+  \begin{feynman}[scale=1.25,transform shape]
+    \vertex (a);
+    \vertex [right=of a] (b);
+
+    \vertex [above left=of a] (i1) {\(\Pgluon\)};
+    \vertex [below left=of a] (i2) {\(\Pgluon\)};
+
+    \vertex [above right=of b] (f1) {\(\Pquark\)};
+    \vertex [below right=of b] (f2) {\(\APquark\)};
+    % Vertex in between b and f2, for the radiative gluon
+    \vertex (bf1) at ($(b)!0.5!(f2)$);
+    \vertex [right=of b] (f3);
+
+    \diagram* [large] {
+      (a) -- [gluon, edge label=\(\Pgluon\)] (b),
+      (i1) -- [gluon] (a),
+      (i2) -- [gluon] (a),
+      (b) -- [fermion] (f1),
+      (f2) -- [fermion] (b),
+      (bf1) -- [gluon, edge label=\(\Pgluon\)] (f3),
+    };
+  \end{feynman}
+\end{tikzpicture}
