@@ -38,10 +38,6 @@ with integer spin, such as the photon, the force carrier of the electromagnetic
 field.
 Fermions are particles with half-integer spins; the quarks, leptons, and 
 neutrinos constitute the fundamental fermions.
-The projection of a particle's spin vector along its momentum vector defines 
-the particle's helicity, and is not invariant under Lorentz transformations.
-The chirality of a particle can be considered as a Lorentz invariant helicity, 
-as such encoding the intrinsic `handedness' of a particle.
 The known fundamental particles of the \ac{SM}, along with their measured 
 electric charges and spins, are shown in \cref{tab:intro:sm:particles}.
 
@@ -90,9 +86,10 @@ The five lightest quarks bind together to form hadrons, colourless states of
 two or more quarks bound together with a `sea' of gluons.
 The top quark decays too quickly to form such states.
 When quarks and gluons act as outgoing objects in interactions, the observed 
-final state is a shower of colourless particles, each formed through the 
-process of hadronisation, where the initial quark or gluon `fragments' into 
-additional coloured objects.
+final state is a shower of colourless particles, where the initial quark or 
+gluon `fragments' into additional coloured objects.
+These eventually form colourless bound states through the process of 
+hadronisation.
 
 Mesons are hadrons comprising a quark-anti-quark pair, and baryons contain 
 three quarks or three anti-quarks.
@@ -122,9 +119,12 @@ with the detector.\footnotemark\
 
 The weak force interacts with particles with a left-handed chirality and with a 
 non-zero weak isospin \wisospin.
+The chirality can be considered as a Lorentz-invariant version of the helicity 
+(the projection of a particle's spin vector along its momentum vector), and as 
+such encodes the intrinsic `handedness' of a particle.
 The symmetry under the parity transformation \Ptransform, which changes the 
 sign of the spatial coordinates, is maximally violated by the weak force only 
-coupling to left-handed particles.
+coupling to particles with a left-handed chirality.
 The discovery of \Ptransform\ violation~\cite{Wu:1957my} was soon followed by 
 the discovery of \CP\ violation~\cite{Christenson:1964fg}, the breaking of the 
 symmetry of the \CP\ transformation which simultaneously changes the handedness 
@@ -138,9 +138,10 @@ field to form the electroweak field.
 Prior to the process of electroweak symmetry breaking, where the two component 
 fields become physically distinguishable, the electroweak field has four 
 massless degrees of freedom.
-After this, two degrees of freedom are observed experimentally as the massive 
-\PWp and \PWm bosons, whereas the other two degrees of freedom, $\PW^{0}$ and 
-$\PB^{0}$, mix to form the observed massive \PZ boson and the massless photon.
+After the symmetry is broken, two degrees of freedom are observed 
+experimentally as the massive \PWp and \PWm bosons, whereas the other two 
+degrees of freedom, $\PW^{0}$ and $\PB^{0}$, mix to form the observed massive 
+\PZ boson and the massless photon.
 The `spontaneous' breaking of the electroweak unification at low energies is 
 caused by the so-called Higgs mechanism, wherein an additional field, the Higgs
 field, contributes four additional degrees of freedom to the theory.
@@ -193,7 +194,8 @@ the quarks involved, but each generally involves the measurement of one or more
 decay rates involving a particular quark transition, and require some 
 theoretical input to disentangle the contributions from the strong and weak 
 forces.
-One example measurement is $\beta$ decay, used as input to compute \Vud.
+One example measurement is that of $\beta$ decay, used as input to compute 
+\Vud.
 Given that the up and down quarks are the most abundant, \Vud\ is particularly 
 well known, with a fractional uncertainty of the order of \num{e-5}.
 The element \Vub\ is the least well known, with a fractional uncertainty around 
@@ -214,15 +216,16 @@ represented using only three mixing angles and a complex phase $\delta$
 \end{equation}
 where $s_{ij} = \sin{\theta_{ij}}$ and $c_{ij} = \cos{\theta_{ij}}$.
 In alternative formulations~\cite{Wolfenstein:1983yz}, the three angles are 
-parameterised as $\alpha$, $\beta$ and $\gamma$ and can be visualised as a 
-triangle on the complex plane.
+parameterised as $\alpha$, $\beta$, and $\gamma$ and can be visualised as a 
+triangle on the complex plane, as shown in \cref{fig:intro:sm:ckm_angles}.
 One of the key measurements of \lhcb\ is that of the angle $\gamma$, which is 
 the least well-measured of the three angles, with the precision on the world 
 average around \SI{9}{\percent}~\cite{LHCb-CONF-2016-001}.
-This is to be compared with the ultimate precision that could be obtained given
-the finite uncertainty of some of the theoretical inputs, required to translate
-the measurements into estimates of the CKM elements, estimated to be up to 
-\SI{4}{\degree}, depending on the assumptions~\cite{Brod:2013sga,Brod:2014bfa}.
+This is to be compared with the ultimate precision that could be obtained, 
+given the finite uncertainty on some of the theoretical inputs required to 
+translate the measurements into estimates of the CKM elements, estimated to be 
+up to \SI{4}{\degree}, depending on the 
+assumptions~\cite{Brod:2013sga,Brod:2014bfa}.
 
 The closure of the $(\alpha, \beta, \gamma)$ triangle is equivalent to the 
 prediction of the unitarity of the CKM matrix, and hence measuring a value of 
