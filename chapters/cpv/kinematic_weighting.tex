@@ -105,9 +105,10 @@ At the end of the $i$th iteration, each event from the `original' sample is
 weighted by $w_{i} = w_{i - 1}e^{p_{l}}$, where $l$ is the leaf node the event
 falls in.
 The target distribution is assigned unit weights $w_{i} = w_{0}$.
-This weighting has the same effect as the weighting in the \adaboost\
-algorithm, increasing the importance of events in the original distribution
-that are in regions with a large original/target difference.
+This weighting has the same effect as the weighting in the 
+\adaboost~\cite{Freund1997119} algorithm, increasing the importance of events 
+in the original distribution that are in regions with a large original/target 
+difference.
 
 The actual weighting of events is identical to that in the histogram weighting:
 it is the ratio of target to original events in some region.
@@ -230,7 +231,7 @@ the \ac{AUC} was smallest.
 \label{chap:cpv:kinematic_weighting:stats}
 
 Weighting can increase the statistical contribution of individual entries
-within a dataset, but it should not increase the overall statistical power.
+within a dataset, but it cannot increase the overall statistical power.
 The number of entries $N'$ in a weighted dataset can be computed as the sum of
 the per-entry weights $w_{i}$, and the variance on this quantity is given as
 the sum of the squares of the weights
