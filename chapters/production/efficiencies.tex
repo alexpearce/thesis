@@ -125,8 +125,81 @@ decays to those passing the acceptance requirements
   }.
   \label{eqn:prod:effs:reco}
 \end{equation}
+This definition is subject to the effects of \pTy\ bin `migration', whereby 
+mesons are reconstructed as belonging to bins different from those of the true 
+particles.
+These can be due to resolution as well as any possible biases on the 
+measurements of \pT\ and \rapidity.
+If the net migration between bins is large, that is if the migrations are not 
+symmetric, then the detector effects should be corrected for such that the 
+reconstructed meson kinematics are more accurate estimators of their true 
+values.
+(This process is often referred to as `unfolding'~\cite{DAgostini:1994fjx}.)
+
+\Cref{fig:prod:effs:reco:unfolding:PT,fig:prod:effs:reco:unfolding:y} show the 
+deviations of the reconstructed \pT\ and \rapidity, in bins of those variables, 
+for the \DzToKpi\ \ac{MC} sample.
+In both \pT\ and \rapidity\ the deviation of the reconstructed values from the 
+true values is largely symmetric across the full kinematic range, and the 
+magnitude of the relative deviations is generally below \SI{1}{\percent} in 
+\pT\ and \SI{0.1}{\percent} in \rapidity.
+Similarly, the migration matrices show that the fraction of candidates that 
+migrate out of their true \pTy\ bin is generally well below \SI{1}{\percent} in 
+\pT, and below \SI{0.1}{\percent} in \rapidity, both of which are considered as 
+small migrations.
+Such small migrations are already accounted for by modelling the reconstruction 
+efficiencies in bins much wider than the resolution.
+
 The reconstruction efficiencies for \DzToKpi\ and \DpToKpipi, in \pTy\ bins, are
 given in \cref{tab:prod:effs:reco:dztokpi,tab:prod:effs:reco:dptokpipi}.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{production/efficiencies/D0ToKpi_PT_resolution}
+    \caption{}
+    \label{fig:prod:effs:reco:unfolding:PT:resolution}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{production/efficiencies/D0ToKpi_PT_migration_matrix}
+    \caption{}
+    \label{fig:prod:effs:reco:unfolding:PT:migration}
+  \end{subfigure}
+  \caption{%
+    The difference between true and reconstructed \PDzero\ \pT\, normalised by 
+    true \PDzero\ \pT, in bins of reconstructed 
+    \pT~(\subref*{fig:prod:effs:reco:unfolding:PT:resolution}), and a migration 
+    matrix~(\subref*{fig:prod:effs:reco:unfolding:PT:migration}) showing the 
+    fraction of candidates that migrate within a true \pT\ bin, relative to the 
+    diagonal (where there is no migration).
+  }
+  \label{fig:prod:effs:reco:unfolding:PT}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{production/efficiencies/D0ToKpi_y_resolution}
+    \caption{}
+    \label{fig:prod:effs:reco:unfolding:y:resolution}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{production/efficiencies/D0ToKpi_y_migration_matrix}
+    \caption{}
+    \label{fig:prod:effs:reco:unfolding:y:migration}
+  \end{subfigure}
+  \caption{%
+    The difference between true and reconstructed \PDzero\ rapidity, normalised 
+    by true \PDzero\ rapidity, in bins of reconstructed 
+    rapidity~(\subref*{fig:prod:effs:reco:unfolding:y:resolution}), and a 
+    migration matrix~(\subref*{fig:prod:effs:reco:unfolding:y:migration}) 
+    showing the fraction of candidates that migrate within a true rapidity bin, 
+    relative to the diagonal (where there is no migration).
+  }
+  \label{fig:prod:effs:reco:unfolding:y}
+\end{figure}
 
 \subsection{Truth matching inefficiency}
 \label{chap:prod:effs:truth}
