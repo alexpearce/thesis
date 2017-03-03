@@ -29,3 +29,5 @@ cp $INPUT/D0ToKpi_{mass,ipchisq}_fit_*.pdf $OUTPUT/production/fitting/
 cp $INPUT/DpToKpipi_{mass,ipchisq}_fit_*.pdf $OUTPUT/production/fitting/
 cp $INPUT/DsToKKpi_{mass,ipchisq}_fit_*.pdf $OUTPUT/production/fitting/
 cp $INPUT/DstToD0pi_D0ToKpi_{mass,delta_mass,ipchisq}_fit_*.pdf $OUTPUT/production/fitting/
+
+cp $INPUT/D0ToKpi_{PT,y}_{migration_matrix,resolution}.pdf $OUTPUT/production/efficiencies/
